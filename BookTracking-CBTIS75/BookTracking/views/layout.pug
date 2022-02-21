@@ -1,0 +1,63 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/css/bootstrap.min.css')
+    // Font Awesome
+    link(href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css', rel='stylesheet')
+    // Google Fonts
+    link(href='https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap', rel='stylesheet')
+    // MDB
+    link(href='https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.css', rel='stylesheet')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    block navbar
+        .container-fluid
+          .row
+            nav.navbar.navbar-danger.barra
+              .container-fluid.barra
+                .col
+                  a.navbar-brand(href='http://localhost:3000/')
+                    img.d-inline-block.align-text-top(src='../images/dc.png' alt='DGETI' width='53' height='68')
+                    
+                    img.d-inline-block.align-text-top(src='../images/bt.png' alt='BookTracking' width='305' height='48')
+                .col
+                  a.navbar-brand.center(href='#')
+                    img.d-inline-block.align-text-top(src='../images/esep.png' alt='SEP' width='307' height='68')
+                .col
+                  a.navbar-brand.right(href='#')
+                    button.btn.ov-btn-grow-box(href='#')
+                      img(src='../images/user.png' alt='user' width='50' height='50')
+                      | Cerrar Sesión
+    block content
+
+    block footer 
+        .container-fluid.footer 
+          .row
+            footer.text-center.text-white(style='background-color: rgba(0, 0, 0, 0);')
+              // Grid container
+              .container.pt-4
+                // Section: Social media
+                section.mb-4
+                  // Facebook
+                  a.btn.btn-outline-light.btn-floating.m-1.ov-btn-grow-box(href='#!', role='button')
+                    i.fab.fa-facebook-f
+                  // Twitter
+                  a.btn.btn-outline-light.btn-floating.m-1.ov-btn-grow-box(href='#!', role='button')
+                    i.fab.fa-twitter
+                  // Google
+                  a.btn.btn-outline-light.btn-floating.m-1.ov-btn-grow-box(href='#!', role='button')
+                    i.fab.fa-google
+                  // Instagram
+                  a.btn.btn-outline-light.btn-floating.m-1.ov-btn-grow-box(href='#!', role='button')
+                    i.fab.fa-instagram
+                // Section: Social media
+              // Grid container
+              // Copyright
+              .text-center.text-white.p-3.barrFooter(style='background-color: rgba(0, 0, 0, 0);')
+                | &copy; 2022 Copyright: 
+                a.text-white(href='https://www.cbtis75.edu.mx/') Cbtis 75
+              // Copyright
+              // MDB
+          script(type='text/javascript', src='https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/3.10.2/mdb.min.js')
+

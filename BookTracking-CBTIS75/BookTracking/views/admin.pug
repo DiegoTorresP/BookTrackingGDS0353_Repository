@@ -1,0 +1,22 @@
+extends layout
+
+block content
+    .container-fluid.botonera
+      .row.hijo 
+        .col
+          a.ov-btn-grow-spin(href= '/administrar/libros')
+            img(src='../images/libro2.png' alt='Libros')
+            br
+            | Libros
+        .col
+          a.ov-btn-grow-spin(href='/administrar/solicitudes')
+            img(src='../images/solicitud.png' alt='Solicitud')
+            br
+            | Solicitudes
+        .col
+          a.ov-btn-grow-spin(href='/administrar/registrar-usuario')
+            img(src='../images/usuario.png' alt='x')
+            br
+            | Registrar nuevo usuario
+      .row 
+        p 

@@ -1,8 +1,148 @@
+
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: url(../images/fbib.jpg);
 }
 
 a {
-  color: #00B7FF;
+  
+  text-decoration: none;
 }
+.a{
+  text-decoration: none;
+}
+.barra{
+  background: #612334;
+  width: 100%;
+  padding: 0px;
+}
+.complet{
+  margin: 0;
+}
+.fluid-container {
+  height:100%;
+}
+.botonera{
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  position: relative;
+  text-align: center;
+}
+.hijo {
+  /* centrado vertical */
+  position: absolute;
+  top: 500%;
+}
+
+.botonera a{
+  border-radius: 10px;
+  border: none;
+  font-family:Arial, Helvetica, sans-serif;
+  font-size: x-large;
+  width: 300px;
+  height: 300px;
+  margin: 35px;
+}
+
+.botonera a img{
+  text-align: center;
+  width: 250px;
+  height: 250px;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 141px;
+}
+
+.navbar-brand{
+  padding: 0px;
+  margin: 0px;
+}
+.center{
+  display: flex;
+  justify-content: center;
+}
+.center{
+  display: flex;
+  justify-content: center;
+}
+.right{
+  
+    display: flex;
+    justify-content: right;
+  
+}
+/*** ESTILOS BOTÓN GROW SPIN ***/
+.ov-btn-grow-spin {
+  background: #fff; /* color de fondo */
+  color: #612334; /* color de fuente */
+  border: 2px solid #b28e5e; /* tamaño y color de borde */
+  padding: 16px 20px;
+  border-radius: 3px; /* redondear bordes */
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  display: inline-block;
+  }
+  .ov-btn-grow-spin:hover {
+  color: #fff;/* color de fuente hover */
+  }
+  .ov-btn-grow-spin::after {
+  content: "";
+  background: #36965e; /* color de fondo hover */
+  position: absolute;
+  z-index: -1;
+  padding: 16px 20px;
+  display: block;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  transform: scale(0, 0) rotate(-180deg);
+  transition: all 0.3s ease;
+  }
+  .ov-btn-grow-spin:hover::after {
+  transition: all 0.3s ease-out;
+  transform: scale(1, 1) rotate(0deg);
+  }
+  /*** ESTILOS BOTÓN GROW BOX ***/
+  .btn{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: medium;
+    border-radius: 30px;
+    box-shadow: none; 
+  }
+.ov-btn-grow-box {
+  background: transparent; /* color de fondo */
+  color: #ffffff; /* color de fuente */
+  padding: 5px 5px;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  display: inline-block;
+  }
+  .ov-btn-grow-box:hover {
+  color: #fff;/* color de fuente hover */
+  }
+  .ov-btn-grow-box::after {
+  content: "";
+  background: #b28e5e; /* color de fondo hover */
+  position: absolute;
+  z-index: -1;
+  padding: 16px 20px;
+  display: block;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  transform: scale(0, 0);
+  transition: all 0.3s ease;
+  }
+  .ov-btn-grow-box:hover::after {
+  transition: all 0.3s ease-out;
+  transform: scale(1, 1);
+  }
