@@ -146,3 +146,39 @@ a {
   transition: all 0.3s ease-out;
   transform: scale(1, 1);
   }
+
+  .tabla thead {
+    background-color: #612334;
+      color:#ffffff;
+  }
+  .tabla{
+      background: #ffffff;
+      margin-top: 15px;
+      font-size: 15px;
+  }
+  .rowtabla{
+      background: #ffffff;
+  }
+  
+  
+  .barrabusqueda{
+    
+    margin: 15px;
+    
+  }
+  .barrabusqueda1{
+    margin-top: 15px;
+    font-size: 18px;
+  }
+
+  .botonbusqueda{
+      margin: 0 auto;
+  }
+  
+  .barraresultado{
+      background: #B28E5E;
+      padding: 10px;
+      color: aliceblue;
+      margin-top: 15px;
+      font-size: 17px;
+  }

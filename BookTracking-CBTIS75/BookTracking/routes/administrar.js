@@ -10,7 +10,7 @@ router.get("/", function (req, res, next) {
 });
 
 router.get("/libros", function (req, res, next) {
-  res.render("libros");
+  res.render("admin_buscar");
 });
 router.get("/solicitudes", function (req, res, next) {
   res.render("solicitudes");
@@ -18,5 +18,12 @@ router.get("/solicitudes", function (req, res, next) {
 router.get("/registrar-usuario", function (req, res, next) {
   res.render("registrar_user");
 });
+
+router.get("/vista-libro", function (req, res, next){
+  res.render("admin_vista_libro");
+})
+
+
+
 
 module.exports = router;
