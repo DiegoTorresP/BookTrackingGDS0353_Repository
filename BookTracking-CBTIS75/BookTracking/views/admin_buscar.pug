@@ -1,0 +1,81 @@
+extends layout
+
+block content
+  .container-fluid
+    .row
+      .col
+        nav.navbar.navbar-light.bg-light.barrabusqueda1
+          form.container-fluid.justify-content-start
+            .col-3.barrabusqueda
+              input.form(type='search' placeholder='Titulo' style='width : 100%;')
+            .col-3.barrabusqueda
+              input.form(type='search' placeholder='Autor' style='width : 100%;')
+            .col-3.barrabusqueda
+              input.form(type='search' placeholder='Editorial' style='width : 100%;')
+            .col.botonbusqueda
+              button.btn.btn-outline-success(type='submit')
+                img(src='/images/buscar.png' width='20px')
+    .row
+      .col
+        .container-fluid
+          .row.barraresultado
+            .col Resultados: de busqueda
+          .row.rowtabla
+            .col
+              table.table.table-bordered.tabla
+                thead
+                  tr
+                    th(scope='col') Nombre
+                    th(scope='col') Autor
+                    th(scope='col') Editorial
+                    th(scope='col') Unidades Disponibles
+                    th(scope='col') Ver detalles
+                tbody
+                  tr
+                    th Titulo 1
+                    td Autor 1
+                    td Editorial 1
+                    td(align='center') 3
+                    td(align='center')
+                      a(href='/administrar/vista-libro')
+                        img(src='/images/icon-mas.png', width='30px')
+                  tr
+                    th Titulo 2
+                    td Autor 2
+                    td Editorial 2
+                    td(align='center') 4
+                    td(align='center')
+                      a(href='/administrar/vista-libro')
+                        img(src='/images/icon-mas.png', width='30px')
+                  tr
+                    th Titulo 3
+                    td Autor 3
+                    td Editorial 3
+                    td(align='center') 6
+                    td(align='center')
+                      a(href='/administrar/vista-libro')
+                        img(src='/images/icon-mas.png', width='30px')
+                  tr
+                    th Titulo 4
+                    td Autor 4
+                    td Editorial 4
+                    td(align='center') 6
+                    td(align='center')
+                      a(href='/administrar/vista-libro')
+                        img(src='/images/icon-mas.png', width='30px')
+                  tr
+                    th Titulo 5
+                    td Autor 5
+                    td Editorial 5
+                    td(align='center') 6
+                    td(align='center')
+                      a(href='/administrar/vista-libro')
+                        img(src='/images/icon-mas.png', width='30px')
+                  tr
+                    th Titulo 6
+                    td Autor 6
+                    td Editorial 6
+                    td(align='center') 6
+                    td(align='center')
+                      a(href='/administrar/vista-libro')
+                        img(src='/images/icon-mas.png', width='30px')
