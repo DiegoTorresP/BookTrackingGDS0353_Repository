@@ -1,4 +1,17 @@
 extends layout
 
 block content
-    h1 Libros
+ .container-fluid.botonera
+      .row.hijo 
+        .col
+          a.ov-btn-grow-spin(href= '/administrar/libros')
+            img(src='../images/be.png' alt='Buscar y editar libros')
+            br
+            | Buscar y editar libros
+        .col
+          a.ov-btn-grow-spin(href='/administrar/solicitudes')
+            img(src='../images/rlib.png' alt='Registrar libro')
+            br
+            | Registrar libro
+      .row 
+        p 
