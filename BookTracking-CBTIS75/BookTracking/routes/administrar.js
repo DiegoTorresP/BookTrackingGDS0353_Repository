@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 
+var user_controller = require("../controllers/alumnoController");
 //Modulos Controladores Aqui
 
 //Rutas de Administrador
@@ -18,7 +19,17 @@ router.get("/solicitudes", function (req, res, next) {
 });
 
 router.get("/registrar-usuario", function (req, res, next) {
-  res.render("registrar_user");
+  res.render("registrar_usuario");
+});
+
+router.get("/lista-usuario", user_controller.list);
+
+router.get("/leer_qr", function (req, res, next) {
+  res.render("leer_qr");
+});
+
+router.get("/admin_buscar", function (req, res, next) {
+  res.render("admin_buscar");
 });
 
 router.get("/leer_qr", function (req, res, next) {

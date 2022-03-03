@@ -4,12 +4,19 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
+//Base de datos
+const connMongo = require ('./database/conexionMongo');
+const session = require('express-session');
+
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var administrarRouter = require('./routes/administrar');
 var alumnoRouter = require('./routes/alumnos');
 
 var app = express();
+
+//Conexión con mongo
+connMongo();
 
 /*app.use((req, res, next) => {
   res.header('Access-Control-Allow-Origin', '*');
@@ -19,6 +26,14 @@ var app = express();
   next();
 });*/
 
+//Manejo session
+app.set('trust proxy', 1);
+app.use(session({
+  secret: 'keyboard cat',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: true }
+}))
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
