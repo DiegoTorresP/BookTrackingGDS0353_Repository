@@ -1,0 +1,48 @@
+extends layout
+
+block content
+  .container-fluid
+    .row
+      .col
+        nav.navbar.navbar-light.bg-light.barrabusqueda1
+          form.container-fluid.justify-content-start
+            .col-3.barrabusqueda
+              input.form(type='search' placeholder='Titulo' style='width : 100%;')
+            .col-3.barrabusqueda
+              input.form(type='search' placeholder='Autor' style='width : 100%;')
+            .col-3.barrabusqueda
+              input.form(type='search' placeholder='Editorial' style='width : 100%;')
+            .col.botonbusqueda
+              button.btn.btn-outline-success(type='submit')
+                img(src='/images/buscar.png' width='20px')
+    .row
+      .col
+        .container-fluid
+          .row.barraresultado
+            .col Resultados: de busqueda
+          .row.rowtabla
+            .row
+                .col
+                    h6 No. de Control
+                    h6 #{user.Nombre_s}
+                   
+                    h6 Nombre:
+                    input.form-control(type='text' name='Nombre')
+                    h6 Grupo:
+                    input.form-control(type='text' name='Grupo')
+                    h6 Especialidad
+                    input.form-control(type='text' name='Especialidad')
+                    h6 Turno
+                    input.form-control(type='text' name='Turno')
+                .col
+                    h6 Generación:
+                    input.form-control(type='text' name='Generación')
+                    h6 Sexo:
+                    input.form-control(type='text' name='Sexo')
+                    h6 CURP:
+                    input.form-control(type='text' name='CURP')
+                    h6 Correo:
+                    input.form-control(type='text' name='Correo')
+                    h6 Telefono:
+                    input.form-control(type='text' name='Telefono')
+                    br

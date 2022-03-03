@@ -50,6 +50,10 @@ a {
   width: 250px;
   height: 250px;
 }
+.row.img{
+  width: 250px;
+  height: 250px;
+}
 
 .footer {
   position: absolute;
