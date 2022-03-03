@@ -19,7 +19,7 @@ router.get("/solicitudes", function (req, res, next) {
 });
 
 router.get("/registrar-usuario", function (req, res, next) {
-  res.render("registrar_user");
+  res.render("registrar_usuario");
 });
 
 router.get("/lista-usuario", user_controller.list);
