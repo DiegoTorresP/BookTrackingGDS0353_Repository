@@ -23,13 +23,14 @@ block content
           .row.rowtabla
             .col-4
               .row
-                img(src='/images/diccionario.png' width='25px')
+                img.dic(src='/images/diccionario.png')
               .row
                 .col
-                  button.btn.btn-primary(type='button')
-                    | Primary
+                  a.btn.btn-primary.opciones(type='button', href='/administrar/admin_buscar')
+                    | Regresar
                 .col
-                  button.btn.btn-danger(type='button') Editar
+                  a.btn.btn-danger.opciones(type='button', href='/administrar/editar_libro') 
+                    | Editar
             .col-8
               .container-fluid
                 .row

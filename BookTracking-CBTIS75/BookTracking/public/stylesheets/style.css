@@ -50,9 +50,9 @@ a {
   width: 250px;
   height: 250px;
 }
-.row.img{
-  width: 250px;
-  height: 250px;
+.dic{
+  width: 85%;;
+  padding: 10px;
 }
 
 .footer {
@@ -84,8 +84,7 @@ a {
 .ov-btn-grow-spin {
   background: #fff; /* color de fondo */
   color: #612334; /* color de fuente */
-  border: 2px solid #b28e5e; /* tamaño y color de borde */
-  padding: 16px 20px;
+  border: .5px solid #b28e5e; /* tamaño y color de borde */
   border-radius: 3px; /* redondear bordes */
   position: relative;
   z-index: 1;
@@ -185,4 +184,13 @@ a {
       color: aliceblue;
       margin-top: 15px;
       font-size: 17px;
+  }
+  .opciones{
+    margin: 20px;
+  }
+  .file{
+    margin: 20px;
+  }
+  .guardar{
+    border-radius: 2px;
   }

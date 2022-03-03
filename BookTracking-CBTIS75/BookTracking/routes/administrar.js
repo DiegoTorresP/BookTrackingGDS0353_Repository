@@ -44,5 +44,9 @@ router.get("/menu-libro", function (req, res, next){
   res.render("libros");
 });
 
+router.get("/editar_libro", function(req, res, next){
+  res.render("editar_libro");
+});
+
 
 module.exports = router;
