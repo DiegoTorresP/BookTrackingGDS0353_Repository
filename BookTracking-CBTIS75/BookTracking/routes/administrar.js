@@ -65,5 +65,12 @@ router.get("/editar_libro", function(req, res, next){
   res.render("editar_libro");
 });
 
+router.get("/vista-usuario", function(req, res, next){
+  res.render("vista_usuario");
+});
+
+router.get("/vista-libro_solicitud", function(req, res, next){
+  res.render("vista_libro");
+});
 
 module.exports = router;

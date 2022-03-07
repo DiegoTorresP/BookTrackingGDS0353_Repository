@@ -1,4 +1,81 @@
 extends layout
 
 block content
-    h1 Solicitudes
+  .container-fluid
+    .row
+      .col
+        .container-fluid
+          .row.barraresultado
+            .col Atender Solicitudes
+          .row.rowtabla
+            .col
+              table#tablaAlumno.table.table-bordered.tabla
+                thead
+                  tr
+                    th(scope='col') Nombre
+                    th(scope='col') Grupo
+                    th(scope='col') Correo
+                    th(scope='col') Ver detalles de Libro
+                    th(scope='col') Ver detalles de Alumno
+                tbody
+                  tr
+                    th Solicitante 1
+                    td Grupo 1
+                    td correo1@gmail.com
+                    td(align='center')
+                      a(href='/administrar/vista-libro_solicitud')
+                        img(src='/images/icon-mas.png', width='30px')
+                    td(align='center')
+                      a(href='/administrar/vista-usuario')
+                        img(src='/images/icon-mas.png', width='30px')
+                  tr
+                    th Solicitante 2
+                    td Grupo 2
+                    td correo2@gmail.com
+                    td(align='center')
+                      a(href='/administrar/vista-libro_solicitud')
+                        img(src='/images/icon-mas.png', width='30px')
+                    td(align='center')
+                      a(href='/administrar/vista-usuario')
+                        img(src='/images/icon-mas.png', width='30px')
+                  tr
+                    th Solicitante 3
+                    td Grupo 3
+                    td correo3@gmail.com
+                    td(align='center')
+                      a(href='/administrar/vista-libro_solicitud')
+                        img(src='/images/icon-mas.png', width='30px')
+                    td(align='center')
+                      a(href='/administrar/vista-usuario')
+                        img(src='/images/icon-mas.png', width='30px')
+                  tr
+                    th Solicitante 4
+                    td Grupo 4
+                    td correo4@gmail.com
+                    td(align='center')
+                      a(href='/administrar/vista-libro_solicitud')
+                        img(src='/images/icon-mas.png', width='30px')
+                    td(align='center')
+                      a(href='/administrar/vista-usuario')
+                        img(src='/images/icon-mas.png', width='30px')
+                  tr
+                    th Solicitante 5
+                    td Grupo 5
+                    td correo5@gmail.com
+                    td(align='center')
+                      a(href='/administrar/vista-libro_solicitud')
+                        img(src='/images/icon-mas.png', width='30px')
+                    td(align='center')
+                      a(href='/administrar/vista-usuario')
+                        img(src='/images/icon-mas.png', width='30px')
+                  tr
+                    th Solicitante 6
+                    td Grupo 6
+                    td correo6@gmail.com
+                    td(align='center')
+                      a(href='/administrar/vista-libro_solicitud')
+                        img(src='/images/icon-mas.png', width='30px')
+                    td(align='center')
+                      a(href='/administrar/vista-usuario')
+                        img(src='/images/icon-mas.png', width='30px')
+    script(src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous") 

@@ -14,7 +14,7 @@ block content
               input.form(type='search' placeholder='Editorial' style='width : 100%;')
             .col.botonbusqueda
               button.btn.btn-outline-success(type='submit')
-                img(src='/public/images/buscar.png' width='20px')
+                img(src='../images/buscar.png' style='width : 35px')
     .row
       .col
         .container-fluid
@@ -68,6 +68,6 @@ block content
                   input#telefonoMovil.form-control(type='number' name='telefonoMovil')
                   .row
                     .col(style='text-align: right; padding-top: 10px')
-                      button.btn(href='#') Cancelar
+                      a.btn(href='/') Cancelar
                       button.btn.btn-danger(type='submit', onclick='registar()')
                         | Registar
