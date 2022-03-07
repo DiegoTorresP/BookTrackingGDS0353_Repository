@@ -4,24 +4,13 @@ block content
   .container-fluid
     .row
       .col
-        nav.navbar.navbar-light.bg-light.barrabusqueda1
-          form.container-fluid.justify-content-start
-            .col-4.barrabusqueda
-              input.form(type='search' placeholder='Nombre' style='width : 100%;')
-            .col-4.barrabusqueda
-              input.form(type='search' placeholder='Carrera' style='width : 100%;')
-            .col-2
-              button.btn.btn-outline-success(type='submit')
-                img(src='/images/buscar.png' width='20px')
-    .row
-      .col
         .container-fluid
           .row.barraresultado
             .col Usuarios
           .row.rowtabla
             .row  
               .col
-                table.table.table-bordered.tabla
+                table#tablaAlumno.table.table-bordered.tabla
                   thead
                     tr
                       th(style='display: none;') Id
@@ -42,4 +31,5 @@ block content
                         td #{alumno.EstatusEscolar}
                         td 
                           -var url = "/administrar/eliminar/" + alumno._id
-                          a.btn.btn-outline-danger.bi.bi-trash(href=url)               
+                          a.btn.btn-outline-danger.bi.bi-trash(href=url)   
+    script(src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous")           

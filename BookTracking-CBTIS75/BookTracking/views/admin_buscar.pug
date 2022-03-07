@@ -4,25 +4,12 @@ block content
   .container-fluid
     .row
       .col
-        nav.navbar.navbar-light.bg-light.barrabusqueda1
-          form.container-fluid.justify-content-start
-            .col-3.barrabusqueda
-              input.form(type='search' placeholder='Titulo' style='width : 100%;')
-            .col-3.barrabusqueda
-              input.form(type='search' placeholder='Autor' style='width : 100%;')
-            .col-3.barrabusqueda
-              input.form(type='search' placeholder='Editorial' style='width : 100%;')
-            .col.botonbusqueda
-              button.btn.btn-outline-success(type='submit')
-                img(src='/images/buscar.png' width='20px')
-    .row
-      .col
         .container-fluid
           .row.barraresultado
             .col Resultados: de busqueda
           .row.rowtabla
             .col
-              table.table.table-bordered.tabla
+              table#tablaAlumno.table.table-bordered.tabla
                 thead
                   tr
                     th(scope='col') Nombre
@@ -80,3 +67,4 @@ block content
                     td(align='center')
                       a(href='/administrar/vista-libro')
                         img(src='/images/icon-mas.png', width='30px')
+    script(src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous") 
