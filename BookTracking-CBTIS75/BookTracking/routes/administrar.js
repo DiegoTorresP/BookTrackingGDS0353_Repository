@@ -18,11 +18,17 @@ router.get("/solicitudes", function (req, res, next) {
   res.render("solicitudes");
 });
 
-router.get("/registrar-usuario", function (req, res, next) {
+//Se llama al controlador para crear
+router.post("/crear", user_controller.crear);
+
+//Ruta para eliminar
+router.get("/eliminar/:id", user_controller.eliminar);
+
+router.get("/registrar-usuario", function (req, res, next){
   res.render("registrar_usuario");
 });
 
-router.get("/lista-usuario", user_controller.list);
+router.get("/lista-usuario", user_controller.mostar);
 
 router.get("/leer_qr", function (req, res, next) {
   res.render("leer_qr");
