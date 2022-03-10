@@ -27,7 +27,12 @@ router.get("/registrar-usuario", function (req, res, next){
   res.render("registrar_usuario");
 });
 
+//Mostar todos los usuarios
 router.get("/lista-usuario", user_controller.mostar);
+
+//Ruta para mostar y editar un solo usuarios
+router.get("/usuario/:id", user_controller.editar);
+//Ruta para mostar y editar
 
 router.get("/leer_qr", function (req, res, next) {
   res.render("leer_qr");
@@ -64,7 +69,7 @@ router.get("/editar_libro", function(req, res, next){
   res.render("editar_libro");
 });
 
-//Ruta para buscar un alumno
+//Ruta para  un alumno
 router.get("/detalle_alumno/:Solicitante",user_controller.consultar);
 
 

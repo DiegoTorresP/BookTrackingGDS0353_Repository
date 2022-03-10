@@ -59,7 +59,21 @@ alumnoController.crear = (req, res) => {
 };
 
 //Editar
-
+//Mostar y editar un alumno
+alumnoController.editar= (req, res)=>{
+    const id= req.params.id;
+    Alumno.find({"_id":id}).exec((err, Alumno) => {
+        if (err) {
+            console.log('Error: ', err);
+            return;
+        }
+        console.log("The INDEX");
+        console.log(Alumno)
+        return res.render('vista_usuario', {
+            Alumno: Alumno
+        });
+    });
+}
 
 //Eliminar
 alumnoController.eliminar= (req, res)=>{
@@ -72,6 +86,8 @@ alumnoController.eliminar= (req, res)=>{
     });
     res.redirect('/administrar/lista-usuario')
 }
+
+
 
 //Consultar
 alumnoController.consultar= (req, res)=>{

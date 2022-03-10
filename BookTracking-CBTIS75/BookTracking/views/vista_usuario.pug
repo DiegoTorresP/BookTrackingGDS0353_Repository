@@ -1,4 +1,62 @@
 extends layout
 
 block content
-    h1 Vista - Usuario
+  .container-fluid
+    .row
+      .col
+        .container-fluid
+          .row.barraresultado
+            .col Resultados: de busqueda
+          .row.rowtabla
+            form(method='post')
+              .row
+                each alumno in Alumno
+                  .col
+                    label.form-label(for='numControl') No. de Control
+                    input#numControl.form-control(type='number' name='numControl' required readonly='»readonly»' value=alumno._id)
+                    label.form-label(for='nombre') Nombre:
+                    input#nombre.form-control(type='text' name='nombre' required='' readonly='»readonly»' value=alumno.Nombre_s)
+                    label.form-label(for='apPaterno') Apellido paterno:
+                    input#apPaterno.form-control(type='text' name='apPaterno' required readonly='»readonly»' value=alumno.Apellido_Paterno)
+                    label.form-label(for='apMaterno') Apellido Materno:
+                    input#apMaterno.form-control(type='text' name='apMaterno' required readonly='»readonly»' value=alumno.Apellido_Materno)
+                    label.form-label(for='grupo') Grupo:
+                    input#grupo.form-control(type='text' name='grupo' required readonly='»readonly»' value=alumno.Grupo)
+                    label.form-label(for='especialidad') Especialidad:
+                    input#especialidad.form-control(type='text' name='especialidad' required readonly='»readonly»' value=alumno.Carrera_Tecnica)
+                    label.form-label(for='turno') Turno:
+                    input#turno.form-control(type='text' name='turno' required readonly='»readonly»' value=alumno.Turno)
+                  .col
+                    label.form-label(for='generacion') Generaci&oacute;n:
+                    input#generacion.form-control(type='text' name='generacion' required readonly='»readonly»' value=alumno.Generacion)
+                    label.form-label(for='sexo') Sexo:
+                    select#sexo.form-control(name='sexo' required readonly='»readonly»' value=alumno.Genero)
+                      option
+                      option Masculino
+                      option Femenino
+                    label.form-label(for='curp') CURP:
+                    input#curp.form-control(type='text' name='curp' required readonly='»readonly»' value=alumno.CURP)
+                    .row
+                      .col
+                        label.form-label(for='correo1') Correo 1:
+                        input#correo1.form-control(type='email' name='correo1' required readonly='»readonly»' value=alumno.Correo_Electronico_1)
+                      .col
+                        label.form-label(for='correo2') Correo 2:
+                        input#correo2.form-control(type='email' name='correo2' readonly='»readonly»' value=alumno.Correo_Electronico_2)
+                    .row
+                      .col
+                        label.form-label(for='lada') Lada:
+                        input#lada.form-control(type='number' name='lada' required readonly='»readonly»' value=alumno.Clave_lada)
+                      .col
+                        label.form-label(for='telefonoFijo1') Telefono fijo 1:
+                        input#c.form-control(type='number' name='telefonoFijo1' readonly='»readonly»' value=alumno.Telefono_de_contacto_fijo_1)
+                    label.form-label(for='telefonoFijo2') Telefono fijo 2:
+                    input#telefonoFijo2.form-control(type='number' name='telefonoFijo2' readonly='»readonly»' value=alumno.Telefono_de_contacto_fijo_1)
+                    label.form-label(for='telefonoMovil') Telefono Movil:
+                    input#telefonoMovil.form-control(type='number' name='telefonoMovil' readonly='»readonly»' value=alumno.Telefono_movil_celular)
+                    .row
+                      .col(style='text-align: right; padding-top: 10px')
+                        button.btn(href='#') Cancelar
+                        - var url= "/administrar/usuarioE/"+ alumno._id
+                        button.btn.btn-danger(href=url)
+                          | Registar

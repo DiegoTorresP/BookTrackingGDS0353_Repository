@@ -20,16 +20,21 @@ block content
                       th(scope='col') Correo electronico
                       th(scope='col') Estatus
                       th(scope='col') Acciones
+                      th(scope='col') Ver detalles
                   tbody
                     each alumno in Alumno
                       tr
-                        td(style='display: none;' id='id') #{alumno._id}
+                        td#idA(style='display: none;') #{alumno._id}
                         th #{alumno.Nombre_s}
                         td #{alumno.Carrera_Tecnica}
                         td #{alumno.Telefono_movil_celular}
                         td #{alumno.Correo_Electronico_1}
                         td #{alumno.EstatusEscolar}
-                        td 
+                        td
                           -var url = "/administrar/eliminar/" + alumno._id
-                          a.btn.btn-outline-danger.bi.bi-trash(href=url)   
+                          -var id = alumno._id
+                          button.eliminar.btn.btn-outline-danger.bi.bi-trash(onclick="Eliminar()")
+                        td 
+                          -var url2 = "/administrar/usuario/" + alumno._id
+                          a.btn.btn-outline-danger.bi.bi-pencil(href=url2)   
     script(src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous")           
