@@ -1,5 +1,5 @@
 const Alumno = require("../models/alumno");
-
+const Solicitante = require("../models/solicitud");
 var alumnoController = {};
 
 //Mostar todos los alumnos 
@@ -64,6 +64,7 @@ alumnoController.crear = (req, res) => {
 //Eliminar
 alumnoController.eliminar= (req, res)=>{
     const id= req.params.id;
+    console.log(id)
     Alumno.findByIdAndRemove(id, (err, alumno)=>{
         if (err) {
             return res.status(500).json({message: "Error al eliminar"})
@@ -72,5 +73,22 @@ alumnoController.eliminar= (req, res)=>{
     res.redirect('/administrar/lista-usuario')
 }
 
+//Consultar
+alumnoController.consultar= (req, res)=>{
+    const solicitante= req.params.Solicitante;
+    console.log(solicitante);
+    Alumno.find({"_id":solicitante}).exec((err,Alumno) => {
+        if (err) {
+            console.log('Error: ', err);
+            return;
+        }
+        console.log(solicitante+" Encontrado");
+        console.log(Alumno)
+        return res.render('detalle_atender_alumno', {
+            Alumno: Alumno
+        });
+
+    });
+}
 
 module.exports = alumnoController;

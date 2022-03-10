@@ -1,4 +1,106 @@
 extends layout
 
 block content
-    h1 Detalle en atender solicitud
+  .container-fluid
+    .row
+      .col
+        .container-fluid
+          .row.barraresultado
+            .col Registrar libro
+          .row.rowtabla
+            .col-4
+              .row
+                img.dic(src='/images/diccionario.png')
+              .row
+                .col
+                  a.btn.btn-danger.opciones(type='button', href='/administrar/admin_buscar')
+                    | Cancelar
+                .col
+                  a.btn.btn-success.opciones(type='button', href='/administrar/aceptar/:id') // <- cambiar
+                    | Aceptar
+                .col
+                  a.btn.btn-danger.opciones(type='button', href='/administrar/denegar/:id) 
+                    | Denegar
+            .col-8
+              .container-fluid
+                br
+                h5 Datos del libros
+                .row
+                  .col
+                    .row.mb-3
+                        label.col-sm-2.col-form-label.col-form-label-sm(for='colFormLabelSm') Nombre
+                        .col-sm-10
+                            input#colFormLabelSm.form-control.form-control-sm(type='text')
+                    .row.mb-3
+                        label.col-sm-2.col-form-label.col-form-label-sm(for='colFormLabelSm') Autor(es)
+                        .col-sm-10
+                            select.form-select.form-select-sm(aria-label='Default select example')
+                                option(selected='') Elige una opción
+                                option(value='1') One
+                                option(value='2') Two
+                                option(value='3') Three
+                    .row.mb-3
+                        label.col-sm-2.col-form-label.col-form-label-sm(for='colFormLabelSm') Editorial
+                        .col-sm-10
+                            select.form-select.form-select-sm(aria-label='Default select example')
+                                option(selected='') Elige una opción
+                                option(value='1') One
+                                option(value='2') Two
+                                option(value='3') Three
+                    .row.mb-3
+                        label.col-sm-2.col-form-label.col-form-label-sm(for='colFormLabelSm') Lugar de Edición
+                        .col-sm-10
+                            input#colFormLabelSm.form-control.form-control-sm(type='text')
+                    .row.mb-3
+                        label.col-sm-2.col-form-label.col-form-label-sm(for='colFormLabelSm') Fecha de Edición
+                        .col-sm-10
+                            input#colFormLabelSm.form-control.form-control-sm(type='number')
+                    .row.mb-3
+                        label.col-sm-2.col-form-label.col-form-label-sm(for='colFormLabelSm') Año Entrada
+                        .col-sm-10
+                            input#colFormLabelSm.form-control.form-control-sm(type='number')
+                    .row.mb-3
+                        label.col-sm-2.col-form-label.col-form-label-sm(for='colFormLabelSm') Unidades Disponibles
+                        .col-sm-10
+                            input#colFormLabelSm.form-control.form-control-sm(type='number')
+                    
+                  .col
+                    .row.mb-3
+                        label.col-sm-2.col-form-label.col-form-label-sm(for='colFormLabelSm') Total Unidades
+                        .col-sm-10
+                            input#colFormLabelSm.form-control.form-control-sm(type='number')
+                    .row.mb-3
+                        label.col-sm-2.col-form-label.col-form-label-sm(for='colFormLabelSm') Número de Páginas
+                        .col-sm-10
+                            input#colFormLabelSm.form-control.form-control-sm(type='number')
+                    .row.mb-3
+                        label.col-sm-2.col-form-label.col-form-label-sm(for='colFormLabelSm') Número de Inventario
+                        .col-sm-10
+                            input#colFormLabelSm.form-control.form-control-sm(type='number')
+                    .row.mb-3
+                        label.col-sm-2.col-form-label.col-form-label-sm(for='colFormLabelSm') Anaquel Charola
+                        .col-sm-10
+                            select.form-select.form-select-sm(aria-label='Default select example')
+                                option(selected='') Elige una opción
+                                option(value='1') One
+                                option(value='2') Two
+                                option(value='3') Three
+                    .row.mb-3
+                        label.col-sm-2.col-form-label.col-form-label-sm(for='colFormLabelSm') Clasificación
+                        .col-sm-10
+                            select.form-select.form-select-sm(aria-label='Default select example')
+                                option(selected='') Elige una opción
+                                option(value='1') One
+                                option(value='2') Two
+                                option(value='3') Three
+                    .row.mb-3
+                        label.col-sm-2.col-form-label.col-form-label-sm(for='colFormLabelSm') Observaciones
+                        .col-sm-10
+                            input#colFormLabelSm.form-control.form-control-sm(type='text')
+                    
+                .row
+                  .col 
+                    .row.mb-3
+                        label.col-sm-2.col-form-label.col-form-label-sm(for='colFormLabelSm') Descripción
+                        .col-sm-10
+                            textarea#colFormLabelSm.form-control.form-control-sm(type='text')
