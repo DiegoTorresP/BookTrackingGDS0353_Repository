@@ -33,6 +33,7 @@ router.get("/lista-usuario", user_controller.mostar);
 //Ruta para mostar y editar un solo usuarios
 router.get("/usuario/:id", user_controller.editar);
 //Ruta para mostar y editar
+router.post("/usuario/editar", user_controller.editar1);
 
 router.get("/leer_qr", function (req, res, next) {
   res.render("leer_qr");
