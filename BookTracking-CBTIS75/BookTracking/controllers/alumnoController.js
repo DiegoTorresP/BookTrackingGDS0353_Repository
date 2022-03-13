@@ -154,4 +154,61 @@ alumnoController.consultar= (req, res)=>{
     });
 }
 
+
+//Consulta por nombre.
+alumnoController.consultar_nombre= (req, res)=>{
+    const busqueda= req.body.nombre;
+    console.log(busqueda);
+
+    Alumno.find({Nombre_s: {$regex: busqueda, $options : 'i'}},{}).exec((err,Alumno) => {
+        if (err) {
+            console.log('Error: ', err);
+            return;
+        }
+        console.log(busqueda+" Encontrado");
+        console.log(Alumno)
+        return res.render('lista_usuarios', {
+            Alumno: Alumno
+        });
+
+    });
+}
+
+//Consulta por carrera
+alumnoController.consultar_carrera= (req, res)=>{
+    const busqueda= req.body.carrera;
+    console.log(busqueda);
+
+    Alumno.find({Carrera_Tecnica: {$regex: busqueda, $options : 'i'}},{}).exec((err,Alumno) => {
+        if (err) {
+            console.log('Error: ', err);
+            return;
+        }
+        console.log(busqueda+" Encontrado");
+        console.log(Alumno)
+        return res.render('lista_usuarios', {
+            Alumno: Alumno
+        });
+
+    });
+}
+//Consulta por estatus
+alumnoController.consultar_estatus= (req, res)=>{
+    const busqueda= req.body.estatus;
+    console.log(busqueda);
+
+    Alumno.find({EstatusEscolar: {$regex: busqueda, $options : 'i'}},{}).exec((err,Alumno) => {
+        if (err) {
+            console.log('Error: ', err);
+            return;
+        }
+        console.log(busqueda+" Encontrado");
+        console.log(Alumno)
+        return res.render('lista_usuarios', {
+            Alumno: Alumno
+        });
+
+    });
+}
+
 module.exports = alumnoController;
