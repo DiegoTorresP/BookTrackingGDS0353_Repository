@@ -4,6 +4,28 @@ block content
   .container-fluid
     .row
       .col
+        nav.navbar.navbar-light.bg-light.barrabusqueda1
+          .col
+            .row
+              form.container-fluid.justify-content-start(action='/administrar/busqueda_nombre' method='post')
+                .col-3.barrabusqueda
+                  input#nombre.form(placeholder='Nombre' name='nombre')
+                  button.btn.btn-outline-danger.bi.bi-search(type='submit')
+          .col
+            form.container-fluid.justify-content-start(action='/administrar/busqueda_carrera' method='post')
+              .col-3.barrabusqueda
+                input#carrera.form(placeholder='Carrera' name='carrera')
+                button.btn.btn-outline-danger.bi.bi-search(type='submit')
+          .col
+            form.container-fluid.justify-content-start(action='/administrar/busqueda_estatus' method='post')
+              .col-3.barrabusqueda
+                select#estatus.form(placeholder='Estatus' name='estatus')
+                  option Estatus
+                  option Activo
+                  option Inscrito
+                button.btn.btn-outline-danger.bi.bi-search(type='submit')
+    .row
+      .col
         .container-fluid
           .row.barraresultado
             .col Usuarios
