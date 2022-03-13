@@ -17,25 +17,23 @@ block content
                       th(scope='col') Solicitante
                       th(scope='col') Libro
                       th(scope='col') Fecha de Solicitud
-                      th(scope='col') Número de Renovacion
                       th(scope='col') EstatusPrestamo
                       th(scope='col') Ver detalles de Libro
                       th(scope='col') Ver detalles de Alumno
                   tbody
                     each solicitud in Solicitud 
-                      each alumno in Alumno
-                        tr 
-                          td(style='display:none;' id='id') #{solicitud._id}
-                          th #{alumno._id}
-                          td #{solicitud.Libro}
-                          td #{solicitud.FechaSolicitud}
-                          td #{solicitud.NumeroRenovacion}
-                          td #{solicitud.EstatusPrestamo}
-                          td 
-                            a(href='/administrar/detalle_libro') 
-                              img(src='/images/icon-mas.png', width='30px')
-                          td 
-                            -var url = "/administrar/detalle_alumno/"+ solicitud.Solicitante
-                            a(href=url)
-                              img(src='/images/icon-mas.png', width='30px')
-    script(src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous")                     
+                      tr 
+                        td(style='display:none;' id='id') #{solicitud._id}
+                        th #{solicitud.nombre.Nombre_s +" "+ solicitud.nombre.Apellido_Paterno+" "+ solicitud.nombre.Apellido_Materno} 
+                        td #{solicitud.Libro}
+                        td #{solicitud.FechaSolicitud.toLocaleString()}
+                        td #{solicitud.EstatusPrestamo}
+                        td 
+                          a(href='/administrar/detalle_libro') 
+                            img(src='/images/icon-mas.png', width='30px')
+                        td 
+                          -var url = "/administrar/detalle_alumno/"+ solicitud.Solicitante
+                          a(href=url)
+                            img(src='/images/icon-mas.png', width='30px')
+    script(src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous")
+                        

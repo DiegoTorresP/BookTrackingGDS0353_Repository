@@ -1,5 +1,5 @@
 const Alumno = require("../models/alumno");
-const Solicitante = require("../models/solicitud");
+
 var alumnoController = {};
 
 //Mostar todos los alumnos 

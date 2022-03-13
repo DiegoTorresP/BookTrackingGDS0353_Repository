@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+
 var Schema = mongoose.Schema;
 
 var solicitudSchema = new Schema({
@@ -6,9 +7,11 @@ var solicitudSchema = new Schema({
     Solicitante: Number,
     Libro:String,
     FechaSolicitud:Date,
-    NumeroRenovacion:Number,
+    FechaEntrega:Date,
+    Incidencias:Boolean,
     EstatusPrestamo: String
 });
+
 
 
 module.exports = mongoose.model('solicitudes', solicitudSchema);
