@@ -82,4 +82,11 @@ router.get("/detalle_libro", function(req, res, next){
 router.get("/aceptar_prestamo/:Solicitante",solicitudes_controller.mostar);
 router.get("/denegar_prestamo/:Solicitante",solicitudes_controller.mostar);
 
+//Rutas para busquedas de alumnos
+//Busqueda por nombre
+router.post("/busqueda_nombre", user_controller.consultar_nombre); 
+//Busqueda por carrera
+router.post("/busqueda_carrera", user_controller.consultar_carrera); 
+//Busqueda por estatus escolar
+router.post("/busqueda_estatus", user_controller.consultar_estatus); 
 module.exports = router;
