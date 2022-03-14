@@ -7,9 +7,9 @@ var solicitudSchema = new Schema({
     Solicitante: Number,
     Libro:String,
     FechaSolicitud:Date,
+    EstatusPrestamo: String,
     FechaEntrega:Date,
-    Incidencias:Boolean,
-    EstatusPrestamo: String
+    Incidencias:Boolean
 });
 
 

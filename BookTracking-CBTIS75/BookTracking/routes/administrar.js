@@ -89,4 +89,12 @@ router.post("/busqueda_nombre", user_controller.consultar_nombre);
 router.post("/busqueda_carrera", user_controller.consultar_carrera); 
 //Busqueda por estatus escolar
 router.post("/busqueda_estatus", user_controller.consultar_estatus); 
+
+//Rutas para busquedas de Solicitudes
+//Busqueda por solicitante
+router.post("/busqueda_solicitante", solicitudes_controller.consultar_solicitante); 
+//Busqueda por libro
+router.post("/busqueda_libro", solicitudes_controller.consultar_libro); 
+//Busqueda por estatus
+router.post("/busqueda_estatus_prestamo", solicitudes_controller.consultar_estatus_solic); 
 module.exports = router;

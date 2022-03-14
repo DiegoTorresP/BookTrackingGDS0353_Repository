@@ -211,4 +211,7 @@ alumnoController.consultar_estatus= (req, res)=>{
     });
 }
 
+
+
+
 module.exports = alumnoController;
