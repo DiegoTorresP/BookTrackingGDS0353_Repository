@@ -3,12 +3,14 @@ var router = express.Router();
 
 var user_controller = require("../controllers/alumnoController");
 var solicitudes_controller = require("../controllers/solicitudesController");
+var libro_controller = require("../controllers/libroController");
+
 //Modulos Controladores Aqui
 
 //Rutas de Administrador
 
 router.get("/", function (req, res, next) {
-  res.render("admin");
+  res.render("login");
 });
 
 router.get("/libros", function (req, res, next) {
@@ -20,8 +22,15 @@ router.get("/solicitudes",solicitudes_controller.mostar);
 //Se llama al controlador para crear
 router.post("/crear", user_controller.crear);
 
+//Se llama al controlador para crear libro
+router.post("/crear_libro",libro_controller.crear);
+
 //Ruta para eliminar
 router.get("/eliminar/:id", user_controller.eliminar);
+
+//Ruta para eliminar libro
+router.get("/eliminar_libro/:id", libro_controller.eliminar);
+
 
 router.get("/registrar-usuario", function (req, res, next){
   res.render("registrar_usuario");
@@ -35,13 +44,25 @@ router.get("/usuario/:id", user_controller.editar);
 //Ruta para mostar y editar
 router.post("/usuario/editar", user_controller.editar1);
 
+//Ruta para mostar un solo libro
+router.get("/libro/:id", libro_controller.detalle);
+
+//Ruta para mostar y editar un libro
+router.post("/libro/editar", libro_controller.editar);
+
+//Rutas para busquedas de libros
+//Busqueda por nombre
+router.post("/buscar_nombre_libro", libro_controller.consultar_nombre);
+//Busqueda por autor
+router.post("/buscar_autor_libro", libro_controller.consultar_autor);
+//Busqueda por editorial
+router.post("/buscar_editorial_libro", libro_controller.consultar_editorial);
+
 router.get("/leer_qr", function (req, res, next) {
   res.render("leer_qr");
 });
 
-router.get("/admin_buscar", function (req, res, next) {
-  res.render("admin_buscar");
-});
+router.get("/admin_buscar",libro_controller.mostar);
 
 router.get("/leer_qr", function (req, res, next) {
   res.render("leer_qr");
