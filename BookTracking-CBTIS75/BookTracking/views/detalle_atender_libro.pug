@@ -6,7 +6,7 @@ block content
       .col
         .container-fluid
           .row.barraresultado
-            .col Registrar libro
+            .col Detalles de Libro:
           .row.rowtabla
             .col-4
               .row
@@ -16,91 +16,77 @@ block content
                   a.btn.btn-danger.opciones(type='button', href='/administrar/admin_buscar')
                     | Cancelar
                 .col
-                  a.btn.btn-success.opciones(type='button', href='/administrar/aceptar/:id') // <- cambiar
+                  -var url = "/administrar/aceptar_prestamo/" + id_sol
+                  a.btn.btn-success.opciones(type='button', href=url)
                     | Aceptar
                 .col
-                  a.btn.btn-danger.opciones(type='button', href='/administrar/denegar/:id) 
+                  a.btn.btn-danger.opciones(type='button', href='/administrar/denegar/:id') 
                     | Denegar
             .col-8
               .container-fluid
                 br
                 h5 Datos del libros
                 .row
+                each libro in Libro
                   .col
                     .row.mb-3
                         label.col-sm-2.col-form-label.col-form-label-sm(for='colFormLabelSm') Nombre
                         .col-sm-10
-                            input#colFormLabelSm.form-control.form-control-sm(type='text')
+                            input#colFormLabelSm.form-control.form-control-sm(type='text' readonly value= libro.Nombre)
                     .row.mb-3
                         label.col-sm-2.col-form-label.col-form-label-sm(for='colFormLabelSm') Autor(es)
                         .col-sm-10
-                            select.form-select.form-select-sm(aria-label='Default select example')
-                                option(selected='') Elige una opción
-                                option(value='1') One
-                                option(value='2') Two
-                                option(value='3') Three
+                            input#colFormLabelSm.form-select.form-select-sm(type='text' readonly value= libro.Autor)
                     .row.mb-3
                         label.col-sm-2.col-form-label.col-form-label-sm(for='colFormLabelSm') Editorial
                         .col-sm-10
-                            select.form-select.form-select-sm(aria-label='Default select example')
-                                option(selected='') Elige una opción
-                                option(value='1') One
-                                option(value='2') Two
-                                option(value='3') Three
+                            input#colFormLabelSm.form-select.form-select-sm(type='text' readonly value= libro.Editorial)
                     .row.mb-3
                         label.col-sm-2.col-form-label.col-form-label-sm(for='colFormLabelSm') Lugar de Edición
                         .col-sm-10
-                            input#colFormLabelSm.form-control.form-control-sm(type='text')
+                            input#colFormLabelSm.form-control.form-control-sm(type='text' readonly value= libro.LugarEdicion)
                     .row.mb-3
                         label.col-sm-2.col-form-label.col-form-label-sm(for='colFormLabelSm') Fecha de Edición
                         .col-sm-10
-                            input#colFormLabelSm.form-control.form-control-sm(type='number')
+                            input#colFormLabelSm.form-control.form-control-sm(type='number' readonly value= libro.FechaEdicion)
                     .row.mb-3
                         label.col-sm-2.col-form-label.col-form-label-sm(for='colFormLabelSm') Año Entrada
                         .col-sm-10
-                            input#colFormLabelSm.form-control.form-control-sm(type='number')
+                            input#colFormLabelSm.form-control.form-control-sm(type='number' readonly value= libro.AñoEntrada)
                     .row.mb-3
                         label.col-sm-2.col-form-label.col-form-label-sm(for='colFormLabelSm') Unidades Disponibles
                         .col-sm-10
-                            input#colFormLabelSm.form-control.form-control-sm(type='number')
+                            input#colFormLabelSm.form-control.form-control-sm(type='number' readonly value= libro.UnidadesDisponibles)
                     
                   .col
                     .row.mb-3
                         label.col-sm-2.col-form-label.col-form-label-sm(for='colFormLabelSm') Total Unidades
                         .col-sm-10
-                            input#colFormLabelSm.form-control.form-control-sm(type='number')
+                            input#colFormLabelSm.form-control.form-control-sm(type='number' readonly value= libro.TotalUnidades)
                     .row.mb-3
                         label.col-sm-2.col-form-label.col-form-label-sm(for='colFormLabelSm') Número de Páginas
                         .col-sm-10
-                            input#colFormLabelSm.form-control.form-control-sm(type='number')
+                            input#colFormLabelSm.form-control.form-control-sm(type='number' readonly value= libro.NumPag)
                     .row.mb-3
                         label.col-sm-2.col-form-label.col-form-label-sm(for='colFormLabelSm') Número de Inventario
                         .col-sm-10
-                            input#colFormLabelSm.form-control.form-control-sm(type='number')
+                            input#colFormLabelSm.form-control.form-control-sm(type='number' readonly value= libro.NumInventario)
                     .row.mb-3
                         label.col-sm-2.col-form-label.col-form-label-sm(for='colFormLabelSm') Anaquel Charola
                         .col-sm-10
-                            select.form-select.form-select-sm(aria-label='Default select example')
-                                option(selected='') Elige una opción
-                                option(value='1') One
-                                option(value='2') Two
-                                option(value='3') Three
+                            input#colFormLabelSm.form-control.form-control-sm(type='text' readonly value= libro.AnaquelCharola)
                     .row.mb-3
                         label.col-sm-2.col-form-label.col-form-label-sm(for='colFormLabelSm') Clasificación
                         .col-sm-10
-                            select.form-select.form-select-sm(aria-label='Default select example')
-                                option(selected='') Elige una opción
-                                option(value='1') One
-                                option(value='2') Two
-                                option(value='3') Three
+                            input#colFormLabelSm.form-control.form-control-sm(type='text' readonly value= libro.Clasificacion)
                     .row.mb-3
                         label.col-sm-2.col-form-label.col-form-label-sm(for='colFormLabelSm') Observaciones
                         .col-sm-10
-                            input#colFormLabelSm.form-control.form-control-sm(type='text')
+                            input#colFormLabelSm.form-control.form-control-sm(type='text' readonly value= libro.Observaciones)
                     
-                .row
-                  .col 
-                    .row.mb-3
-                        label.col-sm-2.col-form-label.col-form-label-sm(for='colFormLabelSm') Descripción
-                        .col-sm-10
-                            textarea#colFormLabelSm.form-control.form-control-sm(type='text')
+                  .row
+                    .col 
+                      .row.mb-3
+                          label.col-sm-2.col-form-label.col-form-label-sm(for='colFormLabelSm') Descripción
+                          .col-sm-10
+                              textarea#descripcion.form-control(type='text' name='descripcion' readonly value=libro.Descripcion)

@@ -1,4 +1,5 @@
 const Alumno = require("../models/alumno");
+const Libro = require("../models/libro");
 
 var alumnoController = {};
 
@@ -154,6 +155,25 @@ alumnoController.consultar= (req, res)=>{
     });
 }
 
+//Consultar por libro
+alumnoController.consultarLibro = (req, res) =>{
+    const libro= req.params.libro;
+    const id_sol=req.params.id;
+    console.log(libro);
+    console.log(id_sol);
+    Libro.find({"_id":libro}).exec((err,Libro) => {
+        if (err) {
+            console.log('Error: ', err);
+            return;
+        }
+        console.log(libro+" Encontrado");
+        console.log(Libro)
+        return res.render('detalle_atender_libro', {
+            Libro: Libro , id_sol
+        });
+
+    });
+}
 
 //Consulta por nombre.
 alumnoController.consultar_nombre= (req, res)=>{

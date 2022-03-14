@@ -2,21 +2,35 @@ var express = require("express");
 var router = express.Router();
 
 //Modulos Controladores Aqui
-
+var user_controller = require("../controllers/alumnoController");
+var solicitudes_controller = require("../controllers/solicitudesController");
+var libro_controller = require("../controllers/libroController");
+const solicitudesController = require("../controllers/solicitudesController");
 //Rutas de Administrador
 
 router.get("/", function (req, res, next) {
   res.render("alumno");
 });
 
-router.get("/buscar_solicitar_libro", function (req, res, next) {
-  res.render("buscar_solicitar_libro");
-});
+//listar todos los libros para el alumno
+router.get("/buscar_solicitar_libro", libro_controller.mostarAlumno);
+
+//Ruta para mostar un solo libro
+router.get("/alumnos_vista_libro/:id", libro_controller.detalleAlumno);
+
+//Ruta para crear solicitud
+router.get("/solicitar_libro/:id/stock/:UnidadesDisponibles", solicitudesController.crear_solicitud);
+
 router.get("/historial_prestamos", function (req, res, next) {
-  res.render("entregas_solicitudes_prestamos");
+  res.render("entregas_solicitudes_presatamos");
 });
 router.get("/ver_mi_qr", function (req, res, next) {
   res.render("ver_mi_qr");
 });
+
+//Ruta de actulización
+router.get("/actualizar_unidades/:id",libro_controller.actualizarUnidades);
+
+
 
 module.exports = router;

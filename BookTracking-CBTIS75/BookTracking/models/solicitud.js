@@ -1,11 +1,10 @@
 var mongoose = require('mongoose');
 
 var Schema = mongoose.Schema;
-
+    ObjectId = Schema.ObjectId;
 var solicitudSchema = new Schema({
-    _id: Number,
     Solicitante: Number,
-    Libro:String,
+    Libro: ObjectId,
     FechaSolicitud:Date,
     EstatusPrestamo: String,
     FechaEntrega:Date,

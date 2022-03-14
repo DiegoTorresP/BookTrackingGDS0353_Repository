@@ -45,6 +45,7 @@ block content
                       th(scope='col') Solicitante
                       th(scope='col') Libro
                       th(scope='col') Fecha de Solicitud
+                      th(scope='col') Fecha de Entrega
                       th(scope='col') EstatusPrestamo
                       th(scope='col') Ver detalles de Libro
                       th(scope='col') Ver detalles de Alumno
@@ -53,12 +54,13 @@ block content
                       tr 
                         td(style='display:none;' id='id') #{solicitud._id}
                         th #{solicitud.nombre.Nombre_s +" "+ solicitud.nombre.Apellido_Paterno+" "+ solicitud.nombre.Apellido_Materno} 
-                        td #{solicitud.Libro}
-                        td #{solicitud.FechaSolicitud.toLocaleString()}
+                        td #{solicitud.libro.Nombre}
+                        td #{solicitud.FechaSolicitud.toDateString()}
+                        td #{solicitud.FechaEntrega.toDateString()}
                         td #{solicitud.EstatusPrestamo}
                         td 
-                          
-                          a(href='/administrar/detalle_libro' onclick='sendEmail()') 
+                          -var url = "/administrar/detalle_libro/"+ (JSON.parse(JSON.stringify(solicitud.libro._id)))+"/solicitud/"+solicitud._id
+                          a(href=url) 
                             img(src='/images/icon-mas.png', width='30px')
                         td 
                           -var url = "/administrar/detalle_alumno/"+ solicitud.Solicitante
