@@ -1,5 +1,4 @@
-function Eliminar(){
-  var id=document.getElementById('idA').innerHTML;;
+function Eliminar(ida){
     Swal.fire({
         title: 'Estas seguro de eliminar',
         showDenyButton: true,
@@ -7,8 +6,14 @@ function Eliminar(){
         denyButtonText: `Cancelar`,
       }).then((result) => {
         if (result.isConfirmed) {
-          console.log(id)
-          //window.location ='/administrar/eliminar/'+id
+          console.log(ida)
+          Swal.fire({
+            icon: 'success',
+            title: 'Eliminado con exito',
+            showConfirmButton: false,
+            timer: 3000
+          })
+          window.location ='/administrar/eliminar/'+ida
         } else if (result.isDenied) {
           Swal.fire('Cancelado', '', 'info')
         }
