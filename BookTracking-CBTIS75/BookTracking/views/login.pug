@@ -1,0 +1,24 @@
+extends layout
+
+block content
+  .login
+    br
+    h1 Iniciar sesión
+    form(action='/verify', method='post')
+      .loginformlabel
+      #{message}
+      label(for='username')
+        i.fas.fa-user
+        .loginforminput
+      input#username(type='text', name='username', placeholder='Usuario', required='')
+      .loginformlabel
+      label(for='password')
+        i.fas.fa-lock
+        .loginforminput
+      input#password(type='password', name='password', placeholder='Contraseña', required='')
+      .loginformlabel
+       
+      button.boton1(type='button', onclick='submit();') Ingresar
+      br
+      br 
+

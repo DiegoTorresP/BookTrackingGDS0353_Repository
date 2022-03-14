@@ -2,60 +2,71 @@ extends layout
 
 block content
   .container-fluid
-    .row
-      .col
-        nav.navbar.navbar-light.bg-light.barrabusqueda1
-          form.container-fluid.justify-content-start
-            .col-3.barrabusqueda
-              input.form(type='search' placeholder='Titulo' style='width: 100%')
-            .col-3.barrabusqueda
-              input.form(type='search' placeholder='Autor' style='width: 100%')
-            .col-3.barrabusqueda
-              input.form(type='search' placeholder='Editorial' style='width: 100%')
-            .col.botonbusqueda
-              button.btn.btn-outline-success(type='submit')
-                img(src='/images/buscar.png', width='10px')
+    
     .row
       .col
         .container-fluid
           .row.barraresultado
-            .col Resultados: de busqueda
+            .col Editar libro
           .row.rowtabla
             .col-4
               .row
                 img.dic(src='/images/diccionario.png')
+              
               .row
                 .col
-                  a.btn.btn-primary.opciones(type='button', href='/administrar/admin_buscar')
-                    | Regresar
-                .col
-                  a.btn.btn-danger.opciones(type='button', href='/administrar/editar_libro') 
-                    | Editar
+                  .input-group.file
+                    input#inputGroupFile04.form-control(type='file', aria-describedby='inputGroupFileAddon04', aria-label='Upload')
+                    button#inputGroupFileAddon04.ov-btn-grow-spin.guardar(type='button') Guardar
+
             .col-8
               .container-fluid
+                br
+                h5 Datos del libro
                 .row
-                    h5 Datos del libro
-                    p Nombre: Libro 1
-                    p Autor: Autor 1
-                    p Editorial: Editorial 1
-                    p Lugar de edicion: M&eacute;xico
-                    p Fecha de edicion: 1990
-                    p A&ntilde;o de entrada: 1994
-                    p &Aacute;rea: Matematicas
-                    .col
-                      p Unidades disponibles: 1
-                      p Total de Unidades: 1
-                      p N&uacute;m. pags: 256
-                      p Anaquel-Charola: 6-4
-                      p claificacion: 310
-                      p Observaciones: Buen estado
-                .row
-                  p El multifacético Adrián Paenza no es un escritor más, de
-                      hecho este es su primer libro. No solo es el periodista
-                      deportivo que entrevistó a Maradona en 1994 (cuando surgió
-                      su famosa frase ..."me cortaron las piernas...") y el
-                      responsable directo de que la Argentina tuviera un
-                      programa de tv de la NBA que dio animo a futuras estrellas
-                      como Ginobili, sino que también es Licenciado y Doctor en
-                      Ciencias Matemáticas y profesor universitario de materias
-                      relacionadas a la matemática desde 1979
+                  form(action='/administrar/libro/editar' method='post')
+                    .row
+                      each libro in Libro
+                        .col
+                          label.form-label(for='nombre') Nombre:
+                          input#nombre.form-control(type='text' name='nombre' requerid  value= libro.Nombre)
+                          label.form-label(for='autor') Autor:
+                          input#autor.form-control(type='text' name='autor' requerid value= (JSON.parse(JSON.stringify(libro.Autor))))
+                          label.form-label(for='editorial') Editorial:
+                          input#editorial.form-control(type='text' name='editorial' required value= libro.Editorial)
+                          label.form-label(for='lugarE') Lugar edición:
+                          input#lugarE.form-control(type='text' name='lugarE' required value= libro.LugarEdicion)
+                          label.form-label(for='fechaE') Fecha edición:
+                          input#fechaE.form-control(type='text' name='fechaE' required value= libro.FechaEdicion)
+                          label.form-label(for='anioE') Año entrada:
+                          input#anioE.form-control(type='text' name='anioE' required value= libro.AñoEntrada)
+                          label.form-label(for='unidadesD') Unidades Disponibles:
+                          input#unidadesD.form-control(type='number' name='unidadesD' required value= libro.UnidadesDisponibles)
+                        .col
+                          label.form-label(for='totalU') Total Unidades:
+                          input#totalU.form-control(type='number' name='totalU' required value= libro.TotalUnidades)
+                          label.form-label(for='numP') Número págs.:
+                          input#numP.form-control(type='number' name='numP' required value= libro.NumPag)
+                          label.form-label(for='numI') Número inventario:
+                          input#numI.form-control(type='number' name='numI' required value= libro.NumInventario)
+                          .row
+                            .col
+                              label.form-label(for='anaquel') Anaquel - Charola:
+                              input#anaquel.form-control(type='text' name='anaquel' required value= libro.AnaquelCharola)
+                            .col
+                              label.form-label(for='clasificacion') Clasificación:
+                              input#clasificacion.form-control(type='text' name='clasificacion' requerid value= libro.Clasificacion)
+                          
+                          label.form-label(for='observaciones') Observaciones:
+                          textarea#observaciones.form-control(type='text' name='observaciones' requerid )=libro.Observaciones
+                          label.form-label(for='descripcion') Descripción:
+                          textarea#descripcion.form-control(type='text' name='descripcion' requerid )=libro.Descripcion
+                          
+                          .row
+                            .col(style='text-align: right; padding-top: 10px')
+                              a.btn.btn-danger(href='/administrar/admin_buscar') 
+                                | Cancelar
+                            .col(style='text-align: right; padding-top: 10px')
+                         
+                              button.btn.btn-success(type='submit')
+                                | Guardar      
