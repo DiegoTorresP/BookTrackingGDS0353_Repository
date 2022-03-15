@@ -4,16 +4,26 @@ var libroController = {};
 
 //Mostar todos los libros
 libroController.mostar = (req, res) => {
-  Libro.find({}).exec((err, Libro) => {
+  Libro.find({}).exec((err, libro) => {
     if (err) {
       console.log("Error: ", err);
       return;
     }
-    console.log("The INDEX");
-    console.log(Libro);
+    Libro.aggregate(
+      [{
+        $group:
+        {
+          _id:"$Editorial"
+        }
+      }
+      ]
+    ).exec((err, edi)=>{
+      console.log("The INDEX");
+    console.log(edi);
     return res.render("admin_buscar", {
-      Libro: Libro,
+      Libro: libro, edi:edi
     });
+    })
   });
 };
 
@@ -181,14 +191,26 @@ libroController.consultar_editorial = (req, res) => {
   const busqueda = req.body.editorial;
 
   Libro.find({ Editorial: { $regex: busqueda, $options: "i" } }, {}).exec(
-    (err, Libro) => {
+    (err, libro) => {
       if (err) {
         console.log("Error: ", err);
         return;
       }
+      Libro.aggregate(
+        [{
+          $group:
+          {
+            _id:"$Editorial"
+          }
+        }
+        ]
+      ).exec((err, edi)=>{
+        console.log("The INDEX");
+      console.log(edi);
       return res.render("admin_buscar", {
-        Libro: Libro,
+        Libro: libro, edi:edi
       });
+      })
     }
   );
 };
