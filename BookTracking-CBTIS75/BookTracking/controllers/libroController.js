@@ -1,3 +1,4 @@
+const { updateOne } = require("../models/libro");
 const Libro = require("../models/libro");
 
 var libroController = {};
@@ -106,12 +107,17 @@ libroController.editar = (req, res) => {
   const Descripcion = req.body.descripcion;
   const Foto = "";
 
+  Libro.updateOne({ Nombre:Nombre},
+                  { $addToSet: 
+                  { Autor: 
+                  { $each: [Autor] }}}
+  )
+
   Libro.updateOne(
     { Nombre: Nombre },
     {
       $set: {
         Nombre: Nombre,
-        Autor: Autor,
         Editorial: Editorial,
         LugarEdicion: LugarEdicion,
         FechaEdicion: FechaEdicion,
