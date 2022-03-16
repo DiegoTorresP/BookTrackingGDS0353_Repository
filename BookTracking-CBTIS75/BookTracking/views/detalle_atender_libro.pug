@@ -20,7 +20,8 @@ block content
                   a.btn.btn-success.opciones(type='button', href=url)
                     | Aceptar
                 .col
-                  a.btn.btn-danger.opciones(type='button', href='/administrar/denegar/:id') 
+                  -var url1 = "/administrar/denegar_prestamo/" + id_sol
+                  a.btn.btn-danger.opciones(type='button', href=url1) 
                     | Denegar
             .col-8
               .container-fluid

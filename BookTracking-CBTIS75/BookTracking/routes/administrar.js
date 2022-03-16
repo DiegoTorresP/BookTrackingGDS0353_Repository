@@ -99,9 +99,11 @@ router.get("/detalle_libro/:libro/solicitud/:id",user_controller.consultarLibro)
 
 
 //Rutas de denegacion o aceptación de prestamo de libro
-router.get("/denegar_prestamo/:Solicitante",solicitudes_controller.mostar);
+router.get("/denegar_prestamo/:id",solicitudes_controller.actualizarEstatus_denegado);
 router.get("/aceptar_prestamo/:id",solicitudes_controller.actualizarEstatus);
 
+//Ruta de actulización
+router.get("/actualizar_denegacion/:id",libro_controller.actualizarUnidades_denegadas);
 
 
 
