@@ -31,7 +31,7 @@ block content
                           label.form-label(for='nombre') Nombre:
                           input#nombre.form-control(type='text' name='nombre' requerid  value= libro.Nombre)
                           label.form-label(for='autor') Autor:
-                          input#autor.form-control(type='text' name='autor' requerid value= (JSON.parse(JSON.stringify(libro.Autor))))
+                          input#autor.form-control(type='text' name='autor' requerid value= libro.Autor.join())
                           label.form-label(for='editorial') Editorial:
                           input#editorial.form-control(type='text' name='editorial' required value= libro.Editorial)
                           label.form-label(for='lugarE') Lugar edición:

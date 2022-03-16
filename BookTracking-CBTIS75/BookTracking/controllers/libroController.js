@@ -24,7 +24,7 @@ libroController.mostar = (req, res) => {
     return res.render("admin_buscar", {
       Libro: libro, edi:edi
     });
-    })
+    });
   });
 };
 
@@ -46,12 +46,13 @@ libroController.mostarAlumno = (req, res) => {
 libroController.crear = (req, res) => {
   console.log("Registrando Libro");
 
-  var arr = [];
+  const Autor = req.body.autor;
+
+  var Autor_c= Autor.split(',');
     
-  
   const libro = new Libro({
     Nombre: req.body.nombre,
-    Autor: arr.push(req.body.autor,req.body.autor1),
+    Autor: Autor_c,
     Editorial: req.body.editorial,
     LugarEdicion: req.body.lugarE,
     FechaEdicion: req.body.fechaE,
@@ -114,12 +115,8 @@ libroController.detalleAlumno = (req, res) => {
 libroController.editar = (req, res) => {
   const Nombre = req.body.nombre;
   const Autor = [req.body.autor];
-  var arr = [];
-  for (var i = 0; i < Autor.length; i++) {
-    arr.push({
-      Nombre: Autor[i],
-    });
-  }
+  //Convierte una cadena a un arreglo
+  var Autor_c= Autor.split(',');
 
   const Editorial = req.body.editorial;
   const LugarEdicion = req.body.lugarE;
@@ -135,17 +132,12 @@ libroController.editar = (req, res) => {
   const Descripcion = req.body.descripcion;
   const Foto = "";
 
-  Libro.updateOne({ Nombre:Nombre},
-                  { $addToSet: 
-                  { Autor: 
-                  { $each: [Autor] }}}
-  )
-
   Libro.updateOne(
     { Nombre: Nombre },
     {
       $set: {
         Nombre: Nombre,
+        Autor: Autor_c,
         Editorial: Editorial,
         LugarEdicion: LugarEdicion,
         FechaEdicion: FechaEdicion,
