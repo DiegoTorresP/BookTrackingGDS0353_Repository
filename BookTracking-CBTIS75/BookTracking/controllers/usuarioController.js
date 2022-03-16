@@ -55,8 +55,6 @@ exports.usuario_verify = function (req,res){
         }
         res.render('admin', data);
     }
-
-
 };
 
 
