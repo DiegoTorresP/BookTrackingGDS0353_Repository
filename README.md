@@ -166,10 +166,10 @@ Licencia.
 Contacto.
 
 ## Participantes
-* [Luis Gustavo García Carrillo]()
-* [Alejandro Rafael Guerrero Lozano]()
-* [José Manuel Matehuala Avilés]()
-* [Diego Torres Pérez]()
+* [Luis Gustavo García Carrillo](https://github.com/LuisGusDev)
+* [Alejandro Rafael Guerrero Lozano](https://github.com/alejandro026)
+* [José Manuel Matehuala Avilés](https://github.com/ManuelAvil)
+* [Diego Torres Pérez](https://github.com/DiegoTorresP)
 
 [contribuidores-shield]: https://img.shields.io/github/contributors/github_username/repo_name.svg?style=for-the-badge
 [contributors-url]: https://github.com/github_username/repo_name/graphs/contributors
