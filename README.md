@@ -1,11 +1,10 @@
 ![Esta es una imagen](https://cdn.pixabay.com/photo/2022/03/13/05/00/05-00-35-473_960_720.png)
-# BookTrackingGDS0353_Repository
+# Integradora II - BookTrackingGDS0353_Repository
+[![Contribuidores][contribuidores-shield]][contributors-url]
 Repositorio para código del proyecto de Integradora II - BookTracking
 
 ## Tomar en cuenta para aportaciones:
 Nomenclatura para nombramiento de documentos: snake_case.
-# Integradora II
-[![Contribuidores][contribuidores-shield]][contributors-url]
 
 ## contenido
 <details>
