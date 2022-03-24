@@ -1,103 +1,159 @@
+:root {
+  --color-primario: #612334;
+  --color-secundario: #b28e5e;
+  --color-terciario: #36965e;
+  --color-fondo: #d6bb98;
+}
 
+@media (orientation: portrait ){
+  body{
+    display: none;
+  }
+}
+
+
+@media screen and (max-width: 1200px) {
+  #ed {/*logo BT y Educacion*/
+    display: none;
+  }
+  /*.botonera {
+    max-height: 1000vh;
+    max-width: 65%;
+}
+#oc {
+  max-height: 75px;
+  min-width: auto;
+}*/
+}
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  background-image: url(../images/fbib.jpg);
+  /*background-image: url(../images/fbib.jpg);*/
+  background-color: var(--color-fondo);
+}
+#oc {/*containers de navbar y footer*/
+  max-height: 75px;
+  min-width: auto;
 }
 
+#saveb {/*boton guardar color*/
+  margin-top: 5px;
+  background-color: var(--color-terciario);
+}
+
+#cancb {/*boton cancelar colores*/
+  background-color: var(--color-primario);
+}
+
+
 a {
-  
   text-decoration: none;
 }
-.a{
+.a {
   text-decoration: none;
 }
-.barra{
-  background: #612334;
+.barra {
+  background-color: var(--color-primario);
   width: 100%;
   padding: 0px;
 }
-.complet{
+.complet {
   margin: 0;
 }
-.fluid-container {
-  height:100%;
+
+.container-fluid {
+  height: 100%;
 }
-.botonera{
+
+.botonera {
   display: flex;
   justify-content: center;
-  height: 100%;
+  min-height: 71vh;
+  min-width: 264px;
+  align-items: center;
   position: relative;
   text-align: center;
 }
+
+
 .hijo {
   /* centrado vertical */
-  position: absolute;
-  top: 500%;
+  background: var(--color-primario);
+  vertical-align: middle;
+  top: auto;
 }
 
-.botonera a{
+.botonera a {
   border-radius: 10px;
   border: none;
-  font-family:Arial, Helvetica, sans-serif;
-  font-size: x-large;
-  width: 300px;
-  height: 300px;
+  width: auto;
+  height: auto;
+  max-width: 250px;
+  max-height: 250px;
   margin: 35px;
 }
 
-.botonera a img{
+.botonera a img {
   text-align: center;
-  width: 250px;
-  height: 250px;
+  width: auto;
+  height: auto;
+  max-width: 225px;
+  max-height: 225px;
   padding: 30px;
 }
-.dic{
-  width: 85%;;
+
+#colors{
+text-align: center;
+}
+
+.dic {
+  width: 85%;
   padding: 10px;
 }
 
 .footer {
-  position: absolute;
-  bottom: 0;
+  clear: both;
+  position: relative;
   width: 100%;
+  min-width: 264px;
   height: 141px;
+  padding-bottom: 0%;
 }
 
-.navbar-brand{
+.navbar-brand {
   padding: 0px;
   margin: 0px;
 }
-.center{
+.center {
   display: flex;
   justify-content: center;
 }
-.center{
+.center {
   display: flex;
   justify-content: center;
 }
-.right{
-  
-    display: flex;
-    justify-content: right;
-  
+.right {
+  display: flex;
+  justify-content: right;
 }
 /*** ESTILOS BOTÓN GROW SPIN ***/
 .ov-btn-grow-spin {
   background: #fff; /* color de fondo */
-  color: #612334; /* color de fuente */
-  border: .5px solid #b28e5e; /* tamaño y color de borde */
+  color: var(--main-bg-color); /* color de fuente */
+  border: 0.5px solid #b28e5e; /* tamaño y color de borde */
   border-radius: 3px; /* redondear bordes */
   position: relative;
   z-index: 1;
   overflow: hidden;
   display: inline-block;
-  }
-  .ov-btn-grow-spin:hover {
-  color: #fff;/* color de fuente hover */
-  }
-  .ov-btn-grow-spin::after {
+  font: 20px Helvetica, sans-serif;
+  font-size-adjust: 2.58;
+}
+.ov-btn-grow-spin:hover {
+  color: #fff; /* color de fuente hover */
+}
+.ov-btn-grow-spin::after {
   content: "";
-  background: #36965e; /* color de fondo hover */
+  background: var(--color-terciario); /* color de fondo hover */
   position: absolute;
   z-index: -1;
   padding: 16px 20px;
@@ -108,18 +164,18 @@ a {
   bottom: 0;
   transform: scale(0, 0) rotate(-180deg);
   transition: all 0.3s ease;
-  }
-  .ov-btn-grow-spin:hover::after {
+}
+.ov-btn-grow-spin:hover::after {
   transition: all 0.3s ease-out;
   transform: scale(1, 1) rotate(0deg);
-  }
-  /*** ESTILOS BOTÓN GROW BOX ***/
-  .btn{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: medium;
-    border-radius: 30px;
-    box-shadow: none; 
-  }
+}
+/*** ESTILOS BOTÓN GROW BOX ***/
+.btn {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: medium;
+  border-radius: 30px;
+  box-shadow: none;
+}
 .ov-btn-grow-box {
   background: transparent; /* color de fondo */
   color: #ffffff; /* color de fuente */
@@ -128,13 +184,13 @@ a {
   z-index: 1;
   overflow: hidden;
   display: inline-block;
-  }
-  .ov-btn-grow-box:hover {
-  color: #fff;/* color de fuente hover */
-  }
-  .ov-btn-grow-box::after {
+}
+.ov-btn-grow-box:hover {
+  color: #fff; /* color de fuente hover */
+}
+.ov-btn-grow-box::after {
   content: "";
-  background: #b28e5e; /* color de fondo hover */
+  background: var(--color-secundario); /* color de fondo hover */
   position: absolute;
   z-index: -1;
   padding: 16px 20px;
@@ -145,56 +201,57 @@ a {
   bottom: 0;
   transform: scale(0, 0);
   transition: all 0.3s ease;
-  }
-  .ov-btn-grow-box:hover::after {
+}
+.ov-btn-grow-box:hover::after {
   transition: all 0.3s ease-out;
   transform: scale(1, 1);
-  }
+}
 
-  .tabla thead {
-    background-color: #612334;
-      color:#ffffff;
-  }
-  .tabla{
-      background: #ffffff;
-      margin-top: 15px;
-      font-size: 15px;
-  }
-  .rowtabla{
-      background: #ffffff;
-  }
-  
-  
-  .barrabusqueda{
-    
-    margin: 15px;
-    
-  }
-  .barrabusqueda1{
-    margin-top: 15px;
-    font-size: 18px;
-  }
+.tabla thead {
+  background-color: var(--color-primario);
+  color: #ffffff;
+}
+.tabla {
+  background: #ffffff;
+  margin-top: 15px;
+  font-size: 15px;
+}
+.rowtabla {
+  background: #ffffff;
+}
 
-  .botonbusqueda{
-      margin: 0 auto;
-  }
-  
-  .barraresultado{
-      background: #B28E5E;
-      padding: 10px;
-      color: aliceblue;
-      margin-top: 15px;
-      font-size: 17px;
-  }
-  .opciones{
-    margin: 20px;
-  }
-  .file{
-    margin: 20px;
-  }
-  .guardar{
-    border-radius: 2px;
-  }
+.barrabusqueda {
+  margin: 15px;
+}
+.barrabusqueda1 {
+  margin-top: 15px;
+  font-size: 18px;
+}
+
+.botonbusqueda {
+  margin: 0 auto;
+}
+
+.barraresultado {
+  background: var(--color-terciario);
+  padding: 10px;
+  color: aliceblue;
+  margin-top: 15px;
+  font-size: 17px;
+}
+
+#form {
+  padding-top: 15px;
+}
+.opciones {
+  margin: 20px;
+}
+.file {
+  margin: 20px;
+}
+.guardar {
+  border-radius: 2px;
+}
 
   .login {
     width: 400px;

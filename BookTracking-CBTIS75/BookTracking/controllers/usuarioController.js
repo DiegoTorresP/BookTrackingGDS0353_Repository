@@ -5,6 +5,10 @@ exports.usuario_login = function(req,res){
     res.send("Ruta login controlada");
 }
 
+exports.usuario_login = function(req,res){
+    res.send("Ruta login controlada");
+}
+
 exports.usuario_home = function(req,res){
     res.send("Ruta home controlada");
 }

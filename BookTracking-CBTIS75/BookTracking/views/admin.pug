@@ -1,7 +1,7 @@
 extends layout
 
 block content
- .container-fluid.botonera
+  .container-fluid.botonera
       .row.hijo 
         .col
           a.ov-btn-grow-spin(href= '/administrar/menu-libro')
@@ -23,5 +23,50 @@ block content
             img(src='../images/escanearqr.png' alt='x')
             br
             | Leer QR
-      .row 
-        p 
+  a.ov-btn-grow-spin(type='button', data-bs-toggle='modal', data-bs-target='#exampleModalCenter')
+    img(src='../images/cambCol.png' alt='x' width="40px" heigth="40px")
+  #exampleModalCenter.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalCenterTitle', aria-hidden='true')
+    .modal-dialog.modal-dialog-centered(role='document')
+        .modal-content
+            .modal-header
+                h5#exampleModalCenterTitle.modal-title Cambiar colores
+                button.btn-close(type='button', data-bs-dismiss='modal', aria-label='Close')
+            .modal-body
+              .row
+                .col#colors
+                  br
+                  | Primario
+                  br
+                  input#colorP(type='color' value="#612334")
+                  br
+                  button.btn.btn-success.btn-icon#saveb(type='button' onClick='colP()')
+                      i.bi-bookmark-check
+                .col#colors
+                  br
+                  | Secundario
+                  br
+                  input#colorS(type='color' value="#b28e5e")
+                  br
+                  button.btn.btn-success.btn-icon#saveb(type='button' onClick='colS()')
+                      i.bi-bookmark-check
+                .col#colors
+                  br
+                  | Terciario
+                  br
+                  input#colorT(type='color' value='#36965e')
+                  br
+                  button.btn.btn-success.btn-icon#saveb(type='button' onClick='colT()')
+                      i.bi-bookmark-check
+                .col#colors
+                  br
+                  | Fondo
+                  br
+                  input#colorF(type='color' value='#d6bb98')
+                  br
+                  button.btn.btn-success.btn-icon#saveb(type='button' onClick='colF()')
+                      i.bi-bookmark-check
+            .modal-footer
+                button.btn.btn-secondary#cancb(type='button', data-bs-dismiss='modal') Cerrar
+
+    script(src="/js/colores.js")
+        
