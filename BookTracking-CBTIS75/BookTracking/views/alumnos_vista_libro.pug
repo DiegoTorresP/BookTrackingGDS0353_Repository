@@ -1,0 +1,65 @@
+extends layout
+
+block content
+  .container-fluid
+
+    .row
+      .col
+        .container-fluid
+          .row.barraresultado
+            .col Ver libro
+          .row.rowtabla
+            .col-4
+              .row
+                img.dic(src='/images/diccionario.png')
+              
+            .col-8
+              .container-fluid
+                br
+                h5 Datos del libro
+                .row
+                  form(action='/alumnos/alumnos_vista_libro' method='post')
+                    .row
+                      each libro in Libro
+                        .col
+                          label.form-label(for='nombre') Nombre:
+                          input#nombre.form-control(type='text' name='nombre' readonly value= libro.Nombre)
+                          label.form-label(for='autor') Autor:
+                          input#autor.form-control(type='text' name='autor' readonly value= (JSON.parse(JSON.stringify(libro.Autor))))
+                          label.form-label(for='editorial') Editorial:
+                          input#editorial.form-control(type='text' name='editorial' readonly value= libro.Editorial)
+                          label.form-label(for='lugarE') Lugar edición:
+                          input#lugarE.form-control(type='text' name='lugarE' readonly value= libro.LugarEdicion)
+                          label.form-label(for='fechaE') Fecha edición:
+                          input#fechaE.form-control(type='text' name='fechaE' readonly value= libro.FechaEdicion)
+                          label.form-label(for='anioE') Año entrada:
+                          input#anioE.form-control(type='text' name='anioE' readonly value= libro.AñoEntrada)
+                          label.form-label(for='unidadesD') Unidades Disponibles:
+                          input#unidadesD.form-control(type='number' name='unidadesD' readonly value= libro.UnidadesDisponibles)
+                        .col
+                          label.form-label(for='totalU') Total Unidades:
+                          input#totalU.form-control(type='number' name='totalU' readonly value= libro.TotalUnidades)
+                          label.form-label(for='numP') Número págs.:
+                          input#numP.form-control(type='number' name='numP' readonly value= libro.NumPag)
+                          label.form-label(for='numI') Número inventario:
+                          input#numI.form-control(type='number' name='numI' readonly value= libro.NumInventario)
+                          .row
+                            .col
+                              label.form-label(for='anaquel') Anaquel - Charola:
+                              input#anaquel.form-control(type='text' name='anaquel' readonly value= libro.AnaquelCharola)
+                            .col
+                              label.form-label(for='clasificacion') Clasificación:
+                              input#clasificacion.form-control(type='text' name='clasificacion' readonly value= libro.Clasificacion)
+                          
+                          label.form-label(for='observaciones') Observaciones:
+                          textarea#observaciones.form-control(type='text' name='observaciones' readonly )=libro.Observaciones
+                          label.form-label(for='descripcion') Descripción:
+                          textarea#descripcion.form-control(type='text' name='descripcion' readonly )=libro.Descripcion
+                          .row
+                            .col(style='text-align: right; padding-top: 10px')
+                              a.btn.btn-danger(href='/alumnos/buscar_solicitar_libro') 
+                                | Cancelar
+                            .col(style='text-align: right; padding-top: 10px')
+                             -var url = "/alumnos/solicitar_libro/" + libro._id + "/stock/"+libro.UnidadesDisponibles
+                              a.btn.btn-success(href=url type='submit')
+                                | Solicitar Libro 

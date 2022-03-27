@@ -159,8 +159,10 @@ alumnoController.consultar= (req, res)=>{
 alumnoController.consultarLibro = (req, res) =>{
     const libro= req.params.libro;
     const id_sol=req.params.id;
+    const status=req.params.status;
     console.log(libro);
     console.log(id_sol);
+    console.log(status);
     Libro.find({"_id":libro}).exec((err,Libro) => {
         if (err) {
             console.log('Error: ', err);
@@ -169,7 +171,7 @@ alumnoController.consultarLibro = (req, res) =>{
         console.log(libro+" Encontrado");
         console.log(Libro)
         return res.render('detalle_atender_libro', {
-            Libro: Libro , id_sol
+            Libro: Libro , id_sol,status
         });
 
     });

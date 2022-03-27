@@ -95,7 +95,7 @@ router.get("/editar_libro", function(req, res, next){
 router.get("/detalle_alumno/:Solicitante",user_controller.consultar);
 
 //Ruta para  un libro
-router.get("/detalle_libro/:libro/solicitud/:id",user_controller.consultarLibro);
+router.get("/detalle_libro/:libro/solicitud/:id/status/:status",user_controller.consultarLibro);
 
 
 //Rutas de denegacion o aceptación de prestamo de libro

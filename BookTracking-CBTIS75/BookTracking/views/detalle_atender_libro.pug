@@ -13,16 +13,21 @@ block content
                 img.dic(src='/images/diccionario.png')
               .row
                 .col
-                  a.btn.btn-danger.opciones(type='button', href='/administrar/admin_buscar')
-                    | Cancelar
+                  if status == "Denegado" || status == "Aceptado"
+                    .alert.alert-info(role='alert')
+                      | Esta solicitud ya fue procesada
+                  else
+                    -var url = "/administrar/aceptar_prestamo/" + id_sol
+                    a.btn.btn-success.opciones(type='button', href=url)
+                      | Aceptar
                 .col
-                  -var url = "/administrar/aceptar_prestamo/" + id_sol
-                  a.btn.btn-success.opciones(type='button', href=url)
-                    | Aceptar
-                .col
-                  -var url1 = "/administrar/denegar_prestamo/" + id_sol
-                  a.btn.btn-danger.opciones(type='button', href=url1) 
-                    | Denegar
+                  if status == "Denegado" || status == "Aceptado"
+                    a.btn.btn-danger.opciones(type='button', href='/administrar/solicitudes')
+                      | Regresar
+                  else
+                    -var url1 = "/administrar/denegar_prestamo/" + id_sol
+                    a.btn.btn-danger.opciones(type='button', href=url1) 
+                      | Denegar
             .col-8
               .container-fluid
                 br
