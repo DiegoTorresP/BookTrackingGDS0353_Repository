@@ -171,7 +171,7 @@ Contacto.
 * [Alejandro Rafael Guerrero Lozano](https://github.com/alejandro026)
 * [José Manuel Matehuala Avilés](https://github.com/ManuelAvil)
 * [Diego Torres Pérez](https://github.com/DiegoTorresP)
-* <img src="https://avatars.githubusercontent.com/u/92689016?v=4" alt="@alejandro026" size="32" height="32" width="32" data-view-component="true" class="avatar circle">
+<img src="https://avatars.githubusercontent.com/u/92689016?v=4" alt="@alejandro026" size="32" height="32" width="32" data-view-component="true" class="avatar circle">
 
 [contribuidores-shield]: https://img.shields.io/github/contributors/DiegoTorresP/BookTrackingGDS0353_Repository.svg?style=for-the-badge
 [contributors-url]: https://github.com/DiegoTorresP/BookTrackingGDS0353_Repository/graphs/contributors
