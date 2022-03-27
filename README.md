@@ -166,6 +166,7 @@ Licencia.
 Contacto.
 
 ## Participantes
+https://github.com/DiegoTorresP/BookTrackingGDS0353_Repository/graphs/contributors
 * [Luis Gustavo García Carrillo](https://github.com/LuisGusDev)
 * [Alejandro Rafael Guerrero Lozano](https://github.com/alejandro026)
 * [José Manuel Matehuala Avilés](https://github.com/ManuelAvil)
