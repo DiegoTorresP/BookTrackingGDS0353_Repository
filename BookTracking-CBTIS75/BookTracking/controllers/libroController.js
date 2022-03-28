@@ -114,7 +114,7 @@ libroController.detalleAlumno = (req, res) => {
 //Editar el libro
 libroController.editar = (req, res) => {
   const Nombre = req.body.nombre;
-  const Autor = [req.body.autor];
+  const Autor = req.body.autor;
   //Convierte una cadena a un arreglo
   var Autor_c= Autor.split(',');
 

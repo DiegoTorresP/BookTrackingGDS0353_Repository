@@ -4,31 +4,6 @@ block content
   .container-fluid
     .row
       .col
-        .nav.navbar.navbar-light.bg-light.barrabusqueda1
-          .col
-            form.container-fluid.justify-content-start(action='/administrar/busqueda_nombre' method='post')
-              .col-auto
-                input#nombre.form-control(placeholder='Nombre' name='nombre') 
-              .col-auto
-                button.btn.btn-outline-danger.bi.bi-search(type='submit' style='margin:auto')
-          .col
-            form.container-fluid.justify-content-start(action='/administrar/busqueda_carrera' method='post')
-              .col-auto
-                input#carrera.form-control(placeholder='Carrera' name='carrera')
-              .col-auto
-                button.btn.btn-outline-danger.bi.bi-search(type='submit')
-          .col
-            form.container-fluid.justify-content-start(action='/administrar/busqueda_estatus' method='post')
-              .col-auto
-                select#estatus.form-control(placeholder='Estatus' name='estatus')
-                  option 
-                  option Activo
-                  option Inscrito
-                  option Inactivo
-              .col-auto
-                button.btn.btn-outline-danger.bi.bi-search(type='submit')
-    .row
-      .col
         .container-fluid
           .row.barraresultado
             .col Usuarios
@@ -59,5 +34,6 @@ block content
                           button.eliminar.btn.btn-outline-danger.bi.bi-trash(onclick='Eliminar('+alumno._id+')' )
                         td 
                           -var url2 = "/administrar/usuario/" + alumno._id
-                          a.btn.btn-outline-danger.bi.bi-pencil(href=url2)   
+                          a.btn.btn-outline-danger.bi.bi-pencil(href=url2)    
+    script(src="/js/sweet_carga.js")
     script(src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous")           
