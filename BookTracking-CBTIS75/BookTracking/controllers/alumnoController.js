@@ -16,7 +16,7 @@ alumnoController.mostar = (req, res) => {
         }
         console.log("The INDEX");
         console.log(Alumno)
-        return res.render('lista_usuarios', {
+        return res.render('admin_lista_usuarios', {
             Alumno: Alumno
         });
 
@@ -70,7 +70,7 @@ alumnoController.editar= (req, res)=>{
         }
         console.log("The INDEX");
         console.log(Alumno)
-        return res.render('vista_usuario', {
+        return res.render('admin_vista_usuario', {
             Alumno: Alumno
         });
     });
@@ -148,7 +148,7 @@ alumnoController.consultar= (req, res)=>{
         }
         console.log(solicitante+" Encontrado");
         console.log(Alumno)
-        return res.render('detalle_atender_alumno', {
+        return res.render('admin_detalle_atender_alumno', {
             Alumno: Alumno
         });
 
@@ -170,7 +170,7 @@ alumnoController.consultarLibro = (req, res) =>{
         }
         console.log(libro+" Encontrado");
         console.log(Libro)
-        return res.render('detalle_atender_libro', {
+        return res.render('admin_detalle_atender_libro', {
             Libro: Libro , id_sol,status
         });
 

@@ -9,7 +9,7 @@ const solicitudesController = require("../controllers/solicitudesController");
 //Rutas de Administrador
 
 router.get("/", function (req, res, next) {
-  res.render("alumno");
+  res.render("alumnos");
 });
 
 //listar todos los libros para el alumno
@@ -19,13 +19,13 @@ router.get("/buscar_solicitar_libro", libro_controller.mostarAlumno);
 router.get("/alumnos_vista_libro/:id", libro_controller.detalleAlumno);
 
 //Ruta para crear solicitud
-router.get("/solicitar_libro/:id/stock/:UnidadesDisponibles", solicitudesController.crear_solicitud);
+router.get("/solicitar_libro/:id/stock/:Unidades_Disponibles", solicitudesController.crear_solicitud);
 
 router.get("/historial_prestamos", function (req, res, next) {
-  res.render("entregas_solicitudes_presatamos");
+  res.render("alumnos_entregas_solicitudes_prestamos");
 });
 router.get("/ver_mi_qr", function (req, res, next) {
-  res.render("ver_mi_qr");
+  res.render("alumnos_ver_mi_qr");
 });
 
 //Ruta de actulización

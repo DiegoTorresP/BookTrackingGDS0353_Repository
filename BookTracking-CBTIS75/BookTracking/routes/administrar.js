@@ -33,7 +33,7 @@ router.get("/eliminar_libro/:id", libro_controller.eliminar);
 
 
 router.get("/registrar-usuario", function (req, res, next){
-  res.render("registrar_usuario");
+  res.render("admin_registrar_usuario");
 });
 
 //Mostar todos los usuarios
@@ -59,7 +59,7 @@ router.post("/buscar_autor_libro", libro_controller.consultar_autor);
 router.post("/buscar_editorial_libro", libro_controller.consultar_editorial);
 
 router.get("/leer_qr", function (req, res, next) {
-  res.render("leer_qr");
+  res.render("admin_leer_qr");
 });
 
 router.get("/admin_buscar",libro_controller.mostar);
@@ -77,18 +77,11 @@ router.get("/vista-libro", function (req, res, next){
 });
 
 router.get("/registrar_libro", function (req, res, next) {
-  res.render("registrar_libro");
-});
-router.get("/editar_libro", function (req, res, next) {
-  res.render("editar_libro");
+  res.render("admin_registrar_libro");
 });
 
 router.get("/menu-libro", function (req, res, next){
-  res.render("libros");
-});
-
-router.get("/editar_libro", function(req, res, next){
-  res.render("editar_libro");
+  res.render("admin_libros");
 });
 
 //Ruta para  un alumno

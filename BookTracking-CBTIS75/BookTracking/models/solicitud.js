@@ -5,8 +5,8 @@ var Schema = mongoose.Schema;
 var solicitudSchema = new Schema({
     Solicitante: Number,
     Libro: ObjectId,
-    FechaSolicitud:Date,
-    EstatusPrestamo: String,
+    Fecha_Solicitud:Date,
+    Estatus_Prestamo: String,
     FechaEntrega:Date,
     Incidencias:Boolean
 });
