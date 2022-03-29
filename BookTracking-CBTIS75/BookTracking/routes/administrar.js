@@ -28,6 +28,12 @@ router.post("/crear_libro",libro_controller.crear);
 //Ruta para eliminar
 router.get("/eliminar/:id", user_controller.eliminar);
 
+//Ruta de solicitud por alumno manual
+router.post("/solicitar_libro/:id/stock/:Unidades_Disponibles", solicitudes_controller.crear_solicitud_manual);
+
+//Ruta de actulización
+router.get("/actualizar_unidades/:id",libro_controller.actualizarUnidades);
+
 //Ruta para eliminar libro
 router.get("/eliminar_libro/:id", libro_controller.eliminar);
 

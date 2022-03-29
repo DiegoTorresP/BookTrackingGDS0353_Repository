@@ -456,6 +456,43 @@ solicitudesController.consultar_libro = () => {};
 //Consulta por estatus
 solicitudesController.consultar_estatus_solic = () => {};
 
+//Crear solicitud manual
+solicitudesController.crear_solicitud_manual =  (req, res)=>{
+  console.log("Creando nueva solicitud manual");
+  const stock = req.params.Unidades_Disponibles;
+  if (stock > 1) {
+    const fecha = new Date();
+    const id = req.params.id;
+    const sol = req.body.solicitante;
+    console.log("Solicitante: "+sol)
+    //console.log(req.params.matricula);
+    console.log(id);
+    const Solicitud = new solicitud({
+      Solicitante: sol,
+      Libro: id,
+      Fecha_Solicitud: fecha.toISOString(),
+      Estatus_Prestamo: "En Espera",
+      Fecha_Entrega: fecha.toISOString(),
+      Incidencias: false,
+    });
+    console.log(Solicitud);
+    Solicitud.save(function (err) {
+      if (err) {
+        return res.status(500).json({
+          message: "Error al crear solicitud",
+        });
+      }
+      res.redirect("/administrar/actualizar_unidades/" + id);
+    });
+  } else {
+    //Cambiar por Sweet Alert
+    return res.status(500).json({
+      message: "Error, no hay stock",
+    });
+  }
+}
+
+
 //Crear Solicitud
 solicitudesController.crear_solicitud = (req, res) => {
   console.log("Creando nueva solicitud");
@@ -690,7 +727,7 @@ solicitudesController.actualizarEstatus = (req, res) => {
       {
         $set: {
           Estatus_Prestamo: "Aceptado",
-          FechaEntrega: fecha,
+          Fecha_Entrega: fecha,
         },
       }
     )

@@ -122,7 +122,6 @@ alumnoController.editar1=(req, res)=>{
             res.redirect('/administrar/lista-usuario');
         });
 }
-
 //Eliminar
 alumnoController.eliminar= (req, res)=>{
     const id= req.params.id;

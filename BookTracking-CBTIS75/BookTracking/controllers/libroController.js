@@ -20,7 +20,7 @@ libroController.mostar = (req, res) => {
       ]
     ).exec((err, edi)=>{
       console.log("The INDEX");
-    console.log(edi);
+    console.log(libro);
     return res.render("admin_buscar", {
       Libro: libro, edi:edi
     });
@@ -284,7 +284,7 @@ libroController.consultar_editorial = (req, res) => {
     }
     console.log("The INDEX");
     console.log(Libro);
-    res.redirect("/alumnos/historial_prestamos");
+    res.redirect("/administrar/solicitudes");
   });
 };
 
