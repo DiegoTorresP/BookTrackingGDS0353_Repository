@@ -1,0 +1,69 @@
+extends layout
+
+block content
+  .container-fluid
+    .row
+      .col
+        .container-fluid
+          .row.barraresultado
+            .col Registrar libro
+          .row.rowtabla
+            .col-4
+              .row
+                img.dic(src='/images/diccionario.png')
+              
+              .row
+                .col
+                  .input-group.file
+                    input#inputGroupFile04.form-control(type='file', aria-describedby='inputGroupFileAddon04', aria-label='Upload')
+                    button#inputGroupFileAddon04.ov-btn-grow-spin.guardar(type='button') Guardar
+
+            .col-8
+              .container-fluid
+                br
+                h5 Datos del libro
+                .row
+                  form(action='/administrar/crear_libro' method='post')
+                    .row
+                      .col
+                        label.form-label(for='nombre') Nombre:
+                        input#nombre.form-control(type='text' name='nombre' )
+                        label.form-label(for='autor') Autor:
+                        input#autor.form-control(type='array' name='autor' requerid='')
+                        label.form-label(for='editorial') Editorial:
+                        input#editorial.form-control(type='text' name='editorial' required='')
+                        label.form-label(for='lugarE') Lugar edición:
+                        input#lugarE.form-control(type='text' name='lugarE' required='')
+                        label.form-label(for='fechaE') Fecha edición:
+                        input#fechaE.form-control(type='text' name='fechaE' required='')
+                        label.form-label(for='anioE') Año entrada:
+                        input#anioE.form-control(type='text' name='anioE' required='')
+                        label.form-label(for='unidadesD') Unidades Disponibles:
+                        input#unidadesD.form-control(type='number' name='unidadesD' required='')
+                      .col
+                        label.form-label(for='totalU') Total Unidades:
+                        input#totalU.form-control(type='number' name='totalU' required='')
+                        label.form-label(for='numP') Número págs.:
+                        input#numP.form-control(type='number' name='numP' required='')
+                        label.form-label(for='numI') Número inventario:
+                        input#numI.form-control(type='number' name='numI' required='')
+                        .row
+                          .col
+                            label.form-label(for='anaquel') Anaquel - Charola:
+                            input#anaquel.form-control(type='text' name='anaquel' required='')
+                          .col
+                            label.form-label(for='clasificacion') Clasificación:
+                            input#clasificacion.form-control(type='text' name='clasificacion')
+                        
+                        label.form-label(for='observaciones') Observaciones:
+                        textarea#observaciones.form-control(type='text' name='observaciones')
+                        label.form-label(for='descripcion') Descripción:
+                        textarea#descripcion.form-control(type='text' name='descripcion')
+                        
+                        .row
+                          .col(style='text-align: right; padding-top: 10px')
+                            a.btn.btn-danger(href='/administrar/menu-libro') 
+                              | Cancelar
+                          .col(style='text-align: right; padding-top: 10px')    
+                            button.btn.btn-success(type='submit')
+                              | Registar      

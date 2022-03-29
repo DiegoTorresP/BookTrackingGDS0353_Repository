@@ -1,0 +1,53 @@
+extends layout
+
+block content
+  .container-fluid
+    .row
+        .col
+          .nav.navbar.navbar-light.bg-light.barrabusqueda1
+            .col
+              form.container-fluid.justify-content-start(action='/administrar/buscar_nombre_libro' method='post')
+                .col-auto
+                  input#nombreB.form-control(placeholder='Nombre' name='nombre') 
+                .col-auto
+                  button.btn.btn-outline-danger.bi.bi-search(type='submit' style='margin:auto')
+            .col
+              form.container-fluid.justify-content-start(action='/administrar/buscar_autor_libro' method='post')
+                .col-auto
+                  input#autorB.form-control(placeholder='Autor' name='autor')
+                .col-auto
+                  button.btn.btn-outline-danger.bi.bi-search(type='submit')
+            .col
+              form.container-fluid.justify-content-start(action='buscar_editorial_libro' method='post')
+                .col-auto
+                  input#editorialB.form-control(placeholder='Editorial' name='editorial')
+                .col-auto
+                  button.btn.btn-outline-danger.bi.bi-search(type='submit')
+    .row
+      .col
+        .container-fluid
+          .row.barraresultado
+            .col Libros
+          .row.rowtabla
+            .row
+              .col
+                table.table.table-bordered.tabla
+                  thead
+                    tr
+                      th(scope='col') Nombre
+                      th(scope='col') Autor
+                      th(scope='col') Editorial
+                      th(scope='col') Unidades Disponibles
+                      th(scope='col') Ver detalles
+                  tbody
+                    each libro in Libro 
+                      tr
+                        td #{libro.Nombre}
+                        td #{libro.Autor}                      
+                        td #{libro.Editorial}
+                        td #{libro.Unidades_Disponibles}
+                        td  
+                          -var url = "/alumnos/alumnos_vista_libro/" + libro._id 
+                          a.btn.btn-outline-danger.bi.bi-book(href=url) 
+                        
+    script(src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous") 

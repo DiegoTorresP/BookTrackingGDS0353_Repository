@@ -1,0 +1,67 @@
+extends layout
+
+block content
+  .container-fluid
+    .row
+      .col
+        nav.navbar.navbar-light.bg-light.barrabusqueda1
+          form.container-fluid.justify-content-start
+            .col.botonbusqueda
+              a.btn.btn-outline-success(href='/administrar/lista-usuario') Ver lista de Alumnos 
+                img(src='../images/buscar.png' style='width : 35px')
+    .row
+      .col
+        .container-fluid
+          .row.barraresultado
+            .col Resultados: de busqueda
+          .row.rowtabla
+            form(action='/administrar/crear' method='post')
+              .row
+                .col
+                  label.form-label(for='numControl') No. de Control
+                  input#numControl.form-control(type='number' name='numControl' required='')
+                  label.form-label(for='nombre') Nombre:
+                  input#nombre.form-control(type='text' name='nombre' required='')
+                  label.form-label(for='apPaterno') Apellido paterno:
+                  input#apPaterno.form-control(type='text' name='apPaterno' required='')
+                  label.form-label(for='apMaterno') Apellido Materno:
+                  input#apMaterno.form-control(type='text' name='apMaterno' required='')
+                  label.form-label(for='grupo') Grupo:
+                  input#grupo.form-control(type='text' name='grupo' required='')
+                  label.form-label(for='especialidad') Especialidad:
+                  input#especialidad.form-control(type='text' name='especialidad' required='')
+                  label.form-label(for='turno') Turno:
+                  input#turno.form-control(type='text' name='turno' required='')
+                .col
+                  label.form-label(for='generacion') Generaci&oacute;n:
+                  input#generacion.form-control(type='text' name='generacion' required='')
+                  label.form-label(for='sexo') Sexo:
+                  select#sexo.form-control(name='sexo' required='')
+                    option
+                    option Masculino
+                    option Femenino
+                  label.form-label(for='curp') CURP:
+                  input#curp.form-control(type='text' name='curp' required='')
+                  .row
+                    .col
+                      label.form-label(for='correo1') Correo 1:
+                      input#correo1.form-control(type='email' name='correo1' required='')
+                    .col
+                      label.form-label(for='correo2') Correo 2:
+                      input#correo2.form-control(type='email' name='correo2')
+                  .row
+                    .col
+                      label.form-label(for='lada') Lada:
+                      input#lada.form-control(type='number' name='lada' required='')
+                    .col
+                      label.form-label(for='telefonoFijo1') Telefono fijo 1:
+                      input#c.form-control(type='number' name='telefonoFijo1')
+                  label.form-label(for='telefonoFijo2') Telefono fijo 2:
+                  input#telefonoFijo2.form-control(type='number' name='telefonoFijo2')
+                  label.form-label(for='telefonoMovil') Telefono Movil:
+                  input#telefonoMovil.form-control(type='number' name='telefonoMovil')
+                  .row
+                    .col(style='text-align: right; padding-top: 10px')
+                      a.btn(href='/') Cancelar
+                      button.btn.btn-danger(type='submit', onclick='registar()')
+                        | Registar
