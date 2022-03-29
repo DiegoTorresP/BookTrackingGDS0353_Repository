@@ -1,7 +1,85 @@
 const Alumno = require("../models/alumno");
-const Libro = require("../models/libro");
-
+const { body,validationResult} = require('express-validator');
 var alumnoController = {};
+
+alumnoController.alumno_login = function(req,res){
+    res.send("Ruta login controlada");
+}
+
+
+alumnoController.alumno_logout = function(req,res){
+    res.send("Ruta logout controlada");
+}
+
+
+alumnoController.alumno_verify = function (req,res){
+    let usuario = req.body.username;
+    let pass = req.body.password;
+    
+    console.log('Usuario: '+ usuario + 'Pass: ' + pass);
+
+    if (usuario && pass) {
+        Alumno.find({'Username': usuario, 'Password':pass}, function(error, results){
+            console.log(results);
+            if (error) {
+                let data = {
+                    title: 'Ingresar al Sistema',
+                    message: 'Hubo un error contacte a soporte',
+                    layout:false
+                }
+                res.render('login', data);                
+            }
+
+            if (results.length > 0) {
+                let roles
+                results.forEach(element => {
+                    roles= element.Roles;
+                }); 
+                req.session.usuario = usuario;
+                req.session.role = roles;
+                 console.log(req.session.usuario+' verifica');
+                if(roles=='admin'){
+                    res.render('admin');
+                }else if(roles=='user'){
+                    res.render('alumnos');//next();
+                }
+                
+                
+
+            } else {
+                let data = {
+                    title: 'Ingresar al Sistema',
+                    message: 'Usuario o contraseña incorrecto',
+                    layout:false
+                }
+                res.render('login', data);   
+            }
+        });
+
+    } else {
+        let data = {
+            title: 'Ingresar al Sistema',
+            message: 'Usuario o Contraseña vacío',
+            layout:false
+        }
+        res.render('login', data);
+    }
+
+
+};
+
+
+alumnoController.alumno_logout = function(req, res) {
+    req.session.destroy();
+
+    let data = {
+        title: 'Ingresar al Sistema',
+        layout:false
+    }
+    res.render('login', data);   
+
+};
+
 
 //Mostar todos los alumnos 
 alumnoController.mostar = (req, res) => {
@@ -16,7 +94,7 @@ alumnoController.mostar = (req, res) => {
         }
         console.log("The INDEX");
         console.log(Alumno)
-        return res.render('admin_lista_usuarios', {
+        return res.render('lista_usuarios', {
             Alumno: Alumno
         });
 
@@ -35,14 +113,14 @@ alumnoController.crear = (req, res) => {
         CURP: req.body.curp,
         Carrera_Tecnica: req.body.especialidad,
         Turno: req.body.turno,
-        Clave_lada: req.body.lada,
+        Clave_Lada: req.body.lada,
         Telefono_de_contacto_fijo_1: req.body.telefonoFijo1,
         Telefono_de_contacto_fijo_2: req.body.telefonoFijo2,
         Telefono_movil_celular: req.body.telefonoMovil,
         Correo_Electronico_1: req.body.correo1,
         Correo_Electronico_2: req.body.correo2,
-        EstatusEscolar: "Activo",
-        NumIncidencias: 0,
+        Estatus_Escolar: "Activo",
+        Num_Incidencias: 0,
         qr: "",
         password: "",
         Grupo: req.body.grupo,
@@ -70,7 +148,7 @@ alumnoController.editar= (req, res)=>{
         }
         console.log("The INDEX");
         console.log(Alumno)
-        return res.render('admin_vista_usuario', {
+        return res.render('vista_usuario', {
             Alumno: Alumno
         });
     });
@@ -86,7 +164,7 @@ alumnoController.editar1=(req, res)=>{
         const CURP= req.body.curp;
         const Carrera_Tecnica= req.body.especialidad;
         const Turno= req.body.turno;
-        const Clave_lada= req.body.lada;
+        const Clave_Lada= req.body.lada;
         const Telefono_de_contacto_fijo_1= req.body.telefonoFijo1;
         const Telefono_de_contacto_fijo_2= req.body.telefonoFijo2;
         const Telefono_movil_celular= req.body.telefonoMovil;
@@ -104,7 +182,7 @@ alumnoController.editar1=(req, res)=>{
             "CURP":CURP,
             "Carrera_Tecnica":Carrera_Tecnica,
             "Turno":Turno,
-            "Clave_lada":Clave_lada,
+            "Clave_lada":Clave_Lada,
             "Telefono_de_contacto_fijo_1":Telefono_de_contacto_fijo_1,
             "Telefono_de_contacto_fijo_2":Telefono_de_contacto_fijo_2,
             "Telefono_movil_celular":Telefono_movil_celular,
@@ -148,7 +226,7 @@ alumnoController.consultar= (req, res)=>{
         }
         console.log(solicitante+" Encontrado");
         console.log(Alumno)
-        return res.render('admin_detalle_atender_alumno', {
+        return res.render('detalle_atender_alumno', {
             Alumno: Alumno
         });
 
@@ -159,10 +237,8 @@ alumnoController.consultar= (req, res)=>{
 alumnoController.consultarLibro = (req, res) =>{
     const libro= req.params.libro;
     const id_sol=req.params.id;
-    const status=req.params.status;
     console.log(libro);
     console.log(id_sol);
-    console.log(status);
     Libro.find({"_id":libro}).exec((err,Libro) => {
         if (err) {
             console.log('Error: ', err);
@@ -170,8 +246,8 @@ alumnoController.consultarLibro = (req, res) =>{
         }
         console.log(libro+" Encontrado");
         console.log(Libro)
-        return res.render('admin_detalle_atender_libro', {
-            Libro: Libro , id_sol,status
+        return res.render('detalle_atender_libro', {
+            Libro: Libro , id_sol
         });
 
     });
@@ -219,7 +295,7 @@ alumnoController.consultar_estatus= (req, res)=>{
     const busqueda= req.body.estatus;
     console.log(busqueda);
 
-    Alumno.find({EstatusEscolar: {$regex: busqueda, $options : 'i'}},{}).exec((err,Alumno) => {
+    Alumno.find({Estatus_Escolar: {$regex: busqueda, $options : 'i'}},{}).exec((err,Alumno) => {
         if (err) {
             console.log('Error: ', err);
             return;
@@ -232,8 +308,5 @@ alumnoController.consultar_estatus= (req, res)=>{
 
     });
 }
-
-
-
 
 module.exports = alumnoController;
