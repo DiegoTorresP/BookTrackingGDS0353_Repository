@@ -32,7 +32,7 @@ app.use(session({
   secret: 'keyboard cat',
   resave: false,
   saveUninitialized: true,
-  cookie: { secure: true }
+  //cookie: { secure: true }
 }))
 
 // view engine setup

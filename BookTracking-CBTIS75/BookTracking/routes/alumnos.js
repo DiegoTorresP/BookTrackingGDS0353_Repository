@@ -6,30 +6,31 @@ var user_controller = require("../controllers/alumnoController");
 var solicitudes_controller = require("../controllers/solicitudesController");
 var libro_controller = require("../controllers/libroController");
 const solicitudesController = require("../controllers/solicitudesController");
+const isUser = require('../middlewares/usuario');
 //Rutas de Administrador
 
-router.get("/", function (req, res, next) {
+router.get("/",isUser, function (req, res, next) {
   res.render("alumnos");
 });
 
 //listar todos los libros para el alumno
-router.get("/buscar_solicitar_libro", libro_controller.mostarAlumno);
+router.get("/buscar_solicitar_libro",isUser, libro_controller.mostarAlumno);
 
 //Ruta para mostar un solo libro
-router.get("/alumnos_vista_libro/:id", libro_controller.detalleAlumno);
+router.get("/alumnos_vista_libro/:id",isUser, libro_controller.detalleAlumno);
 
 //Ruta para crear solicitud
-router.get("/solicitar_libro/:id/stock/:Unidades_Disponibles", solicitudesController.crear_solicitud);
+router.get("/solicitar_libro/:id/stock/:Unidades_Disponibles",isUser, solicitudesController.crear_solicitud);
 
-router.get("/historial_prestamos", function (req, res, next) {
+router.get("/historial_prestamos", isUser,function (req, res, next) {
   res.render("alumnos_entregas_solicitudes_prestamos");
 });
-router.get("/ver_mi_qr", function (req, res, next) {
+router.get("/ver_mi_qr",isUser, function (req, res, next) {
   res.render("alumnos_ver_mi_qr");
 });
 
 //Ruta de actulización
-router.get("/actualizar_unidades/:id",libro_controller.actualizarUnidades);
+router.get("/actualizar_unidades/:id",isUser,libro_controller.actualizarUnidades);
 
 
 
