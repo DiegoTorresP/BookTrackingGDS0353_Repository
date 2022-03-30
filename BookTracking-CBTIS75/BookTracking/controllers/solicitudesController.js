@@ -500,10 +500,11 @@ solicitudesController.crear_solicitud = (req, res) => {
   if (stock > 1) {
     const fecha = new Date();
     const id = req.params.id;
+    const usuario = req.session.usuario;
     //console.log(req.params.matricula);
     console.log(id);
     const Solicitud = new solicitud({
-      Solicitante: 1220100050,
+      Solicitante: usuario,
       Libro: id,
       Fecha_Solicitud: fecha.toISOString(),
       Estatus_Prestamo: "En Espera",
