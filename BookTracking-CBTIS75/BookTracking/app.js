@@ -32,8 +32,7 @@ app.use(session({
   secret: 'keyboard cat',
   resave: false,
   saveUninitialized: true,
-  //cookie: { secure: true }
-}))
+}));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

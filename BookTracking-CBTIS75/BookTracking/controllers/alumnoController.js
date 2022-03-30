@@ -1,4 +1,5 @@
 const Alumno = require("../models/alumno");
+const Libro = require("../models/libro");
 const { body,validationResult} = require('express-validator');
 var alumnoController = {};
 
@@ -38,6 +39,7 @@ alumnoController.alumno_verify = function (req,res){
                 req.session.usuario = usuario;
                 req.session.role = roles;
                  console.log(req.session.usuario+' verifica');
+                 console.log(req.session.role+' verifica');
                 if(roles=='admin'){
                     res.render('admin');
                 }else if(roles=='user'){
@@ -94,7 +96,7 @@ alumnoController.mostar = (req, res) => {
         }
         console.log("The INDEX");
         console.log(Alumno)
-        return res.render('lista_usuarios', {
+        return res.render('admin_lista_usuarios', {
             Alumno: Alumno
         });
 
@@ -133,7 +135,7 @@ alumnoController.crear = (req, res) => {
 
             });
         }
-        res.redirect('/administrar/lista-usuario');
+        res.redirect('/administrar/lista_usuario');
     })
 };
 
@@ -148,7 +150,7 @@ alumnoController.editar= (req, res)=>{
         }
         console.log("The INDEX");
         console.log(Alumno)
-        return res.render('vista_usuario', {
+        return res.render('admin_vista_usuario', {
             Alumno: Alumno
         });
     });
@@ -209,7 +211,7 @@ alumnoController.eliminar= (req, res)=>{
             return res.status(500).json({message: "Error al eliminar"})
         }
     });
-    res.redirect('/administrar/lista-usuario')
+    res.redirect('/administrar/lista_usuario')
 }
 
 
@@ -225,7 +227,7 @@ alumnoController.consultar= (req, res)=>{
         }
         console.log(solicitante+" Encontrado");
         console.log(Alumno)
-        return res.render('detalle_atender_alumno', {
+        return res.render('admin_detalle_atender_alumno', {
             Alumno: Alumno
         });
 
@@ -245,7 +247,7 @@ alumnoController.consultarLibro = (req, res) =>{
         }
         console.log(libro+" Encontrado");
         console.log(Libro)
-        return res.render('detalle_atender_libro', {
+        return res.render('admin_detalle_atender_libro', {
             Libro: Libro , id_sol
         });
 
@@ -264,7 +266,7 @@ alumnoController.consultar_nombre= (req, res)=>{
         }
         console.log(busqueda+" Encontrado");
         console.log(Alumno)
-        return res.render('lista_usuarios', {
+        return res.render('admin_lista_usuarios', {
             Alumno: Alumno
         });
 
@@ -283,7 +285,7 @@ alumnoController.consultar_carrera= (req, res)=>{
         }
         console.log(busqueda+" Encontrado");
         console.log(Alumno)
-        return res.render('lista_usuarios', {
+        return res.render('admin_lista_usuarios', {
             Alumno: Alumno
         });
 
@@ -301,7 +303,7 @@ alumnoController.consultar_estatus= (req, res)=>{
         }
         console.log(busqueda+" Encontrado");
         console.log(Alumno)
-        return res.render('lista_usuarios', {
+        return res.render('admin_lista_usuarios', {
             Alumno: Alumno
         });
 
