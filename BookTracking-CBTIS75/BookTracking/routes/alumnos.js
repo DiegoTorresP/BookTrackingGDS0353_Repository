@@ -29,12 +29,8 @@ router.get("/ver_mi_qr",auth.isUser, function (req, res, next) {
 });
 
 //Ruta de actulización
-<<<<<<< HEAD
-router.get("/actualizar_unidades/:id",isUser,libro_controller.actualizarUnidadesAlumno );
-=======
 router.get("/actualizar_unidades/:id",auth.isUser,libro_controller.actualizarUnidades);
 
->>>>>>> 327b99e6438137d78be0ead47caff7e7a753a569
 
 
 module.exports = router;

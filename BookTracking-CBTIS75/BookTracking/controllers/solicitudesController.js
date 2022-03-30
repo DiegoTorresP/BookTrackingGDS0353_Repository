@@ -505,11 +505,7 @@ solicitudesController.crear_solicitud = (req, res) => {
     console.log(id);
     const solicitante = req.session.usuario;
     const Solicitud = new solicitud({
-<<<<<<< HEAD
-      Solicitante: solicitante,
-=======
       Solicitante: usuario,
->>>>>>> 327b99e6438137d78be0ead47caff7e7a753a569
       Libro: id,
       Fecha_Solicitud: fecha.toISOString(),
       Estatus_Prestamo: "En Espera",

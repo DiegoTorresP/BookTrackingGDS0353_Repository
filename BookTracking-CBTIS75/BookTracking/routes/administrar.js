@@ -6,16 +6,10 @@ var libro_controller = require("../controllers/libroController");
 const auth = require('../middlewares/usuario');
 //Modulos Controladores Aqui
 
-<<<<<<< HEAD
-//Rutas de Administrado
-router.get("/", function (req, res, next) {
-  res.render("login");
-=======
 //Rutas de Administrador
 
 router.get("/",auth.isAdmin, function (req, res, next) {
   res.render("admin");
->>>>>>> 327b99e6438137d78be0ead47caff7e7a753a569
 });
 
 router.get("/libros",auth.isAdmin, function (req, res, next) {

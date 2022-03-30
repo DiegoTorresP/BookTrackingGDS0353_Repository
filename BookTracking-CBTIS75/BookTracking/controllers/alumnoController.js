@@ -249,11 +249,7 @@ alumnoController.consultarLibro = (req, res) =>{
         console.log(libro+" Encontrado");
         console.log(Libro)
         return res.render('admin_detalle_atender_libro', {
-<<<<<<< HEAD
             Libro: Libro , id_sol, status
-=======
-            Libro: Libro , id_sol
->>>>>>> 327b99e6438137d78be0ead47caff7e7a753a569
         });
 
     });
