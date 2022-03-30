@@ -1,4 +1,5 @@
 const Alumno = require("../models/alumno");
+const Libro = require("../models/libro");
 const { body,validationResult} = require('express-validator');
 var alumnoController = {};
 
@@ -9,6 +10,7 @@ alumnoController.alumno_login = function(req,res){
 
 alumnoController.alumno_logout = function(req,res){
     res.send("Ruta logout controlada");
+   
 }
 
 
@@ -70,14 +72,13 @@ alumnoController.alumno_verify = function (req,res){
 
 
 alumnoController.alumno_logout = function(req, res) {
-    req.session.destroy();
-
     let data = {
         title: 'Ingresar al Sistema',
         layout:false
     }
-    res.render('login', data);   
-
+    req.session.destroy((err) => {
+        res.redirect('/') // will always fire after session is destroyed
+      })
 };
 
 
@@ -225,7 +226,7 @@ alumnoController.consultar= (req, res)=>{
         }
         console.log(solicitante+" Encontrado");
         console.log(Alumno)
-        return res.render('detalle_atender_alumno', {
+        return res.render('admin_detalle_atender_alumno', {
             Alumno: Alumno
         });
 
@@ -236,6 +237,7 @@ alumnoController.consultar= (req, res)=>{
 alumnoController.consultarLibro = (req, res) =>{
     const libro= req.params.libro;
     const id_sol=req.params.id;
+    const status=req.params.status;
     console.log(libro);
     console.log(id_sol);
     Libro.find({"_id":libro}).exec((err,Libro) => {
@@ -245,8 +247,8 @@ alumnoController.consultarLibro = (req, res) =>{
         }
         console.log(libro+" Encontrado");
         console.log(Libro)
-        return res.render('detalle_atender_libro', {
-            Libro: Libro , id_sol
+        return res.render('admin_detalle_atender_libro', {
+            Libro: Libro , id_sol, status
         });
 
     });

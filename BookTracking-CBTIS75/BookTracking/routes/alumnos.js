@@ -1,6 +1,5 @@
 var express = require("express");
 var router = express.Router();
-
 //Modulos Controladores Aqui
 var user_controller = require("../controllers/alumnoController");
 var solicitudes_controller = require("../controllers/solicitudesController");
@@ -30,8 +29,7 @@ router.get("/ver_mi_qr",isUser, function (req, res, next) {
 });
 
 //Ruta de actulización
-router.get("/actualizar_unidades/:id",isUser,libro_controller.actualizarUnidades);
-
+router.get("/actualizar_unidades/:id",isUser,libro_controller.actualizarUnidadesAlumno );
 
 
 module.exports = router;

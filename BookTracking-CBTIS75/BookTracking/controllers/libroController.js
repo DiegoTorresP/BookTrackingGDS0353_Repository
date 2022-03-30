@@ -288,6 +288,28 @@ libroController.consultar_editorial = (req, res) => {
   });
 };
 
+//actualizacion Unidades_Disponibles
+libroController.actualizarUnidadesAlumno = (req, res) => {
+  const id = req.params.id;
+
+  Libro.updateOne(
+    { "_id": id },
+    {
+      $inc: {
+        Unidades_Disponibles: -1,
+      },
+    }
+  ).exec((err, Libro) => {
+    if (err) {
+      console.log("Error al actualizar el libro:", err);
+      return;
+    }
+    console.log("The INDEX");
+    console.log(Libro);
+    res.redirect("/alumnos/historial_prestamos");
+  });
+};
+
 //actualizacion Unidades_Disponibles por denegacion
 libroController.actualizarUnidades_denegadas = (req, res) => {
   const id = req.params.id;

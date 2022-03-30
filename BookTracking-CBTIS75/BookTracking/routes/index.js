@@ -4,7 +4,6 @@ var router = express.Router();
 const controller = require('../controllers/alumnoController');
 
 
-
 /* GET home page. */
 router.get('/',function(req,res){
   let data = {
@@ -32,7 +31,7 @@ router.get('/register', function(req, res, next){
 
 router.get('/logout', controller.alumno_logout);
 
-router.post('/verify', controller.alumno_verify);
+router.post("/verify", controller.alumno_verify);
 
 //router.post('/addUser', controller.usuario_addUser);
 

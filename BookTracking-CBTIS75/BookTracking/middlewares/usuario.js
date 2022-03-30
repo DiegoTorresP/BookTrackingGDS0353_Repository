@@ -1,6 +1,5 @@
 const Usuario = require("../models/alumno");
 
-
 module.exports = isAdmin = (req, res, next)=>{
   console.log(req.session.usuario);
   if(req.session.usuario) {

@@ -67,7 +67,7 @@ var solicitudesController = {};
       var fecha_entrega = "";
       Solicitud.forEach(function(solicitudes){
         //if para estatus de Entregado: se valida y manda correo cuando la fecha de entrega es en un dia.
-        if(solicitudes.FechaEntrega.getUTCFullYear() == fechaactual.getFullYear() && solicitudes.FechaEntrega.getMonth()+1 == fechaactual.getMonth()+1 && solicitudes.FechaEntrega.getDate()-1 == fechaactual.getDate() ){
+        if(solicitudes.Fecha_Entrega.getUTCFullYear() == fechaactual.getFullYear() && solicitudes.Fecha_Entrega.getMonth()+1 == fechaactual.getMonth()+1 && solicitudes.Fecha_Entrega.getDate()-1 == fechaactual.getDate() ){
           //Enviando Correo
           console.log('Enviando correo')
           correoUsuario = solicitudes.nombre.Correo_Electronico_1;
@@ -79,7 +79,7 @@ var solicitudesController = {};
           // Creamos array con los días de la semana
           const dias_semana = ['Domingo', 'Lunes', 'martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
           //Procesamos fecha en Español
-          fecha_entrega =dias_semana[ solicitudes.FechaEntrega.getDay()] + ', ' +  solicitudes.FechaEntrega.getDate() + ' de ' + meses[ solicitudes.FechaEntrega.getMonth()] + ' de ' +  solicitudes.FechaEntrega.getUTCFullYear();
+          fecha_entrega =dias_semana[ solicitudes.Fecha_Entrega.getDay()] + ', ' +  solicitudes.Fecha_Entrega.getDate() + ' de ' + meses[ solicitudes.Fecha_Entrega.getMonth()] + ' de ' +  solicitudes.Fecha_Entrega.getUTCFullYear();
           function getMessage() {
             const correo = `<!DOCTYPE html>
             <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -251,7 +251,7 @@ var solicitudesController = {};
       var fecha_entrega = "";
       Solicitud.forEach(function(solicitudes){
         //if para estatus de Entregado: se valida y manda correo cuando la fecha de entrega es en un dia.
-        if(solicitudes.FechaEntrega.getUTCFullYear() == fechaactual.getFullYear() && solicitudes.FechaEntrega.getMonth()+1 == fechaactual.getMonth()+1 && solicitudes.FechaEntrega.getDate() == fechaactual.getDate() && solicitudes.FechaEntrega.getHours() < fechaactual.getHours() ){
+        if(solicitudes.Fecha_Entrega.getUTCFullYear() == fechaactual.getFullYear() && solicitudes.Fecha_Entrega.getMonth()+1 == fechaactual.getMonth()+1 && solicitudes.Fecha_Entrega.getDate() == fechaactual.getDate() && solicitudes.Fecha_Entrega.getHours() < fechaactual.getHours() ){
           //Enviando Correo
           console.log('Enviando correo')
           correoUsuario = solicitudes.nombre.Correo_Electronico_1;
@@ -263,7 +263,7 @@ var solicitudesController = {};
           // Creamos array con los días de la semana
           const dias_semana = ['Domingo', 'Lunes', 'martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
           //Procesamos fecha en Español
-          fecha_entrega =dias_semana[ solicitudes.FechaEntrega.getDay()] + ', ' +  solicitudes.FechaEntrega.getDate() + ' de ' + meses[ solicitudes.FechaEntrega.getMonth()] + ' de ' +  solicitudes.FechaEntrega.getUTCFullYear();
+          fecha_entrega =dias_semana[ solicitudes.Fecha_Entrega.getDay()] + ', ' +  solicitudes.Fecha_Entrega.getDate() + ' de ' + meses[ solicitudes.Fecha_Entrega.getMonth()] + ' de ' +  solicitudes.Fecha_Entrega.getUTCFullYear();
           function getMessage() {
             const correo = `<!DOCTYPE html>
             <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -502,12 +502,13 @@ solicitudesController.crear_solicitud = (req, res) => {
     const id = req.params.id;
     //console.log(req.params.matricula);
     console.log(id);
+    const solicitante = req.session.usuario;
     const Solicitud = new solicitud({
-      Solicitante: 1220100050,
+      Solicitante: solicitante,
       Libro: id,
       Fecha_Solicitud: fecha.toISOString(),
       Estatus_Prestamo: "En Espera",
-      FechaEntrega: fecha.toISOString(),
+      Fecha_Entrega: fecha.toISOString(),
       Incidencias: false,
     });
     console.log(Solicitud);

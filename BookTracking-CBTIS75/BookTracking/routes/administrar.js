@@ -1,14 +1,12 @@
 var express = require("express");
 var router = express.Router();
-
 var user_controller = require("../controllers/alumnoController");
 var solicitudes_controller = require("../controllers/solicitudesController");
 var libro_controller = require("../controllers/libroController");
 const isAdmin = require('../middlewares/usuario');
 //Modulos Controladores Aqui
 
-//Rutas de Administrador
-
+//Rutas de Administrado
 router.get("/", function (req, res, next) {
   res.render("login");
 });
