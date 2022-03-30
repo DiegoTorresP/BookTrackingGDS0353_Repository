@@ -7,7 +7,7 @@ block content
         nav.navbar.navbar-light.bg-light.barrabusqueda1
           form.container-fluid.justify-content-start
             .col.botonbusqueda
-              a.btn.btn-outline-success(href='/administrar/lista-usuario') Ver lista de Alumnos 
+              a.btn.btn-outline-success(href='/administrar/lista_usuario') Ver lista de Alumnos 
                 img(src='../images/buscar.png' style='width : 35px')
     .row
       .col
@@ -62,6 +62,6 @@ block content
                   input#telefonoMovil.form-control(type='number' name='telefonoMovil')
                   .row
                     .col(style='text-align: right; padding-top: 10px')
-                      a.btn(href='/') Cancelar
+                      a.btn(href='/administrar') Cancelar
                       button.btn.btn-danger(type='submit', onclick='registar()')
                         | Registar

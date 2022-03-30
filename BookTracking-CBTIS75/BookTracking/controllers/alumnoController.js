@@ -40,6 +40,7 @@ alumnoController.alumno_verify = function (req,res){
                 req.session.usuario = usuario;
                 req.session.role = roles;
                  console.log(req.session.usuario+' verifica');
+                 console.log(req.session.role+' verifica');
                 if(roles=='admin'){
                     res.render('admin');
                 }else if(roles=='user'){
@@ -95,7 +96,7 @@ alumnoController.mostar = (req, res) => {
         }
         console.log("The INDEX");
         console.log(Alumno)
-        return res.render('lista_usuarios', {
+        return res.render('admin_lista_usuarios', {
             Alumno: Alumno
         });
 
@@ -134,7 +135,7 @@ alumnoController.crear = (req, res) => {
 
             });
         }
-        res.redirect('/administrar/lista-usuario');
+        res.redirect('/administrar/lista_usuario');
     })
 };
 
@@ -149,7 +150,7 @@ alumnoController.editar= (req, res)=>{
         }
         console.log("The INDEX");
         console.log(Alumno)
-        return res.render('vista_usuario', {
+        return res.render('admin_vista_usuario', {
             Alumno: Alumno
         });
     });
@@ -210,7 +211,7 @@ alumnoController.eliminar= (req, res)=>{
             return res.status(500).json({message: "Error al eliminar"})
         }
     });
-    res.redirect('/administrar/lista-usuario')
+    res.redirect('/administrar/lista_usuario')
 }
 
 
@@ -248,7 +249,11 @@ alumnoController.consultarLibro = (req, res) =>{
         console.log(libro+" Encontrado");
         console.log(Libro)
         return res.render('admin_detalle_atender_libro', {
+<<<<<<< HEAD
             Libro: Libro , id_sol, status
+=======
+            Libro: Libro , id_sol
+>>>>>>> 327b99e6438137d78be0ead47caff7e7a753a569
         });
 
     });
@@ -266,7 +271,7 @@ alumnoController.consultar_nombre= (req, res)=>{
         }
         console.log(busqueda+" Encontrado");
         console.log(Alumno)
-        return res.render('lista_usuarios', {
+        return res.render('admin_lista_usuarios', {
             Alumno: Alumno
         });
 
@@ -285,7 +290,7 @@ alumnoController.consultar_carrera= (req, res)=>{
         }
         console.log(busqueda+" Encontrado");
         console.log(Alumno)
-        return res.render('lista_usuarios', {
+        return res.render('admin_lista_usuarios', {
             Alumno: Alumno
         });
 
@@ -303,7 +308,7 @@ alumnoController.consultar_estatus= (req, res)=>{
         }
         console.log(busqueda+" Encontrado");
         console.log(Alumno)
-        return res.render('lista_usuarios', {
+        return res.render('admin_lista_usuarios', {
             Alumno: Alumno
         });
 
