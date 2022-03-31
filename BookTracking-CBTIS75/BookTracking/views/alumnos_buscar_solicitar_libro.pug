@@ -1,0 +1,32 @@
+extends layout
+
+block content
+  .container-fluid
+    .row
+      .col
+        .container-fluid
+          .row.barraresultado
+            .col Libros
+          .row.rowtabla
+            .row
+              .col
+                table#tabla.table.table-bordered.tabla
+                  thead
+                    tr
+                      th(scope='col') Nombre
+                      th(scope='col') Autor
+                      th(scope='col') Editorial
+                      th(scope='col') Unidades Disponibles
+                      th(scope='col') Ver detalles
+                  tbody
+                    each libro in Libro 
+                      tr
+                        td #{libro.Nombre}
+                        td #{libro.Autor}                      
+                        td #{libro.Editorial}
+                        td #{libro.Unidades_Disponibles}
+                        td  
+                          -var url = "/alumnos/alumnos_vista_libro/" + libro._id 
+                          a.btn.btn-outline-danger.bi.bi-book(href=url) 
+                        
+    script(src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous") 

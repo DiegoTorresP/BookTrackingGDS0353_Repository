@@ -20,7 +20,7 @@ libroController.mostar = (req, res) => {
       ]
     ).exec((err, edi)=>{
       console.log("The INDEX");
-    console.log(edi);
+    console.log(libro);
     return res.render("admin_buscar", {
       Libro: libro, edi:edi
     });
@@ -37,10 +37,19 @@ libroController.mostarAlumno = (req, res) => {
     }
     console.log("The INDEX");
     console.log(Libro);
-    return res.render("buscar_solicitar_libro", {
+    return res.render("alumnos_buscar_solicitar_libro", {
       Libro: Libro,
     });
   });
+};
+
+//Crear la referencia de link
+var link;
+libroController.imagen = (req, res) => {
+  let url = req.file.fileRef;
+  var url2=url.metadata.selfLink;
+  url2=url2.substring(37)
+  link= "https://firebasestorage.googleapis.com/v0"+url2+"?alt=media&"
 };
 
 libroController.crear = (req, res) => {
@@ -54,18 +63,18 @@ libroController.crear = (req, res) => {
     Nombre: req.body.nombre,
     Autor: Autor_c,
     Editorial: req.body.editorial,
-    LugarEdicion: req.body.lugarE,
-    FechaEdicion: req.body.fechaE,
-    AñoEntrada: req.body.anioE,
-    UnidadesDisponibles: req.body.unidadesD,
-    TotalUnidades: req.body.totalU,
-    NumPag: req.body.numP,
-    NumInventario: req.body.numI,
-    AnaquelCharola: req.body.anaquel,
+    Lugar_Edicion: req.body.lugarE,
+    Fecha_Edicion: req.body.fechaE,
+    Año_Entrada: req.body.anioE,
+    Unidades_Disponibles: req.body.unidadesD,
+    Total_Unidades: req.body.totalU,
+    Num_Pag: req.body.numP,
+    Num_Inventario: req.body.numI,
+    Anaquel_Charola: req.body.anaquel,
     Clasificacion: req.body.clasificacion,
     Observaciones: req.body.observaciones,
     Descripcion: req.body.descripcion,
-    Foto: "",
+    Foto: link,
   });
 
   libro.save(function (err, libro) {
@@ -74,6 +83,7 @@ libroController.crear = (req, res) => {
         message: "Error al crear el Libro",
       });
     }
+    link=null;
     res.redirect("/administrar/admin_buscar");
   });
 };
@@ -114,23 +124,23 @@ libroController.detalleAlumno = (req, res) => {
 //Editar el libro
 libroController.editar = (req, res) => {
   const Nombre = req.body.nombre;
-  const Autor = [req.body.autor];
+  const Autor = req.body.autor;
   //Convierte una cadena a un arreglo
   var Autor_c= Autor.split(',');
 
   const Editorial = req.body.editorial;
-  const LugarEdicion = req.body.lugarE;
-  const FechaEdicion = req.body.fechaE;
-  const AñoEntrada = req.body.anioE;
-  const UnidadesDisponibles = req.body.unidadesD;
-  const TotalUnidades = req.body.totalU;
-  const NumPag = req.body.numP;
-  const NumInventario = req.body.numI;
-  const AnaquelCharola = req.body.anaquel;
+  const Lugar_Edicion = req.body.lugarE;
+  const Fecha_Edicion = req.body.fechaE;
+  const Año_Entrada = req.body.anioE;
+  const Unidades_Disponibles = req.body.unidadesD;
+  const Total_Unidades = req.body.totalU;
+  const Num_Pag = req.body.numP;
+  const Num_Inventario = req.body.numI;
+  const Anaquel_Charola = req.body.anaquel;
   const Clasificacion = req.body.clasificacion;
   const Observaciones = req.body.observaciones;
   const Descripcion = req.body.descripcion;
-  const Foto = "";
+  const Foto = link;
 
   Libro.updateOne(
     { Nombre: Nombre },
@@ -139,14 +149,14 @@ libroController.editar = (req, res) => {
         Nombre: Nombre,
         Autor: Autor_c,
         Editorial: Editorial,
-        LugarEdicion: LugarEdicion,
-        FechaEdicion: FechaEdicion,
-        AñoEntrada: AñoEntrada,
-        UnidadesDisponibles: UnidadesDisponibles,
-        TotalUnidades: TotalUnidades,
-        NumPag: NumPag,
-        NumInventario: NumInventario,
-        AnaquelCharola: AnaquelCharola,
+        Lugar_Edicion: Lugar_Edicion,
+        Fecha_Edicion: Fecha_Edicion,
+        Año_Entrada: Año_Entrada,
+        Unidades_Disponibles: Unidades_Disponibles,
+        Total_Unidades: Total_Unidades,
+        Num_Pag: Num_Pag,
+        Num_Inventario: Num_Inventario,
+        Anaquel_Charola: Anaquel_Charola,
         Clasificacion: Clasificacion,
         Observaciones: Observaciones,
         Descripcion: Descripcion,
@@ -158,6 +168,7 @@ libroController.editar = (req, res) => {
       console.log("Error al actalizar el libro:", err);
       return;
     }
+    link=null;
     console.log("The INDEX");
     console.log(Libro);
     res.redirect("/administrar/admin_buscar");
@@ -266,7 +277,7 @@ libroController.consultar_editorial = (req, res) => {
   );
 };
 
-//actualizacion UnidadesDisponibles
+//actualizacion Unidades_Disponibles
  libroController.actualizarUnidades = (req, res) => {
   const id = req.params.id;
 
@@ -274,7 +285,29 @@ libroController.consultar_editorial = (req, res) => {
     { "_id": id },
     {
       $inc: {
-        UnidadesDisponibles: -1,
+        Unidades_Disponibles: -1,
+      },
+    }
+  ).exec((err, Libro) => {
+    if (err) {
+      console.log("Error al actualizar el libro:", err);
+      return;
+    }
+    console.log("The INDEX");
+    console.log(Libro);
+    res.redirect("/administrar/solicitudes");
+  });
+};
+
+//actualizacion Unidades_Disponibles
+libroController.actualizarUnidadesAlumno = (req, res) => {
+  const id = req.params.id;
+
+  Libro.updateOne(
+    { "_id": id },
+    {
+      $inc: {
+        Unidades_Disponibles: -1,
       },
     }
   ).exec((err, Libro) => {
@@ -288,6 +321,26 @@ libroController.consultar_editorial = (req, res) => {
   });
 };
 
+//actualizacion Unidades_Disponibles por denegacion
+libroController.actualizarUnidades_denegadas = (req, res) => {
+  const id = req.params.id;
 
+  Libro.updateOne(
+    { "_id": id },
+    {
+      $inc: {
+        Unidades_Disponibles: 1,
+      },
+    }
+  ).exec((err, Libro) => {
+    if (err) {
+      console.log("Error al actualizar el libro:", err);
+      return;
+    }
+    console.log("The INDEX");
+    console.log(Libro);
+    res.redirect("/administrar/solicitudes");
+  });
+};
 
 module.exports = libroController;

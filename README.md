@@ -166,10 +166,17 @@ Licencia.
 Contacto.
 
 ## Participantes
+
 * [Luis Gustavo García Carrillo](https://github.com/LuisGusDev)
+<img src="https://avatars.githubusercontent.com/u/86625096?v=4" alt="perfil" width="32px">
 * [Alejandro Rafael Guerrero Lozano](https://github.com/alejandro026)
+<img src="https://avatars.githubusercontent.com/u/92689016?v=4" alt="perfil" width="32px">
 * [José Manuel Matehuala Avilés](https://github.com/ManuelAvil)
+<img src="https://avatars.githubusercontent.com/u/88950498?v=4" alt="perfil" width="32px">
 * [Diego Torres Pérez](https://github.com/DiegoTorresP)
+<img src="https://avatars.githubusercontent.com/u/87044529?v=4" alt="perfil" width="32px">
+
+
 
 [contribuidores-shield]: https://img.shields.io/github/contributors/DiegoTorresP/BookTrackingGDS0353_Repository.svg?style=for-the-badge
 [contributors-url]: https://github.com/DiegoTorresP/BookTrackingGDS0353_Repository/graphs/contributors

@@ -1,3 +1,4 @@
+//Eliminar un alumno
 function Eliminar(ida) {
   Swal.fire({
     title: "Estas seguro de eliminar",
@@ -19,7 +20,29 @@ function Eliminar(ida) {
     }
   });
 }
-
+//Eliminar un libro
+function Eliminar_libro(id) { 
+  Swal.fire({
+    title: "Estas seguro de eliminar",
+    showDenyButton: true,
+    confirmButtonText: "Confirmar",
+    denyButtonText: `Cancelar`,
+  }).then((result) => {
+    if (result.isConfirmed) {
+      console.log(id);
+      Swal.fire({
+        icon: "success",
+        title: "Eliminado con exito",
+        showConfirmButton: false,
+        timer: 3000,
+      });
+      window.location = "/administrar/eliminar_libro/" + id;
+    } else if (result.isDenied) {
+      Swal.fire("Cancelado", "", "info");
+    }
+  });
+}
+//Animacion al registar
 function registar() {
   Swal.fire({
     icon: "success",
@@ -29,4 +52,9 @@ function registar() {
   });
 }
 
-
+//Deshabilitar retroceso por navegador
+function deshabilitaRetroceso(){
+  window.location.hash="no-back-button";
+  window.location.hash="Again-No-back-button" //chrome
+  window.onhashchange=function(){window.location.hash="";}
+}
