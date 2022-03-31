@@ -11,7 +11,11 @@ block content
           .row.rowtabla
             .col-4
               .row
-                img.dic(src='/images/diccionario.png')
+                each libro in Libro
+                  if libro.Foto==""
+                    img.dic(src="/images/diccionario.png")
+                  else 
+                    img.dic(src=libro.Foto)
               
             .col-8
               .container-fluid
@@ -25,7 +29,7 @@ block content
                           label.form-label(for='nombre') Nombre:
                           input#nombre.form-control(type='text' name='nombre' readonly value= libro.Nombre)
                           label.form-label(for='autor') Autor:
-                          input#autor.form-control(type='text' name='autor' readonly value= (JSON.parse(JSON.stringify(libro.Autor))))
+                          input#autor.form-control(type='text' name='autor' readonly value= libro.Autor.join())
                           label.form-label(for='editorial') Editorial:
                           input#editorial.form-control(type='text' name='editorial' readonly value= libro.Editorial)
                           label.form-label(for='lugarE') Lugar edición:

@@ -10,13 +10,14 @@ block content
           .row.rowtabla
             .col-4
               .row
-                img.dic(src='/images/diccionario.png')
+                img#prev.dic(src='')
               
               .row
-                .col
-                  .input-group.file
-                    input#inputGroupFile04.form-control(type='file', aria-describedby='inputGroupFileAddon04', aria-label='Upload')
-                    button#inputGroupFileAddon04.ov-btn-grow-spin.guardar(type='button') Guardar
+                  form(action='/administrar/crear_foto', method='post', enctype="multipart/form-data")
+                    .col
+                      .input-group.file
+                        input#foto.form-control(type='file',accept='image/png,image/jpeg,image/jpg,image/webp', name="foto")
+                        button#inputGroupFileAddon04.ov-btn-grow-spin.guardar(type='subtmit') Guardar
 
             .col-8
               .container-fluid
@@ -67,3 +68,4 @@ block content
                           .col(style='text-align: right; padding-top: 10px')    
                             button.btn.btn-success(type='submit')
                               | Registar      
+      script(src="/js/imagen.js")

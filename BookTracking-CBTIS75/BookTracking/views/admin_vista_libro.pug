@@ -2,31 +2,34 @@ extends layout
 
 block content
   .container-fluid
-    
-    .row
-      .col
-        .container-fluid
-          .row.barraresultado
-            .col Editar libro
-          .row.rowtabla
-            .col-4
-              .row
-                img.dic(src='/images/diccionario.png')
-              
-              .row
-                .col
-                  .input-group.file
-                    input#inputGroupFile04.form-control(type='file', aria-describedby='inputGroupFileAddon04', aria-label='Upload')
-                    button#inputGroupFileAddon04.ov-btn-grow-spin.guardar(type='button') Guardar
-
-            .col-8
-              .container-fluid
-                br
-                h5 Datos del libro
+    each libro in Libro
+      .row
+        .col
+          .container-fluid
+            .row.barraresultado
+              .col Editar libro
+            .row.rowtabla
+              .col-4
                 .row
-                  form(action='/administrar/libro/editar' method='post')
-                    .row
-                      each libro in Libro
+                if libro.Foto==""
+                  img#prev.dic(src="/images/diccionario.png")
+                else 
+                  img#prev.dic(src=libro.Foto)
+                
+                .row
+                  form(action='/administrar/crear_foto', method='post', enctype="multipart/form-data")
+                    .col
+                      .input-group.file
+                        input#foto.form-control(type='file',accept='image/png,image/jpeg,image/jpg,image/webp', name="foto")
+                        button#inputGroupFileAddon04.ov-btn-grow-spin.guardar(type='subtmit') Guardar
+
+              .col-8
+                .container-fluid
+                  br
+                  h5 Datos del libro
+                  .row
+                    form(action='/administrar/libro/editar' method='post')
+                      .row
                         .col
                           label.form-label(for='nombre') Nombre:
                           input#nombre.form-control(type='text' name='nombre' requerid  value= libro.Nombre)
@@ -67,6 +70,7 @@ block content
                               a.btn.btn-danger(href='/administrar/admin_buscar') 
                                 | Cancelar
                             .col(style='text-align: right; padding-top: 10px')
-                         
+                        
                               button.btn.btn-success(type='submit')
-                                | Guardar      
+                                | Guardar     
+    script(src="/js/imagen.js") 

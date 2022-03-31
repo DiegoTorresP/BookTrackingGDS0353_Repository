@@ -43,6 +43,15 @@ libroController.mostarAlumno = (req, res) => {
   });
 };
 
+//Crear la referencia de link
+var link;
+libroController.imagen = (req, res) => {
+  let url = req.file.fileRef;
+  var url2=url.metadata.selfLink;
+  url2=url2.substring(37)
+  link= "https://firebasestorage.googleapis.com/v0"+url2+"?alt=media&"
+};
+
 libroController.crear = (req, res) => {
   console.log("Registrando Libro");
 
@@ -65,7 +74,7 @@ libroController.crear = (req, res) => {
     Clasificacion: req.body.clasificacion,
     Observaciones: req.body.observaciones,
     Descripcion: req.body.descripcion,
-    Foto: "",
+    Foto: link,
   });
 
   libro.save(function (err, libro) {
@@ -74,6 +83,7 @@ libroController.crear = (req, res) => {
         message: "Error al crear el Libro",
       });
     }
+    link=null;
     res.redirect("/administrar/admin_buscar");
   });
 };
@@ -130,7 +140,7 @@ libroController.editar = (req, res) => {
   const Clasificacion = req.body.clasificacion;
   const Observaciones = req.body.observaciones;
   const Descripcion = req.body.descripcion;
-  const Foto = "";
+  const Foto = link;
 
   Libro.updateOne(
     { Nombre: Nombre },
@@ -158,6 +168,7 @@ libroController.editar = (req, res) => {
       console.log("Error al actalizar el libro:", err);
       return;
     }
+    link=null;
     console.log("The INDEX");
     console.log(Libro);
     res.redirect("/administrar/admin_buscar");
