@@ -3,27 +3,6 @@ extends layout
 block content
   .container-fluid
     .row
-        .col
-          .nav.navbar.navbar-light.bg-light.barrabusqueda1
-            .col
-              form.container-fluid.justify-content-start(action='/administrar/buscar_nombre_libro' method='post')
-                .col-auto
-                  input#nombreB.form-control(placeholder='Nombre' name='nombre') 
-                .col-auto
-                  button.btn.btn-outline-danger.bi.bi-search(type='submit' style='margin:auto')
-            .col
-              form.container-fluid.justify-content-start(action='/administrar/buscar_autor_libro' method='post')
-                .col-auto
-                  input#autorB.form-control(placeholder='Autor' name='autor')
-                .col-auto
-                  button.btn.btn-outline-danger.bi.bi-search(type='submit')
-            .col
-              form.container-fluid.justify-content-start(action='buscar_editorial_libro' method='post')
-                .col-auto
-                  input#editorialB.form-control(placeholder='Editorial' name='editorial')
-                .col-auto
-                  button.btn.btn-outline-danger.bi.bi-search(type='submit')
-    .row
       .col
         .container-fluid
           .row.barraresultado
@@ -31,7 +10,7 @@ block content
           .row.rowtabla
             .row
               .col
-                table.table.table-bordered.tabla
+                table#tabla.table.table-bordered.tabla
                   thead
                     tr
                       th(scope='col') Nombre

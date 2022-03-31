@@ -4,6 +4,7 @@ var user_controller = require("../controllers/alumnoController");
 var solicitudes_controller = require("../controllers/solicitudesController");
 var libro_controller = require("../controllers/libroController");
 const auth = require('../middlewares/usuario');
+const upload = require("../middlewares/foto");
 //Modulos Controladores Aqui
 
 //Rutas de Administrador
@@ -23,6 +24,8 @@ router.post("/crear",auth.isAdmin,user_controller.crear);
 
 //Se llama al controlador para crear libro
 router.post("/crear_libro",auth.isAdmin,libro_controller.crear);
+//Ruta para subir la foto
+router.post("/crear_foto", upload.single("foto"), libro_controller.imagen);
 
 //Ruta para eliminar
 router.get("/eliminar/:id",auth.isAdmin,user_controller.eliminar);
