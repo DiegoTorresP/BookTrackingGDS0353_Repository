@@ -1,7 +1,12 @@
 extends layout
 
 block content
- .container-fluid.botonera
+ 
+    .row
+      .col(style='text-align: left; padding-top: 10px')
+        a.btn.btn-danger#red(href='/administrar') 
+          | Regresar
+    .container-fluid.botonera
       .row.hijo 
         .col
           a.ov-btn-grow-spin(href= '/administrar/admin_buscar')

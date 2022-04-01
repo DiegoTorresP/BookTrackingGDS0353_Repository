@@ -39,6 +39,7 @@ alumnoController.alumno_verify = function (req,res){
                 }); 
                 req.session.usuario = usuario;
                 req.session.role = roles;
+                req.session.nombre = 
                  console.log(req.session.usuario+' verifica');
                  console.log(req.session.role+' verifica');
                 if(roles=='admin'){
@@ -52,7 +53,7 @@ alumnoController.alumno_verify = function (req,res){
             } else {
                 let data = {
                     title: 'Ingresar al Sistema',
-                    message: 'Usuario o contraseña incorrecto',
+                    message: 'Usuario o Contraseña incorrecto',
                     layout:false
                 }
                 res.render('login', data);   
