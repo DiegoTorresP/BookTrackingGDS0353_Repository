@@ -944,11 +944,8 @@ solicitudesController.mostarHistorial = (req, res) => {
   const usuario = req.session.usuario;
   console.log(req.session.usuario)
   solicitud
- 
     .aggregate([
-       {
-        $match: {Solicitante:'$$'+usuario}
-      }, 
+       
       {
         $lookup: {
           from: "usuarios",
@@ -971,7 +968,11 @@ solicitudesController.mostarHistorial = (req, res) => {
       {
         $unwind: "$libro",
       },
-      
+      {
+        $match: {
+          Solicitante:Number(usuario)
+        }
+      }
     ])
     .exec((err, Solicitud) => {
       /* Solicitud.forEach(element => {
