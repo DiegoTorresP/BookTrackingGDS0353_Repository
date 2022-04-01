@@ -21,9 +21,7 @@ router.get("/alumnos_vista_libro/:id",auth.isUser, libro_controller.detalleAlumn
 //Ruta para crear solicitud
 router.get("/solicitar_libro/:id/stock/:Unidades_Disponibles",auth.isUser, solicitudesController.crear_solicitud);
 
-router.get("/historial_prestamos", auth.isUser,function (req, res, next) {
-  res.render("alumnos_entregas_solicitudes_prestamos");
-});
+router.get("/historial_prestamos", auth.isUser,solicitudesController.mostarHistorial);
 router.get("/ver_mi_qr",auth.isUser, function (req, res, next) {
   res.render("alumnos_ver_mi_qr");
 });
