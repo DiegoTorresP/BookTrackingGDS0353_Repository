@@ -792,7 +792,7 @@ solicitudesController.actualizarEstatus_denegado = (req, res) => {
         console.log("Error: ", err);
         return;
       }
-      console.log("Solicitud");
+      console.log("Solicitud"); 
       console.log(Solicitud);
       Solicitud.forEach(function(solicitud){
         correoUsuario = solicitud.nombre.Correo_Electronico_1;
@@ -933,6 +933,59 @@ solicitudesController.actualizarEstatus_denegado = (req, res) => {
         await sendEmail();
       })();
       res.redirect("/administrar/actualizar_denegacion/"+id);
+    });
+};
+
+//Mostar historial
+
+
+solicitudesController.mostarHistorial = (req, res) => {
+  
+  const usuario = req.session.usuario;
+  console.log(req.session.usuario)
+  solicitud
+ 
+    .aggregate([
+       {
+        $match: {Solicitante:'$$'+usuario}
+      }, 
+      {
+        $lookup: {
+          from: "usuarios",
+          localField: "Solicitante",
+          foreignField: "_id",
+          as: "nombre",
+        },
+      },
+      {
+        $unwind: "$nombre",
+      },
+      {
+        $lookup: {
+          from: "libros",
+          localField: "Libro",
+          foreignField: "_id",
+          as: "libro",
+        },
+      },
+      {
+        $unwind: "$libro",
+      },
+      
+    ])
+    .exec((err, Solicitud) => {
+      /* Solicitud.forEach(element => {
+        if(element.Solicitante==usuario){
+          his+=element;
+        }
+      }); */
+      if (err) {
+        console.log("Error: ", err);
+        return;
+      }
+      console.log("The INDEX");
+      console.log(Solicitud);
+      return res.render("alumnos_entregas_solicitudes_prestamos", {  his : Solicitud});
     });
 };
 
