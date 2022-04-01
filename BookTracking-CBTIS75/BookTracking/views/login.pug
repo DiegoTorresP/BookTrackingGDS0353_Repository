@@ -6,7 +6,6 @@ block content
     h1 Iniciar sesión
     form(action='/verify', method='post')
       .loginformlabel
-      #{message}
       label(for='username')
         i.fas.fa-user
         .loginforminput
@@ -19,6 +18,10 @@ block content
       .loginformlabel
        
       button.boton1(type='button', onclick='submit();') Ingresar
+      br
+      br
+      if {data}
+        h5(style='color:red') #{message}
       br
       br 
 

@@ -5,6 +5,10 @@ block content
     .row
       .col
         .container-fluid
+          .row
+            .col(style='text-align: left; padding-top: 10px')
+              a.btn.btn-danger#red(href='/administrar/menu_libro') 
+                | Regresar
           .row.barraresultado
             .col Libros
           .row.rowtabla
@@ -59,5 +63,6 @@ block content
                                                     |Guardar
                                       .modal-footer
                                           button.btn.btn-secondary#cancb(type='button', data-bs-dismiss='modal') Cerrar 
+            
     script(src="/js/sweet_carga.js")                    
     script(src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous") 
