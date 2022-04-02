@@ -22,10 +22,10 @@ alumnoController.alumno_verify = function (req,res){
     console.log('Usuario: '+ usuario + 'Pass: ' + pass);
 
     if (usuario && pass) {
-        Alumno.find({'Username': usuario}, function(error, results){
+        Alumno.find({'Username': usuario, 'Password': pass}, function(error, results){
             console.log(results);
 
-            let passw;
+            /* let passw;
             results.forEach(e => {
                 passw= e.Password;
             });
@@ -35,7 +35,7 @@ alumnoController.alumno_verify = function (req,res){
                 if (err) {
                     console.log("Error comprobando:", err);
                 } else {
-                    console.log("¿La contraseña coincide?: " + coinciden);
+                    console.log("¿La contraseña coincide?: " + coinciden); */
                     if (error) {
                         let data = {
                             title: 'Ingresar al Sistema',
@@ -44,8 +44,8 @@ alumnoController.alumno_verify = function (req,res){
                         }
                         res.render('login', data);                
                     }
-        
-                    if (results.length > 0&&coinciden==true) {
+                    //&&coinciden==true
+                    if (results.length > 0) {
                         let roles
                         results.forEach(element => {
                             roles= element.Roles;
@@ -72,8 +72,10 @@ alumnoController.alumno_verify = function (req,res){
                         res.render('login', data);   
                     }
                 }
-            });
-        });
+            //}
+            
+            );
+       // });
 
     } else {
         let data = {
