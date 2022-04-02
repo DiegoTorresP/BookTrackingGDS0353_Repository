@@ -1,4 +1,4 @@
-![Esta es una imagen](https://cdn.pixabay.com/photo/2022/03/13/05/00/05-00-35-473_960_720.png)
+![Esta es una imagen](https://diegotorresp.github.io/resources/bt.png)
 # Integradora II - BookTrackingGDS0353_Repository
 [![Contribuidores][contribuidores-shield]][contributors-url]
 
@@ -103,7 +103,7 @@ Esquema de la base de datos (nombre de campo, tipo de datos, restricciones, etc)
 <!-- Diagrama de Clases -->
 #### Diagrama de Clases.
 Esquema de las clases empleadas (atributos y sus métodos).
-![Esta es una imagen](https://cdn.pixabay.com/photo/2022/03/13/04/55/04-55-28-327_960_720.png)
+![Esta es una imagen](https://diegotorresp.github.io/resources/DiagramaBookTracking%20(1).png)
 
 <!-- Diagrama de Componentes -->
 #### Diagrama de Componentes.
@@ -168,13 +168,9 @@ Contacto.
 ## Participantes
 
 * [Luis Gustavo García Carrillo](https://github.com/LuisGusDev)
-<img src="https://avatars.githubusercontent.com/u/86625096?v=4" alt="perfil" width="32px">
 * [Alejandro Rafael Guerrero Lozano](https://github.com/alejandro026)
-<img src="https://avatars.githubusercontent.com/u/92689016?v=4" alt="perfil" width="32px">
 * [José Manuel Matehuala Avilés](https://github.com/ManuelAvil)
-<img src="https://avatars.githubusercontent.com/u/88950498?v=4" alt="perfil" width="32px">
 * [Diego Torres Pérez](https://github.com/DiegoTorresP)
-<img src="https://avatars.githubusercontent.com/u/87044529?v=4" alt="perfil" width="32px">
 
 
 
