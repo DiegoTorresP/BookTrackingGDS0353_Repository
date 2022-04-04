@@ -2,21 +2,21 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
 var libroSchema = new Schema({ 
-    Nombre: String,
+    Nombre: {type:String},
     Autor: [{type:Object}],
-    Editorial: String,
-    Lugar_Edicion: String,
-    Fecha_Edicion: String,
-    Año_Entrada: String,
-    Unidades_Disponibles: Number,
-    Total_Unidades: Number,
-    Num_Pag: Number,
-    Num_Inventario: Number,
-    Anaquel_Charola: String,
-    Clasificacion: String,
-    Observaciones: String,
-    Descripcion: String,
-    Foto: String,
+    Editorial: {type:String},
+    Lugar_Edicion: {type:String},
+    Fecha_Edicion: {type:String},
+    Año_Entrada: {type:String},
+    Unidades_Disponibles: {type:Number},
+    Total_Unidades: {type:Number},
+    Num_Pag: {type:Number},
+    Num_Inventario: {type:Number},
+    Anaquel_Charola: {type:String},
+    Clasificacion: {type:String},
+    Observaciones: {type:String},
+    Descripcion: {type:String},
+    Foto: {type:String},
 });
 
 

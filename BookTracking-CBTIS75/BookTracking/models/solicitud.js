@@ -3,12 +3,12 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
     ObjectId = Schema.ObjectId;
 var solicitudSchema = new Schema({
-    Solicitante: Number,
+    Solicitante: {type:Number},
     Libro: ObjectId,
-    Fecha_Solicitud:Date,
-    Estatus_Prestamo: String,
-    Fecha_Entrega:Date,
-    Incidencias:Boolean
+    Fecha_Solicitud:{tye:Date},
+    Estatus_Prestamo: {type:String},
+    Fecha_Entrega:{type:Date},
+    Incidencias:{type:Boolean}
 });
 
 
