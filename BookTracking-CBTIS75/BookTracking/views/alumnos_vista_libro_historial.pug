@@ -1,0 +1,71 @@
+extends layout
+
+block content
+  .container-fluid
+
+    .row
+      .col
+        .container-fluid
+          .row.barraresultado
+            .col Ver libro
+          .row.rowtabla
+            .col-4
+              .row
+                each libro in Libro
+                  if libro.Foto==""
+                    img.dic(src="/images/diccionario.png")
+                  else 
+                    img.dic(src=libro.Foto)
+              
+            .col-8
+              .container-fluid
+                br
+                h5 Datos del libro
+                .row
+                  form(action='/alumnos/alumnos_vista_libro' method='post')
+                    .row
+                      each libro in Libro
+                        .col
+                          label.form-label(for='nombre') Nombre:
+                          input#nombre.form-control(type='text' name='nombre' readonly value= libro.Nombre)
+                          label.form-label(for='autor') Autor:
+                          input#autor.form-control(type='text' name='autor' readonly value= libro.Autor.join())
+                          label.form-label(for='editorial') Editorial:
+                          input#editorial.form-control(type='text' name='editorial' readonly value= libro.Editorial)
+                          label.form-label(for='lugarE') Lugar edición:
+                          input#lugarE.form-control(type='text' name='lugarE' readonly value= libro.Lugar_Edicion)
+                          label.form-label(for='fechaE') Fecha edición:
+                          input#fechaE.form-control(type='text' name='fechaE' readonly value= libro.Fecha_Edicion)
+                          label.form-label(for='anioE') Año entrada:
+                          input#anioE.form-control(type='text' name='anioE' readonly value= libro.Año_Entrada)
+                          label.form-label(for='unidadesD') Unidades Disponibles:
+                          input#unidadesD.form-control(type='number' name='unidadesD' readonly value= libro.Unidades_Disponibles)
+                          .row
+                            .col(style='text-align: right; padding-top: 10px')
+                              a.btn.btn-danger(href='/alumnos/historial_prestamos') 
+                                | Regresar
+                        .col
+                          label.form-label(for='totalU') Total Unidades:
+                          input#totalU.form-control(type='number' name='totalU' readonly value= libro.Total_Unidades)
+                          label.form-label(for='numP') Número págs.:
+                          input#numP.form-control(type='number' name='numP' readonly value= libro.Num_Pag)
+                          label.form-label(for='numI') Número inventario:
+                          input#numI.form-control(type='number' name='numI' readonly value= libro.Num_Inventario)
+                          .row
+                            .col
+                              label.form-label(for='anaquel') Anaquel - Charola:
+                              input#anaquel.form-control(type='text' name='anaquel' readonly value= libro.Anaquel_Charola)
+                            .col
+                              label.form-label(for='clasificacion') Clasificación:
+                              input#clasificacion.form-control(type='text' name='clasificacion' readonly value= libro.Clasificacion)
+                          
+                          label.form-label(for='observaciones') Observaciones:
+                          textarea#observaciones.form-control(type='text' name='observaciones' readonly )=libro.Observaciones
+                          label.form-label(for='descripcion') Descripción:
+                          textarea#descripcion.form-control(type='text' name='descripcion' readonly )=libro.Descripcion
+                          .row
+                            .col(style='text-align: right; padding-top: 10px')
+                            if libro.Unidades_Disponibles<2
+                              .alert.alert-info(role='alert')
+                                | Este libro solo esta disponible para consulta en biblioteca.
+                            
