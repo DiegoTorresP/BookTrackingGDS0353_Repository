@@ -1,6 +1,7 @@
 const Alumno = require("../models/alumno");
 const Libro = require("../models/libro");
 const { body,validationResult} = require('express-validator');
+const bcrypt = require('bcryptjs');
 var alumnoController = {};
 
 alumnoController.alumno_login = function(req,res){
@@ -21,43 +22,60 @@ alumnoController.alumno_verify = function (req,res){
     console.log('Usuario: '+ usuario + 'Pass: ' + pass);
 
     if (usuario && pass) {
-        Alumno.find({'Username': usuario, 'Password':pass}, function(error, results){
+        Alumno.find({'Username': usuario, 'Password': pass}, function(error, results){
             console.log(results);
-            if (error) {
-                let data = {
-                    title: 'Ingresar al Sistema',
-                    message: 'Hubo un error contacte a soporte',
-                    layout:false
-                }
-                res.render('login', data);                
-            }
 
-            if (results.length > 0) {
-                let roles
-                results.forEach(element => {
-                    roles= element.Roles;
-                }); 
-                req.session.usuario = usuario;
-                req.session.role = roles;
-                 console.log(req.session.usuario+' verifica');
-                 console.log(req.session.role+' verifica');
-                if(roles=='admin'){
-                    res.render('admin');
-                }else if(roles=='user'){
-                    res.render('alumnos');//next();
+            /* let passw;
+            results.forEach(e => {
+                passw= e.Password;
+            });
+            console.log(passw);
+            passw=passw.toString();
+            bcrypt.compare(pass, passw, (err, coinciden) => {
+                if (err) {
+                    console.log("Error comprobando:", err);
+                } else {
+                    console.log("¿La contraseña coincide?: " + coinciden); */
+                    if (error) {
+                        let data = {
+                            title: 'Ingresar al Sistema',
+                            message: 'Hubo un error contacte a soporte',
+                            layout:false
+                        }
+                        res.render('login', data);                
+                    }
+                    //&&coinciden==true
+                    if (results.length > 0) {
+                        let roles
+                        results.forEach(element => {
+                            roles= element.Roles;
+                        }); 
+                        req.session.usuario = usuario;
+                        req.session.role = roles;
+                        req.session.nombre = 
+                         console.log(req.session.usuario+' verifica');
+                         console.log(req.session.role+' verifica');
+                        if(roles=='admin'){
+                            res.render('admin');
+                        }else if(roles=='user'){
+                            res.render('alumnos');//next();
+                        }
+                        
+                        
+        
+                    } else {
+                        let data = {
+                            title: 'Ingresar al Sistema',
+                            message: 'Usuario o Contraseña incorrecto',
+                            layout:false
+                        }
+                        res.render('login', data);   
+                    }
                 }
-                
-                
-
-            } else {
-                let data = {
-                    title: 'Ingresar al Sistema',
-                    message: 'Usuario o contraseña incorrecto',
-                    layout:false
-                }
-                res.render('login', data);   
-            }
-        });
+            //}
+            
+            );
+       // });
 
     } else {
         let data = {
@@ -106,37 +124,48 @@ alumnoController.mostar = (req, res) => {
 //Insertar un Alumno
 alumnoController.crear = (req, res) => {
     console.log('Registrando Usuario');
-    const alumno = new Alumno({
-        _id: req.body.numControl,
-        Apellido_Paterno: req.body.apPaterno,
-        Apellido_Materno: req.body.apMaterno,
-        Nombre_s: req.body.nombre,
-        Genero: req.body.sexo,
-        CURP: req.body.curp,
-        Carrera_Tecnica: req.body.especialidad,
-        Turno: req.body.turno,
-        Clave_Lada: req.body.lada,
-        Telefono_de_contacto_fijo_1: req.body.telefonoFijo1,
-        Telefono_de_contacto_fijo_2: req.body.telefonoFijo2,
-        Telefono_movil_celular: req.body.telefonoMovil,
-        Correo_Electronico_1: req.body.correo1,
-        Correo_Electronico_2: req.body.correo2,
-        Estatus_Escolar: "Activo",
-        Num_Incidencias: 0,
-        qr: "",
-        password: "",
-        Grupo: req.body.grupo,
-        Generacion: req.body.generacion,
-    });
-    alumno.save(function (err, alumno) {
+    const passw = '$'+req.body.numControl+'cbtis75';
+    const rondasDeSal = 10;
+    bcrypt.hash(passw, rondasDeSal, (err, password) => {
         if (err) {
-            return res.status(500).json({
-                message: "Error al crear el Alumno"
-
+            console.log("Error hasheando:", err);
+        } else {
+            console.log("Y hasheada es: " + password);
+            const alumno = new Alumno({
+                _id: req.body.numControl,
+                Apellido_Paterno: req.body.apPaterno,
+                Apellido_Materno: req.body.apMaterno,
+                Nombre_s: req.body.nombre,
+                Genero: req.body.sexo,
+                CURP: req.body.curp,
+                Carrera_Tecnica: req.body.especialidad,
+                Turno: req.body.turno,
+                Clave_Lada: req.body.lada,
+                Telefono_de_contacto_fijo_1: req.body.telefonoFijo1,
+                Telefono_de_contacto_fijo_2: req.body.telefonoFijo2,
+                Telefono_movil_celular: req.body.telefonoMovil,
+                Correo_Electronico_1: req.body.correo1,
+                Correo_Electronico_2: req.body.correo2,
+                Estatus_Escolar: "Activo",
+                Num_Incidencias: 0,
+                Qr: "",
+                Password: password,
+                Grupo: req.body.grupo,
+                Generacion: req.body.generacion,
+                Username: req.body.numControl,
+                Roles: "user",
             });
+            alumno.save(function (err, alumno) {
+                if (err) {
+                    return res.status(500).json({
+                        message: "Error al crear el Alumno"
+        
+                    });
+                }
+                res.redirect('/administrar/lista_usuario');
+            })
         }
-        res.redirect('/administrar/lista_usuario');
-    })
+    }); 
 };
 
 //Editar

@@ -320,7 +320,7 @@ var solicitudesController = {};
                           <td style="padding:30px;background-color:#ffffff;border-radius:50px">
                             <h1 style="margin-top:0;margin-bottom:16px;font-size:26px;line-height:32px;font-weight:bold;letter-spacing:-0.02em;"> <center>Cancelación de prestamo ❌</center></h1>
                             <p style="margin:0;"><center>Anuncio:</center>
-                            <center>${nombreUsuario} tu prestamo del libro ${nombreLibro} se ha cancelado dado que el horario de entrega ${solicitudes.FechaEntrega.getHours()}:00 ha pasado.</center>
+                            <center>${nombreUsuario} tu prestamo del libro ${nombreLibro} se ha cancelado dado que el horario de entrega ${solicitudes.Fecha_Entrega.getHours()}:00 ha pasado.</center>
                             <center>Te solicitamos volver a hacer el proceso</center>
                             </p>
                           </td>
@@ -444,6 +444,7 @@ solicitudesController.mostar = (req, res) => {
       }
       console.log("The INDEX");
       console.log(Solicitud);
+      console.log('Fecha: '+Solicitud.Fecha_Entrega);
       return res.render("admin_solicitudes", { Solicitud: Solicitud });
     });
 };
@@ -503,7 +504,6 @@ solicitudesController.crear_solicitud = (req, res) => {
     const usuario = req.session.usuario;
     //console.log(req.params.matricula);
     console.log(id);
-    const solicitante = req.session.usuario;
     const Solicitud = new solicitud({
       Solicitante: usuario,
       Libro: id,
@@ -678,7 +678,7 @@ solicitudesController.actualizarEstatus = (req, res) => {
                     <p style="margin:0;"><center>Información de prestamo:</center>
                     <center>${nombreUsuario} tu solicitud del libro ${nombreLibro} con fecha del ${Fecha_Solicitud} ha sido aprobada.</center>
                     <center>Favor de pasar a recoger tu libro con tu código QR</center>
-                    <center>Deberas recogerlo en biblioteca el ${fecha_esp} antes de las ${fecha.getHours()}:${fecha.getMinutes()}0 am.</center>
+                    <center>Deberas recogerlo en biblioteca el ${fecha_esp} antes de las ${fecha.getHours()}:${fecha.getMinutes()}0 hrs.</center>
                     </p>
                   </td>
                 </tr>
@@ -792,7 +792,7 @@ solicitudesController.actualizarEstatus_denegado = (req, res) => {
         console.log("Error: ", err);
         return;
       }
-      console.log("Solicitud");
+      console.log("Solicitud"); 
       console.log(Solicitud);
       Solicitud.forEach(function(solicitud){
         correoUsuario = solicitud.nombre.Correo_Electronico_1;
@@ -933,6 +933,60 @@ solicitudesController.actualizarEstatus_denegado = (req, res) => {
         await sendEmail();
       })();
       res.redirect("/administrar/actualizar_denegacion/"+id);
+    });
+};
+
+//Mostar historial
+
+
+solicitudesController.mostarHistorial = (req, res) => {
+  
+  const usuario = req.session.usuario;
+  console.log(req.session.usuario)
+  solicitud
+    .aggregate([
+       
+      {
+        $lookup: {
+          from: "usuarios",
+          localField: "Solicitante",
+          foreignField: "_id",
+          as: "nombre",
+        },
+      },
+      {
+        $unwind: "$nombre",
+      },
+      {
+        $lookup: {
+          from: "libros",
+          localField: "Libro",
+          foreignField: "_id",
+          as: "libro",
+        },
+      },
+      {
+        $unwind: "$libro",
+      },
+      {
+        $match: {
+          Solicitante:Number(usuario)
+        }
+      }
+    ])
+    .exec((err, Solicitud) => {
+      /* Solicitud.forEach(element => {
+        if(element.Solicitante==usuario){
+          his+=element;
+        }
+      }); */
+      if (err) {
+        console.log("Error: ", err);
+        return;
+      }
+      console.log("The INDEX");
+      console.log(Solicitud);
+      return res.render("alumnos_entregas_solicitudes_prestamos", {  his : Solicitud});
     });
 };
 

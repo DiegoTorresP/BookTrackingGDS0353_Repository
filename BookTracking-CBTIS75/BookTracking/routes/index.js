@@ -2,7 +2,7 @@ var express = require('express');
 
 var router = express.Router();
 const controller = require('../controllers/alumnoController');
-
+const auth = require('../middlewares/usuario');
 
 /* GET home page. */
 router.get('/',function(req,res){
@@ -13,9 +13,9 @@ router.get('/',function(req,res){
   res.render('login',data);
 });
 
-/*  router.get('/*',function(req,res){
-  res.render('login')
-}) */ 
+/* router.get('/*',function(req,res){
+  res.redirect('/');
+})  */
 
 //router.get('/home',controller.alumno_home);
 
@@ -29,7 +29,7 @@ router.get('/register', function(req, res, next){
   res.render('register', data);
 });
 
-router.get('/logout', controller.alumno_logout);
+router.get('/logout',auth.isLogin, controller.alumno_logout);
 
 router.post("/verify", controller.alumno_verify);
 

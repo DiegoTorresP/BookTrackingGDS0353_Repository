@@ -5,6 +5,10 @@ block content
     .row
       .col
         .container-fluid
+          .row
+            .col(style='text-align: left; padding-top: 10px')
+              a.btn.btn-danger#red(href='/administrar') 
+                | Regresar
           .row.barraresultado
             .col Atender Solicitudes
           .row.rowtabla
@@ -23,7 +27,7 @@ block content
                       th(scope='col') Ver detalles de Alumno
                   tbody
                     -var meses = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
-                    -var dias_semana = ['Domingo', 'Lunes', 'martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+                    -var dias_semana = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
                     each solicitud in Solicitud 
                       tr 
                         td(style='display:none;' id='id') #{solicitud._id}
