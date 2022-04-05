@@ -115,6 +115,23 @@ libroController.detalleAlumno = (req, res) => {
     }
     console.log("The INDEX");
     console.log(Libro);
+    return res.render("alumnos_vista_libro_historial", {
+      Libro: Libro,
+    });
+  });
+};
+
+//Consultar libro
+libroController.detalleLibro = (req, res) => {
+  const id = req.params.id;
+  console.log(id)
+  Libro.find({ _id: id }).exec((err, Libro) => {
+    if (err) {
+      console.log("Error: ", err);
+      return;
+    }
+    console.log("The INDEX");
+    console.log(Libro);
     return res.render("alumnos_vista_libro", {
       Libro: Libro,
     });
