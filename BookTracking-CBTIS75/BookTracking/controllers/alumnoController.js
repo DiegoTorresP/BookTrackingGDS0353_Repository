@@ -185,6 +185,70 @@ alumnoController.editar= (req, res)=>{
     });
 }
 
+alumnoController.crear_usuario = (req, res) => {
+    console.log('Registrando Usuario');
+    const passw = req.body.password;
+    const rondasDeSal = 10;
+    var id = Math.floor(Math.random()*1257)+5;
+    bcrypt.hash(passw, rondasDeSal, (err, password) => {
+        if (err) {
+            console.log("Error hasheando:", err);
+        } else {
+            console.log("Y hasheada es: " + password);
+            const alumno = new Alumno({
+                _id: id,
+                Apellido_Paterno: req.body.apPaterno,
+                Apellido_Materno: req.body.apMaterno,
+                Nombre_s: req.body.nombre,
+                Genero: null,
+                CURP: null,
+                Carrera_Tecnica: null,
+                Turno: null,
+                Clave_Lada: null,
+                Telefono_de_contacto_fijo_1: null,
+                Telefono_de_contacto_fijo_2: null,
+                Telefono_movil_celular: null,
+                Correo_Electronico_1: null,
+                Correo_Electronico_2: null,
+                Estatus_Escolar: null,
+                Num_Incidencias: null,
+                Qr: null,
+                Password: password,
+                Grupo: null,
+                Generacion: null,
+                Username: req.body._id,
+                Roles: req.body.role,
+            });
+            alumno.save(function (err, alumno) {
+                if (err) {
+                    return res.status(500).json({
+                        message: "Error al crear el Alumno"
+        
+                    });
+                }
+                res.redirect('/administrar/lista_usuario');
+            })
+        }
+    }); 
+};
+
+//Editar
+//Mostar el alumno a editar
+alumnoController.editar= (req, res)=>{
+    const id= req.params.id;
+    Alumno.find({"_id":id}).exec((err, Alumno) => {
+        if (err) {
+            console.log('Error: ', err);
+            return;
+        }
+        console.log("The INDEX");
+        console.log(Alumno)
+        return res.render('admin_vista_usuario', {
+            Alumno: Alumno
+        });
+    });
+}
+
 //Editar el alumno mostrado
 alumnoController.editar1=(req, res)=>{
         const _id= req.body.numControl;
