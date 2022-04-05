@@ -9,6 +9,11 @@ block content
             .col.botonbusqueda
               a.btn.btn-outline-success(href='/administrar/lista_usuario') Ver lista de Alumnos 
                 img(src='../images/buscar.png' style='width : 35px')
+            .col
+            .col
+            .col
+            .col
+              a.btnAdmin.btn.btn-outline-danger(type='button', data-bs-toggle='modal', data-bs-target='#resgistrar_usuarios') Crear usuario administrador
     .row
       .col
         .container-fluid
@@ -65,3 +70,33 @@ block content
                       a.btn(href='/administrar') Cancelar
                       button.btn.btn-danger(type='submit', onclick='registar()')
                         | Registar
+
+  #resgistrar_usuarios.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalCenterTitle', aria-hidden='true')
+    .modal-dialog.modal-dialog-centered(role='document')
+        .modal-content
+            .modal-header
+                h5#exampleModalCenterTitle.modal-title Registar usuario
+                button.btn-close(type='button', data-bs-dismiss='modal', aria-label='Close')
+            .modal-body
+              .row
+                 form(action='/administrar/crear_usuario' method='post')
+                  label.form-label(for='numControl') Nombre de usuario
+                  input#_id.form-control(type='text' name='numControl')
+                  label.form-label(for='nombre') Nombre:
+                  input#nombre.form-control(type='text' name='nombre' required='')
+                  label.form-label(for='apPaterno') Apellido paterno:
+                  input#apPaterno.form-control(type='text' name='apPaterno' required='')
+                  label.form-label(for='apMaterno') Apellido Materno:
+                  input#apMaterno.form-control(type='text' name='apMaterno' required='')
+                  label.form-label(for='password') Contraseña:
+                  input#password.form-control(type='password' name='password' required='')
+                  label.form-label(for='password' type='text') Seleciona el rol:
+                  select#role.form-control(name='role' required='')
+                    option  
+                    option admin
+                    option profesor
+                  .row
+                    .col
+                      br
+                      button.btn.btn-danger(type='submit', onclick='registar()')
+                              | Registar
