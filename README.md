@@ -73,10 +73,12 @@ Indicar los objetivos del proyecto.
 <!-- Organigrama -->
 #### Organigrama.
 Organigrama.
+![Esta es una imagen](https://diegotorresp.github.io/resources/DiagramaBookTracking%20(1).png)
 
 <!-- Diagrama Gantt -->
 #### Diagrama Gantt.
 Diagrama Gantt.
+https://docs.google.com/spreadsheets/d/1p08ivdnM11ooRaQ1RDi-xhOxhlXBJKfWGlEouN-6eRE/edit?usp=sharing
 
 <!-- Análisis del proyecto -->
 ## Análisis de la Solución.
