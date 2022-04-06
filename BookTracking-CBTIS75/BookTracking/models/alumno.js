@@ -22,7 +22,6 @@ var alumnoSchema = new Schema({
   Password: {
     type: String,
     trim: true,
-    lowercase: true,
     requerid: "¡Ingresa la contraseña por favor!",
   },
   Grupo: {type:String},

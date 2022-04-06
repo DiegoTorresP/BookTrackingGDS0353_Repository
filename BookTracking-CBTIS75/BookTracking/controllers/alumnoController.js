@@ -2,6 +2,7 @@ const Alumno = require("../models/alumno");
 const Libro = require("../models/libro");
 const { body,validationResult} = require('express-validator');
 const bcrypt = require('bcryptjs');
+const qr = require('qrcode');
 var alumnoController = {};
 
 alumnoController.alumno_login = function(req,res){
@@ -22,10 +23,10 @@ alumnoController.alumno_verify = function (req,res){
     console.log('Usuario: '+ usuario + 'Pass: ' + pass);
 
     if (usuario && pass) {
-        Alumno.find({'Username': usuario, 'Password': pass}, function(error, results){
+        Alumno.find({'Username': usuario}, function(error, results){
             console.log(results);
 
-            /* let passw;
+             let passw;
             results.forEach(e => {
                 passw= e.Password;
             });
@@ -35,7 +36,7 @@ alumnoController.alumno_verify = function (req,res){
                 if (err) {
                     console.log("Error comprobando:", err);
                 } else {
-                    console.log("¿La contraseña coincide?: " + coinciden); */
+                    console.log("¿La contraseña coincide?: " + coinciden); 
                     if (error) {
                         let data = {
                             title: 'Ingresar al Sistema',
@@ -44,8 +45,8 @@ alumnoController.alumno_verify = function (req,res){
                         }
                         res.render('login', data);                
                     }
-                    //&&coinciden==true
-                    if (results.length > 0) {
+                    //
+                    if (results.length > 0 && coinciden==true) {
                         let roles
                         results.forEach(element => {
                             roles= element.Roles;
@@ -72,10 +73,10 @@ alumnoController.alumno_verify = function (req,res){
                         res.render('login', data);   
                     }
                 }
-            //}
+            }
             
             );
-       // });
+        });
 
     } else {
         let data = {
@@ -124,36 +125,130 @@ alumnoController.mostar = (req, res) => {
 //Insertar un Alumno
 alumnoController.crear = (req, res) => {
     console.log('Registrando Usuario');
-    const passw = '$'+req.body.numControl+'cbtis75';
+    const passw = '$' + req.body.numControl + 'cbtis75';
     const rondasDeSal = 10;
+    let qrcode = 0;
+    bcrypt.hash(passw, rondasDeSal, (err, password) => {
+        if (err) {
+            console.log("Error hasheando:", err);
+        } else {
+
+
+            Alumno.find({}).sort({ 'Qr': -1 }).limit(1).exec((err, results) => {
+                if (err) {
+                    console.log("Error: ", err);
+                    return;
+                }
+                qrcode = parseInt(results[0].Qr) + 1;
+                console.log('Generate QRCode' + qrcode);
+
+                let data = {
+                    qr: qrcode
+                }
+
+                let strData = JSON.stringify(data);
+                console.log(strData);
+                qr.toDataURL(strData, (err, code) => {
+                    if (err) res.send("Error occured");
+
+                    let data = {
+                        qr: qrcode,
+                        code: code
+                    }
+                    console.log(data.qr)
+
+                    //
+                    console.log("Y hasheada es: " + password);
+                    const alumno = new Alumno({
+                        _id: req.body.numControl,
+                        Apellido_Paterno: req.body.apPaterno,
+                        Apellido_Materno: req.body.apMaterno,
+                        Nombre_s: req.body.nombre,
+                        Genero: req.body.sexo,
+                        CURP: req.body.curp,
+                        Carrera_Tecnica: req.body.especialidad,
+                        Turno: req.body.turno,
+                        Clave_Lada: req.body.lada,
+                        Telefono_de_contacto_fijo_1: req.body.telefonoFijo1,
+                        Telefono_de_contacto_fijo_2: req.body.telefonoFijo2,
+                        Telefono_movil_celular: req.body.telefonoMovil,
+                        Correo_Electronico_1: req.body.correo1,
+                        Correo_Electronico_2: req.body.correo2,
+                        Estatus_Escolar: "Activo",
+                        Num_Incidencias: 0,
+                        Qr: qrcode,
+                        Password: password,
+                        Grupo: req.body.grupo,
+                        Generacion: req.body.generacion,
+                        Username: req.body.numControl,
+                        Roles: "user",
+                    });
+                    alumno.save(function (err, alumno) {
+                        if (err) {
+                            return res.status(500).json({
+                                message: "Error al crear el Alumno"
+
+                            });
+                        }
+                        res.redirect('/administrar/lista_usuario');
+                        //res.render('qr', data);
+                    })
+                });
+            });
+        }
+    });
+};
+
+//Editar
+//Mostar el alumno a editar
+alumnoController.editar= (req, res)=>{
+    const id= req.params.id;
+    Alumno.find({"_id":id}).exec((err, Alumno) => {
+        if (err) {
+            console.log('Error: ', err);
+            return;
+        }
+        console.log("The INDEX");
+        console.log(Alumno)
+        return res.render('admin_vista_usuario', {
+            Alumno: Alumno
+        });
+    });
+}
+
+alumnoController.crear_usuario = (req, res) => {
+    console.log('Registrando Usuario');
+    const passw = req.body.password;
+    const rondasDeSal = 10;
+    var id = Math.floor(Math.random()*1257)+5;
     bcrypt.hash(passw, rondasDeSal, (err, password) => {
         if (err) {
             console.log("Error hasheando:", err);
         } else {
             console.log("Y hasheada es: " + password);
             const alumno = new Alumno({
-                _id: req.body.numControl,
+                _id: id,
                 Apellido_Paterno: req.body.apPaterno,
                 Apellido_Materno: req.body.apMaterno,
                 Nombre_s: req.body.nombre,
-                Genero: req.body.sexo,
-                CURP: req.body.curp,
-                Carrera_Tecnica: req.body.especialidad,
-                Turno: req.body.turno,
-                Clave_Lada: req.body.lada,
-                Telefono_de_contacto_fijo_1: req.body.telefonoFijo1,
-                Telefono_de_contacto_fijo_2: req.body.telefonoFijo2,
-                Telefono_movil_celular: req.body.telefonoMovil,
-                Correo_Electronico_1: req.body.correo1,
-                Correo_Electronico_2: req.body.correo2,
-                Estatus_Escolar: "Activo",
-                Num_Incidencias: 0,
-                Qr: "",
+                Genero: null,
+                CURP: null,
+                Carrera_Tecnica: null,
+                Turno: null,
+                Clave_Lada: null,
+                Telefono_de_contacto_fijo_1: null,
+                Telefono_de_contacto_fijo_2: null,
+                Telefono_movil_celular: null,
+                Correo_Electronico_1: null,
+                Correo_Electronico_2: null,
+                Estatus_Escolar: null,
+                Num_Incidencias: null,
+                Qr: null,
                 Password: password,
-                Grupo: req.body.grupo,
-                Generacion: req.body.generacion,
-                Username: req.body.numControl,
-                Roles: "user",
+                Grupo: null,
+                Generacion: null,
+                Username: req.body._id,
+                Roles: req.body.role,
             });
             alumno.save(function (err, alumno) {
                 if (err) {
@@ -337,6 +432,35 @@ alumnoController.consultar_estatus= (req, res)=>{
             Alumno: Alumno
         });
 
+    });
+}
+
+//Mostar qr de alumno
+alumnoController.mostar_qr= (req, res)=>{
+    let qrcode = 0;
+    const usuario = req.session.usuario;
+
+    Alumno.find({_id:usuario}).exec((err, results) => {
+        if (err) {
+            console.log("Error: ", err);
+            return;
+        }
+
+        results.forEach(element => {
+            qrcode= element.Qr;
+        });
+
+        
+        console.log(qrcode);
+        qr.toDataURL(qrcode, (err, code) => {
+            if (err) res.send("Error occured");
+
+            let data = {
+                qr: qrcode,
+                code: code
+            }
+            res.render('alumnos_ver_mi_qr', data);
+        });
     });
 }
 

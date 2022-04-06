@@ -129,7 +129,7 @@ var solicitudesController = {};
                       <table role="presentation" style="width:94%;max-width:600px;border:none;border-spacing:0;text-align:left;font-family:Arial,sans-serif;font-size:16px;line-height:22px;color:#363636;">
                         <tr>
                           <td style="padding:40px 30px 30px 30px;text-align:center;font-size:24px;font-weight:bold;">
-                            <a href="http://www.example.com/" style="text-decoration:none;"><img src="https://cdn.pixabay.com/photo/2022/03/13/05/00/logo-7065296_960_720.png" width="1000" alt="Logo" style="width:165px;max-width:80%;height:auto;border:none;text-decoration:none;color:#ffffff;"></a>
+                            <a href="http://www.example.com/" style="text-decoration:none;"><img src="https://diegotorresp.github.io/resources/bt.png" width="1000" alt="Logo" style="width:165px;max-width:80%;height:auto;border:none;text-decoration:none;color:#ffffff;"></a>
                           </td>
                         </tr>
                         <tr>
@@ -143,7 +143,7 @@ var solicitudesController = {};
                         </tr>
                         <tr>
                           <td style="padding:0;font-size:24px;line-height:28px;font-weight:bold;">
-                            <a href="http://www.example.com/" style="text-decoration:none;"><img src="https://cdn.pixabay.com/photo/2022/03/24/04/49/04-49-18-926_960_720.png" width="300" alt="" style="width:100%;height:auto;display:block;border:none;text-decoration:none;color:#363636;"></a>
+                            <a href="http://www.example.com/" style="text-decoration:none;"><img src="https://diegotorresp.github.io/resources/libroscorreo.png" width="300" alt="" style="width:100%;height:auto;display:block;border:none;text-decoration:none;color:#363636;"></a>
                           </td>
                         </tr>
                         
@@ -313,7 +313,7 @@ var solicitudesController = {};
                       <table role="presentation" style="width:94%;max-width:600px;border:none;border-spacing:0;text-align:left;font-family:Arial,sans-serif;font-size:16px;line-height:22px;color:#363636;">
                         <tr>
                           <td style="padding:40px 30px 30px 30px;text-align:center;font-size:24px;font-weight:bold;">
-                            <a href="http://www.example.com/" style="text-decoration:none;"><img src="https://cdn.pixabay.com/photo/2022/03/13/05/00/logo-7065296_960_720.png" width="1000" alt="Logo" style="width:165px;max-width:80%;height:auto;border:none;text-decoration:none;color:#ffffff;"></a>
+                            <a href="http://www.example.com/" style="text-decoration:none;"><img src="https://diegotorresp.github.io/resources/bt.png" width="1000" alt="Logo" style="width:165px;max-width:80%;height:auto;border:none;text-decoration:none;color:#ffffff;"></a>
                           </td>
                         </tr>
                         <tr>
@@ -327,7 +327,7 @@ var solicitudesController = {};
                         </tr>
                         <tr>
                           <td style="padding:0;font-size:24px;line-height:28px;font-weight:bold;">
-                            <a href="http://www.example.com/" style="text-decoration:none;"><img src="https://cdn.pixabay.com/photo/2022/03/24/04/49/04-49-18-926_960_720.png" width="300" alt="" style="width:100%;height:auto;display:block;border:none;text-decoration:none;color:#363636;"></a>
+                            <a href="http://www.example.com/" style="text-decoration:none;"><img src="https://diegotorresp.github.io/resources/libroscorreo.png" width="300" alt="" style="width:100%;height:auto;display:block;border:none;text-decoration:none;color:#363636;"></a>
                           </td>
                         </tr>
                         
@@ -669,7 +669,7 @@ solicitudesController.actualizarEstatus = (req, res) => {
               <table role="presentation" style="width:94%;max-width:600px;border:none;border-spacing:0;text-align:left;font-family:Arial,sans-serif;font-size:16px;line-height:22px;color:#363636;">
                 <tr>
                   <td style="padding:40px 30px 30px 30px;text-align:center;font-size:24px;font-weight:bold;">
-                    <a href="http://www.example.com/" style="text-decoration:none;"><img src="https://cdn.pixabay.com/photo/2022/03/13/05/00/logo-7065296_960_720.png" width="1000" alt="Logo" style="width:165px;max-width:80%;height:auto;border:none;text-decoration:none;color:#ffffff;"></a>
+                    <a href="http://www.example.com/" style="text-decoration:none;"><img src="https://diegotorresp.github.io/resources/bt.png" width="1000" alt="Logo" style="width:165px;max-width:80%;height:auto;border:none;text-decoration:none;color:#ffffff;"></a>
                   </td>
                 </tr>
                 <tr>
@@ -684,7 +684,7 @@ solicitudesController.actualizarEstatus = (req, res) => {
                 </tr>
                 <tr>
                   <td style="padding:0;font-size:24px;line-height:28px;font-weight:bold;">
-                    <a href="http://www.example.com/" style="text-decoration:none;"><img src="https://cdn.pixabay.com/photo/2022/03/24/04/49/04-49-18-926_960_720.png" width="300" alt="" style="width:100%;height:auto;display:block;border:none;text-decoration:none;color:#363636;"></a>
+                    <a href="http://www.example.com/" style="text-decoration:none;"><img src="https://diegotorresp.github.io/resources/libroscorreo.png" width="300" alt="" style="width:100%;height:auto;display:block;border:none;text-decoration:none;color:#363636;"></a>
                   </td>
                 </tr>
                 
@@ -859,7 +859,7 @@ solicitudesController.actualizarEstatus_denegado = (req, res) => {
               <table role="presentation" style="width:94%;max-width:600px;border:none;border-spacing:0;text-align:left;font-family:Arial,sans-serif;font-size:16px;line-height:22px;color:#363636;">
                 <tr>
                   <td style="padding:40px 30px 30px 30px;text-align:center;font-size:24px;font-weight:bold;">
-                    <a href="" style="text-decoration:none;"><img src="https://cdn.pixabay.com/photo/2022/03/13/05/00/logo-7065296_960_720.png" width="1000" alt="Logo" style="width:165px;max-width:80%;height:auto;border:none;text-decoration:none;color:#ffffff;"></a>
+                    <a href="" style="text-decoration:none;"><img src="https://diegotorresp.github.io/resources/bt.png" width="1000" alt="Logo" style="width:165px;max-width:80%;height:auto;border:none;text-decoration:none;color:#ffffff;"></a>
                   </td>
                 </tr>
                 <tr>
@@ -873,7 +873,7 @@ solicitudesController.actualizarEstatus_denegado = (req, res) => {
                 </tr>
                 <tr>
                   <td style="padding:0;font-size:24px;line-height:28px;font-weight:bold;">
-                    <a href="" style="text-decoration:none;"><img src="https://cdn.pixabay.com/photo/2022/03/24/04/49/books-7088260_960_720.png" width="300" alt="" style="width:100%;height:auto;display:block;border:none;text-decoration:none;color:#363636;"></a>
+                    <a href="" style="text-decoration:none;"><img src="https://diegotorresp.github.io/resources/libroscorreo.png" width="300" alt="" style="width:100%;height:auto;display:block;border:none;text-decoration:none;color:#363636;"></a>
                   </td>
                 </tr>
                 
@@ -975,18 +975,14 @@ solicitudesController.mostarHistorial = (req, res) => {
       }
     ])
     .exec((err, Solicitud) => {
-      /* Solicitud.forEach(element => {
-        if(element.Solicitante==usuario){
-          his+=element;
-        }
-      }); */
+   
       if (err) {
         console.log("Error: ", err);
         return;
       }
       console.log("The INDEX");
       console.log(Solicitud);
-      return res.render("alumnos_entregas_solicitudes_prestamos", {  his : Solicitud});
+      return res.render("alumnos_entregas_solicitudes_prestamos", { Solicitud : Solicitud});
     });
 };
 

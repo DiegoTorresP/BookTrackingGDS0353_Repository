@@ -22,6 +22,9 @@ router.get("/solicitudes",auth.isAdmin,solicitudes_controller.mostar);
 //Se llama al controlador para crear
 router.post("/crear",auth.isAdmin,user_controller.crear);
 
+//Ruta para crear un usuario
+router.post("/crear_usuario",auth.isAdmin,user_controller.crear_usuario);
+
 //Se llama al controlador para crear libro
 router.post("/crear_libro",auth.isAdmin,libro_controller.crear);
 //Ruta para subir la foto

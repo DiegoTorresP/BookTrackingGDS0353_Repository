@@ -16,7 +16,7 @@ block content
                   form(action='/administrar/crear_foto', method='post', enctype="multipart/form-data")
                     .col
                       .input-group.file
-                        input#foto.form-control(type='file',accept='image/png,image/jpeg,image/jpg,image/webp', name="foto")
+                        input#foto.form-control(type='file',accept='image/png,image/jpeg,image/jpg,image/webp', name="foto" requerid='')
                         button#inputGroupFileAddon04.ov-btn-grow-spin.guardar(type='subtmit') Guardar
 
             .col-8
@@ -28,7 +28,7 @@ block content
                     .row
                       .col
                         label.form-label(for='nombre') Nombre:
-                        input#nombre.form-control(type='text' name='nombre' )
+                        input#nombre.form-control(type='text' name='nombre' requerid='')
                         label.form-label(for='autor') Autor:
                         input#autor.form-control(type='array' name='autor' requerid='')
                         label.form-label(for='editorial') Editorial:

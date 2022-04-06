@@ -7,7 +7,7 @@ Repositorio para código del proyecto de Integradora II - BookTracking
 ## Tomar en cuenta para aportaciones:
 Nomenclatura para nombramiento de documentos: snake_case.
 
-## contenido
+## Contenido
 <details>
   <summary>Tabla contenidos</summary>
   <ol>
@@ -24,7 +24,6 @@ Nomenclatura para nombramiento de documentos: snake_case.
       <a href="#análisis-de-la-solución">Análisis de la Solución</a>
       <ul>
         <li><a href="#requerimientos">Requerimientos</a></li>
-        <li><a href="#diagrama-casos-de-uso">Diagrama de Casos de Uso</a></li>
       </ul>
     </li>
     <li>
@@ -64,42 +63,45 @@ Requisitos.
 
 <!-- Descripción -->
 #### Descripción.
-Indicar la descripción del proyecto (tiempo, costo y calidad).
+El proyecto consiste en una aplicación web que permite gestionar el proceso de préstamos de una biblioteca; la primera pantalla permitirá buscar los libros al usuario mediante los datos de estos (nombre, autor, editorial). En el lado del administrador se podrá efectuar la carga de diferentes ejemplares literarios haciendo uso de la implementación de un CRUD. Para efectuar el proceso de solicitud de un libro en particular, es necesario tener en consideración que el usuario deberá contar con una tarjeta de tecnología RFID, y de igual forma que el establecimiento ofrecerá un lector para dichos recursos, además que la vista que sea visible a los interesados será controlada por el o los encargados del centro bibliotecario bajo una sección de administración; la tarea de la persona que desea solicitar algún material será la siguiente, accede al sistema, buscará el libro, lo seleccionará, en la parte inferior ubicará la opción ‘Solicitar’, en el formulario emergente que aparece, antes de llenar los campos deberá pasar la tarjeta sobre el lector para registrar el código de esta, enseguida completará los datos personales y del libro; al enviar la solicitud, al administrador se le mostrará en la sección ‘Ver solicitudes’ dicha petición y procederá a entregar las obras; para la devolución, se deberán llevar los libros y la tarjeta, al llegar indicar la entrega, pasar la tarjeta y en la aplicación del encargado en la sección ‘Leer datos’, aparecerán los datos de la persona a quien se le dieron los libros solicitados, consultará por medio de un filtro de búsqueda en ‘Ver solicitudes’, la que corresponda a los datos de la tarjeta y procederá a seleccionar la opción ‘Finalizar’, una vez que se corrobora que la devolución está en orden.
+
+El tiempo de realización estimado es de 3 meses y requiere de una inversión mensual de $400 para el funcionamiento optimo de todos los servicios, sin emebargo el sistema es capaz de funcionar con limitaciones minimas sin tener que hacer gasto. Además se requiere una camara conectada a la computadora donde se requiera el sistema.
 
 <!-- Objetivos -->
 #### Objetivos.
-Indicar los objetivos del proyecto.
+Crear una aplicación web que permita gestionar el proceso de préstamo de un centro bibliotecario; generando el alta de los datos correspondientes de los ejemplares literarios e implementando recursos como el uso de tarjetas RFID por parte de los usuarios que, les permitan generar la solicitud, una vez que consultaron los libros deseados, así como ofrecer a los encargados de la biblioteca, tener un control adecuado sobre los préstamos realizados. 
 
 <!-- Organigrama -->
 #### Organigrama.
 Organigrama.
+![Esta es una imagen](https://diegotorresp.github.io/resources/Organigrama.png)
 
 <!-- Diagrama Gantt -->
 #### Diagrama Gantt.
 Diagrama Gantt.
+https://docs.google.com/spreadsheets/d/1p08ivdnM11ooRaQ1RDi-xhOxhlXBJKfWGlEouN-6eRE/edit?usp=sharing
 
 <!-- Análisis del proyecto -->
 ## Análisis de la Solución.
-En ésta sección se indicará los artefactos generados en base a la solución.
+Toda la documentación enfocada al análisis de la solución puede ser consultada en el siguiente enlace:
+https://docs.google.com/document/d/1lq8dkyd7QVO1uPCzR-vWJB6AxqTNxdB7J9zRFA5NZmw/edit?usp=sharing
 
 <!-- Requerimientos -->
 #### Requerimientos.
-Listado de los requerimientos (código requerimiento, descripción)
-
-<!-- Diagrama de Casos de Uso -->
-#### Diagrama Casos de Uso.
-Agregar la imagen de los Casos de Uso.
-
-
+Listado de los requerimientos (código requerimiento, descripción), es puede ver en el siguiente enlace:
+https://docs.google.com/document/d/1pPkPsYIBVbGaG5VySaGkPD1Jfl0mlEkD/edit?usp=sharing&ouid=101201441725823236999&rtpof=true&sd=true
 
 <!-- Diseño del proyecto -->
 ## Diseño de la Solución.
 En ésta sección se indicará los artefactos generados en base a la solución.
 
 <!-- Modelo Relacional -->
-#### Modelo Relacional.
-Esquema de la base de datos (nombre de campo, tipo de datos, restricciones, etc)
-
+#### Modelo No Relacional.
+![Esta es una imagen](https://diegotorresp.github.io/resources/nosql1.jpg)
+![Esta es una imagen](https://diegotorresp.github.io/resources/nosql2.jpg)
+![Esta es una imagen](https://diegotorresp.github.io/resources/nosql3.jpg)
+![Esta es una imagen](https://diegotorresp.github.io/resources/nosql4.jpg)
+![Esta es una imagen](https://diegotorresp.github.io/resources/nosql5.jpg)
 <!-- Diagrama de Clases -->
 #### Diagrama de Clases.
 Esquema de las clases empleadas (atributos y sus métodos).
