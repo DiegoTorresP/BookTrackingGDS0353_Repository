@@ -73,7 +73,7 @@ Indicar los objetivos del proyecto.
 <!-- Organigrama -->
 #### Organigrama.
 Organigrama.
-![Esta es una imagen](https://diegotorresp.github.io/resources/DiagramaBookTracking%20(1).png)
+![Esta es una imagen](https://diegotorresp.github.io/resources/Organigrama.png)
 
 <!-- Diagrama Gantt -->
 #### Diagrama Gantt.
