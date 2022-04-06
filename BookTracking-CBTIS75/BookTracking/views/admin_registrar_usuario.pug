@@ -43,10 +43,10 @@ block content
                   label.form-label(for='sexo') Sexo:
                   select#sexo.form-control(name='sexo' required='')
                     option
-                    option Masculino
-                    option Femenino
+                    option Hombre
+                    option Mujer
                   label.form-label(for='curp') CURP:
-                  input#curp.form-control(type='text' name='curp' required='')
+                  input#curp.form-control(type='text' name='curp' required='' maxlength="18" minlength="5")
                   .row
                     .col
                       label.form-label(for='correo1') Correo 1:

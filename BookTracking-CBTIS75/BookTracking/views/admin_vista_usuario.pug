@@ -31,9 +31,12 @@ block content
                     input#generacion.form-control(type='text' name='generacion' required  value=alumno.Generacion)
                     label.form-label(for='sexo') Sexo:
                     select#sexo.form-control(name='sexo' required  value=alumno.Genero)
-                      option
-                      option Masculino
-                      option Femenino
+                      if alumno.Genero =="Hombre"
+                        option #{alumno.Genero}
+                        option Mujer
+                      else
+                        option #{alumno.Genero}
+                        option Hombre
                     label.form-label(for='curp') CURP:
                     input#curp.form-control(type='text' name='curp' required  value=alumno.CURP)
                     .row
@@ -46,16 +49,18 @@ block content
                     .row
                       .col
                         label.form-label(for='lada') Lada:
-                        input#lada.form-control(type='number' name='lada' required  value=alumno.Clave_lada)
+                        input#lada.form-control(type='number' name='lada' required  value=alumno.Clave_Lada)
                       .col
                         label.form-label(for='telefonoFijo1') Telefono fijo 1:
                         input#c.form-control(type='number' name='telefonoFijo1'  value=alumno.Telefono_de_contacto_fijo_1)
                     label.form-label(for='telefonoFijo2') Telefono fijo 2:
-                    input#telefonoFijo2.form-control(type='number' name='telefonoFijo2'  value=alumno.Telefono_de_contacto_fijo_1)
+                    input#telefonoFijo2.form-control(type='number' name='telefonoFijo2'  value=alumno.Telefono_de_contacto_fijo_2)
                     label.form-label(for='telefonoMovil') Telefono Movil:
                     input#telefonoMovil.form-control(type='number' name='telefonoMovil'  value=alumno.Telefono_movil_celular)
                     .row
                       .col(style='text-align: right; padding-top: 10px')
-                        button.btn(href='#') Cancelar
-                        button.btn.btn-danger(type='submit')
+                         a.btn.btn-danger(href='/administrar/lista_usuario') 
+                              | Cancelar
+                      .col(style='text-align: right; padding-top: 10px')
+                        button.btn.btn-success(type='submit')
                           | Editar
