@@ -13,15 +13,19 @@ router.get("/",auth.isUser, function (req, res, next) {
 });
 
 //listar todos los libros para el alumno
-router.get("/buscar_solicitar_libro",auth.isUser, libro_controller.mostarAlumno);
+router.get("/buscar_solicitar_libro",auth.isUser, libro_controller.mostarLibro);
 
 //Ruta para mostar un solo libro
-router.get("/alumnos_vista_libro/:id",auth.isUser, libro_controller.detalleAlumno);
+router.get("/alumnos_vista_libro_historial/:id",auth.isUser, libro_controller.detalleHistorialLibro);
+
+router.get("/alumnos_vista_libro/:id",auth.isUser, libro_controller.detalleLibro);
+
 
 //Ruta para crear solicitud
 router.get("/solicitar_libro/:id/stock/:Unidades_Disponibles",auth.isUser, solicitudesController.crear_solicitud);
 
 router.get("/historial_prestamos", auth.isUser,solicitudesController.mostarHistorial);
+
 router.get("/ver_mi_qr",auth.isUser, function (req, res, next) {
   res.render("alumnos_ver_mi_qr");
 });

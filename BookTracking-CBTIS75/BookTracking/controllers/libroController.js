@@ -29,7 +29,7 @@ libroController.mostar = (req, res) => {
 };
 
 //Mostar todos los libros a alumnos
-libroController.mostarAlumno = (req, res) => {
+libroController.mostarLibro = (req, res) => {
   Libro.find({}).exec((err, Libro) => {
     if (err) {
       console.log("Error: ", err);
@@ -104,8 +104,25 @@ libroController.detalle = (req, res) => {
   });
 };
 
-//Consultar alumno
-libroController.detalleAlumno = (req, res) => {
+//Consultar historial libro
+libroController.detalleHistorialLibro = (req, res) => {
+  const id = req.params.id;
+  console.log(id)
+  Libro.find({ _id: id }).exec((err, Libro) => {
+    if (err) {
+      console.log("Error: ", err);
+      return;
+    }
+    console.log("The INDEX");
+    console.log(Libro);
+    return res.render("alumnos_vista_libro_historial", {
+      Libro: Libro,
+    });
+  });
+};
+
+//Consultar libro
+libroController.detalleLibro = (req, res) => {
   const id = req.params.id;
   console.log(id)
   Libro.find({ _id: id }).exec((err, Libro) => {

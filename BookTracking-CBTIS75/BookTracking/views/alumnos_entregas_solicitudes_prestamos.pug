@@ -10,7 +10,7 @@ block content
               a.btn.btn-danger#red(href='/alumnos') 
                 | Regresar
           .row.barraresultado
-            .col Atender Solicitudes
+            .col Solicitudes realizadas
           .row.rowtabla
             .row
               .col
@@ -26,7 +26,7 @@ block content
                   tbody
                     -var meses = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
                     -var dias_semana = ['Domingo', 'Lunes', 'martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
-                    each solicitud in his 
+                    each solicitud in Solicitud 
                       tr 
                         td(style='display:none;' id='id') #{solicitud._id}
                         td #{solicitud.libro.Nombre}
@@ -43,7 +43,7 @@ block content
                             else 
                               td(style='background-color: blue; color:white') #{solicitud.Estatus_Prestamo}
                         td 
-                          -var url = "/alumnos/alumnos_vista_libro/"+ (JSON.parse(JSON.stringify(solicitud.libro._id)))
+                          -var url = "/alumnos/alumnos_vista_libro_historial/"+ (JSON.parse(JSON.stringify(solicitud.libro._id)))
                           a(href=url) 
                             img(src='/images/icon-mas.png', width='30px')  
                         
