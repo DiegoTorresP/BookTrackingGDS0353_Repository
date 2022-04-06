@@ -16,7 +16,7 @@ block content
                   form(action='/administrar/crear_foto', method='post', enctype="multipart/form-data")
                     .col
                       .input-group.file
-                        input#foto.form-control(type='file',accept='image/png,image/jpeg,image/jpg,image/webp', name="foto" requerid='')
+                        input#foto.form-control(type='file',accept='image/png,image/jpeg,image/jpg,image/webp', name="foto" required='')
                         button#inputGroupFileAddon04.ov-btn-grow-spin.guardar(type='subtmit') Guardar
 
             .col-8
@@ -28,26 +28,26 @@ block content
                     .row
                       .col
                         label.form-label(for='nombre') Nombre:
-                        input#nombre.form-control(type='text' name='nombre' requerid='')
+                        input#nombre.form-control(type='text' name='nombre' required='')
                         label.form-label(for='autor') Autor:
-                        input#autor.form-control(type='array' name='autor' requerid='')
+                        input#autor.form-control(type='array' name='autor' required='')
                         label.form-label(for='editorial') Editorial:
                         input#editorial.form-control(type='text' name='editorial' required='')
                         label.form-label(for='lugarE') Lugar edición:
                         input#lugarE.form-control(type='text' name='lugarE' required='')
                         label.form-label(for='fechaE') Fecha edición:
-                        input#fechaE.form-control(type='text' name='fechaE' required='')
+                        input#fechaE.form-control(type='number' name='fechaE' required='' min="1900" pattern="^[0-9]+")
                         label.form-label(for='anioE') Año entrada:
-                        input#anioE.form-control(type='text' name='anioE' required='')
+                        input#anioE.form-control(type='number' name='anioE' required='' min="1950" pattern="^[0-9]+")
                         label.form-label(for='unidadesD') Unidades Disponibles:
-                        input#unidadesD.form-control(type='number' name='unidadesD' required='')
+                        input#unidadesD.form-control(type='number' name='unidadesD' required='' min="1" pattern="^[0-9]+")
                       .col
                         label.form-label(for='totalU') Total Unidades:
-                        input#totalU.form-control(type='number' name='totalU' required='')
+                        input#totalU.form-control(type='number' name='totalU' required='' min="1" pattern="^[0-9]+")
                         label.form-label(for='numP') Número págs.:
-                        input#numP.form-control(type='number' name='numP' required='')
+                        input#numP.form-control(type='number' name='numP' required='' min="1" pattern="^[0-9]+")
                         label.form-label(for='numI') Número inventario:
-                        input#numI.form-control(type='number' name='numI' required='')
+                        input#numI.form-control(type='number' name='numI' required='' min="1" pattern="^[0-9]+")
                         .row
                           .col
                             label.form-label(for='anaquel') Anaquel - Charola:
