@@ -150,7 +150,7 @@ alumnoController.crear = (req, res) => {
                 console.log(strData);
                 qr.toDataURL(strData, (err, code) => {
                     if (err) res.send("Error occured");
-
+//Code es la imagen
                     let data = {
                         qr: qrcode,
                         code: code

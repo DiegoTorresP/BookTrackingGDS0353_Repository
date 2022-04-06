@@ -73,6 +73,14 @@ router.get("/leer_qr",auth.isAdmin,function (req, res, next) {
   res.render("admin_leer_qr");
 });
 
+router.get("/admin_devolver_libro",auth.isAdmin,function (req, res, next) {
+  res.render("admin_devolver_libro");
+});
+
+router.get("/admin_entregar_libro",auth.isAdmin,function (req, res, next) {
+  res.render("admin_entregar_libro");
+});
+
 router.get("/admin_buscar",auth.isAdmin,libro_controller.mostar);
 
 

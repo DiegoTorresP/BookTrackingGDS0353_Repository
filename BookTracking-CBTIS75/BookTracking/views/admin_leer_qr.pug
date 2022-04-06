@@ -1,4 +1,24 @@
 extends layout
 
 block content
-    h1 Leer código QR
+
+  .row
+    .col
+      .btn-group(role='group' aria-label='Navs')
+        a.btn.btn-primary#pg(type='button' href='/administrar') General   
+          i.bi.bi-caret-right
+        button.btn.btn-primary#pg(type='button' disabled) Leer QR  
+  .container-fluid.botonera
+    .row.hijo 
+      .col
+        a.ov-btn-grow-spin(href= '/administrar/admin_entregar_libro')
+          img(src='../images/be.png' alt='Buscar y editar libros')
+          br
+          | Entrega de libro
+      .col
+        a.ov-btn-grow-spin(href='/administrar/admin_devolver_libro')
+          img(src='../images/rlib.png' alt='Registrar libro')
+          br
+          | Devolución de Libro
+    .row 
+      p 

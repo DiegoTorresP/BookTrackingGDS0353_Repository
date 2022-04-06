@@ -205,7 +205,7 @@ var solicitudesController = {};
    # │ │ │ │ │ │
    # * * * * * *
   */
-   cron.schedule('25 8-14 * * *', () => {
+   cron.schedule('00 8-14 * * *', () => {
     console.log('Avisos Entregas');
     solicitud
     .aggregate([
@@ -261,7 +261,7 @@ var solicitudesController = {};
           // Creamos array con los meses del año
           const meses = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
           // Creamos array con los días de la semana
-          const dias_semana = ['Domingo', 'Lunes', 'martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+          const dias_semana = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
           //Procesamos fecha en Español
           fecha_entrega =dias_semana[ solicitudes.Fecha_Entrega.getDay()] + ', ' +  solicitudes.Fecha_Entrega.getDate() + ' de ' + meses[ solicitudes.Fecha_Entrega.getMonth()] + ' de ' +  solicitudes.Fecha_Entrega.getUTCFullYear();
           function getMessage() {
@@ -582,7 +582,7 @@ solicitudesController.actualizarEstatus = (req, res) => {
         // Creamos array con los meses del año
         const meses = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
         // Creamos array con los días de la semana
-        const dias_semana = ['Domingo', 'Lunes', 'martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+        const dias_semana = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
         //Procesamos fecha en Español
         Fecha_Solicitud =dias_semana[ solicitud.Fecha_Solicitud.getDay()] + ', ' +  solicitud.Fecha_Solicitud.getDate() + ' de ' + meses[ solicitud.Fecha_Solicitud.getMonth()] + ' de ' +  solicitud.Fecha_Solicitud.getUTCFullYear();
       })
@@ -801,7 +801,7 @@ solicitudesController.actualizarEstatus_denegado = (req, res) => {
         // Creamos array con los meses del año
         const meses = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
         // Creamos array con los días de la semana
-        const dias_semana = ['Domingo', 'Lunes', 'martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+        const dias_semana = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
         //Procesamos fecha en Español
         Fecha_Solicitud = dias_semana[ solicitud.Fecha_Solicitud.getDay()] + ', ' +  solicitud.Fecha_Solicitud.getDate() + ' de ' + meses[ solicitud.Fecha_Solicitud.getMonth()] + ' de ' +  solicitud.Fecha_Solicitud.getUTCFullYear();
       })
