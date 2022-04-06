@@ -7,7 +7,7 @@ Repositorio para código del proyecto de Integradora II - BookTracking
 ## Tomar en cuenta para aportaciones:
 Nomenclatura para nombramiento de documentos: snake_case.
 
-## contenido
+## Contenido
 <details>
   <summary>Tabla contenidos</summary>
   <ol>
