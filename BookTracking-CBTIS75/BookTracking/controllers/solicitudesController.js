@@ -975,18 +975,14 @@ solicitudesController.mostarHistorial = (req, res) => {
       }
     ])
     .exec((err, Solicitud) => {
-      /* Solicitud.forEach(element => {
-        if(element.Solicitante==usuario){
-          his+=element;
-        }
-      }); */
+   
       if (err) {
         console.log("Error: ", err);
         return;
       }
       console.log("The INDEX");
       console.log(Solicitud);
-      return res.render("alumnos_entregas_solicitudes_prestamos", {  his : Solicitud});
+      return res.render("alumnos_entregas_solicitudes_prestamos", { Solicitud : Solicitud});
     });
 };
 

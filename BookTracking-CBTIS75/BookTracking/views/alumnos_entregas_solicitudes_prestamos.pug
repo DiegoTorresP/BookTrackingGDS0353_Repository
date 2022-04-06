@@ -26,7 +26,7 @@ block content
                   tbody
                     -var meses = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
                     -var dias_semana = ['Domingo', 'Lunes', 'martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
-                    each solicitud in his 
+                    each solicitud in Solicitud 
                       tr 
                         td(style='display:none;' id='id') #{solicitud._id}
                         td #{solicitud.libro.Nombre}
