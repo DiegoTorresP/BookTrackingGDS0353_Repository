@@ -13,10 +13,10 @@ router.get("/",auth.isUser, function (req, res, next) {
 });
 
 //listar todos los libros para el alumno
-router.get("/buscar_solicitar_libro",auth.isUser, libro_controller.mostarAlumno);
+router.get("/buscar_solicitar_libro",auth.isUser, libro_controller.mostarLibro);
 
 //Ruta para mostar un solo libro
-router.get("/alumnos_vista_libro_historial/:id",auth.isUser, libro_controller.detalleAlumno);
+router.get("/alumnos_vista_libro_historial/:id",auth.isUser, libro_controller.detalleHistorialLibro);
 
 router.get("/alumnos_vista_libro/:id",auth.isUser, libro_controller.detalleLibro);
 
