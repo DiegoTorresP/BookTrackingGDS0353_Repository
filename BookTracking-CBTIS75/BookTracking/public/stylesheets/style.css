@@ -45,6 +45,13 @@ body {
 }
 
 
+#pg{
+  border-radius: 1px;
+  padding: 10px;
+  background-color: var(--color-primario);
+  text-transform:initial;
+}
+
 a {
   text-decoration: none;
 }
@@ -89,7 +96,7 @@ a {
   height: auto;
   max-width: 250px;
   max-height: 250px;
-  margin: 35px;
+  margin: 25px;
 }
 
 .botonera a img {
@@ -99,6 +106,9 @@ a {
   max-width: 225px;
   max-height: 225px;
   padding: 30px;
+}
+.botonera a br {
+  margin-bottom: 10px;
 }
 
 #colors{
@@ -136,6 +146,9 @@ text-align: center;
   justify-content: right;
 }
 /*** ESTILOS BOTÓN GROW SPIN ***/
+#btx{
+  margin-top: 1px;
+}
 .ov-btn-grow-spin {
   background: #fff; /* color de fondo */
   color: var(--main-bg-color); /* color de fuente */
@@ -239,9 +252,23 @@ text-align: center;
   margin-top: 15px;
   font-size: 17px;
 }
+#vlb{
+  max-width: 150px;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  text-align: right;
 
+}
+#vlb2{
+  text-align: right;
+}
 #form {
   padding-top: 15px;
+}
+.form-label{
+  text-overflow: clip;
 }
 .opciones {
   margin: 20px;
