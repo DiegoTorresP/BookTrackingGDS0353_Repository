@@ -312,7 +312,7 @@ libroController.consultar_editorial = (req, res) => {
     }
     console.log("The INDEX");
     console.log(Libro);
-    res.redirect("/administrar/solicitudes");
+    res.redirect("/alumnos/historial_prestamos");
   });
 };
 

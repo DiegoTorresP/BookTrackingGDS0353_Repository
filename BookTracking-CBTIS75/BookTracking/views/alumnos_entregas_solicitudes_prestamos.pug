@@ -1,14 +1,16 @@
 extends layout
 
 block content
+  .row
+    .col
+      .btn-group(role='group' aria-label='Navs')
+        a.btn.btn-primary#pg(type='button' href='/alumnos') Inicio   
+          i.bi.bi-caret-right
+        button.btn.btn-primary#pg(type='button' disabled) Entregas y solicitudes   
   .container-fluid
     .row
       .col
         .container-fluid
-          .row
-            .col(style='text-align: left; padding-top: 10px')
-              a.btn.btn-danger#red(href='/alumnos') 
-                | Regresar
           .row.barraresultado
             .col Solicitudes realizadas
           .row.rowtabla
@@ -45,8 +47,7 @@ block content
                         td 
                           -var url = "/alumnos/alumnos_vista_libro_historial/"+ (JSON.parse(JSON.stringify(solicitud.libro._id)))
                           a(href=url) 
-                            img(src='/images/icon-mas.png', width='30px')  
-                        
+                            img(src='/images/icon-mas.png' width='30px')  
+
     script(src="/js/sweet_carga.js")
     script(src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous")
-                   

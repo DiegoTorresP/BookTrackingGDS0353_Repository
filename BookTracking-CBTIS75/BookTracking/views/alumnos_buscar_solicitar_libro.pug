@@ -1,14 +1,16 @@
 extends layout
 
 block content
+  .row
+    .col
+      .btn-group(role='group' aria-label='Navs')
+        a.btn.btn-primary#pg(type='button' href='/alumnos') Inicio   
+          i.bi.bi-caret-right
+        button.btn.btn-primary#pg(type='button' disabled) Buscar y solicitar libro   
   .container-fluid
     .row
       .col
         .container-fluid
-          .row
-            .col(style='text-align: left; padding-top: 10px')
-              a.btn.btn-danger#red(href='/alumnos') 
-                | Regresar
           .row.barraresultado
             .col Libros
           .row.rowtabla

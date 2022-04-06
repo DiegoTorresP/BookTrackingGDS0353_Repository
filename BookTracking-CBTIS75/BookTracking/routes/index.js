@@ -11,6 +11,7 @@ router.get('/',function(req,res){
     layout: false //Indica que no se considere layout.pug
   }
   res.render('login',data);
+  
 });
 
 /* router.get('/*',function(req,res){
