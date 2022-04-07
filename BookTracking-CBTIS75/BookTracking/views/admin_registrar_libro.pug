@@ -36,9 +36,9 @@ block content
                         label.form-label(for='lugarE') Lugar edición:
                         input#lugarE.form-control(type='text' name='lugarE' required='')
                         label.form-label(for='fechaE') Fecha edición:
-                        input#fechaE.form-control(type='number' name='fechaE' required='' min="1900" pattern="^[0-9]+")
+                        input#fechaE.form-control(type='number' name='fechaE' required='' min="1900" max="3000")
                         label.form-label(for='anioE') Año entrada:
-                        input#anioE.form-control(type='number' name='anioE' required='' min="1950" pattern="^[0-9]+")
+                        input#anioE.form-control(type='number' name='anioE' required='' min="1950" max="2050" pattern="[1-9][0-9]{3}")
                         label.form-label(for='unidadesD') Unidades Disponibles:
                         input#unidadesD.form-control(type='number' name='unidadesD' required='' min="1" pattern="^[0-9]+")
                       .col
