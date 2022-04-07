@@ -27,40 +27,53 @@ block content
                   form(action='/administrar/crear_libro' method='post')
                     .row
                       .col
-                        label.form-label(for='nombre') Nombre:
-                        input#nombre.form-control(type='text' name='nombre' required='')
-                        label.form-label(for='autor') Autor:
-                        input#autor.form-control(type='array' name='autor' required='')
-                        label.form-label(for='editorial') Editorial:
-                        input#editorial.form-control(type='text' name='editorial' required='')
-                        label.form-label(for='lugarE') Lugar edición:
-                        input#lugarE.form-control(type='text' name='lugarE' required='')
-                        label.form-label(for='fechaE') Fecha edición:
-                        input#fechaE.form-control(type='number' name='fechaE' required='' min="1900" max="3000")
-                        label.form-label(for='anioE') Año entrada:
-                        input#anioE.form-control(type='number' name='anioE' required='' min="1950" max="2050" pattern="[1-9][0-9]{3}")
-                        label.form-label(for='unidadesD') Unidades Disponibles:
-                        input#unidadesD.form-control(type='number' name='unidadesD' required='' min="1" pattern="^[0-9]+")
+                        .form-floating.mb-3
+                          input#nombre.form-control(type='text' name='nombre' required='')
+                          label.form-label(for='nombre') Nombre:
+                        .form-floating.mb-3
+                          input#autor.form-control(type='array' name='autor' required='')
+                          label.form-label(for='autor') Autor:
+                        .form-floating.mb-3
+                          input#editorial.form-control(type='text' name='editorial' required='')
+                          label.form-label(for='editorial') Editorial:
+                        .form-floating.mb-3
+                          input#lugarE.form-control(type='text' name='lugarE' required='')
+                          label.form-label(for='lugarE') Lugar edición:
+                        .form-floating.mb-3
+                          input#fechaE.form-control(type='number' name='fechaE' required='' min="1900" max="3000")
+                          label.form-label(for='fechaE') Fecha edición:
+                        .form-floating.mb-3
+                          input#anioE.form-control(type='number' name='anioE' required='' min="1950" max="2050" pattern="[1-9][0-9]{3}")
+                          label.form-label(for='anioE') Año entrada:
+                        .form-floating.mb-3
+                          input#unidadesD.form-control(type='number' name='unidadesD' required='' min="1" pattern="^[0-9]+")
+                          label.form-label(for='unidadesD') Unidades Disponibles:
                       .col
-                        label.form-label(for='totalU') Total Unidades:
-                        input#totalU.form-control(type='number' name='totalU' required='' min="1" pattern="^[0-9]+")
-                        label.form-label(for='numP') Número págs.:
-                        input#numP.form-control(type='number' name='numP' required='' min="1" pattern="^[0-9]+")
-                        label.form-label(for='numI') Número inventario:
-                        input#numI.form-control(type='number' name='numI' required='' min="1" pattern="^[0-9]+")
+                        .form-floating.mb-3
+                          input#totalU.form-control(type='number' name='totalU' required='' min="1" pattern="^[0-9]+")
+                          label.form-label(for='totalU') Total Unidades:
+                        .form-floating.mb-3
+                          input#numP.form-control(type='number' name='numP' required='' min="1" pattern="^[0-9]+")
+                          label.form-label(for='numP') Número págs.:
+                        .form-floating.mb-3
+                          input#numI.form-control(type='number' name='numI' required='' min="1" pattern="^[0-9]+")
+                          label.form-label(for='numI') Número inventario:
                         .row
                           .col
-                            label.form-label(for='anaquel') Anaquel - Charola:
-                            input#anaquel.form-control(type='text' name='anaquel' required='')
+                            .form-floating.mb-3
+                              input#anaquel.form-control(type='text' name='anaquel' required='')
+                              label.form-label(for='anaquel') Anaquel - Charola:
                           .col
-                            label.form-label(for='clasificacion') Clasificación:
-                            input#clasificacion.form-control(type='text' name='clasificacion')
-                        
-                        label.form-label(for='observaciones') Observaciones:
-                        textarea#observaciones.form-control(type='text' name='observaciones')
-                        label.form-label(for='descripcion') Descripción:
-                        textarea#descripcion.form-control(type='text' name='descripcion')
-                        
+                            .form-floating.mb-3              
+                              input#clasificacion.form-control(type='text' name='clasificacion')
+                              label.form-label(for='clasificacion') Clasificación:
+                        .form-floating.mb-3
+                          textarea#observaciones.form-control(type='text' name='observaciones')
+                          label.form-label(for='observaciones') Observaciones:
+                        .form-floating.mb-3
+                          textarea#descripcion.form-control(type='text' name='descripcion')
+                          label.form-label(for='descripcion') Descripción:
+                          
                         .row
                           .col(style='text-align: right; padding-top: 10px')
                             a.btn.btn-danger(href='/administrar/menu_libro') 

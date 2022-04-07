@@ -26,43 +26,57 @@ block content
                     .row
                       each libro in Libro
                         .col
-                          label.form-label(for='nombre') Nombre:
-                          input#nombre.form-control(type='text' name='nombre' readonly value= libro.Nombre)
-                          label.form-label(for='autor') Autor:
-                          input#autor.form-control(type='text' name='autor' readonly value= libro.Autor.join())
-                          label.form-label(for='editorial') Editorial:
-                          input#editorial.form-control(type='text' name='editorial' readonly value= libro.Editorial)
-                          label.form-label(for='lugarE') Lugar edición:
-                          input#lugarE.form-control(type='text' name='lugarE' readonly value= libro.Lugar_Edicion)
-                          label.form-label(for='fechaE') Fecha edición:
-                          input#fechaE.form-control(type='text' name='fechaE' readonly value= libro.Fecha_Edicion)
-                          label.form-label(for='anioE') Año entrada:
-                          input#anioE.form-control(type='text' name='anioE' readonly value= libro.Año_Entrada)
-                          label.form-label(for='unidadesD') Unidades Disponibles:
-                          input#unidadesD.form-control(type='number' name='unidadesD' readonly value= libro.Unidades_Disponibles)
+                          .form-floating.mb-3
+                            input#nombre.form-control(type='text' name='nombre' readonly value= libro.Nombre)
+                            label.form-label(for='nombre') Nombre:
+                          .form-floating.mb-3
+                            input#autor.form-control(type='text' name='autor' readonly value= libro.Autor.join())
+                            label.form-label(for='autor') Autor:
+                          .form-floating.mb-3
+                            input#editorial.form-control(type='text' name='editorial' readonly value= libro.Editorial)
+                            label.form-label(for='editorial') Editorial:
+                          .form-floating.mb-3
+                            input#lugarE.form-control(type='text' name='lugarE' readonly value= libro.Lugar_Edicion)
+                            label.form-label(for='lugarE') Lugar edición:
+                          .form-floating.mb-3
+                            input#fechaE.form-control(type='text' name='fechaE' readonly value= libro.Fecha_Edicion)
+                            label.form-label(for='fechaE') Fecha edición:
+                          .form-floating.mb-3
+                            input#anioE.form-control(type='text' name='anioE' readonly value= libro.Año_Entrada)
+                            label.form-label(for='anioE') Año entrada:
+                          .form-floating.mb-3
+                            input#unidadesD.form-control(type='number' name='unidadesD' readonly value= libro.Unidades_Disponibles)
+                            label.form-label(for='unidadesD') Unidades Disponibles:
                           .row
                             .col(style='text-align: right; padding-top: 10px')
                               a.btn.btn-danger(href='/alumnos/buscar_solicitar_libro') 
                                 | Cancelar
                         .col
-                          label.form-label(for='totalU') Total Unidades:
-                          input#totalU.form-control(type='number' name='totalU' readonly value= libro.Total_Unidades)
-                          label.form-label(for='numP') Número págs.:
-                          input#numP.form-control(type='number' name='numP' readonly value= libro.Num_Pag)
-                          label.form-label(for='numI') Número inventario:
-                          input#numI.form-control(type='number' name='numI' readonly value= libro.Num_Inventario)
+                          .form-floating.mb-3
+                            input#totalU.form-control(type='number' name='totalU' readonly value= libro.Total_Unidades)
+                            label.form-label(for='totalU') Total Unidades:
+                          .form-floating.mb-3
+                            input#numP.form-control(type='number' name='numP' readonly value= libro.Num_Pag)
+                            label.form-label(for='numP') Número págs.:
+                          .form-floating.mb-3
+                            input#numI.form-control(type='number' name='numI' readonly value= libro.Num_Inventario)
+                            label.form-label(for='numI') Número inventario:
                           .row
                             .col
-                              label.form-label(for='anaquel') Anaquel - Charola:
-                              input#anaquel.form-control(type='text' name='anaquel' readonly value= libro.Anaquel_Charola)
+                              .form-floating.mb-3
+                                input#anaquel.form-control(type='text' name='anaquel' readonly value= libro.Anaquel_Charola)
+                                label.form-label(for='anaquel') Anaquel - Charola:
                             .col
-                              label.form-label(for='clasificacion') Clasificación:
-                              input#clasificacion.form-control(type='text' name='clasificacion' readonly value= libro.Clasificacion)
-                          
-                          label.form-label(for='observaciones') Observaciones:
-                          textarea#observaciones.form-control(type='text' name='observaciones' readonly )=libro.Observaciones
-                          label.form-label(for='descripcion') Descripción:
-                          textarea#descripcion.form-control(type='text' name='descripcion' readonly )=libro.Descripcion
+                              .form-floating.mb-3
+                                input#clasificacion.form-control(type='text' name='clasificacion' readonly value= libro.Clasificacion)
+                                label.form-label(for='clasificacion') Clasificación:
+                            
+                          .form-floating.mb-3
+                            textarea#observaciones.form-control(type='text' name='observaciones' readonly )=libro.Observaciones
+                            label.form-label(for='observaciones') Observaciones:
+                          .form-floating.mb-3
+                            textarea#descripcion.form-control(type='text' name='descripcion' readonly )=libro.Descripcion
+                            label.form-label(for='descripcion') Descripción:
                           .row
                             .col(style='text-align: right; padding-top: 10px')
                             if libro.Unidades_Disponibles<2
