@@ -11,7 +11,7 @@ block content
             .row.rowtabla
               .col-4
                 .row
-                if libro.Foto==""
+                if libro.Foto=="" || libro.Foto == null
                   img#prev.dic(src="/images/diccionario.png")
                 else 
                   img#prev.dic(src=libro.Foto)
