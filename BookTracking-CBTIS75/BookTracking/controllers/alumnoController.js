@@ -451,7 +451,15 @@ alumnoController.mostar_qr= (req, res)=>{
         });
 
         
-        console.log(qrcode);
+
+        if(qrcode==null || qrcode==""){
+            let data = {
+                qr: qrcode=null,
+                code: code=null
+            }
+            res.render("alumnos_ver_mi_qr", data)
+        }else{
+            console.log(qrcode);
         qr.toDataURL(qrcode, (err, code) => {
             if (err) res.send("Error occured");
 
@@ -460,8 +468,35 @@ alumnoController.mostar_qr= (req, res)=>{
                 code: code
             }
             res.render('alumnos_ver_mi_qr', data);
-        });
+        }); 
+        }
     });
+}
+
+alumnoController.generar_qr=(req, res)=>{
+    let qrcode = 0;
+    const usuario = req.session.usuario;
+
+    Alumno.find({}).sort({ 'Qr': -1 }).limit(1).exec((err, results) => {
+        if (err) {
+            console.log("Error: ", err);
+            return;
+        }
+        qrcode = parseInt(results[0].Qr) + 1;
+        console.log('Generate QRCode' + qrcode);
+        
+        Alumno.updateOne({"_id":usuario},{$set:{
+            "Qr":qrcode
+        }}).exec((err, Alumno) => {
+            if (err) {
+                console.log('Error al generar QR:', err);
+                return;
+            }
+            res.redirect('/alumnos/ver_mi_qr');
+        });
+
+    });
+
 }
 
 module.exports = alumnoController;

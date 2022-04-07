@@ -1,11 +1,26 @@
 extends layout
 
 block content
+  .row
+    .col
+      .btn-group(role='group' aria-label='Navs')
+        a.btn.btn-primary#pg(type='button' href='/alumnos') Inicio   
+          i.bi.bi-caret-right
+        button.btn.btn-primary#pg(type='button' disabled) Ver mi qr
   .container-fluid.botonera
     .row
       .col
-        .row 
-            h3 Este es tu codigo QR
-            br
-        .row
-            img(src=code)
+        if code==null || code ==""
+          .row 
+              h3 No tienes un codigo QR asigando.
+              br
+          .row 
+            .col    
+                a.btn.btn-success(onclick='qr()')
+                  | Generar QR 
+        else 
+          .row 
+              h3 Este es tu codigo QR
+              br
+          .row
+              img(src=code)
