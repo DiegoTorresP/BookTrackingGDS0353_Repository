@@ -35,64 +35,50 @@ block content
                 .row
                 each libro in Libro
                   .col
-                    .row.mb-3
+                    .form-floating.mb-3
+                        input#colFormLabelSm.form-control.form-control-sm(type='text' readonly value= libro.Nombre)
                         label.col-sm-2.col-form-label.col-form-label-sm(for='colFormLabelSm') Nombre
-                        .col-sm-10
-                            input#colFormLabelSm.form-control.form-control-sm(type='text' readonly value= libro.Nombre)
-                    .row.mb-3
+                    .form-floating.mb-3
+                        input#colFormLabelSm.form-control.form-control-sm(type='text' readonly value= libro.Autor.join())
                         label.col-sm-2.col-form-label.col-form-label-sm(for='colFormLabelSm') Autor(es)
-                        .col-sm-10
-                            input#colFormLabelSm.form-control.form-control-sm(type='text' readonly value= libro.Autor.join())
-                    .row.mb-3
+                    .form-floating.mb-3
+                        input#colFormLabelSm.form-control.form-control-sm(type='text' readonly value= libro.Editorial)
                         label.col-sm-2.col-form-label.col-form-label-sm(for='colFormLabelSm') Editorial
-                        .col-sm-10
-                            input#colFormLabelSm.form-control.form-control-sm(type='text' readonly value= libro.Editorial)
-                    .row.mb-3
+                    .form-floating.mb-3
+                        input#colFormLabelSm.form-control.form-control-sm(type='text' readonly value= libro.Lugar_Edicion)
                         label.col-sm-2.col-form-label.col-form-label-sm(for='colFormLabelSm') Lugar de Edición
-                        .col-sm-10
-                            input#colFormLabelSm.form-control.form-control-sm(type='text' readonly value= libro.Lugar_Edicion)
-                    .row.mb-3
+                    .form-floating.mb-3
+                        input#colFormLabelSm.form-control.form-control-sm(type='number' readonly value= libro.Fecha_Edicion)
                         label.col-sm-2.col-form-label.col-form-label-sm(for='colFormLabelSm') Fecha de Edición
-                        .col-sm-10
-                            input#colFormLabelSm.form-control.form-control-sm(type='number' readonly value= libro.Fecha_Edicion)
-                    .row.mb-3
+                    .form-floating.mb-3
+                        input#colFormLabelSm.form-control.form-control-sm(type='number' readonly value= libro.Año_Entrada)
                         label.col-sm-2.col-form-label.col-form-label-sm(for='colFormLabelSm') Año Entrada
-                        .col-sm-10
-                            input#colFormLabelSm.form-control.form-control-sm(type='number' readonly value= libro.Año_Entrada)
-                    .row.mb-3
+                    .form-floating.mb-3
+                        input#colFormLabelSm.form-control.form-control-sm(type='number' readonly value= libro.Unidades_Disponibles)
                         label.col-sm-2.col-form-label.col-form-label-sm(for='colFormLabelSm') Unidades Disponibles
-                        .col-sm-10
-                            input#colFormLabelSm.form-control.form-control-sm(type='number' readonly value= libro.Unidades_Disponibles)
                     
                   .col
-                    .row.mb-3
+                    .form-floating.mb-3
+                        input#colFormLabelSm.form-control.form-control-sm(type='number' readonly value= libro.Total_Unidades)
                         label.col-sm-2.col-form-label.col-form-label-sm(for='colFormLabelSm') Total Unidades
-                        .col-sm-10
-                            input#colFormLabelSm.form-control.form-control-sm(type='number' readonly value= libro.Total_Unidades)
-                    .row.mb-3
+                    .form-floating.mb-3
+                        input#colFormLabelSm.form-control.form-control-sm(type='number' readonly value= libro.Num_Pag)
                         label.col-sm-2.col-form-label.col-form-label-sm(for='colFormLabelSm') Número de Páginas
-                        .col-sm-10
-                            input#colFormLabelSm.form-control.form-control-sm(type='number' readonly value= libro.Num_Pag)
-                    .row.mb-3
+                    .form-floating.mb-3
+                        input#colFormLabelSm.form-control.form-control-sm(type='number' readonly value= libro.Num_Inventario)
                         label.col-sm-2.col-form-label.col-form-label-sm(for='colFormLabelSm') Número de Inventario
-                        .col-sm-10
-                            input#colFormLabelSm.form-control.form-control-sm(type='number' readonly value= libro.Num_Inventario)
-                    .row.mb-3
+                    .form-floating.mb-3
+                        input#colFormLabelSm.form-control.form-control-sm(type='text' readonly value= libro.Anaquel_Charola)
                         label.col-sm-2.col-form-label.col-form-label-sm(for='colFormLabelSm') Anaquel Charola
-                        .col-sm-10
-                            input#colFormLabelSm.form-control.form-control-sm(type='text' readonly value= libro.Anaquel_Charola)
-                    .row.mb-3
+                    .form-floating.mb-3
+                        input#colFormLabelSm.form-control.form-control-sm(type='text' readonly value= libro.Clasificacion)
                         label.col-sm-2.col-form-label.col-form-label-sm(for='colFormLabelSm') Clasificación
-                        .col-sm-10
-                            input#colFormLabelSm.form-control.form-control-sm(type='text' readonly value= libro.Clasificacion)
-                    .row.mb-3
+                    .form-floating.mb-3
+                        input#colFormLabelSm.form-control.form-control-sm(type='text' readonly value= libro.Observaciones)
                         label.col-sm-2.col-form-label.col-form-label-sm(for='colFormLabelSm') Observaciones
-                        .col-sm-10
-                            input#colFormLabelSm.form-control.form-control-sm(type='text' readonly value= libro.Observaciones)
                     
                   .row
                     .col 
-                      .row.mb-3
-                          label.col-sm-2.col-form-label.col-form-label-sm(for='colFormLabelSm') Descripción
-                          .col-sm-10
-                              textarea#descripcion.form-control(type='text' name='descripcion' readonly value=libro.Descripcion)
+                      .form-floating.mb-3
+                        textarea#descripcion.form-control(type='text' name='descripcion' readonly value=libro.Descripcion)
+                        label.col-sm-2.col-form-label.col-form-label-sm(for='colFormLabelSm') Descripción
