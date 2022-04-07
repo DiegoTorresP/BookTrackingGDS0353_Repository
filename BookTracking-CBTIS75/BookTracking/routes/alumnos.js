@@ -33,6 +33,8 @@ router.get("/ver_mi_qr",auth.isUser, alumnoController.mostar_qr);
 //Ruta de actulización
 router.get("/actualizar_unidades/:id",auth.isUser,libro_controller.actualizarUnidades);
 
+router.get("/generar_qr", auth.isUser, alumnoController.generar_qr);
+
 
 
 module.exports = router;
