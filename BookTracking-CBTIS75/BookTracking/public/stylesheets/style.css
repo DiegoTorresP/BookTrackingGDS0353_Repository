@@ -44,7 +44,9 @@ body {
   background-color: var(--color-primario);
 }
 
-
+#clrs{
+  display: none;
+}
 #pg{
   border-radius: 1px;
   padding: 10px;

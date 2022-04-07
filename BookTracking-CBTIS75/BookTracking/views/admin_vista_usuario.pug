@@ -12,51 +12,67 @@ block content
               .row
                 each alumno in Alumno
                   .col
-                    label.form-label(for='numControl') No. de Control
-                    input#numControl.form-control(type='number' name='numControl' required  value=alumno._id)
-                    label.form-label(for='nombre') Nombre:
-                    input#nombre.form-control(type='text' name='nombre' required=''  value=alumno.Nombre_s)
-                    label.form-label(for='apPaterno') Apellido paterno:
-                    input#apPaterno.form-control(type='text' name='apPaterno' required  value=alumno.Apellido_Paterno)
-                    label.form-label(for='apMaterno') Apellido Materno:
-                    input#apMaterno.form-control(type='text' name='apMaterno' required  value=alumno.Apellido_Materno)
-                    label.form-label(for='grupo') Grupo:
-                    input#grupo.form-control(type='text' name='grupo' required  value=alumno.Grupo)
-                    label.form-label(for='especialidad') Especialidad:
-                    input#especialidad.form-control(type='text' name='especialidad' required  value=alumno.Carrera_Tecnica)
-                    label.form-label(for='turno') Turno:
-                    input#turno.form-control(type='text' name='turno' required  value=alumno.Turno)
+                    .form-floating.mb-3
+                      input#numControl.form-control(type='number' name='numControl' required  value=alumno._id)
+                      label.form-label(for='numControl') No. de Control
+                    .form-floating.mb-3
+                      input#nombre.form-control(type='text' name='nombre' required=''  value=alumno.Nombre_s)
+                      label.form-label(for='nombre') Nombre:
+                    .form-floating.mb-3
+                      input#apPaterno.form-control(type='text' name='apPaterno' required  value=alumno.Apellido_Paterno)
+                      label.form-label(for='apPaterno') Apellido paterno:
+                    .form-floating.mb-3
+                      input#apMaterno.form-control(type='text' name='apMaterno' required  value=alumno.Apellido_Materno)
+                      label.form-label(for='apMaterno') Apellido Materno:
+                    .form-floating.mb-3
+                      input#grupo.form-control(type='text' name='grupo' required  value=alumno.Grupo)
+                      label.form-label(for='grupo') Grupo:
+                    .form-floating.mb-3
+                      input#especialidad.form-control(type='text' name='especialidad' required  value=alumno.Carrera_Tecnica)
+                      label.form-label(for='especialidad') Especialidad:
+                    .form-floating.mb-3
+                      input#turno.form-control(type='text' name='turno' required  value=alumno.Turno)
+                      label.form-label(for='turno') Turno:
                   .col
-                    label.form-label(for='generacion') Generaci&oacute;n:
-                    input#generacion.form-control(type='text' name='generacion' required  value=alumno.Generacion)
-                    label.form-label(for='sexo') Sexo:
-                    select#sexo.form-control(name='sexo' required  value=alumno.Genero)
-                      if alumno.Genero =="Hombre"
-                        option #{alumno.Genero}
-                        option Mujer
-                      else
-                        option #{alumno.Genero}
-                        option Hombre
-                    label.form-label(for='curp') CURP:
-                    input#curp.form-control(type='text' name='curp' required  value=alumno.CURP)
+                    .form-floating.mb-3
+                      input#generacion.form-control(type='text' name='generacion' required  value=alumno.Generacion)
+                      label.form-label(for='generacion') Generaci&oacute;n:
+                    .form-floating.mb-3
+                      select#sexo.form-control(name='sexo' required  value=alumno.Genero)
+                        if alumno.Genero =="Hombre"
+                          option #{alumno.Genero}
+                          option Mujer
+                        else
+                          option #{alumno.Genero}
+                          option Hombre
+                      label.form-label(for='sexo') Sexo:
+                    .form-floating.mb-3
+                      input#curp.form-control(type='text' name='curp' required  value=alumno.CURP)
+                      label.form-label(for='curp') CURP:
                     .row
                       .col
-                        label.form-label(for='correo1') Correo 1:
-                        input#correo1.form-control(type='email' name='correo1' required  value=alumno.Correo_Electronico_1)
+                        .form-floating.mb-3
+                          input#correo1.form-control(type='email' name='correo1' required  value=alumno.Correo_Electronico_1)
+                          label.form-label(for='correo1') Correo 1:
                       .col
-                        label.form-label(for='correo2') Correo 2:
-                        input#correo2.form-control(type='email' name='correo2'  value=alumno.Correo_Electronico_2)
+                        .form-floating.mb-3
+                          input#correo2.form-control(type='email' name='correo2'  value=alumno.Correo_Electronico_2)
+                          label.form-label(for='correo2') Correo 2:
                     .row
                       .col
-                        label.form-label(for='lada') Lada:
-                        input#lada.form-control(type='number' name='lada' required  value=alumno.Clave_Lada)
+                        .form-floating.mb-3
+                          input#lada.form-control(type='number' name='lada' required  value=alumno.Clave_Lada)
+                          label.form-label(for='lada') Lada:
                       .col
-                        label.form-label(for='telefonoFijo1') Telefono fijo 1:
-                        input#c.form-control(type='number' name='telefonoFijo1'  value=alumno.Telefono_de_contacto_fijo_1)
-                    label.form-label(for='telefonoFijo2') Telefono fijo 2:
-                    input#telefonoFijo2.form-control(type='number' name='telefonoFijo2'  value=alumno.Telefono_de_contacto_fijo_2)
-                    label.form-label(for='telefonoMovil') Telefono Movil:
-                    input#telefonoMovil.form-control(type='number' name='telefonoMovil'  value=alumno.Telefono_movil_celular)
+                        .form-floating.mb-3
+                          input#c.form-control(type='number' name='telefonoFijo1'  value=alumno.Telefono_de_contacto_fijo_1)
+                          label.form-label(for='telefonoFijo1') Telefono fijo 1:
+                    .form-floating.mb-3
+                      input#telefonoFijo2.form-control(type='number' name='telefonoFijo2'  value=alumno.Telefono_de_contacto_fijo_2)
+                      label.form-label(for='telefonoFijo2') Telefono fijo 2:
+                    .form-floating.mb-3
+                      input#telefonoMovil.form-control(type='number' name='telefonoMovil'  value=alumno.Telefono_movil_celular)
+                      label.form-label(for='telefonoMovil') Telefono Movil:
                     .row
                       .col(style='text-align: right; padding-top: 10px')
                          a.btn.btn-danger(href='/administrar/lista_usuario') 
