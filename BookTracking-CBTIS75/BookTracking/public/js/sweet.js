@@ -68,3 +68,14 @@ function deshabilitaRetroceso(){
   window.location.hash="Again-No-back-button" //chrome
   window.onhashchange=function(){window.location.hash="";}
 }
+
+//Animacion al generar qr
+function qr() {
+  Swal.fire({
+    icon: "success",
+    title: "Codigo generado con exito",
+    showConfirmButton: false,
+    timer: 7000,
+  });
+  window.location = "/alumnos/generar_qr";
+}
