@@ -1173,6 +1173,18 @@ solicitudesController.entregarLibro = (req, res) => {
   const sol = req.body.solicitante;
   const dias = Number(req.body.dias);
   fechaactual.setDate(fechaactual.getDate() + dias);
+  //Procesamos fecha en Español y validamos hora
+  if (fechaactual.getDay() == 0) {
+    //si es domingo
+    fechaactual.setDate(fechaactual.getDate() + 1);
+    fechaactual.setHours(09);
+    fechaactual.setMinutes(00);
+  } else if (fechaactual.getDay() == 6) {
+    //Si es sabado
+    fechaactual.setDate(fechaactual.getDate() + 2);
+    fechaactual.setHours(08);
+    fechaactual.setMinutes(00);
+  } 
   console.log("Entregando libro");
   //VERIFICAR FECHAS EN FINDES
   console.log("dias entrega: " + dias);
