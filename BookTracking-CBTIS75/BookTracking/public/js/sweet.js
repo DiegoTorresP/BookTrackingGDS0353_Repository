@@ -52,6 +52,16 @@ function registar() {
   });
 }
 
+//Animacion al buscar solicitud
+function validar() {
+  Swal.fire({
+    icon: "success",
+    title: "Encontrado con exito",
+    showConfirmButton: false,
+    timer: 3000,
+  });
+}
+
 //Deshabilitar retroceso por navegador
 function deshabilitaRetroceso(){
   window.location.hash="no-back-button";

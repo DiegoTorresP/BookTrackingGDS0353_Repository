@@ -59,9 +59,10 @@ block content
                                       .col
                                         form(action="/administrar/solicitar_libro/"+libro._id+"/stock/"+libro.Unidades_Disponibles method='post')
                                           br
-                                          | Solicitante
+                                          | Solicitante: 
                                           br
-                                          input#solicitante(type='number' name='solicitante' required placeholder="Ingresar número de control")
+                                          br
+                                          input#solicitante.form-control(type='number' name='solicitante' required placeholder="Ingresar número de control")
                                           br
                                           button.btn.btn-success.btn-icon#saveb(type='submit' onclick='registar()')
                                             |Guardar

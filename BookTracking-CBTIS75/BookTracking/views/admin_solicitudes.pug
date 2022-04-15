@@ -46,7 +46,14 @@ block content
                             if solicitud.Estatus_Prestamo == "Cancelado"
                               td(style='background-color: black; color:white') #{solicitud.Estatus_Prestamo}
                             else 
-                              td(style='background-color: blue; color:white') #{solicitud.Estatus_Prestamo}
+                              if solicitud.Estatus_Prestamo == "Entregado"
+                                td(style='background-color: orange; color:white') #{solicitud.Estatus_Prestamo}
+                              else 
+                                if solicitud.Estatus_Prestamo == "Devuelto"
+                                  td(style='background-color: purple; color:white') #{solicitud.Estatus_Prestamo}
+                                else
+                                  td(style='background-color: blue; color:white') #{solicitud.Estatus_Prestamo}
+
                         td 
                           -var url = "/administrar/detalle_libro/"+ (JSON.parse(JSON.stringify(solicitud.libro._id)))+"/solicitud/"+solicitud._id+"/status/"+solicitud.Estatus_Prestamo
                           a(href=url) 

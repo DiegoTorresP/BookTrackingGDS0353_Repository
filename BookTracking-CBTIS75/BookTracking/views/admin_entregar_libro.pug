@@ -1,4 +1,30 @@
 extends layout
 
 block content
- h1 entregar
+    .row
+        .col
+        a.btn(style="color:white; background-color:red;float:right" type='button' data-bs-toggle='modal' data-bs-target='#exampleModalCenter') Entrega Manual
+        #exampleModalCenter.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalCenterTitle' aria-hidden='true')
+          .modal-dialog.modal-dialog-centered(role='document')
+            .modal-content
+              .modal-header
+                h5#exampleModalCenterTitle.modal-title(style="color:black") Validar Entrega Manual 
+                button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+              .modal-body
+                .row
+                  form(action="/administrar/entrega_manual/" method='post')
+                    br
+                    | Solicitante:
+                    br 
+                    br
+                    input#solicitante.form-control(type='number' name='solicitante' required placeholder="Ingresar número de control")
+                    br
+                    | Dias de prestamo:
+                    br
+                    br 
+                    input#dias.form-control(type='number' name='dias' required placeholder="Ingresar días")
+                    br
+                    button.btn.btn-success.btn-icon#saveb(type='submit' onclick='validar()')
+                        |Guardar
+              .modal-footer
+                button.btn.btn-secondary#cancb(type='button' data-bs-dismiss='modal') Cerrar 

@@ -127,4 +127,14 @@ router.post("/busqueda_solicitante", auth.isAdmin,solicitudes_controller.consult
 router.post("/busqueda_libro",auth.isAdmin,solicitudes_controller.consultar_libro); 
 //Busqueda por estatus
 router.post("/busqueda_estatus_prestamo",auth.isAdmin, solicitudes_controller.consultar_estatus_solic); 
+
+//Entrega manual de libro
+router.post("/entrega_manual",auth.isAdmin,solicitudes_controller.entregarLibro);
+//Devolucion manual de libro
+router.post("/devolucion_manual",auth.isAdmin,solicitudes_controller.devolverLibro);
+//Entrega QR de libro
+
+//Devolucion QR de Libro
+
+
 module.exports = router;

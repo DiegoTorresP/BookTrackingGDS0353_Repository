@@ -1,15 +1,15 @@
 const solicitud = require("../models/solicitud");
 const libros = require("../models/libro");
-var cron = require('node-cron');
+var cron = require("node-cron");
 
 const sendGridMail = require("@sendgrid/mail");
-var mongoose = require('mongoose');
+var mongoose = require("mongoose");
 var type = mongoose.Types;
 ObjectId = type.ObjectId;
 sendGridMail.setApiKey(process.env.SENDGRID_API_KEY);
 var solicitudesController = {};
 //Se crea tarea en cron para notificación de devolución
-  /*
+/*
   
    # ┌────────────── second (optional)
    # │ ┌──────────── minute
@@ -21,9 +21,9 @@ var solicitudesController = {};
    # │ │ │ │ │ │
    # * * * * * *
   */
-   cron.schedule('00 10 * * *', () => {
-    console.log('Avisos');
-    solicitud
+cron.schedule("00 10 * * *", () => {
+  console.log("Avisos");
+  solicitud
     .aggregate([
       {
         $lookup: {
@@ -48,10 +48,10 @@ var solicitudesController = {};
         $unwind: "$libro",
       },
       {
-        $match:{
-          Estatus_Prestamo:"Entregado"
-        }
-      }
+        $match: {
+          Estatus_Prestamo: "Entregado",
+        },
+      },
     ])
     .exec((err, Solicitud) => {
       if (err) {
@@ -59,27 +59,66 @@ var solicitudesController = {};
         return;
       }
       console.log("The INDEX");
-      console.log(Solicitud); 
+      console.log(Solicitud);
       const fechaactual = new Date();
       var correoUsuario = "";
       var nombreUsuario = "";
       var nombreLibro = "";
       var fecha_entrega = "";
-      Solicitud.forEach(function(solicitudes){
+      Solicitud.forEach(function (solicitudes) {
         //if para estatus de Entregado: se valida y manda correo cuando la fecha de entrega es en un dia.
-        if(solicitudes.Fecha_Entrega.getUTCFullYear() == fechaactual.getFullYear() && solicitudes.Fecha_Entrega.getMonth()+1 == fechaactual.getMonth()+1 && solicitudes.Fecha_Entrega.getDate()-1 == fechaactual.getDate() ){
+        if (
+          solicitudes.Fecha_Entrega.getUTCFullYear() ==
+            fechaactual.getFullYear() &&
+          solicitudes.Fecha_Entrega.getMonth() + 1 ==
+            fechaactual.getMonth() + 1 &&
+          solicitudes.Fecha_Entrega.getDate() - 1 == fechaactual.getDate()
+        ) {
           //Enviando Correo
-          console.log('Enviando correo')
+          console.log("Enviando correo");
           correoUsuario = solicitudes.nombre.Correo_Electronico_1;
-          nombreUsuario = solicitudes.nombre.Nombre_s +" "+ solicitudes.nombre.Apellido_Paterno+" "+solicitudes.nombre.Apellido_Materno;
+          nombreUsuario =
+            solicitudes.nombre.Nombre_s +
+            " " +
+            solicitudes.nombre.Apellido_Paterno +
+            " " +
+            solicitudes.nombre.Apellido_Materno;
           nombreLibro = solicitudes.libro.Nombre;
           const asunto = "Recordatorio de entrega";
           // Creamos array con los meses del año
-          const meses = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+          const meses = [
+            "enero",
+            "febrero",
+            "marzo",
+            "abril",
+            "mayo",
+            "junio",
+            "julio",
+            "agosto",
+            "septiembre",
+            "octubre",
+            "noviembre",
+            "diciembre",
+          ];
           // Creamos array con los días de la semana
-          const dias_semana = ['Domingo', 'Lunes', 'martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+          const dias_semana = [
+            "Domingo",
+            "Lunes",
+            "martes",
+            "Miércoles",
+            "Jueves",
+            "Viernes",
+            "Sábado",
+          ];
           //Procesamos fecha en Español
-          fecha_entrega =dias_semana[ solicitudes.Fecha_Entrega.getDay()] + ', ' +  solicitudes.Fecha_Entrega.getDate() + ' de ' + meses[ solicitudes.Fecha_Entrega.getMonth()] + ' de ' +  solicitudes.Fecha_Entrega.getUTCFullYear();
+          fecha_entrega =
+            dias_semana[solicitudes.Fecha_Entrega.getDay()] +
+            ", " +
+            solicitudes.Fecha_Entrega.getDate() +
+            " de " +
+            meses[solicitudes.Fecha_Entrega.getMonth()] +
+            " de " +
+            solicitudes.Fecha_Entrega.getUTCFullYear();
           function getMessage() {
             const correo = `<!DOCTYPE html>
             <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -159,16 +198,16 @@ var solicitudesController = {};
                 </table>
               </div>
             </body>
-            </html>`
+            </html>`;
             return {
               to: correoUsuario,
               from: "bibliotecacbtis75@gmail.com",
               subject: asunto,
               text: "Correo Recordatorio",
-              html: correo ,
+              html: correo,
             };
           }
-        
+
           async function sendEmail() {
             try {
               await sendGridMail.send(getMessage());
@@ -186,14 +225,13 @@ var solicitudesController = {};
             console.log("Sending test email");
             await sendEmail();
           })();
-
         }
-      }); 
+      });
     });
-  });
+});
 
-  //Se crea tarea en cron para notificación cancelacion por tiempo
-  /*
+//Se crea tarea en cron para notificación cancelacion por tiempo
+/*
   
    # ┌────────────── second (optional)
    # │ ┌──────────── minute
@@ -205,9 +243,9 @@ var solicitudesController = {};
    # │ │ │ │ │ │
    # * * * * * *
   */
-   cron.schedule('00 8-14 * * *', () => {
-    console.log('Avisos Entregas');
-    solicitud
+cron.schedule("00 8-14 * * *", () => {
+  console.log("Avisos Entregas");
+  solicitud
     .aggregate([
       {
         $lookup: {
@@ -232,10 +270,10 @@ var solicitudesController = {};
         $unwind: "$libro",
       },
       {
-        $match:{
-          Estatus_Prestamo:"Aceptado"
-        }
-      }
+        $match: {
+          Estatus_Prestamo: "Aceptado",
+        },
+      },
     ])
     .exec((err, Solicitud) => {
       if (err) {
@@ -243,27 +281,67 @@ var solicitudesController = {};
         return;
       }
       console.log("The INDEX");
-      console.log(Solicitud); 
+      console.log(Solicitud);
       const fechaactual = new Date();
       var correoUsuario = "";
       var nombreUsuario = "";
       var nombreLibro = "";
       var fecha_entrega = "";
-      Solicitud.forEach(function(solicitudes){
+      Solicitud.forEach(function (solicitudes) {
         //if para estatus de Entregado: se valida y manda correo cuando la fecha de entrega es en un dia.
-        if(solicitudes.Fecha_Entrega.getUTCFullYear() == fechaactual.getFullYear() && solicitudes.Fecha_Entrega.getMonth()+1 == fechaactual.getMonth()+1 && solicitudes.Fecha_Entrega.getDate() == fechaactual.getDate() && solicitudes.Fecha_Entrega.getHours() < fechaactual.getHours() ){
+        if (
+          solicitudes.Fecha_Entrega.getUTCFullYear() ==
+            fechaactual.getFullYear() &&
+          solicitudes.Fecha_Entrega.getMonth() + 1 ==
+            fechaactual.getMonth() + 1 &&
+          solicitudes.Fecha_Entrega.getDate() == fechaactual.getDate() &&
+          solicitudes.Fecha_Entrega.getHours() < fechaactual.getHours()
+        ) {
           //Enviando Correo
-          console.log('Enviando correo')
+          console.log("Enviando correo");
           correoUsuario = solicitudes.nombre.Correo_Electronico_1;
-          nombreUsuario = solicitudes.nombre.Nombre_s +" "+ solicitudes.nombre.Apellido_Paterno+" "+solicitudes.nombre.Apellido_Materno;
+          nombreUsuario =
+            solicitudes.nombre.Nombre_s +
+            " " +
+            solicitudes.nombre.Apellido_Paterno +
+            " " +
+            solicitudes.nombre.Apellido_Materno;
           nombreLibro = solicitudes.libro.Nombre;
           const asunto = "Prestamo Cancelado";
           // Creamos array con los meses del año
-          const meses = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+          const meses = [
+            "enero",
+            "febrero",
+            "marzo",
+            "abril",
+            "mayo",
+            "junio",
+            "julio",
+            "agosto",
+            "septiembre",
+            "octubre",
+            "noviembre",
+            "diciembre",
+          ];
           // Creamos array con los días de la semana
-          const dias_semana = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+          const dias_semana = [
+            "Domingo",
+            "Lunes",
+            "Martes",
+            "Miércoles",
+            "Jueves",
+            "Viernes",
+            "Sábado",
+          ];
           //Procesamos fecha en Español
-          fecha_entrega =dias_semana[ solicitudes.Fecha_Entrega.getDay()] + ', ' +  solicitudes.Fecha_Entrega.getDate() + ' de ' + meses[ solicitudes.Fecha_Entrega.getMonth()] + ' de ' +  solicitudes.Fecha_Entrega.getUTCFullYear();
+          fecha_entrega =
+            dias_semana[solicitudes.Fecha_Entrega.getDay()] +
+            ", " +
+            solicitudes.Fecha_Entrega.getDate() +
+            " de " +
+            meses[solicitudes.Fecha_Entrega.getMonth()] +
+            " de " +
+            solicitudes.Fecha_Entrega.getUTCFullYear();
           function getMessage() {
             const correo = `<!DOCTYPE html>
             <html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:o="urn:schemas-microsoft-com:office:office">
@@ -343,16 +421,16 @@ var solicitudesController = {};
                 </table>
               </div>
             </body>
-            </html>`
+            </html>`;
             return {
               to: correoUsuario,
               from: "bibliotecacbtis75@gmail.com",
               subject: asunto,
               text: "Correo Recordatorio",
-              html: correo ,
+              html: correo,
             };
           }
-        
+
           async function sendEmail() {
             try {
               await sendGridMail.send(getMessage());
@@ -379,7 +457,8 @@ var solicitudesController = {};
                   Estatus_Prestamo: "Cancelado",
                 },
               }
-            ).exec((err, res) => {
+            )
+            .exec((err, res) => {
               if (err) {
                 console.log("Error: ", err);
                 return;
@@ -387,8 +466,8 @@ var solicitudesController = {};
               console.log("Actualizacion Realizada");
               console.log(res);
             });
-            //Aqui actualizacion de libro
-            libros
+          //Aqui actualizacion de libro
+          libros
             .updateOne(
               { _id: solicitudes.libro._id },
               {
@@ -396,7 +475,8 @@ var solicitudesController = {};
                   Unidades_Disponibles: 1,
                 },
               }
-            ).exec((err, res) => {
+            )
+            .exec((err, res) => {
               if (err) {
                 console.log("Error: ", err);
                 return;
@@ -405,10 +485,9 @@ var solicitudesController = {};
               console.log(res);
             });
         }
-      }); 
+      });
     });
-  });
-
+});
 
 //Mostar todos los alumnos
 solicitudesController.mostar = (req, res) => {
@@ -435,7 +514,7 @@ solicitudesController.mostar = (req, res) => {
       },
       {
         $unwind: "$libro",
-      }
+      },
     ])
     .exec((err, Solicitud) => {
       if (err) {
@@ -444,7 +523,7 @@ solicitudesController.mostar = (req, res) => {
       }
       console.log("The INDEX");
       console.log(Solicitud);
-      console.log('Fecha: '+Solicitud.Fecha_Entrega);
+      console.log("Fecha: " + Solicitud.Fecha_Entrega);
       return res.render("admin_solicitudes", { Solicitud: Solicitud });
     });
 };
@@ -458,14 +537,14 @@ solicitudesController.consultar_libro = () => {};
 solicitudesController.consultar_estatus_solic = () => {};
 
 //Crear solicitud manual
-solicitudesController.crear_solicitud_manual =  (req, res)=>{
+solicitudesController.crear_solicitud_manual = (req, res) => {
   console.log("Creando nueva solicitud manual");
   const stock = req.params.Unidades_Disponibles;
   if (stock > 1) {
     const fecha = new Date();
     const id = req.params.id;
     const sol = req.body.solicitante;
-    console.log("Solicitante: "+sol)
+    console.log("Solicitante: " + sol);
     //console.log(req.params.matricula);
     console.log(id);
     const Solicitud = new solicitud({
@@ -491,42 +570,53 @@ solicitudesController.crear_solicitud_manual =  (req, res)=>{
       message: "Error, no hay stock",
     });
   }
-}
-
+};
 
 //Crear Solicitud
 solicitudesController.crear_solicitud = (req, res) => {
   console.log("Creando nueva solicitud");
+  const usuario = req.session.usuario;
   const stock = req.params.Unidades_Disponibles;
-  if (stock > 1) {
-    const fecha = new Date();
-    const id = req.params.id;
-    const usuario = req.session.usuario;
-    //console.log(req.params.matricula);
-    console.log(id);
-    const Solicitud = new solicitud({
-      Solicitante: usuario,
-      Libro: id,
-      Fecha_Solicitud: fecha.toISOString(),
-      Estatus_Prestamo: "En Espera",
-      Fecha_Entrega: fecha.toISOString(),
-      Incidencias: false,
-    });
-    console.log(Solicitud);
-    Solicitud.save(function (err) {
-      if (err) {
+  solicitud
+  .find({ Solicitante: usuario, Estatus_Prestamo:{ $nin: ["Devuelto","Cancelado","Denegado"] } }).exec((err, Solicitudes) => {
+    console.log("consulta: "+Solicitudes.length)
+    if (Solicitudes.length < 1) {
+      if (stock > 1) {
+        const fecha = new Date();
+        const id = req.params.id;
+        //console.log(req.params.matricula);
+        console.log(id);
+        const Solicitud = new solicitud({
+          Solicitante: usuario,
+          Libro: id,
+          Fecha_Solicitud: fecha.toISOString(),
+          Estatus_Prestamo: "En Espera",
+          Fecha_Entrega: fecha.toISOString(),
+          Incidencias: false,
+        });
+        console.log(Solicitud);
+        Solicitud.save(function (err) {
+          if (err) {
+            return res.status(500).json({
+              message: "Error al crear solicitud",
+            });
+          }
+          res.redirect("/alumnos/actualizar_unidades/" + id);
+        });
+      } else {
+        //Cambiar por Sweet Alert
         return res.status(500).json({
-          message: "Error al crear solicitud",
+          message: "Error, no hay stock",
         });
       }
-      res.redirect("/alumnos/actualizar_unidades/" + id);
-    });
-  } else {
-    //Cambiar por Sweet Alert
-    return res.status(500).json({
-      message: "Error, no hay stock",
-    });
-  }
+    } else {
+      return res.status(500).json({
+        message: "El usuario tiene más de una solicitud en proceso",
+      });
+    }
+
+  });
+ 
 };
 
 //actualizacion estatus
@@ -539,35 +629,35 @@ solicitudesController.actualizarEstatus = (req, res) => {
 
   //hacer consulta con id a coleccion de solicitudes
   solicitud
-  .aggregate([
-    {
-      $lookup: {
-        from: "usuarios",
-        localField: "Solicitante",
-        foreignField: "_id",
-        as: "nombre",
+    .aggregate([
+      {
+        $lookup: {
+          from: "usuarios",
+          localField: "Solicitante",
+          foreignField: "_id",
+          as: "nombre",
+        },
       },
-    },
-    {
-      $unwind: "$nombre",
-    },
-    {
-      $lookup: {
-        from: "libros",
-        localField: "Libro",
-        foreignField: "_id",
-        as: "libro",
+      {
+        $unwind: "$nombre",
       },
-    },
-    {
-      $unwind: "$libro",
-    },{
-      $match:{
-        _id:ObjectId(id)
-      }
-    }
-
-  ])  
+      {
+        $lookup: {
+          from: "libros",
+          localField: "Libro",
+          foreignField: "_id",
+          as: "libro",
+        },
+      },
+      {
+        $unwind: "$libro",
+      },
+      {
+        $match: {
+          _id: ObjectId(id),
+        },
+      },
+    ])
     .exec((err, Solicitud) => {
       if (err) {
         console.log("Error: ", err);
@@ -575,50 +665,111 @@ solicitudesController.actualizarEstatus = (req, res) => {
       }
       console.log("Solicitud");
       console.log(Solicitud);
-      Solicitud.forEach(function(solicitud){
+      Solicitud.forEach(function (solicitud) {
         correoUsuario = solicitud.nombre.Correo_Electronico_1;
-        nombreUsuario = solicitud.nombre.Nombre_s +" "+ solicitud.nombre.Apellido_Paterno+" "+solicitud.nombre.Apellido_Materno;
+        nombreUsuario =
+          solicitud.nombre.Nombre_s +
+          " " +
+          solicitud.nombre.Apellido_Paterno +
+          " " +
+          solicitud.nombre.Apellido_Materno;
         nombreLibro = solicitud.libro.Nombre;
         // Creamos array con los meses del año
-        const meses = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+        const meses = [
+          "enero",
+          "febrero",
+          "marzo",
+          "abril",
+          "mayo",
+          "junio",
+          "julio",
+          "agosto",
+          "septiembre",
+          "octubre",
+          "noviembre",
+          "diciembre",
+        ];
         // Creamos array con los días de la semana
-        const dias_semana = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+        const dias_semana = [
+          "Domingo",
+          "Lunes",
+          "Martes",
+          "Miércoles",
+          "Jueves",
+          "Viernes",
+          "Sábado",
+        ];
         //Procesamos fecha en Español
-        Fecha_Solicitud =dias_semana[ solicitud.Fecha_Solicitud.getDay()] + ', ' +  solicitud.Fecha_Solicitud.getDate() + ' de ' + meses[ solicitud.Fecha_Solicitud.getMonth()] + ' de ' +  solicitud.Fecha_Solicitud.getUTCFullYear();
-      })
+        Fecha_Solicitud =
+          dias_semana[solicitud.Fecha_Solicitud.getDay()] +
+          ", " +
+          solicitud.Fecha_Solicitud.getDate() +
+          " de " +
+          meses[solicitud.Fecha_Solicitud.getMonth()] +
+          " de " +
+          solicitud.Fecha_Solicitud.getUTCFullYear();
+      });
     });
   //extraer informacion de alumnos
   const fecha = new Date();
   const asunto = "Solicitud de Libro Aceptada";
   //Convertirmos a Español y verificamos horario
-  const meses = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
-  const dias_semana = ['Domingo', 'Lunes', 'martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+  const meses = [
+    "enero",
+    "febrero",
+    "marzo",
+    "abril",
+    "mayo",
+    "junio",
+    "julio",
+    "agosto",
+    "septiembre",
+    "octubre",
+    "noviembre",
+    "diciembre",
+  ];
+  const dias_semana = [
+    "Domingo",
+    "Lunes",
+    "martes",
+    "Miércoles",
+    "Jueves",
+    "Viernes",
+    "Sábado",
+  ];
   //Procesamos fecha en Español y validamos hora
-  if(fecha.getDay()==0){
+  if (fecha.getDay() == 0) {
     //si es domingo
     fecha.setDate(fecha.getDate() + 1);
     fecha.setHours(08);
     fecha.setMinutes(00);
-  }else if (fecha.getDay()==6){
+  } else if (fecha.getDay() == 6) {
     //Si es sabado
     fecha.setDate(fecha.getDate() + 2);
     fecha.setHours(08);
     fecha.setMinutes(00);
-  }else if(fecha.getHours()>13){
+  } else if (fecha.getHours() > 13) {
     //Si pasa de las 13 horas entrega al dia siguiente
     fecha.setDate(fecha.getDate() + 1);
     fecha.setHours(08);
     fecha.setMinutes(00);
   }
   //Agregar un hora a la fecha para la entrega
-  fecha.setHours(fecha.getHours()+1);
+  fecha.setHours(fecha.getHours() + 1);
   //Agregar un hora a la fecha para la entrega
-  if(fecha.getMinutes()!=0){
-    fecha.setHours(fecha.getHours()+1);
+  if (fecha.getMinutes() != 0) {
+    fecha.setHours(fecha.getHours() + 1);
     fecha.setMinutes(0);
   }
-  var fecha_esp=dias_semana[ fecha.getDay()] + ', ' +  fecha.getDate() + ' de ' + meses[ fecha.getMonth()] + ' de ' +  fecha.getUTCFullYear();  
-  
+  var fecha_esp =
+    dias_semana[fecha.getDay()] +
+    ", " +
+    fecha.getDate() +
+    " de " +
+    meses[fecha.getMonth()] +
+    " de " +
+    fecha.getUTCFullYear();
+
   //añadir metodo sendEmail()
   function getMessage() {
     const correo = `<!DOCTYPE html>
@@ -700,13 +851,13 @@ solicitudesController.actualizarEstatus = (req, res) => {
         </table>
       </div>
     </body>
-    </html>`
+    </html>`;
     return {
       to: correoUsuario,
       from: "bibliotecacbtis75@gmail.com",
       subject: asunto,
       text: "Correo de confirmación",
-      html: correo ,
+      html: correo,
     };
   }
 
@@ -758,56 +909,89 @@ solicitudesController.actualizarEstatus_denegado = (req, res) => {
 
   //hacer consulta con id a coleccion de solicitudes
   solicitud
-  .aggregate([
-    {
-      $lookup: {
-        from: "usuarios",
-        localField: "Solicitante",
-        foreignField: "_id",
-        as: "nombre",
+    .aggregate([
+      {
+        $lookup: {
+          from: "usuarios",
+          localField: "Solicitante",
+          foreignField: "_id",
+          as: "nombre",
+        },
       },
-    },
-    {
-      $unwind: "$nombre",
-    },
-    {
-      $lookup: {
-        from: "libros",
-        localField: "Libro",
-        foreignField: "_id",
-        as: "libro",
+      {
+        $unwind: "$nombre",
       },
-    },
-    {
-      $unwind: "$libro",
-    },{
-      $match:{
-        _id:ObjectId(id)
-      }
-    }
-
-  ])  
+      {
+        $lookup: {
+          from: "libros",
+          localField: "Libro",
+          foreignField: "_id",
+          as: "libro",
+        },
+      },
+      {
+        $unwind: "$libro",
+      },
+      {
+        $match: {
+          _id: ObjectId(id),
+        },
+      },
+    ])
     .exec((err, Solicitud) => {
       if (err) {
         console.log("Error: ", err);
         return;
       }
-      console.log("Solicitud"); 
+      console.log("Solicitud");
       console.log(Solicitud);
-      Solicitud.forEach(function(solicitud){
+      Solicitud.forEach(function (solicitud) {
         correoUsuario = solicitud.nombre.Correo_Electronico_1;
-        nombreUsuario = solicitud.nombre.Nombre_s +" "+ solicitud.nombre.Apellido_Paterno+" "+solicitud.nombre.Apellido_Materno;
+        nombreUsuario =
+          solicitud.nombre.Nombre_s +
+          " " +
+          solicitud.nombre.Apellido_Paterno +
+          " " +
+          solicitud.nombre.Apellido_Materno;
         nombreLibro = solicitud.libro.Nombre;
         // Creamos array con los meses del año
-        const meses = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+        const meses = [
+          "enero",
+          "febrero",
+          "marzo",
+          "abril",
+          "mayo",
+          "junio",
+          "julio",
+          "agosto",
+          "septiembre",
+          "octubre",
+          "noviembre",
+          "diciembre",
+        ];
         // Creamos array con los días de la semana
-        const dias_semana = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+        const dias_semana = [
+          "Domingo",
+          "Lunes",
+          "Martes",
+          "Miércoles",
+          "Jueves",
+          "Viernes",
+          "Sábado",
+        ];
         //Procesamos fecha en Español
-        Fecha_Solicitud = dias_semana[ solicitud.Fecha_Solicitud.getDay()] + ', ' +  solicitud.Fecha_Solicitud.getDate() + ' de ' + meses[ solicitud.Fecha_Solicitud.getMonth()] + ' de ' +  solicitud.Fecha_Solicitud.getUTCFullYear();
-      })
+        Fecha_Solicitud =
+          dias_semana[solicitud.Fecha_Solicitud.getDay()] +
+          ", " +
+          solicitud.Fecha_Solicitud.getDate() +
+          " de " +
+          meses[solicitud.Fecha_Solicitud.getMonth()] +
+          " de " +
+          solicitud.Fecha_Solicitud.getUTCFullYear();
+      });
     });
   //extraer informacion de alumnos
-  
+
   const asunto = "Solicitud de Libro Rechazada";
   //añadir metodo sendEmail()
   function getMessage() {
@@ -889,13 +1073,13 @@ solicitudesController.actualizarEstatus_denegado = (req, res) => {
         </table>
       </div>
     </body>
-    </html>`
+    </html>`;
     return {
       to: correoUsuario,
       from: "bibliotecacbtis75@gmail.com",
       subject: asunto,
       text: "Correo Informativo",
-      html: correo ,
+      html: correo,
     };
   }
 
@@ -932,20 +1116,17 @@ solicitudesController.actualizarEstatus_denegado = (req, res) => {
         console.log("Sending test email");
         await sendEmail();
       })();
-      res.redirect("/administrar/actualizar_denegacion/"+id);
+      res.redirect("/administrar/actualizar_denegacion/" + id);
     });
 };
 
 //Mostar historial
 
-
 solicitudesController.mostarHistorial = (req, res) => {
-  
   const usuario = req.session.usuario;
-  console.log(req.session.usuario)
+  console.log(req.session.usuario);
   solicitud
     .aggregate([
-       
       {
         $lookup: {
           from: "usuarios",
@@ -970,20 +1151,134 @@ solicitudesController.mostarHistorial = (req, res) => {
       },
       {
         $match: {
-          Solicitante:Number(usuario)
-        }
-      }
+          Solicitante: Number(usuario),
+        },
+      },
     ])
     .exec((err, Solicitud) => {
-   
       if (err) {
         console.log("Error: ", err);
         return;
       }
       console.log("The INDEX");
       console.log(Solicitud);
-      return res.render("alumnos_entregas_solicitudes_prestamos", { Solicitud : Solicitud});
+      return res.render("alumnos_entregas_solicitudes_prestamos", {
+        Solicitud: Solicitud,
+      });
     });
 };
+
+solicitudesController.entregarLibro = (req, res) => {
+  const fechaactual = new Date();
+  const sol = req.body.solicitante;
+  const dias = Number(req.body.dias);
+  fechaactual.setDate(fechaactual.getDate() + dias);
+  console.log("Entregando libro");
+  //VERIFICAR FECHAS EN FINDES
+  console.log("dias entrega: " + dias);
+  console.log("Solicitante: " + sol);
+  //Consulta aqui
+  solicitud
+    .updateOne(
+      { Solicitante: Number(sol), Estatus_Prestamo: "Aceptado" },
+      {
+        $set: {
+          Estatus_Prestamo: "Entregado",
+          Fecha_Entrega: fechaactual,
+        },
+      }
+    )
+    .exec((err, Libro) => {
+      if (err) {
+        console.log("Error al actualizar el libro:", err);
+        return;
+      }
+      console.log("The INDEX");
+      console.log(Libro);
+      res.redirect("/administrar/solicitudes/");
+    });
+};
+
+solicitudesController.devolverLibro = (req, res) => {
+  const sol = req.body.solicitante;
+  console.log("Entregando libro");
+  console.log("Solicitante: " + sol);
+  //Consulta aqui
+  solicitud
+    .aggregate([
+      {
+        $lookup: {
+          from: "usuarios",
+          localField: "Solicitante",
+          foreignField: "_id",
+          as: "nombre",
+        },
+      },
+      {
+        $unwind: "$nombre",
+      },
+      {
+        $lookup: {
+          from: "libros",
+          localField: "Libro",
+          foreignField: "_id",
+          as: "libro",
+        },
+      },
+      {
+        $unwind: "$libro",
+      },
+      {
+        $match: {
+          Estatus_Prestamo: "Entregado",
+          Solicitante: Number(sol),
+        },
+      },
+    ])
+    .exec((err, Solicitud) => {
+      solicitud
+        .updateOne(
+          { Solicitante: Number(sol), Estatus_Prestamo: "Entregado" },
+          {
+            $set: {
+              Estatus_Prestamo: "Devuelto",
+            },
+          }
+        )
+        .exec((err, Libro) => {
+          if (err) {
+            console.log("Error al actualizar el libro:", err);
+            return;
+          }
+          console.log("The INDEX");
+          console.log(Libro);
+          //Aqui actualizacion de libro
+          Solicitud.forEach(function (solicitudes) {
+            libros
+              .updateOne(
+                { _id: solicitudes.libro._id },
+                {
+                  $inc: {
+                    Unidades_Disponibles: 1,
+                  },
+                }
+              )
+              .exec((err, res) => {
+                if (err) {
+                  console.log("Error: ", err);
+                  return;
+                }
+                console.log("Actualizacion Realizada");
+                console.log(res);
+              });
+            res.redirect("administrar/solicitudes");
+          });
+        });
+    });
+};
+
+solicitudesController.entregarLibroQR = (req, res) => {};
+
+solicitudesController.devolverLibroQR = (req, res) => {};
 
 module.exports = solicitudesController;
