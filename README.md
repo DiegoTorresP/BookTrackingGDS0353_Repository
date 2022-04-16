@@ -180,4 +180,4 @@ Contacto.
 [contribuidores-shield]: https://img.shields.io/github/contributors/DiegoTorresP/BookTrackingGDS0353_Repository.svg?style=for-the-badge
 [contributors-url]: https://github.com/DiegoTorresP/BookTrackingGDS0353_Repository/graphs/contributors
 [license-shield]:https://img.shields.io/github/license/DiegoTorresP/BookTrackingGDS0353_Repository?logo=github&logoColor=green
-[license-url]: 
+[license-url]:https://github.com/DiegoTorresP/BookTrackingGDS0353_Repository/blob/main/LICENSE
