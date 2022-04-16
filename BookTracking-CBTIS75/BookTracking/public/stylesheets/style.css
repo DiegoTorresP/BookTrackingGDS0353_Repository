@@ -379,6 +379,7 @@ td {
   position: relative;
 }
 #one {
+  text-align: center;
   min-width: 400px;
   max-width: 400px;
 }
@@ -390,7 +391,18 @@ td {
   justify-content: center;
   align-items: center;
   position: relative;
-  text-align: right;
+}
+#uimg{
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+#ubt{
+  padding-right: 50px;
+}
+#foto,#inputGroupFileAddon04{
+  font-size: small;
 }
 #dates {
   width: auto;

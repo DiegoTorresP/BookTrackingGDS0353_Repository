@@ -33,12 +33,11 @@ block content
                   else 
                     img#prev.dic(src=libro.Foto)
 
-                  .row
+                  .row#ubt
                     form(action='/administrar/crear_foto' method='post' enctype="multipart/form-data")
-                      .col
-                        .input-group.file
-                          input#foto.form-control(type='file' accept='image/png,image/jpeg,image/jpg,image/webp' name="foto")
-                          button#inputGroupFileAddon04.ov-btn-grow-spin.guardar(type='subtmit') Guardar
+                      .input-group.file
+                        input#foto.form-control(type='file' accept='image/png,image/jpeg,image/jpg,image/webp' name="foto")
+                        button#inputGroupFileAddon04.ov-btn-grow-spin.guardar(type='subtmit') Guardar
               .col#dates
                 br
                 |
@@ -98,7 +97,7 @@ block content
                     .col#btnssele
                       a.btn.btn-danger(href='/administrar/admin_buscar') 
                         | Cancelar
-                      button.btn.btn-success(form='postForm', type='submit' )
+                      button.btn.btn-success(form='postForm' type='submit' )
                         | Guardar
-  
+
     script(src="/js/imagen.js") 

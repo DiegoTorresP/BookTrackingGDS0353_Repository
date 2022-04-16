@@ -7,15 +7,13 @@ block content
         a.btn.btn-primary#pg(type='button' href='/administrar') General   
           i.bi.bi-caret-right
         button.btn.btn-primary#pg(type='button' disabled) Solicitudes   
-  .container-fluid
+  .container-fluid#conteco
     .row
       .col
         .container-fluid
           .row.barraresultado
             .col Atender Solicitudes
           .row.rowtabla
-            .row
-              .col
                 table#tablaSolicitud.table.table-bordered.tabla
                   thead
                     tr
@@ -24,9 +22,13 @@ block content
                       th(scope='col') Libro
                       th(scope='col') Fecha de Solicitud
                       th(scope='col') Fecha de Entrega
-                      th(scope='col') Estatus_Prestamo
-                      th(scope='col') Ver detalles de Libro
-                      th(scope='col') Ver detalles de Alumno
+                      th(scope='col') Estatus - Prestamo
+                      th(scope='col') Ver detalles
+                        br
+                        | de Libro
+                      th(scope='col') Ver detalles 
+                        br
+                        | de Alumno
                   tbody
                     -var meses = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
                     -var dias_semana = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
@@ -38,27 +40,27 @@ block content
                         td #{dias_semana[solicitud.Fecha_Solicitud.getDay()] + ', ' + solicitud.Fecha_Solicitud.getDate() + ' de ' + meses[solicitud.Fecha_Solicitud.getMonth()] + ' de ' + solicitud.Fecha_Solicitud.getUTCFullYear()}
                         td #{dias_semana[solicitud.Fecha_Entrega.getDay()] + ', ' + solicitud.Fecha_Entrega.getDate() + ' de ' + meses[solicitud.Fecha_Entrega.getMonth()] + ' de ' + solicitud.Fecha_Entrega.getUTCFullYear()}
                         if solicitud.Estatus_Prestamo == "Denegado"
-                          td(style='background-color: red; color:white') #{solicitud.Estatus_Prestamo}
+                          td#ind(style='background-color: red; color:white') #{solicitud.Estatus_Prestamo}
                         else
                           if solicitud.Estatus_Prestamo == "Aceptado"
-                            td(style='background-color: green; color:white') #{solicitud.Estatus_Prestamo}
+                            td#ind(style='background-color: green; color:white') #{solicitud.Estatus_Prestamo}
                           else 
                             if solicitud.Estatus_Prestamo == "Cancelado"
-                              td(style='background-color: black; color:white') #{solicitud.Estatus_Prestamo}
+                              td#ind(style='background-color: black; color:white') #{solicitud.Estatus_Prestamo}
                             else 
                               if solicitud.Estatus_Prestamo == "Entregado"
-                                td(style='background-color: orange; color:white') #{solicitud.Estatus_Prestamo}
+                                td#ind(style='background-color: orange; color:white') #{solicitud.Estatus_Prestamo}
                               else 
                                 if solicitud.Estatus_Prestamo == "Devuelto"
-                                  td(style='background-color: purple; color:white') #{solicitud.Estatus_Prestamo}
+                                  td#ind(style='background-color: purple; color:white') #{solicitud.Estatus_Prestamo}
                                 else
-                                  td(style='background-color: blue; color:white') #{solicitud.Estatus_Prestamo}
+                                  td#ind(style='background-color: blue; color:white') #{solicitud.Estatus_Prestamo}
 
-                        td 
+                        td#ind 
                           -var url = "/administrar/detalle_libro/"+ (JSON.parse(JSON.stringify(solicitud.libro._id)))+"/solicitud/"+solicitud._id+"/status/"+solicitud.Estatus_Prestamo
                           a(href=url) 
                             img(src='/images/icon-mas.png', width='30px')  
-                        td 
+                        td#ind 
                           -var url = "/administrar/detalle_alumno/"+ solicitud.Solicitante
                           a(href=url)
                             img(src='/images/icon-mas.png', width='30px')
