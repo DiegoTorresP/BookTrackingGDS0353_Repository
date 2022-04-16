@@ -232,7 +232,7 @@ cron.schedule("00 10 * * *", () => {
 });
 
 
-
+//Cron para detección de incidencias.
 cron.schedule("00 10 * * *", () => {
   console.log("Avisos");
   solicitud
