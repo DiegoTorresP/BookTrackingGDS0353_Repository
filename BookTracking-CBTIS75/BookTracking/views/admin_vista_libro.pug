@@ -1,6 +1,16 @@
 extends layout
 
 block content
+  .row#gbt
+    .col
+      .btn-group(role='group' aria-label='Navs')
+        a.btn.btn-primary#pg(type='button' href='/administrar') General   
+          i.bi.bi-caret-right-fill
+        a.btn.btn-primary#pg(type='button' href='/administrar/menu_libro') Libros   
+          i.bi.bi-caret-right
+        a.btn.btn-primary#pg(type='button' href='/administrar/menu_libro') Buscar y editar libros   
+          i.bi.bi-caret-right
+        button.btn.btn-primary#pgf(type='button' disabled) Editar libro    
   .container-fluid
     each libro in Libro
       .row
@@ -9,81 +19,86 @@ block content
             .row.barraresultado
               .col Editar libro
             .row.rowtabla
-              .col-4
+              .col#one
                 .row
-                if libro.Foto=="" || libro.Foto == null
-                  img#prev.dic(src="/images/diccionario.png")
-                else 
-                  img#prev.dic(src=libro.Foto)
-                
-                .row
-                  form(action='/administrar/crear_foto', method='post', enctype="multipart/form-data")
-                    .col
-                      .input-group.file
-                        input#foto.form-control(type='file',accept='image/png,image/jpeg,image/jpg,image/webp', name="foto")
-                        button#inputGroupFileAddon04.ov-btn-grow-spin.guardar(type='subtmit') Guardar
-
-              .col-8
-                .container-fluid
-                  br
-                  h5 Datos del libro
+                br
+                |
+                h5 Datos del libro
+                br
+                |
+                .container#portimg
                   .row
-                    form(action='/administrar/libro/editar' method='post')
-                      .row
-                        .col
-                          .form-floating.mb-3
-                            input#nombre.form-control(type='text' name='nombre' requerid  value= libro.Nombre)
-                            label(for='nombre') Nombre:
-                          .form-floating.mb-3
-                            input#autor.form-control(type='text' name='autor' requerid value= libro.Autor.join())
-                            label(for='autor') Autor:
-                          .form-floating.mb-3
-                            input#editorial.form-control(type='text' name='editorial' required value= libro.Editorial)
-                            label(for='editorial') Editorial:
-                          .form-floating.mb-3
-                            input#lugarE.form-control(type='text' name='lugarE' required value= libro.Lugar_Edicion)
-                            label(for='lugarE') Lugar edición:
-                          .form-floating.mb-3
-                            input#fechaE.form-control(type='text' name='fechaE' required value= libro.Fecha_Edicion)
-                            label(for='fechaE') Fecha edición:
-                          .form-floating.mb-3
-                            input#anioE.form-control(type='text' name='anioE' required value= libro.Año_Entrada)
-                            label(for='anioE') Año entrada:
-                          .form-floating.mb-3
-                            input#unidadesD.form-control(type='number' name='unidadesD' required value= libro.Unidades_Disponibles)
-                            label(for='unidadesD') Unidades Disponibles:
-                        .col
-                          .form-floating.mb-3
-                            input#totalU.form-control(type='number' name='totalU' required value= libro.Total_Unidades)
-                            label(for='totalU') Total Unidades:
-                          .form-floating.mb-3
-                            input#numP.form-control(type='number' name='numP' required value= libro.Num_Pag)
-                            label(for='numP') Número págs.:
-                          .form-floating.mb-3
-                            input#numI.form-control(type='number' name='numI' required value= libro.Num_Inventario)
-                            label(for='numI') Número inventario:
-                          .row
-                            .col
-                              .form-floating.mb-3
-                                input#anaquel.form-control(type='text' name='anaquel' required value= libro.Anaquel_Charola)
-                                label(for='anaquel') Anaquel - Charola:
-                            .col
-                              .form-floating.mb-3
-                                input#clasificacion.form-control(type='text' name='clasificacion' requerid value= libro.Clasificacion)
-                                label(for='clasificacion') Clasificación:
-                          .form-floating.mb-3
-                            textarea#observaciones.form-control(type='text' name='observaciones' requerid )=libro.Observaciones
-                            label(for='observaciones') Observaciones:
-                          .form-floating.mb-3
-                            textarea#descripcion.form-control(type='text' name='descripcion' requerid )=libro.Descripcion
-                            label(for='descripcion') Descripción:
-                          
-                          .row
-                            .col(style='text-align: right; padding-top: 10px')
-                              a.btn.btn-danger(href='/administrar/admin_buscar') 
-                                | Cancelar
-                            .col(style='text-align: right; padding-top: 10px')
-                        
-                              button.btn.btn-success(type='submit')
-                                | Guardar     
+                  if libro.Foto=="" || libro.Foto == null
+                    img#prev.dic(src="/images/diccionario.png")
+                  else 
+                    img#prev.dic(src=libro.Foto)
+
+                  .row
+                    form(action='/administrar/crear_foto' method='post' enctype="multipart/form-data")
+                      .col
+                        .input-group.file
+                          input#foto.form-control(type='file' accept='image/png,image/jpeg,image/jpg,image/webp' name="foto")
+                          button#inputGroupFileAddon04.ov-btn-grow-spin.guardar(type='subtmit') Guardar
+              .col#dates
+                br
+                |
+                .row
+                  form#postForm(action='/administrar/libro/editar' method='post')
+                    .form-floating.mb-3
+                      input#nombre.form-control(type='text' name='nombre' requerid  value= libro.Nombre)
+                      label(for='nombre') Nombre:
+                    .form-floating.mb-3
+                      input#autor.form-control(type='text' name='autor' requerid value= libro.Autor.join())
+                      label(for='autor') Autor:
+                    .form-floating.mb-3
+                      input#editorial.form-control(type='text' name='editorial' required value= libro.Editorial)
+                      label(for='editorial') Editorial:
+                    .form-floating.mb-3
+                      input#lugarE.form-control(type='text' name='lugarE' required value= libro.Lugar_Edicion)
+                      label(for='lugarE') Lugar edición:
+                    .form-floating.mb-3
+                      input#fechaE.form-control(type='text' name='fechaE' required value= libro.Fecha_Edicion)
+                      label(for='fechaE') Fecha edición:
+                    .form-floating.mb-3
+                      input#anioE.form-control(type='text' name='anioE' required value= libro.Año_Entrada)
+                      label(for='anioE') Año entrada:
+                    .form-floating.mb-3
+                      input#unidadesD.form-control(type='number' name='unidadesD' required value= libro.Unidades_Disponibles)
+                      label(for='unidadesD') Unidades Disponibles:
+              .col#dates
+                br
+                |
+                .row 
+                  form#postForm(action='/administrar/libro/editar' method='post')
+                    .form-floating.mb-3
+                      input#totalU.form-control(type='number' name='totalU' required value= libro.Total_Unidades)
+                      label(for='totalU') Total Unidades:
+                    .form-floating.mb-3
+                      input#numP.form-control(type='number' name='numP' required value= libro.Num_Pag)
+                      label(for='numP') Número págs.:
+                    .form-floating.mb-3
+                      input#numI.form-control(type='number' name='numI' required value= libro.Num_Inventario)
+                      label(for='numI') Número inventario:
+                    .row
+                      .col
+                        .form-floating.mb-3
+                          input#anaquel.form-control(type='text' name='anaquel' required value= libro.Anaquel_Charola)
+                          label(for='anaquel') Anaquel - Charola:
+                      .col
+                        .form-floating.mb-3
+                          input#clasificacion.form-control(type='text' name='clasificacion' requerid value= libro.Clasificacion)
+                          label(for='clasificacion') Clasificación:
+                    .form-floating.mb-3
+                      textarea#observaciones.form-control(type='text' name='observaciones' requerid )=libro.Observaciones
+                      label(for='observaciones') Observaciones:
+                    .form-floating.mb-3
+                      textarea#descripcion.form-control(type='text' name='descripcion' requerid )=libro.Descripcion
+                      label(for='descripcion') Descripción:
+                  .row
+                    .col#btnssele
+                      a.btn.btn-danger(href='/administrar/admin_buscar') 
+                        | Cancelar
+                      button.btn.btn-success(form='postForm', type='submit' )
+                        | Guardar
+  
     script(src="/js/imagen.js") 

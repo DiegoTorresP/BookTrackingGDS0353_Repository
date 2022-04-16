@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  .container-fluid.botonera
+  .container-fluid.botonera#btnragnral
       .row.hijo 
         .col
           a.ov-btn-grow-spin(href= '/administrar/menu_libro')
@@ -24,6 +24,10 @@ block content
             alt='x')
             br
             | Leer QR
+  
+  script(src="/js/colores.js")
+
+//- Caracteristica aún en fase experimental. Este modal de prueba sobre seleción de colores esta oculto tambien en la hoja de estilo
   a.ov-btn-grow-spin#clrs(type='button', data-bs-toggle='modal', data-bs-target='#exampleModalCenter')
     img(src='../images/cambCol.png' alt='x' width="40px" heigth="40px")
   #exampleModalCenter.modal.fade(tabindex='-1', role='dialog', aria-labelledby='exampleModalCenterTitle', aria-hidden='true')
@@ -69,5 +73,5 @@ block content
             .modal-footer
                 button.btn.btn-secondary#cancb(type='button', data-bs-dismiss='modal') Cerrar
 
-    script(src="/js/colores.js")
+    
         

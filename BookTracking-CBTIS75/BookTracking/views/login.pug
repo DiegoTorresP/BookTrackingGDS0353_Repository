@@ -1,6 +1,7 @@
 extends layout
 
 block content
+  script(src="/js/botonSesion.js")
   .login
     br
     h1 Iniciar sesión
@@ -8,11 +9,13 @@ block content
       .loginformlabel
       label(for='username')
         i.fas.fa-user
+        | ㅤ
         .loginforminput
       input#username(type='text', name='username', placeholder='Usuario', required='')
       .loginformlabel
       label(for='password')
         i.fas.fa-lock
+        | ㅤ
         .loginforminput
       input#password(type='password', name='password', placeholder='Contraseña', required='')
       .loginformlabel
@@ -23,5 +26,6 @@ block content
       if {data}
         h5(style='color:red') #{message}
       br
-      br 
+      br
+
 

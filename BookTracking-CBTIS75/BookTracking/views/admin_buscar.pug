@@ -1,73 +1,70 @@
 extends layout
 
 block content
-  .row
+  .row#gbt
     .col
       .btn-group(role='group' aria-label='Navs')
         a.btn.btn-primary#pg(type='button' href='/administrar') General   
           i.bi.bi-caret-right-fill
         a.btn.btn-primary#pg(type='button' href='/administrar/menu_libro') Libros   
           i.bi.bi-caret-right
-        button.btn.btn-primary#pg(type='button' disabled) Buscar y editar libros   
-  .container-fluid
+        button.btn.btn-primary#pgf(type='button' disabled) Buscar y editar libros   
+  .container-fluid#conteco
     .row
       .col
         .container-fluid
           .row.barraresultado
             .col Libros
           .row.rowtabla
-            .row
-              .col
-                table#tabla.table.table-bordered.tabla
-                  thead
-                    tr
-                      th(scope='col') Nombre
-                      th(scope='col') Autor
-                      th(scope='col') Editorial
-                      th(scope='col') Unidades Disponibles
-                      th(scope='col') Ver detalles
-                      th(scope='col') Eliminar
-                      th(scope='col') Solicitud Manual
-                  tbody
-                    each libro in Libro 
-                      tr
-                        td #{libro.Nombre}
-                        td #{libro.Autor}                      
-                        td #{libro.Editorial}
-                        td #{libro.Unidades_Disponibles}
-                        td  
-                          -var url = "/administrar/libro/" + libro._id
-                          a.btn.btn-outline-danger.bi.bi-pencil(href=url) 
-                        td 
+            table#tabla.table.table-bordered.tabla
+              thead
+                tr
+                  th(scope='col') Nombre
+                  th(scope='col') Autor
+                  th(scope='col') Editorial
+                  th(scope='col') Unidades Disponibles
+                  th(scope='col') Ver detalles
+                  th(scope='col') Eliminar
+                  th(scope='col') Solicitud Manual
+              tbody
+                each libro in Libro 
+                  tr
+                    td #{libro.Nombre}
+                    td #{libro.Autor}                      
+                    td #{libro.Editorial}
+                    td#ind #{libro.Unidades_Disponibles}
+                    td#ind  
+                      -var url = "/administrar/libro/" + libro._id
+                      a.btn.btn-outline-danger.bi.bi-pencil(href=url) 
+                    td#ind 
 
-                          -var url2 = "/administrar/eliminar_libro/" + libro._id
-                          -var id= libro._id
-                          a.btn.btn-outline-danger.bi.bi-trash(href=url2)
-                        td
-                          if libro.Unidades_Disponibles < 2
-                            button.btn(style="color:white; background-color:red;float:right" disabled) Sin disponibilidad
-                          else
-                            a.btn(style="color:white; background-color:red;float:right" type='button' data-bs-toggle='modal' data-bs-target='#exampleModalCenter') Prestamo Manual
-                            #exampleModalCenter.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalCenterTitle' aria-hidden='true')
-                              .modal-dialog.modal-dialog-centered(role='document')
-                                .modal-content
-                                  .modal-header
-                                    h5#exampleModalCenterTitle.modal-title(style="color:black") Prestamo Manual 
-                                    button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
-                                  .modal-body
-                                    .row
-                                      .col
-                                        form(action="/administrar/solicitar_libro/"+libro._id+"/stock/"+libro.Unidades_Disponibles method='post')
-                                          br
-                                          | Solicitante: 
-                                          br
-                                          br
-                                          input#solicitante.form-control(type='number' name='solicitante' required placeholder="Ingresar número de control")
-                                          br
-                                          button.btn.btn-success.btn-icon#saveb(type='submit' onclick='registar()')
-                                            |Guardar
-                                  .modal-footer
-                                    button.btn.btn-secondary#cancb(type='button' data-bs-dismiss='modal') Cerrar 
+                      -var url2 = "/administrar/eliminar_libro/" + libro._id
+                      -var id= libro._id
+                      a.btn.btn-outline-danger.bi.bi-trash(href=url2)
+                    td#ind
+                      if libro.Unidades_Disponibles < 2
+                        button.btn(style="color:white; background-color:red;float:right" disabled) Sin disponibilidad
+                      else
+                        a.btn(style="color:white; background-color:red;float:right" type='button' data-bs-toggle='modal' data-bs-target='#exampleModalCenter') Prestamo Manual
+                        #exampleModalCenter.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalCenterTitle' aria-hidden='true')
+                          .modal-dialog.modal-dialog-centered(role='document')
+                            .modal-content
+                              .modal-header
+                                h5#exampleModalCenterTitle.modal-title(style="color:black") Prestamo Manual 
+                                button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+                              .modal-body
+                                .row
+                                  .col
+                                    form(action="/administrar/solicitar_libro/"+libro._id+"/stock/"+libro.Unidades_Disponibles method='post')
+                                      br
+                                      | Solicitante
+                                      br
+                                      input#solicitante(type='number' name='solicitante' required placeholder="Ingresar número de control")
+                                      br
+                                      button.btn.btn-success.btn-icon#saveb(type='submit' onclick='registar()')
+                                        |Guardar
+                              .modal-footer
+                                button.btn.btn-secondary#cancb(type='button' data-bs-dismiss='modal') Cerrar 
 
     script(src="/js/sweet_carga.js")                    
     script(src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous") 

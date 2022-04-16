@@ -1,24 +1,120 @@
 :root {
   --color-primario: #612334;
+  --color-primario-deg: #8a5957;
   --color-secundario: #b28e5e;
   --color-terciario: #36965e;
   --color-fondo: #d6bb98;
+  --color-regular: white;
+  /*For meteoro*/
+  --info-w: 2em;
+  --meteoro-w: calc(var(--info-w) * 0.5);
 }
 
-@media (orientation: portrait ){
-  body{
-    display: none;
+.info {
+  background-color: var(--color-regular);
+  width: var(--info-w);
+  color: var(--color-primario);
+  border: 0.15em solid var(--color-primario);
+  border-radius: 5em;
+  text-align: center;
+  font-size: 1.3em;
+  line-height: 1.5em;
+  cursor: pointer;
+  /*BotÓn que despliega el canva de footer*/
+  margin: 5px;
+  margin-right: 25px;
+  display: table;
+  float: right;
+}
+
+#metbtn {
+  /*Row que contiene al boton meteoro*/
+  margin-top: 8px;
+  float: right;
+  width: 81px;
+  height: 40px;
+}
+#conteco {
+  /*margen d*/
+  margin-top: 4px;
+}
+.meteoro {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: var(--meteoro-w);
+  height: 27%;
+  border-radius: 100%;
+  transition: all 10ms ease;
+}
+.meteoro:after {
+  content: "";
+  position: absolute;
+  left: 1em;
+  top: 4em;
+  height: 0.8em;
+  width: 0.8em;
+  background: var(--color-primario);
+  border-radius: 1em;
+  border: 0.25em solid var(--color-regular);
+  box-shadow: 0 0 0.7em var(--color-regular), 0 0 2em var(--color-primario);
+}
+.info:hover .meteoro,
+.info:focus .meteoro {
+  animation: meteoro 1.5s infinite linear;
+  display: block;
+}
+
+@keyframes meteoro {
+  0% {
+    transform: translateX(0) rotate(0);
+  }
+  100% {
+    transform: translateX(0) rotate(360deg);
   }
 }
 
+@media only screen and (orientation: portrait) {
+ body{
+   transform: scale(100%);
+ }
 
+}
+/* En caso de querer usar el card de recomendación para forzara girar el dispositivo o agrandar la pantalla del navegador
+@media only screen and (orientation: portrait) {
+  .navibar {
+    display: none;
+  }
+  .content{
+    display: none;
+  }
+
+}
+@media (orientation:landscape) and (min-width:718px){
+  .header{
+
+    display: none;
+  }
+}
+Este es el card
+#reco {
+  margin: 25px;
+  background-color: var(--color-regular);
+}
+*/
 @media screen and (max-width: 1200px) {
-  #ed {/*logo BT y Educacion*/
+  #ed {
+    /*logo BT y Educacion*/
     display: none;
   }
+  #btnragnral{
+    margin-top: 55px;
+  }
+.meteoro{
+  visibility: hidden;
+}
   /*.botonera {
     max-height: 1000vh;
-    max-width: 65%;
 }
 #oc {
   max-height: 75px;
@@ -29,29 +125,67 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   /*background-image: url(../images/fbib.jpg);*/
   background-color: var(--color-fondo);
+  overflow-x: hidden;
+  height:auto;
+
+  
 }
-#oc {/*containers de navbar y footer*/
+
+#oc {
+  /*containers de navbar y footer*/
   max-height: 75px;
   min-width: auto;
 }
 
-#saveb {/*boton guardar color*/
+#saveb {
+  /*boton guardar color*/
   margin-top: 5px;
   background-color: var(--color-terciario);
 }
 
-#cancb {/*boton cancelar colores*/
+#cancb {
+  /*boton cancelar colores*/
   background-color: var(--color-primario);
 }
 
-#clrs{
+#clrs {
+  /*Botón del modal de colores*/
   display: none;
 }
-#pg{
-  border-radius: 1px;
-  padding: 10px;
+#gbt {
+  /*row que contiene el boton de progreso*/
+  padding-left: 20px;
+  display: block;
+}
+.btn-group {
+  /*Botónn de progreso*/
+  margin-top: 17px;
+  border-radius: 5px;
   background-color: var(--color-primario);
-  text-transform:initial;
+}
+#pg {
+  /*Botones individuales del botón de progreso*/
+  border-radius: 5px;
+  padding: 5px;
+  background-color: var(--color-primario);
+  text-transform: initial;
+}
+#pgf {
+  /*Botón final individual del progreso */
+  border-radius: 5px;
+  padding: 5px;
+  text-transform: initial;
+  background-color: var(--color-primario-deg);
+}
+
+.offcanvas {
+  /*Canva que contiene el footer*/
+  background-color: var(--color-primario);
+}
+
+.btn-close {
+  /*boton para cerrar el canva del footer*/
+  background-color: var(--color-regular);
 }
 
 a {
@@ -74,6 +208,8 @@ a {
 }
 
 .botonera {
+  margin-top: 15px;
+
   display: flex;
   justify-content: center;
   min-height: 71vh;
@@ -83,12 +219,11 @@ a {
   text-align: center;
 }
 
-
 .hijo {
   /* centrado vertical */
   background: var(--color-primario);
   vertical-align: middle;
-  top: auto;
+  
 }
 
 .botonera a {
@@ -113,8 +248,8 @@ a {
   margin-bottom: 10px;
 }
 
-#colors{
-text-align: center;
+#colors {
+  text-align: center;
 }
 
 .dic {
@@ -148,13 +283,13 @@ text-align: center;
   justify-content: right;
 }
 /*** ESTILOS BOTÓN GROW SPIN ***/
-#btx{
+#btx {
   margin-top: 1px;
 }
 .ov-btn-grow-spin {
-  background: #fff; /* color de fondo */
+  background: var(--color-regular); /* color de fondo */
   color: var(--main-bg-color); /* color de fuente */
-  border: 0.5px solid #b28e5e; /* tamaño y color de borde */
+  border: 0.5px solid; /* tamaño y color de borde */
   border-radius: 3px; /* redondear bordes */
   position: relative;
   z-index: 1;
@@ -164,7 +299,7 @@ text-align: center;
   font-size-adjust: 2.58;
 }
 .ov-btn-grow-spin:hover {
-  color: #fff; /* color de fuente hover */
+  color: var(--color-regular); /* color de fuente hover */
 }
 .ov-btn-grow-spin::after {
   content: "";
@@ -190,10 +325,11 @@ text-align: center;
   font-size: medium;
   border-radius: 30px;
   box-shadow: none;
+  text-transform: initial;
 }
 .ov-btn-grow-box {
   background: transparent; /* color de fondo */
-  color: #ffffff; /* color de fuente */
+  color: var(--color-regular); /* color de fuente */
   padding: 5px 5px;
   position: relative;
   z-index: 1;
@@ -201,7 +337,7 @@ text-align: center;
   display: inline-block;
 }
 .ov-btn-grow-box:hover {
-  color: #fff; /* color de fuente hover */
+  color: var(--color-regular); /* color de fuente hover */
 }
 .ov-btn-grow-box::after {
   content: "";
@@ -224,17 +360,49 @@ text-align: center;
 
 .tabla thead {
   background-color: var(--color-primario);
-  color: #ffffff;
+  color: var(--color-regular);
+  text-align: center;
+  vertical-align: middle;
 }
-.tabla {
-  background: #ffffff;
-  margin-top: 15px;
-  font-size: 15px;
+td {
+  vertical-align: middle;
+}
+#ind {
+  text-align: center;
+  vertical-align: middle;
 }
 .rowtabla {
-  background: #ffffff;
+  background: var(--color-regular);
+  font-size: 15px;
+  overflow: auto;
+  justify-content: left;
+  position: relative;
 }
-
+#one {
+  min-width: 400px;
+  max-width: 400px;
+}
+#dates {
+  min-width: 400px;
+}
+#portimg {
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  text-align: right;
+}
+#dates {
+  width: auto;
+}
+#btnssele {
+  background-color: aqua;
+  text-align: right;
+  margin-bottom: 15px;
+}
+a + button {
+  margin-left: 50px;
+}
 .barrabusqueda {
   margin: 15px;
 }
@@ -250,26 +418,25 @@ text-align: center;
 .barraresultado {
   background: var(--color-terciario);
   padding: 10px;
-  color: aliceblue;
+  color: var(--color-regular);
   margin-top: 15px;
   font-size: 17px;
 }
-#vlb{
+#vlb {
   max-width: 150px;
   vertical-align: middle;
   justify-content: center;
   align-items: center;
   position: relative;
   text-align: right;
-
 }
-#vlb2{
+#vlb2 {
   text-align: right;
 }
 #form {
   padding-top: 15px;
 }
-.form-label{
+.form-label {
   text-overflow: clip;
 }
 .opciones {
@@ -282,69 +449,65 @@ text-align: center;
   border-radius: 2px;
 }
 
-  .login {
-    width: 400px;
-    background-color: #ffffff;
-    margin: 100px auto;
-    text-align: center;
-    justify-content: center;
-  }
+.login {
+  width: 400px;
+  background-color: var(--color-regular);
+  margin: 100px auto;
+  text-align: center;
+  justify-content: center;
+}
 
-  .login {
-    width: 400px;
-    margin: 100px auto;
-    text-align: center;
-    justify-content: center;
-    box-shadow: 4px 4px 10px 0px #b28e5e;
-  }
-  .loginh1 {
-    text-align: center;
-    color: #b28e5e;
-    font-size: 24px;
-    padding: 10px 0 10px 0;
-    border-bottom: 1px solid #e4e4dc;
-  }
-  .loginform {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    padding-top: 11px;
-  }
-  .loginformlabel {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 40px;
-    height: 40px;
-  }
-  .loginforminput[type="password"],
-  .loginforminput[type="text"] {
-    width: 310px;
-    height: 70px;
-    border: 3px solid #000000;
-    margin-bottom: 20px;
-    padding: 0 15px;
-  }
-  
-  .boton1{
-  
-    display:inline-block;
-    width:40%;
-    padding:10px;
-    border: 3px solid black;
-    border-radius:50px;
-    text-decoration: none;
-    color:black;
-    font-weight: bold;
-    transition: all 0.9s;
-    text-align: center;
-    font-size: 20px;
-    
-  }
-  
-  .boton1:hover{
-  
-    background:#612334;;
-    color:white;
-  
-  }
+.login {
+  width: 400px;
+  margin: 100px auto;
+  text-align: center;
+  justify-content: center;
+  box-shadow: 4px 4px 10px 0px var(--color-secundario);
+}
+.loginh1 {
+  text-align: center;
+  color: var(--color-fondo);
+  font-size: 24px;
+  padding: 10px 0 10px 0;
+  border-bottom: 1px solid var(--color-regular);
+}
+.loginform {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  padding-top: 11px;
+}
+.loginformlabel {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+}
+.loginforminput[type="password"],
+.loginforminput[type="text"] {
+  width: 310px;
+  height: 70px;
+  border: 3px solid;
+  margin-bottom: 20px;
+  padding: 0 15px;
+}
+
+.boton1 {
+  display: inline-block;
+  width: 40%;
+  padding: 10px;
+  border: 3px solid;
+  border-radius: 50px;
+  text-decoration: none;
+  color: var(--color-fondo);
+  font-weight: bold;
+  transition: all 0.9s;
+  text-align: center;
+  font-size: 20px;
+}
+
+.boton1:hover {
+  background: var(--color-primario);
+  color: var(--color-regular);
+}
