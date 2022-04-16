@@ -18,6 +18,7 @@ var alumnoSchema = new Schema({
   Correo_Electronico_2: {type:String},
   Estatus_Escolar: {type:String},
   Num_Incidencias: {type:Number},
+  FechaSancion: {type:Date},
   Qr: {type:String},
   Password: {
     type: String,
