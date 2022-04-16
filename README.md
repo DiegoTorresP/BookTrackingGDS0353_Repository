@@ -162,7 +162,7 @@ Guias de Uso.
 Contribucion.
 
 ## Licencia
-[![license-shield]]
+![license-shield]
 
 
 ## Contacto
