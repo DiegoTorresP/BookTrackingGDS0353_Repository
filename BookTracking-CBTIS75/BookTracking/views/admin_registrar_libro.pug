@@ -1,6 +1,14 @@
 extends layout
 
 block content
+  .row#gbt
+    .col
+      .btn-group(role='group' aria-label='Navs')
+        a.btn.btn-primary#pg(type='button' href='/administrar') General   
+          i.bi.bi-caret-right-fill
+        a.btn.btn-primary#pg(type='button' href='/administrar/menu_libro') Libros   
+          i.bi.bi-caret-right
+        button.btn.btn-primary#pgf(type='button' disabled) Registrar libro    
   .container-fluid
     .row
       .col
@@ -8,77 +16,83 @@ block content
           .row.barraresultado
             .col Registrar libro
           .row.rowtabla
-            .col-4
+            .col#one
               .row
-                img#prev.dic(src='')
-              
-              .row
-                  form(action='/administrar/crear_foto', method='post', enctype="multipart/form-data")
-                    .col
-                      .input-group.file
-                        input#foto.form-control(type='file',accept='image/png,image/jpeg,image/jpg,image/webp', name="foto" required='')
-                        button#inputGroupFileAddon04.ov-btn-grow-spin.guardar(type='subtmit') Guardar
+              br
+              |
+              h5 Datos del libro
+              br
+              |
+              .container#portimg
+                .row#uimg
+                  img#prev.dic(src='')
 
-            .col-8
-              .container-fluid
-                br
-                h5 Datos del libro
-                .row
-                  form(action='/administrar/crear_libro' method='post')
-                    .row
-                      .col
-                        .form-floating.mb-3
-                          input#nombre.form-control(type='text' name='nombre' required='')
-                          label.form-label(for='nombre') Nombre:
-                        .form-floating.mb-3
-                          input#autor.form-control(type='array' name='autor' required='')
-                          label.form-label(for='autor') Autor:
-                        .form-floating.mb-3
-                          input#editorial.form-control(type='text' name='editorial' required='')
-                          label.form-label(for='editorial') Editorial:
-                        .form-floating.mb-3
-                          input#lugarE.form-control(type='text' name='lugarE' required='')
-                          label.form-label(for='lugarE') Lugar edición:
-                        .form-floating.mb-3
-                          input#fechaE.form-control(type='number' name='fechaE' required='' min="1900" max="3000")
-                          label.form-label(for='fechaE') Fecha edición:
-                        .form-floating.mb-3
-                          input#anioE.form-control(type='number' name='anioE' required='' min="1950" max="2050" pattern="[1-9][0-9]{3}")
-                          label.form-label(for='anioE') Año entrada:
-                        .form-floating.mb-3
-                          input#unidadesD.form-control(type='number' name='unidadesD' required='' min="1" pattern="^[0-9]+")
-                          label.form-label(for='unidadesD') Unidades Disponibles:
-                      .col
-                        .form-floating.mb-3
-                          input#totalU.form-control(type='number' name='totalU' required='' min="1" pattern="^[0-9]+")
-                          label.form-label(for='totalU') Total Unidades:
-                        .form-floating.mb-3
-                          input#numP.form-control(type='number' name='numP' required='' min="1" pattern="^[0-9]+")
-                          label.form-label(for='numP') Número págs.:
-                        .form-floating.mb-3
-                          input#numI.form-control(type='number' name='numI' required='' min="1" pattern="^[0-9]+")
-                          label.form-label(for='numI') Número inventario:
-                        .row
-                          .col
-                            .form-floating.mb-3
-                              input#anaquel.form-control(type='text' name='anaquel' required='')
-                              label.form-label(for='anaquel') Anaquel - Charola:
-                          .col
-                            .form-floating.mb-3              
-                              input#clasificacion.form-control(type='text' name='clasificacion')
-                              label.form-label(for='clasificacion') Clasificación:
-                        .form-floating.mb-3
-                          textarea#observaciones.form-control(type='text' name='observaciones')
-                          label.form-label(for='observaciones') Observaciones:
-                        .form-floating.mb-3
-                          textarea#descripcion.form-control(type='text' name='descripcion')
-                          label.form-label(for='descripcion') Descripción:
-                          
-                        .row
-                          .col(style='text-align: right; padding-top: 10px')
-                            a.btn.btn-danger(href='/administrar/menu_libro') 
-                              | Cancelar
-                          .col(style='text-align: right; padding-top: 10px')    
-                            button.btn.btn-success(type='submit')
-                              | Registar      
-      script(src="/js/imagen.js")
+                .row#ubt
+                  form(action='/administrar/crear_foto' method='post' enctype="multipart/form-data")
+                    .input-group.file
+                      input#foto.form-control(type='file' accept='image/png,image/jpeg,image/jpg,image/webp' name="foto" required='')
+                      button#inputGroupFileAddon04.ov-btn-grow-spin.guardar(type='subtmit') Guardar
+
+            .col#dates
+              br
+              |
+              .row
+                form(action='/administrar/crear_libro' method='post')
+                  .form-floating.mb-3
+                    input#nombre.form-control(type='text' name='nombre' required='')
+                    label.form-label(for='nombre') Nombre:
+                  .form-floating.mb-3
+                    input#autor.form-control(type='array' name='autor' required='')
+                    label.form-label(for='autor') Autor:
+                  .form-floating.mb-3
+                    input#editorial.form-control(type='text' name='editorial' required='')
+                    label.form-label(for='editorial') Editorial:
+                  .form-floating.mb-3
+                    input#lugarE.form-control(type='text' name='lugarE' required='')
+                    label.form-label(for='lugarE') Lugar edición:
+                  .form-floating.mb-3
+                    input#fechaE.form-control(type='number' name='fechaE' required='' min="1900" max="3000")
+                    label.form-label(for='fechaE') Fecha edición:
+                  .form-floating.mb-3
+                    input#anioE.form-control(type='number' name='anioE' required='' min="1950" max="2050" pattern="[1-9][0-9]{3}")
+                    label.form-label(for='anioE') Año entrada:
+                  .form-floating.mb-3
+                    input#unidadesD.form-control(type='number' name='unidadesD' required='' min="1" pattern="^[0-9]+")
+                    label.form-label(for='unidadesD') Unidades Disponibles:
+            .col#dates
+              br
+              |
+              .row
+                form(action='/administrar/crear_libro' method='post')
+                  .form-floating.mb-3
+                    input#totalU.form-control(type='number' name='totalU' required='' min="1" pattern="^[0-9]+")
+                    label.form-label(for='totalU') Total Unidades:
+                  .form-floating.mb-3
+                    input#numP.form-control(type='number' name='numP' required='' min="1" pattern="^[0-9]+")
+                    label.form-label(for='numP') Número págs.:
+                  .form-floating.mb-3
+                    input#numI.form-control(type='number' name='numI' required='' min="1" pattern="^[0-9]+")
+                    label.form-label(for='numI') Número inventario:
+                  .row
+                    .col
+                      .form-floating.mb-3
+                        input#anaquel.form-control(type='text' name='anaquel' required='')
+                        label.form-label(for='anaquel') Anaquel - Charola:
+                    .col
+                      .form-floating.mb-3              
+                        input#clasificacion.form-control(type='text' name='clasificacion')
+                        label.form-label(for='clasificacion') Clasificación:
+                  .form-floating.mb-3
+                    textarea#observaciones.form-control(type='text' name='observaciones')
+                    label.form-label(for='observaciones') Observaciones:
+                  .form-floating.mb-3
+                    textarea#descripcion.form-control(type='text' name='descripcion')
+                    label.form-label(for='descripcion') Descripción:
+
+                  .row
+                    .col#btnssele
+                      a.btn.btn-danger(href='/administrar/menu_libro') 
+                        | Cancelar
+                      button.btn.btn-success(type='submit')
+                        | Registar      
+    script(src="/js/imagen.js")
