@@ -1,85 +1,91 @@
 extends layout
 
 block content
+  .row#gbt
+    .col
+      .btn-group(role='group' aria-label='Navs')
+        a.btn.btn-primary#pg(type='button' href='/alumnos') Inicio   
+          i.bi.bi-caret-right-fill
+        a.btn.btn-primary#pg(type='button' href='/alumnos/historial_prestamos') Entregas y solicitudes  
+          i.bi.bi-caret-right
+        button.btn.btn-primary#pgf(type='button' disabled) Ver detalles
   .container-fluid
-
-    .row
-      .col
-        .container-fluid
-          .row.barraresultado
-            .col Ver libro
-          .row.rowtabla
-            .col-4
-              .row
-                each libro in Libro
-                  if libro.Foto==""
-                    img.dic(src="/images/diccionario.png")
-                  else 
-                    img.dic(src=libro.Foto)
-              
-            .col-8
-              .container-fluid
+    each libro in Libro
+      .row
+        .col
+          .container-fluid
+            .row.barraresultado
+              .col Ver libro
+            .row.rowtabla
+              .col#dates
                 br
-                h5 Datos del libro
-                .row
-                  form(action='/alumnos/alumnos_vista_libro' method='post')
-                    .row
-                      each libro in Libro
+                |
+                form(action='/alumnos/alumnos_vista_libro' method='post')
+                  .row
+                    .col#one
+                      .row
+                      br
+                      |
+                      h5 Datos del libro
+                      br
+                      |
+                      .container#portimg
+                        .row#uimg
+                        if libro.Foto==""
+                          img.dic(src="/images/diccionario.png")
+                        else 
+                          img.dic(src=libro.Foto)
+                    .col#dates
+                      .form-floating.mb-3
+                        input#nombre.form-control.form-control-sm(type='text' name='nombre' readonly value= libro.Nombre)
+                        label.form-label(for='nombre') Nombre:
+                      .form-floating.mb-3
+                        input#autor.form-control.form-control-sm(type='text' name='autor' readonly value= libro.Autor.join())
+                        label.form-label(for='autor') Autor:
+                      .form-floating.mb-3
+                        input#editorial.form-control.form-control-sm(type='text' name='editorial' readonly value= libro.Editorial)
+                        label.form-label(for='editorial') Editorial:
+                      .form-floating.mb-3
+                        input#lugarE.form-control.form-control-sm(type='text' name='lugarE' readonly value= libro.Lugar_Edicion)
+                        label.form-label(for='lugarE') Lugar edición:
+                      .form-floating.mb-3
+                        input#fechaE.form-control.form-control-sm(type='text' name='fechaE' readonly value= libro.Fecha_Edicion)
+                        label.form-label(for='fechaE') Fecha edición:
+                      .form-floating.mb-3
+                        input#anioE.form-control.form-control-sm(type='text' name='anioE' readonly value= libro.Año_Entrada)
+                        label.form-label(for='anioE') Año entrada:
+                      .form-floating.mb-3
+                        input#unidadesD.form-control.form-control-sm(type='number' name='unidadesD' readonly value= libro.Unidades_Disponibles)
+                        label.form-label(for='unidadesD') Unidades Disponibles:
+                    .col#dates
+                      .form-floating.mb-3
+                        input#totalU.form-control.form-control-sm(type='number' name='totalU' readonly value= libro.Total_Unidades)
+                        label.form-label(for='totalU') Total Unidades:
+                      .form-floating.mb-3
+                        input#numP.form-control.form-control-sm(type='number' name='numP' readonly value= libro.Num_Pag)
+                        label.form-label(for='numP') Número págs.:
+                      .form-floating.mb-3
+                        input#numI.form-control.form-control-sm(type='number' name='numI' readonly value= libro.Num_Inventario)
+                        label.form-label(for='numI') Número inventario:
+                      .row
                         .col
                           .form-floating.mb-3
-                            input#nombre.form-control(type='text' name='nombre' readonly value= libro.Nombre)
-                            label.form-label(for='nombre') Nombre:
-                          .form-floating.mb-3
-                            input#autor.form-control(type='text' name='autor' readonly value= libro.Autor.join())
-                            label.form-label(for='autor') Autor:
-                          .form-floating.mb-3
-                            input#editorial.form-control(type='text' name='editorial' readonly value= libro.Editorial)
-                            label.form-label(for='editorial') Editorial:
-                          .form-floating.mb-3
-                            input#lugarE.form-control(type='text' name='lugarE' readonly value= libro.Lugar_Edicion)
-                            label.form-label(for='lugarE') Lugar edición:
-                          .form-floating.mb-3
-                            input#fechaE.form-control(type='text' name='fechaE' readonly value= libro.Fecha_Edicion)
-                            label.form-label(for='fechaE') Fecha edición:
-                          .form-floating.mb-3
-                            input#anioE.form-control(type='text' name='anioE' readonly value= libro.Año_Entrada)
-                            label.form-label(for='anioE') Año entrada:
-                          .form-floating.mb-3
-                            input#unidadesD.form-control(type='number' name='unidadesD' readonly value= libro.Unidades_Disponibles)
-                            label.form-label(for='unidadesD') Unidades Disponibles:
-                          .row
-                            .col(style='text-align: right; padding-top: 10px')
-                              a.btn.btn-danger(href='/alumnos/historial_prestamos') 
-                                | Regresar
+                            input#anaquel.form-control.form-control-sm(type='text' name='anaquel' readonly value= libro.Anaquel_Charola)
+                            label.form-label(for='anaquel') Anaquel - Charola:
                         .col
                           .form-floating.mb-3
-                            input#totalU.form-control(type='number' name='totalU' readonly value= libro.Total_Unidades)
-                            label.form-label(for='totalU') Total Unidades:
-                          .form-floating.mb-3
-                            input#numP.form-control(type='number' name='numP' readonly value= libro.Num_Pag)
-                            label.form-label(for='numP') Número págs.:
-                          .form-floating.mb-3
-                            input#numI.form-control(type='number' name='numI' readonly value= libro.Num_Inventario)
-                            label.form-label(for='numI') Número inventario:
-                          .row
-                            .col
-                              .form-floating.mb-3
-                                input#anaquel.form-control(type='text' name='anaquel' readonly value= libro.Anaquel_Charola)
-                                label.form-label(for='anaquel') Anaquel - Charola:
-                            .col
-                              .form-floating.mb-3
-                                input#clasificacion.form-control(type='text' name='clasificacion' readonly value= libro.Clasificacion)
-                                label.form-label(for='clasificacion') Clasificación:
-                          
-                          .form-floating.mb-3
-                            textarea#observaciones.form-control(type='text' name='observaciones' readonly )=libro.Observaciones
-                            label.form-label(for='observaciones') Observaciones:
-                          .form-floating.mb-3
-                            textarea#descripcion.form-control(type='text' name='descripcion' readonly )=libro.Descripcion
-                            label.form-label(for='descripcion') Descripción:
-                          .row
-                            .col(style='text-align: right; padding-top: 10px')
-                            if libro.Unidades_Disponibles<2
-                              .alert.alert-info(role='alert')
-                                | Este libro solo esta disponible para consulta en biblioteca.
-                            
+                            input#clasificacion.form-control.form-control-sm(type='text' name='clasificacion' readonly value= libro.Clasificacion)
+                            label.form-label(for='clasificacion') Clasificación:
+                      .form-floating.mb-3
+                        textarea#observaciones.form-control.form-control-sm(type='text' name='observaciones' readonly )=libro.Observaciones
+                        label.form-label(for='observaciones') Observaciones:
+                      .form-floating.mb-3
+                        textarea#descripcion.form-control.form-control-sm(type='text' name='descripcion' readonly )=libro.Descripcion
+                        label.form-label(for='descripcion') Descripción:
+                      .row
+                        .col#btnssele
+                          if libro.Unidades_Disponibles<2
+                            .alert.alert-info(role='alert')
+                              | Este libro solo esta disponible para consulta en biblioteca.
+                          a.btn.btn-danger(href='/alumnos/historial_prestamos') 
+                           | Regresar
