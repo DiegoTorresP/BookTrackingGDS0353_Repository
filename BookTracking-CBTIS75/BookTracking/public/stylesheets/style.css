@@ -143,10 +143,6 @@ body {
   background-color: var(--color-terciario);
 }
 
-#cancb {
-  /*boton cancelar colores*/
-  background-color: var(--color-primario);
-}
 
 #clrs {
   /*Botón del modal de colores*/
@@ -155,6 +151,7 @@ body {
 #gbt {
   /*row que contiene el boton de progreso*/
   padding-left: 20px;
+  padding-right: 20px;
   display: block;
 }
 .btn-group {
@@ -177,7 +174,19 @@ body {
   text-transform: initial;
   background-color: var(--color-primario-deg);
 }
+#pgo {
+  /*Botnes opciones */
+  border-radius: 5px;
+  padding: 5px;
+  text-transform: initial;
+  color: var(--color-primario);
+  border: 2px solid var(--color-primario);
+  background-color: var(--color-regular);
 
+}
+#bt2{
+  margin-right: 20px;
+}
 .offcanvas {
   /*Canva que contiene el footer*/
   background-color: var(--color-primario);
@@ -187,7 +196,19 @@ body {
   /*boton para cerrar el canva del footer*/
   background-color: var(--color-regular);
 }
-
+#opsb{
+  max-width: fit-content;
+  padding-left: 20px;
+}
+#btops{
+  min-width: 100%;
+}
+#iops{
+  margin-right: 7px;
+}
+#bops{
+  background-color: var(--color-regular);
+}
 a {
   text-decoration: none;
 }

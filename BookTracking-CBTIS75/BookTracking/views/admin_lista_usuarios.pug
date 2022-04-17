@@ -1,45 +1,49 @@
 extends layout
 
 block content
-  .container-fluid
+  .row#gbt
+    .col
+      .btn-group(role='group' aria-label='Navs')
+        a.btn.btn-primary#pg(type='button' href='/administrar') General   
+          i.bi.bi-caret-right-fill
+        a.btn.btn-primary#pg(type='button' href='/administrar/registrar_usuario') Registrar usuario   
+          i.bi.bi-caret-right
+        button.btn.btn-primary#pgf(type='button' disabled) Ver lista de Alumnos
+  .container-fluid#conteco
     .row
       .col
         .container-fluid
-          .row
-            .col(style='text-align: left; padding-top: 10px')
-              a.btn.btn-danger#red(href='/administrar') 
-                | Regresar
           .row.barraresultado
             .col Usuarios
           .row.rowtabla
-            .row  
-              .col
-                table#tablaAlumno.table.table-bordered.tabla
-                  thead
+            table#tablaAlumno.table.table-bordered.tabla
+              thead
+                tr
+                  th(style='display: none;') Id
+                  th(scope='col') Nombre
+                  th(scope='col') Carrera
+                  th(scope='col') Telefono
+                  th(scope='col') Correo electronico
+                  th(scope='col') Estatus
+                  th(scope='col') Acciones
+                  th(scope='col') Detalle y
+                    br
+                    | Edición
+              tbody
+                each alumno in Alumno
+                  if alumno.Roles=="admin" 
+                  else
                     tr
-                      th(style='display: none;') Id
-                      th(scope='col') Nombre
-                      th(scope='col') Carrera
-                      th(scope='col') Telefono
-                      th(scope='col') Correo electronico
-                      th(scope='col') Estatus
-                      th(scope='col') Acciones
-                      th(scope='col') Detalle y Edición
-                  tbody
-                    each alumno in Alumno
-                      if alumno.Roles=="admin" 
-                      else
-                        tr
-                          td#idA(style='display: none;') #{alumno._id}
-                          th #{alumno.Nombre_s}
-                          td #{alumno.Carrera_Tecnica}
-                          td #{alumno.Telefono_movil_celular}
-                          td #{alumno.Correo_Electronico_1}
-                          td #{alumno.EstatusEscolar}
-                          td
-                            button.eliminar.btn.btn-outline-danger.bi.bi-trash(onclick='Eliminar('+alumno._id+')' )
-                          td 
-                            -var url2 = "/administrar/usuario/" + alumno._id
-                            a.btn.btn-outline-danger.bi.bi-pencil(href=url2)    
+                      td#idA(style='display: none;') #{alumno._id}
+                      td #{alumno.Nombre_s}
+                      td #{alumno.Carrera_Tecnica}
+                      td#ind #{alumno.Telefono_movil_celular}
+                      td #{alumno.Correo_Electronico_1}
+                      td#ind #{alumno.EstatusEscolar}
+                      td#ind
+                        button.eliminar.btn.btn-outline-danger.bi.bi-trash(onclick='Eliminar('+alumno._id+')' )
+                      td#ind 
+                        -var url2 = "/administrar/usuario/" + alumno._id
+                        a.btn.btn-outline-danger.bi.bi-pencil(href=url2)    
     script(src="/js/sweet_carga.js")
     script(src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous")           
