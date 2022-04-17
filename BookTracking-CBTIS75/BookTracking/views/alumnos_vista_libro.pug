@@ -87,7 +87,7 @@ block content
                         .col
                         .col#btnssele
                           if libro.Unidades_Disponibles<2
-                            .alert.alert-info(style='width:300px;' role='alert')
+                            .alert.alert-info(style='min-width:250px;' role='alert')
                               | Este libro solo esta disponible para consulta en biblioteca.
                           else
                             -var url = "/alumnos/solicitar_libro/" + libro._id + "/stock/"+libro.Unidades_Disponibles
