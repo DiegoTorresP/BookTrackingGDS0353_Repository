@@ -26,7 +26,7 @@ alumnoController.alumno_verify = function (req,res){
         Alumno.find({'Username': usuario}, function(error, results){
             console.log(results);
 
-             let passw;
+            let passw='';
             results.forEach(e => {
                 passw= e.Password;
             });
