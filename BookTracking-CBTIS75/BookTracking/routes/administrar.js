@@ -52,6 +52,7 @@ router.get("/lista_usuario", auth.isAdmin,user_controller.mostar);
 
 //Ruta para mostar y editar un solo usuarios
 router.get("/usuario/:id",auth.isAdmin,user_controller.editar);
+
 //Ruta para mostar y editar
 router.post("/usuario/editar",auth.isAdmin, user_controller.editar1);
 

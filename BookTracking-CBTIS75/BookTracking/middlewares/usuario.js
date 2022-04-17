@@ -1,14 +1,5 @@
 const middleware ={};
 
-middleware.isLogin = (req, res, next)=>{
-  if(req.session.usuario) {
-    next();
-  }else{
-    res.redirect('/');
-  }
-}; 
-
-
 middleware.isUser = (req, res, next)=>{
   console.log(req.session.usuario);
   if(req.session.usuario&&req.session.role=='user') {

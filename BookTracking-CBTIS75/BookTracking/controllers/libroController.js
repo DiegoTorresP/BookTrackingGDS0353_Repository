@@ -1,4 +1,3 @@
-const { updateOne } = require("../models/libro");
 const Libro = require("../models/libro");
 
 var libroController = {};
@@ -203,7 +202,6 @@ libroController.eliminar = (req, res) => {
   });
   res.redirect("/administrar/admin_buscar");
 };
-
 
 //actualizacion Unidades_Disponibles
  libroController.actualizarUnidades = (req, res) => {
