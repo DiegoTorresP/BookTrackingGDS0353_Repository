@@ -14,12 +14,6 @@ router.get('/',function(req,res){
   
 });
 
-/* router.get('/*',function(req,res){
-  res.redirect('/');
-})  */
-
-//router.get('/home',controller.alumno_home);
-
 
 router.get('/register', function(req, res, next){
   let data = {

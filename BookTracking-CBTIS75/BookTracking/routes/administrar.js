@@ -61,13 +61,6 @@ router.get("/libro/:id",auth.isAdmin,libro_controller.detalle);
 //Ruta para mostar y editar un libro
 router.post("/libro/editar",auth.isAdmin,libro_controller.editar);
 
-//Rutas para busquedas de libros
-//Busqueda por nombre
-router.post("/buscar_nombre_libro", auth.isAdmin,libro_controller.consultar_nombre);
-//Busqueda por autor
-router.post("/buscar_autor_libro", auth.isAdmin,libro_controller.consultar_autor);
-//Busqueda por editorial
-router.post("/buscar_editorial_libro", auth.isAdmin,libro_controller.consultar_editorial);
 
 router.get("/leer_qr",auth.isAdmin,function (req, res, next) {
   res.render("admin_leer_qr");
