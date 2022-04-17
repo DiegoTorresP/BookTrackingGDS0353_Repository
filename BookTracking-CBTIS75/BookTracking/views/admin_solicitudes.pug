@@ -1,7 +1,7 @@
 extends layout
 
 block content
-  .row
+  .row#gbt
     .col
       .btn-group(role='group' aria-label='Navs')
         a.btn.btn-primary#pg(type='button' href='/administrar') General   
@@ -14,56 +14,55 @@ block content
           .row.barraresultado
             .col Atender Solicitudes
           .row.rowtabla
-                table#tablaSolicitud.table.table-bordered.tabla
-                  thead
-                    tr
-                      th(style='display: none;') Id
-                      th(scope='col') Solicitante
-                      th(scope='col') Libro
-                      th(scope='col') Fecha de Solicitud
-                      th(scope='col') Fecha de Entrega
-                      th(scope='col') Estatus - Prestamo
-                      th(scope='col') Ver detalles
-                        br
-                        | de Libro
-                      th(scope='col') Ver detalles 
-                        br
-                        | de Alumno
-                  tbody
-                    -var meses = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
-                    -var dias_semana = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
-                    each solicitud in Solicitud 
-                      tr 
-                        td(style='display:none;' id='id') #{solicitud._id}
-                        th #{solicitud.nombre.Nombre_s +" "+ solicitud.nombre.Apellido_Paterno+" "+ solicitud.nombre.Apellido_Materno} 
-                        td #{solicitud.libro.Nombre}
-                        td #{dias_semana[solicitud.Fecha_Solicitud.getDay()] + ', ' + solicitud.Fecha_Solicitud.getDate() + ' de ' + meses[solicitud.Fecha_Solicitud.getMonth()] + ' de ' + solicitud.Fecha_Solicitud.getUTCFullYear()}
-                        td #{dias_semana[solicitud.Fecha_Entrega.getDay()] + ', ' + solicitud.Fecha_Entrega.getDate() + ' de ' + meses[solicitud.Fecha_Entrega.getMonth()] + ' de ' + solicitud.Fecha_Entrega.getUTCFullYear()}
-                        if solicitud.Estatus_Prestamo == "Denegado"
-                          td#ind(style='background-color: red; color:white') #{solicitud.Estatus_Prestamo}
-                        else
-                          if solicitud.Estatus_Prestamo == "Aceptado"
-                            td#ind(style='background-color: green; color:white') #{solicitud.Estatus_Prestamo}
+            table#tablaSolicitud.table.table-bordered.tabla
+              thead
+                tr
+                  th(style='display: none;') Id
+                  th(scope='col') Solicitante
+                  th(scope='col') Libro
+                  th(scope='col') Fecha de Solicitud
+                  th(scope='col') Fecha de Entrega
+                  th(scope='col') Estatus - Prestamo
+                  th(scope='col') Ver detalles
+                    br
+                    | de Libro
+                  th(scope='col') Ver detalles 
+                    br
+                    | de Alumno
+              tbody
+                -var meses = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
+                -var dias_semana = ['Domingo', 'Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'];
+                each solicitud in Solicitud 
+                  tr 
+                    td(style='display:none;' id='id') #{solicitud._id}
+                    td #{solicitud.nombre.Nombre_s +" "+ solicitud.nombre.Apellido_Paterno+" "+ solicitud.nombre.Apellido_Materno} 
+                    td #{solicitud.libro.Nombre}
+                    td #{dias_semana[solicitud.Fecha_Solicitud.getDay()] + ', ' + solicitud.Fecha_Solicitud.getDate() + ' de ' + meses[solicitud.Fecha_Solicitud.getMonth()] + ' de ' + solicitud.Fecha_Solicitud.getUTCFullYear()}
+                    td #{dias_semana[solicitud.Fecha_Entrega.getDay()] + ', ' + solicitud.Fecha_Entrega.getDate() + ' de ' + meses[solicitud.Fecha_Entrega.getMonth()] + ' de ' + solicitud.Fecha_Entrega.getUTCFullYear()}
+                    if solicitud.Estatus_Prestamo == "Denegado"
+                      td#ind(style='background-color: red; color:white') #{solicitud.Estatus_Prestamo}
+                    else
+                      if solicitud.Estatus_Prestamo == "Aceptado"
+                        td#ind(style='background-color: green; color:white') #{solicitud.Estatus_Prestamo}
+                      else 
+                        if solicitud.Estatus_Prestamo == "Cancelado"
+                          td#ind(style='background-color: black; color:white') #{solicitud.Estatus_Prestamo}
+                        else 
+                          if solicitud.Estatus_Prestamo == "Entregado"
+                            td#ind(style='background-color: orange; color:white') #{solicitud.Estatus_Prestamo}
                           else 
-                            if solicitud.Estatus_Prestamo == "Cancelado"
-                              td#ind(style='background-color: black; color:white') #{solicitud.Estatus_Prestamo}
-                            else 
-                              if solicitud.Estatus_Prestamo == "Entregado"
-                                td#ind(style='background-color: orange; color:white') #{solicitud.Estatus_Prestamo}
-                              else 
-                                if solicitud.Estatus_Prestamo == "Devuelto"
-                                  td#ind(style='background-color: purple; color:white') #{solicitud.Estatus_Prestamo}
-                                else
-                                  td#ind(style='background-color: blue; color:white') #{solicitud.Estatus_Prestamo}
+                            if solicitud.Estatus_Prestamo == "Devuelto"
+                              td#ind(style='background-color: purple; color:white') #{solicitud.Estatus_Prestamo}
+                            else
+                              td#ind(style='background-color: blue; color:white') #{solicitud.Estatus_Prestamo}
 
-                        td#ind 
-                          -var url = "/administrar/detalle_libro/"+ (JSON.parse(JSON.stringify(solicitud.libro._id)))+"/solicitud/"+solicitud._id+"/status/"+solicitud.Estatus_Prestamo
-                          a(href=url) 
-                            img(src='/images/icon-mas.png', width='30px')  
-                        td#ind 
-                          -var url = "/administrar/detalle_alumno/"+ solicitud.Solicitante
-                          a(href=url)
-                            img(src='/images/icon-mas.png', width='30px')
+                    td#ind 
+                      -var url = "/administrar/detalle_libro/"+ (JSON.parse(JSON.stringify(solicitud.libro._id)))+"/solicitud/"+solicitud._id+"/status/"+solicitud.Estatus_Prestamo
+                      a(href=url) 
+                        img(src='/images/icon-mas.png' width='30px')  
+                    td#ind 
+                      -var url = "/administrar/detalle_alumno/"+ solicitud.Solicitante
+                      a(href=url)
+                        img(src='/images/icon-mas.png' width='30px')
     script(src="/js/sweet_carga.js")
     script(src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous")
-                   

@@ -1,25 +1,25 @@
 extends layout
 
 block content
-    .row
-        .col
-        a.btn(style="color:white; background-color:red;float:right" type='button' data-bs-toggle='modal' data-bs-target='#exampleModalCenter') Devolución Manual
-        #exampleModalCenter.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalCenterTitle' aria-hidden='true')
-          .modal-dialog.modal-dialog-centered(role='document')
-            .modal-content
-              .modal-header
-                h5#exampleModalCenterTitle.modal-title(style="color:black") Validar Devolución Manual 
-                button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
-              .modal-body
-                .row
-                  form(action="/administrar/devolucion_manual/" method='post')
-                    br
-                    | Solicitante:
-                    br
-                    br
-                    input#solicitante.form-control(type='number' name='solicitante' required placeholder="Ingresar número de control")
-                    br
-                    button.btn.btn-success.btn-icon#saveb(type='submit' onclick='validar()')
-                        |Guardar
-              .modal-footer
-                button.btn.btn-secondary#cancb(type='button' data-bs-dismiss='modal') Cerrar 
+  .row.botonera
+    .col
+      a.btn(style="color:white; background-color:red;float:center" type='button' data-bs-toggle='modal' data-bs-target='#exampleModalCenter') Devolución Manual
+      #exampleModalCenter.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalCenterTitle' aria-hidden='true')
+        .modal-dialog.modal-dialog-centered(role='document')
+          .modal-content
+            .modal-header
+              h5#exampleModalCenterTitle.modal-title(style="color:black") Validar Devolución Manual 
+              button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+            .modal-body(style='text-align:left')
+              .row
+                form(action="/administrar/devolucion_manual/" method='post')
+                  br
+                  | Solicitante:
+                  br
+                  br
+                  input#solicitante.form-control(type='number' name='solicitante' required placeholder="Ingresar número de control")
+                  br
+                  button.btn.btn-success.btn-icon#saveb(style='float:right' type='submit' onclick='validar()')
+                    |Guardar
+            .modal-footer
+              button.btn.btn-danger(type='button' data-bs-dismiss='modal') Cerrar 

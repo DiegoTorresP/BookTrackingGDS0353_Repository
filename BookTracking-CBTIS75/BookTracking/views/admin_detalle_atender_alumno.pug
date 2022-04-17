@@ -1,74 +1,84 @@
 extends layout
 
 block content
-
+  .row#gbt
+    .col
+      .btn-group(role='group' aria-label='Navs')
+        a.btn.btn-primary#pg(type='button' href='/administrar') General   
+          i.bi.bi-caret-right-fill
+        a.btn.btn-primary#pg(type='button' href='/administrar/solicitudes') Solicitudes   
+          i.bi.bi-caret-right
+        button.btn.btn-primary#pgf(type='button' disabled) Ver detalles de Alumno    
   .container-fluid
-    .row
-      .col
-        .container-fluid
-          .row.barraresultado
-            .col Detalles de Alumno:
-          .row.rowtabla
-            form(action='/administrar/crear' method='post')
-              .row
-                each alumno in Alumno
-                  .col
+    each alumno in Alumno
+      .row
+        .col
+          .container-fluid
+            .row.barraresultado
+              .col Detalles de Alumno:
+            .row.rowtabla
+                .col-md-6
+                  br
+                  |
+                  form(action='/administrar/crear' method='post')
                     .form-floating.mb-3
-                      input#nocontrol.form-control(type='text' readonly value= alumno._id)
+                      input#nocontrol.form-control.form-control-sm(type='text' readonly value= alumno._id)
                       label.form-label(for='numControl') No. de Control
                     .form-floating.mb-3
-                      input#nombre.form-control(type='text' readonly value= alumno.Nombre_s)
+                      input#nombre.form-control.form-control-sm(type='text' readonly value= alumno.Nombre_s)
                       label.form-label(for='nombre') Nombre:
                     .form-floating.mb-3
-                      input#apPaterno.form-control(type='text' readonly value= alumno.Apellido_Paterno)
+                      input#apPaterno.form-control.form-control-sm(type='text' readonly value= alumno.Apellido_Paterno)
                       label.form-label(for='apPaterno') Apellido paterno:
                     .form-floating.mb-3
-                      input#apMaterno.form-control(type='text' readonly value= alumno.Apellido_Materno)
+                      input#apMaterno.form-control.form-control-sm(type='text' readonly value= alumno.Apellido_Materno)
                       label.form-label(for='apMaterno') Apellido Materno:
                     .form-floating.mb-3
-                      input#grupo.form-control(type='text' readonly value= alumno.Grupo)
+                      input#grupo.form-control.form-control-sm(type='text' readonly value= alumno.Grupo)
                       label.form-label(for='grupo') Grupo:
                     .form-floating.mb-3
-                      input#especialidad.form-control(type='text' readonly value= alumno.Carrera_Tecnica)
+                      input#especialidad.form-control.form-control-sm(type='text' readonly value= alumno.Carrera_Tecnica)
                       label.form-label(for='especialidad') Especialidad:
                     .form-floating.mb-3
-                      input#turno.form-control(type='text' readonly value= alumno.Turno)
+                      input#turno.form-control.form-control-sm(type='text' readonly value= alumno.Turno)
                       label.form-label(for='turno') Turno:
-                  .col
+                .col-md-6
+                  br
+                  |
+                  form(action='/administrar/crear' method='post')
                     .form-floating.mb-3
-                      input#generacion.form-control(type='text' readonly value= alumno.Generacion)
+                      input#generacion.form-control.form-control-sm(type='text' readonly value= alumno.Generacion)
                       label.form-label(for='generacion') Generaci&oacute;n:
                     .form-floating.mb-3
-                      input#sexo.form-control(readonly value= alumno.Genero)
+                      input#sexo.form-control.form-control-sm(readonly value= alumno.Genero)
                       label.form-label(for='sexo') Sexo:
                     .form-floating.mb-3
-                      input#curp.form-control(type='text' readonly value= alumno.CURP)
+                      input#curp.form-control.form-control-sm(type='text' readonly value= alumno.CURP)
                       label.form-label(for='curp') CURP:
                     .row
                       .col
                         .form-floating.mb-3
-                          input#correo1.form-control(type='email' readonly value= alumno.Correo_Electronico_1)
+                          input#correo1.form-control.form-control-sm(type='email' readonly value= alumno.Correo_Electronico_1)
                           label.form-label(for='correo1') Correo 1:
                       .col
                         .form-floating.mb-3
-                          input#correo2.form-control(type='email' readonly value= alumno.Correo_Electronico_2)
+                          input#correo2.form-control.form-control-sm(type='email' readonly value= alumno.Correo_Electronico_2)
                           label.form-label(for='correo2') Correo 2:
                     .row
                       .col
                         .form-floating.mb-3
-                          input#lada.form-control(type='number' readonly value= alumno.Clave_lada)
+                          input#lada.form-control.form-control-sm(type='number' readonly value= alumno.Clave_lada)
                           label.form-label(for='lada') Lada:
                       .col
                         .form-floating.mb-3
-                          input#c.form-control(type='number' readonly value= alumno.Telefono_de_contacto_fijo_1)
+                          input#c.form-control.form-control-sm(type='number' readonly value= alumno.Telefono_de_contacto_fijo_1)
                           label.form-label(for='telefonoFijo1') Telefono fijo 1:
                     .form-floating.mb-3
-                      input#telefonoFijo2.form-control(type='number' readonly value= alumno.Telefono_de_contacto_fijo_2)
+                      input#telefonoFijo2.form-control.form-control-sm(type='number' readonly value= alumno.Telefono_de_contacto_fijo_2)
                       label.form-label(for='telefonoFijo2') Telefono fijo 2:
                     .form-floating.mb-3
-                      input#telefonoMovil.form-control(type='number' readonly value= alumno.Telefono_movil_celular)
+                      input#telefonoMovil.form-control.form-control-sm(type='number' readonly value= alumno.Telefono_movil_celular)
                       label.form-label(for='telefonoMovil') Telefono Movil:
                     .row
-                      .col(style='text-align: right; padding-top: 10px')
-                        a.btn(href='/administrar/solicitudes') Cancelar
-                        
+                      .col#btnssele
+                        a.btn.btn-danger(href='/administrar/solicitudes') Regresar

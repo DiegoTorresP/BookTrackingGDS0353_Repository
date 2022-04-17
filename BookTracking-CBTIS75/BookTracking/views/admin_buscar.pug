@@ -45,9 +45,9 @@ block content
                       a.btn.btn-outline-danger.bi.bi-trash(href=url2)
                     td#ind
                       if libro.Unidades_Disponibles < 2
-                        button.btn(style="color:white; background-color:red;float:right" disabled) Sin disponibilidad
+                        button.btn(style="color:white; background-color:red;float:center" disabled) Sin disponibilidad
                       else
-                        a.btn(style="color:white; background-color:red;float:right" type='button' data-bs-toggle='modal' data-bs-target='#exampleModalCenter') Prestamo Manual
+                        a.btn(style="color:white; background-color:red;float:center" type='button' data-bs-toggle='modal' data-bs-target='#exampleModalCenter') Prestamo Manual
                         #exampleModalCenter.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalCenterTitle' aria-hidden='true')
                           .modal-dialog.modal-dialog-centered(role='document')
                             .modal-content
@@ -56,17 +56,16 @@ block content
                                 button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
                               .modal-body
                                 .row
-                                  .col
-                                    form(action="/administrar/solicitar_libro/"+libro._id+"/stock/"+libro.Unidades_Disponibles method='post')
-                                      br
-                                      | Solicitante
-                                      br
-                                      input#solicitante(type='number' name='solicitante' required placeholder="Ingresar número de control")
-                                      br
-                                      button.btn.btn-success.btn-icon#saveb(type='submit' onclick='registar()')
-                                        |Guardar
+                                  form(action="/administrar/solicitar_libro/"+libro._id+"/stock/"+libro.Unidades_Disponibles method='post')
+                                    br
+                                    | Solicitante:ㅤ
+                                    input#solicitante(type='number' name='solicitante' required placeholder="Ingresar número de control")
+                                    br
+                                    br
+                                    button.btn.btn-success.btn-icon#saveb(style='float:right' type='submit' onclick='registar()')
+                                      |Guardar
                               .modal-footer
-                                button.btn.btn-secondary#cancb(type='button' data-bs-dismiss='modal') Cerrar 
+                                button.btn.btn-danger(type='button' data-bs-dismiss='modal') Cerrar 
 
     script(src="/js/sweet_carga.js")                    
     script(src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous") 
