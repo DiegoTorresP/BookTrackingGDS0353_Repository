@@ -422,7 +422,7 @@ td {
   font-size: small;
 }
 #btnssele {
-  background-color: aqua;
+  /*background-color: aqua;*/
   text-align: right;
   margin-bottom: 15px;
 }
