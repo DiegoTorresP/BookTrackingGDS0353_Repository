@@ -118,11 +118,11 @@ En ésta sección se describe  los artefactos generados en base a la solución.
 
 <!-- Estándares de Codificación -->
 #### Estándares Codificación.
-Estándares empleados en la codificación
+Estándares empleados en la codificación: https://drive.google.com/file/d/1T5n8BHZk5B-d2nxrRBbeDHvp9D_BR-rg/view?usp=sharing
 
 <!-- Arquitectura MVC y Middleware -->
 #### Arquitectura.
-Definir los patrones empleados y de seguridad.
+Definir los patrones empleados y de seguridad: https://drive.google.com/file/d/1T5n8BHZk5B-d2nxrRBbeDHvp9D_BR-rg/view?usp=sharing
 
 <!-- Código Fuente -->
 #### Código Fuente.
