@@ -26,28 +26,7 @@ block content
                 |
                 .container#portimg
                   .row
-                    img.dic(src='/images/diccionario.png')
-                  .row
-                  br
-                  |
-                  h
-                  .row 
-                    .col
-                      if status != "En Espera"
-                        .alert.alert-info(role='alert')
-                          | Esta solicitud ya fue procesada
-                      else
-                        -var url = "/administrar/aceptar_prestamo/" + id_sol
-                        a.btn.btn-success.opciones(type='button', href=url)
-                          | Aceptar
-                    .col
-                      if status != "En Espera" 
-                        a.btn.btn-danger.opciones(type='button' href='/administrar/solicitudes')
-                          | Regresar
-                      else
-                        -var url1 = "/administrar/denegar_prestamo/" + id_sol
-                        a.btn.btn-danger.opciones(type='button', href=url1) 
-                          | Denegar
+                    img.dic(src='/images/diccionario.png')                  
               .col#dates
                 br
                 |
@@ -72,7 +51,6 @@ block content
                 .form-floating.mb-3
                   input#colFormLabelSm.form-control.form-control-sm(type='number' readonly value= libro.Unidades_Disponibles)
                   label(for='colFormLabelSm') Unidades Disponibles
-
               .col#dates
                 br
                 |
@@ -86,11 +64,11 @@ block content
                   input#colFormLabelSm.form-control.form-control-sm(type='number' readonly value= libro.Num_Inventario)
                   label(for='colFormLabelSm') Número de Inventario
                 .row 
-                  .col
+                  .col(style='min-width:175px')
                     .form-floating.mb-3
                       input#colFormLabelSm.form-control.form-control-sm(type='text' readonly value= libro.Anaquel_Charola)
                       label(for='colFormLabelSm') Anaquel Charola
-                  .col
+                  .col(style='min-width:175px')
                     .form-floating.mb-3
                       input#colFormLabelSm.form-control.form-control-sm(type='text' readonly value= libro.Clasificacion)
                       label(for='colFormLabelSm') Clasificación
@@ -100,3 +78,21 @@ block content
                 .form-floating.mb-3
                   textarea#descripcion.form-control(type='text' name='descripcion' readonly value=libro.Descripcion)
                   label(for='colFormLabelSm') Descripción
+                .row#alrops 
+                  .col
+                  .col#btnssele
+                    if status != "En Espera"
+                      .alert.alert-info(style='width:300px;' role='alert')
+                        | Esta solicitud ya fue procesada
+                    else
+                      -var url = "/administrar/aceptar_prestamo/" + id_sol
+                      a.btn.btn-success.opciones(type='button', href=url)
+                        | Aceptar
+                  .col#btnssele
+                    if status != "En Espera" 
+                      a.btn.btn-danger.opciones(type='button' href='/administrar/solicitudes')
+                        | Regresar
+                    else
+                      -var url1 = "/administrar/denegar_prestamo/" + id_sol
+                      a.btn.btn-danger.opciones(type='button', href=url1) 
+                        | Denegar

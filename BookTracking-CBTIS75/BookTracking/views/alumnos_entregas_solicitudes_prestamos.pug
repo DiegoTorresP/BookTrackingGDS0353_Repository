@@ -1,12 +1,12 @@
 extends layout
 
 block content
-  .row
+  .row#gbt
     .col
       .btn-group(role='group' aria-label='Navs')
-        a.btn.btn-primary#pg(type='button' href='/alumnos') Inicio   
+        a.btn.btn-primary#pg(type='button' href='/alumnos') Inicio  
           i.bi.bi-caret-right
-        button.btn.btn-primary#pg(type='button' disabled) Entregas y solicitudes   
+        button.btn.btn-primary#pgf(type='button' disabled) Entregas y solicitudes   
   .container-fluid
     .row
       .col
@@ -23,7 +23,7 @@ block content
                       th(scope='col') Libro
                       th(scope='col') Fecha de Solicitud
                       th(scope='col') Fecha de Entrega
-                      th(scope='col') Estatus_Prestamo
+                      th(scope='col') Estatus - Prestamo
                       th(scope='col') Ver detalles de Libro
                   tbody
                     -var meses = ['enero', 'febrero', 'marzo', 'abril', 'mayo', 'junio', 'julio', 'agosto', 'septiembre', 'octubre', 'noviembre', 'diciembre'];
@@ -35,16 +35,16 @@ block content
                         td #{dias_semana[solicitud.Fecha_Solicitud.getDay()] + ', ' + solicitud.Fecha_Solicitud.getDate() + ' de ' + meses[solicitud.Fecha_Solicitud.getMonth()] + ' de ' + solicitud.Fecha_Solicitud.getUTCFullYear()}
                         td #{dias_semana[solicitud.Fecha_Entrega.getDay()] + ', ' + solicitud.Fecha_Entrega.getDate() + ' de ' + meses[solicitud.Fecha_Entrega.getMonth()] + ' de ' + solicitud.Fecha_Entrega.getUTCFullYear()}
                         if solicitud.Estatus_Prestamo == "Denegado"
-                          td(style='background-color: red; color:white') #{solicitud.Estatus_Prestamo}
+                          td#ind(style='background-color: red; color:white') #{solicitud.Estatus_Prestamo}
                         else
                           if solicitud.Estatus_Prestamo == "Aceptado"
-                            td(style='background-color: green; color:white') #{solicitud.Estatus_Prestamo}
+                            td#ind(style='background-color: green; color:white') #{solicitud.Estatus_Prestamo}
                           else 
                             if solicitud.Estatus_Prestamo == "Cancelado"
-                              td(style='background-color: black; color:white') #{solicitud.Estatus_Prestamo}
+                              td#ind(style='background-color: black; color:white') #{solicitud.Estatus_Prestamo}
                             else 
-                              td(style='background-color: blue; color:white') #{solicitud.Estatus_Prestamo}
-                        td 
+                              td#ind(style='background-color: blue; color:white') #{solicitud.Estatus_Prestamo}
+                        td#ind 
                           -var url = "/alumnos/alumnos_vista_libro_historial/"+ (JSON.parse(JSON.stringify(solicitud.libro._id)))
                           a(href=url) 
                             img(src='/images/icon-mas.png' width='30px')  

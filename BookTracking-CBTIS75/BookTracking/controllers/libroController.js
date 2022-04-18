@@ -1,4 +1,3 @@
-const { updateOne } = require("../models/libro");
 const Libro = require("../models/libro");
 
 var libroController = {};
@@ -202,96 +201,6 @@ libroController.eliminar = (req, res) => {
     }
   });
   res.redirect("/administrar/admin_buscar");
-};
-
-//Consultas
-
-//Consultar por nombre
-libroController.consultar_nombre = (req, res) => {
-  const busqueda = req.body.nombre;
-
-  Libro.find({ Nombre: { $regex: busqueda, $options: "i" } }, {}).exec(
-    (err, libro) => {
-      if (err) {
-        console.log("Error: ", err);
-        return;
-      }
-      Libro.aggregate(
-        [{
-          $group:
-          {
-            _id:"$Editorial"
-          }
-        }
-        ]
-      ).exec((err, edi)=>{
-        console.log("The INDEX");
-      console.log(edi);
-      return res.render("admin_buscar", {
-        Libro: libro, edi:edi
-      });
-      });
-    }
-  );
-};
-
-//Consultar por autor
-libroController.consultar_autor = (req, res) => {
-  const busqueda = req.body.autor;
-
-  Libro.find({ Autor: { $regex: busqueda, $options: "i" } }, {}).exec(
-    (err, libro) => {
-      if (err) {
-        console.log("Error: ", err);
-        return;
-      }
-
-      Libro.aggregate(
-        [{
-          $group:
-          {
-            _id:"$Editorial"
-          }
-        }
-        ]
-      ).exec((err, edi)=>{
-        console.log("The INDEX");
-      console.log(edi);
-      return res.render("admin_buscar", {
-        Libro: libro, edi:edi
-      });
-      })
-    }
-  );
-};
-
-//Consultar por editorial
-libroController.consultar_editorial = (req, res) => {
-  const busqueda = req.body.editorial;
-
-  Libro.find({ Editorial: { $regex: busqueda, $options: "i" } }, {}).exec(
-    (err, libro) => {
-      if (err) {
-        console.log("Error: ", err);
-        return;
-      }
-      Libro.aggregate(
-        [{
-          $group:
-          {
-            _id:"$Editorial"
-          }
-        }
-        ]
-      ).exec((err, edi)=>{
-        console.log("The INDEX");
-      console.log(edi);
-      return res.render("admin_buscar", {
-        Libro: libro, edi:edi
-      });
-      })
-    }
-  );
 };
 
 //actualizacion Unidades_Disponibles

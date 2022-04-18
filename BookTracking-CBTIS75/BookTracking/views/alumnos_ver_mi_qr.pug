@@ -6,21 +6,23 @@ block content
       .btn-group(role='group' aria-label='Navs')
         a.btn.btn-primary#pg(type='button' href='/alumnos') Inicio   
           i.bi.bi-caret-right
-        button.btn.btn-primary#pg(type='button' disabled) Ver mi qr
+        button.btn.btn-primary#pg(type='button' disabled) Ver mi QR
   .container-fluid.botonera
     .row
       .col
         if code==null || code ==""
           .row 
+            .alert.alert-danger(role='alert') 
               h3 No tienes un codigo QR asigando.
-              br
+            br
           .row 
             .col    
-                a.btn.btn-success(onclick='qr()')
-                  | Generar QR 
+              a.btn.btn-success(onclick='qr()')
+                | Generar QR 
         else 
           .row 
+            .alert.alert-info(role='alert') 
               h3 Este es tu codigo QR
-              br
+            br
           .row
-              img(src=code)
+            img(src=code)
