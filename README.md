@@ -126,7 +126,7 @@ Definir los patrones empleados y de seguridad.
 
 <!-- Código Fuente -->
 #### Código Fuente.
-Código Fuente de la solución
+Código Fuente de la solución: 
 https://github.com/DiegoTorresP/BookTrackingGDS0353_Repository
 
 <!-- Pruebas proyecto -->
@@ -145,11 +145,8 @@ Consultar en: https://drive.google.com/drive/folders/1_OoqmZsG8DXxvOosDRnaDiX3FK
 
 <!-- Iniciando -->
 ## Iniciando
-Iniciando.
-
 <!-- Requisitos -->
 ### Requisitos
-Requisitos de Instalación.
 Para instalar la aplicación de forma local, se requiere la instalación de NodeJS, npm, git y se sugiere el uso de VSC para la lectura del código.
 Las especificaciones del equipo de computo se ligan a las solicitadas por las dependencias antes mencionadas.
 
@@ -174,7 +171,6 @@ Guias de Uso.
 
 
 ## Contacto
-Contacto.
 Correo Electronico: topd001130@gmail.com
 
 ## Participantes
