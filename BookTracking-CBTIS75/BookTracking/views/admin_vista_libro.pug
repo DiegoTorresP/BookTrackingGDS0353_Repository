@@ -22,28 +22,33 @@ block content
               .col
                 br
                 |
-                form#all(action='/administrar/libro/editar' method='post')
-                  .row
-                    .col#one
+                .row
+                  .col#one
+                    .row
+                    br
+                    |
+                    h5 Datos del libro
+                    br
+                    |
+                    .container#portimg
                       .row
-                      br
-                      |
-                      h5 Datos del libro
-                      br
-                      |
-                      .container#portimg
-                        .row
-                        if libro.Foto=="" || libro.Foto == null
-                          img#prev.dic(src="/images/diccionario.png")
-                        else 
-                          img#prev.dic(src=libro.Foto)
+                      if libro.Foto=="" || libro.Foto == null
+                        img#prev.dic(src="/images/diccionario.png")
+                      else 
+                        img#prev.dic(src=libro.Foto)
 
-                        .row#ubt
-                          form#ufot(action='/administrar/crear_foto' method='post' enctype="multipart/form-data")
-                            .input-group.file
-                              input#foto.form-control(type='file' accept='image/png,image/jpeg,image/jpg,image/webp' name="foto" requerid='')
-                              button#inputGroupFileAddon04.ov-btn-grow-spin.guardar(form='ufot' type='submit') Guardar
+                      .row#ubt
+                        form#ufot(action='/administrar/crear_foto' method='post' enctype="multipart/form-data")
+                          .input-group.file
+                            input#foto.form-control(type='file' accept='image/png,image/jpeg,image/jpg,image/webp' name="foto" requerid='')
+                            button#inputGroupFileAddon04.ov-btn-grow-spin.guardar(form='ufot' type='submit') Guardar
+              .col
+                .row
+                  form#all(action='/administrar/libro/editar' method='post')
                     .col#dates
+                      .form-floating.mb-3(style="display:none;")
+                        input#id.form-control.form-control-sm(type='text' name='id' required=''  value= libro._id)
+                        label(for='nombre') Nombre:
                       .form-floating.mb-3
                         input#nombre.form-control.form-control-sm(type='text' name='nombre' required=''  value= libro.Nombre)
                         label(for='nombre') Nombre:
@@ -96,4 +101,4 @@ block content
                             | Cancelar
                           button.btn.btn-success(form='all' type='submit' )
                             | Guardar
-    script(src="/js/imagen.js") 
+      script(src="/js/imagen.js") 
