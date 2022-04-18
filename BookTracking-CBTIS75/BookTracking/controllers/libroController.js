@@ -157,7 +157,7 @@ libroController.editar = (req, res) => {
   const Observaciones = req.body.observaciones;
   const Descripcion = req.body.descripcion;
   const Foto = link;
-
+  console.log("Nombre: "+ Nombre)
   Libro.updateOne(
     { Nombre: Nombre },
     {
