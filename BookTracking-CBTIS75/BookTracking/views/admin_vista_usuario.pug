@@ -19,12 +19,11 @@ block content
             .row.barraresultado
               .col Resultados: de busqueda
             .row.rowtabla
-              .col 
-              br
-              |
               form(action='/administrar/usuario/editar' method='post')
                 .row
                   .col-md-6
+                    br
+                    |
                     .form-floating.mb-3
                       input#numControl.form-control.form-control-sm(type='number' name='numControl' required  value=alumno._id)
                       label.form-label(for='numControl') No. de Control
@@ -47,6 +46,8 @@ block content
                       input#turno.form-control.form-control-sm(type='text' name='turno' required  value=alumno.Turno)
                       label.form-label(for='turno') Turno:
                   .col-md-6
+                    br
+                    |
                     .form-floating.mb-3
                       input#generacion.form-control.form-control-sm(type='text' name='generacion' required  value=alumno.Generacion)
                       label.form-label(for='generacion') Generaci&oacute;n:
@@ -60,8 +61,9 @@ block content
                           option Hombre
                       label.form-label(for='sexo') Sexo:
                     .form-floating.mb-3
-                      input#curp.form-control.form-control-sm(type='text' name='curp' required  value=alumno.CURP)
+                      input#curp.form-control.form-control-sm(type='text' name='curp' required oninput='validarInput(this)' maxlength="18" minlength="17"  value=alumno.CURP)
                       label.form-label(for='curp') CURP:
+                      pre#resultado.
                     .row
                       .col
                         .form-floating.mb-3
@@ -78,7 +80,7 @@ block content
                           label.form-label(for='lada') Lada:
                       .col
                         .form-floating.mb-3
-                          input#c.form-control.form-control-sm(type='number' name='telefonoFijo1'  value=alumno.Telefono_de_contacto_fijo_1)
+                          input#telefonoFijo1.form-control.form-control-sm(type='number' name='telefonoFijo1'  value=alumno.Telefono_de_contacto_fijo_1)
                           label.form-label(for='telefonoFijo1') Telefono fijo 1:
                     .form-floating.mb-3
                       input#telefonoFijo2.form-control.form-control-sm(type='number' name='telefonoFijo2'  value=alumno.Telefono_de_contacto_fijo_2)
@@ -92,3 +94,4 @@ block content
                           | Cancelar
                         button.btn.btn-success(type='submit')
                           | Editar
+    script(src="/js/curp.js")

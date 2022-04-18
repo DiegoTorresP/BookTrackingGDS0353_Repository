@@ -5,16 +5,6 @@ const bcrypt = require('bcryptjs');
 const qr = require('qrcode');
 var alumnoController = {};
 
-alumnoController.alumno_login = function(req,res){
-    res.send("Ruta login controlada");
-}
-
-
-alumnoController.alumno_logout = function(req,res){
-    res.send("Ruta logout controlada");
-   
-}
-
 
 alumnoController.alumno_verify = function (req,res){
     let usuario = req.body.username;
@@ -323,7 +313,7 @@ alumnoController.editar1=(req, res)=>{
             }
             console.log("The INDEX");
             console.log(Alumno)
-            res.redirect('/administrar/lista-usuario');
+            res.redirect('/administrar/lista_usuario');
         });
 }
 //Eliminar
@@ -374,62 +364,6 @@ alumnoController.consultarLibro = (req, res) =>{
         console.log(Libro)
         return res.render('admin_detalle_atender_libro', {
             Libro: Libro , id_sol, status
-        });
-
-    });
-}
-
-//Consulta por nombre.
-alumnoController.consultar_nombre= (req, res)=>{
-    const busqueda= req.body.nombre;
-    console.log(busqueda);
-
-    Alumno.find({Nombre_s: {$regex: busqueda, $options : 'i'}},{}).exec((err,Alumno) => {
-        if (err) {
-            console.log('Error: ', err);
-            return;
-        }
-        console.log(busqueda+" Encontrado");
-        console.log(Alumno)
-        return res.render('admin_lista_usuarios', {
-            Alumno: Alumno
-        });
-
-    });
-}
-
-//Consulta por carrera
-alumnoController.consultar_carrera= (req, res)=>{
-    const busqueda= req.body.carrera;
-    console.log(busqueda);
-
-    Alumno.find({Carrera_Tecnica: {$regex: busqueda, $options : 'i'}},{}).exec((err,Alumno) => {
-        if (err) {
-            console.log('Error: ', err);
-            return;
-        }
-        console.log(busqueda+" Encontrado");
-        console.log(Alumno)
-        return res.render('admin_lista_usuarios', {
-            Alumno: Alumno
-        });
-
-    });
-}
-//Consulta por estatus
-alumnoController.consultar_estatus= (req, res)=>{
-    const busqueda= req.body.estatus;
-    console.log(busqueda);
-
-    Alumno.find({Estatus_Escolar: {$regex: busqueda, $options : 'i'}},{}).exec((err,Alumno) => {
-        if (err) {
-            console.log('Error: ', err);
-            return;
-        }
-        console.log(busqueda+" Encontrado");
-        console.log(Alumno)
-        return res.render('admin_lista_usuarios', {
-            Alumno: Alumno
         });
 
     });
