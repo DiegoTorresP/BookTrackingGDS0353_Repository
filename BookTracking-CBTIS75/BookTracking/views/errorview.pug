@@ -1,0 +1,34 @@
+extends layout
+
+block content
+    .bg-black
+        .stars
+            .central-body
+                img.image-404(src='http://salehriaz.com/404Page/img/404.svg', width='300px')
+                |                 
+                a.btn-go-home(onClick='history.go(-1)' target='_blank') REGRESEMOS A CASA
+                |             
+            .objects
+                img.object_rocket(src='http://salehriaz.com/404Page/img/rocket.svg', width='40px')
+                |                 
+                .earth-moon
+                    img.object_earth(src='http://salehriaz.com/404Page/img/earth.svg', width='100px')
+                    |                     
+                    img.object_moon(src='http://salehriaz.com/404Page/img/moon.svg', width='80px')
+                    |                 
+                .box_astronaut
+                    img.object_astronaut(src='/images/astronaut.svg', width='140px')
+                    |             
+            .glowing_stars
+                .star
+                |                 
+                .star
+                |                 
+                .star
+                |                 
+                .star
+                |                 
+                .star
+
+    script(src="/js/error404.js")
+

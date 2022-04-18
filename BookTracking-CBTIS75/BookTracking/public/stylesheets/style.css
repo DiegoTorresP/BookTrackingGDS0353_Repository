@@ -1,3 +1,4 @@
+/*Variables globales*/
 :root {
   --color-primario: #612334;
   --color-primario-deg: #8a5957;
@@ -10,6 +11,75 @@
   --meteoro-w: calc(var(--info-w) * 0.5);
 }
 
+/*------------------------LAYOUT-------------------------------*/
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  /*background-image: url(../images/fbib.jpg);*/
+  background: var(--color-fondo);
+  overflow-x: hidden;
+  height: auto;
+}
+
+/*-Barra de navegación*/
+.barra {
+  background-color: var(--color-primario);
+  width: 100%;
+  padding: 0px;
+}
+
+/**Contienen las imagenes y logos*/
+.navbar-brand {
+  padding: 0px;
+  margin: 0px;
+}
+
+/**containers de navbar y footer*/
+#oc {
+  max-height: 75px;
+  min-width: auto;
+}
+
+/*Botónn de progreso*/
+.btn-group {
+  margin-top: 17px;
+  border-radius: 5px;
+  background-color: var(--color-primario);
+}
+
+/**row que contiene el boton de progreso*/
+#gbt {
+  padding-left: 20px;
+  padding-right: 20px;
+  display: block;
+}
+
+/**Botones individuales del botón de progreso*/
+#pg {
+  border-radius: 5px;
+  padding: 5px;
+  background-color: var(--color-primario);
+  text-transform: initial;
+}
+
+/**Botón final individual del progreso */
+#pgf {
+  border-radius: 5px;
+  padding: 5px;
+  text-transform: initial;
+  background-color: var(--color-primario-deg);
+}
+
+/*Footer*/
+.footer {
+  clear: both;
+  position: relative;
+  width: 100%;
+  min-width: 264px;
+  height: 141px;
+  padding-bottom: 0%;
+}
+
+/**Boton que despliega el canva de footer*/
 .info {
   background-color: var(--color-regular);
   width: var(--info-w);
@@ -20,24 +90,21 @@
   font-size: 1.3em;
   line-height: 1.5em;
   cursor: pointer;
-  /*BotÓn que despliega el canva de footer*/
   margin: 5px;
   margin-right: 25px;
   display: table;
   float: right;
 }
 
+/**Row que contiene al boton meteoro*/
 #metbtn {
-  /*Row que contiene al boton meteoro*/
   margin-top: 8px;
   float: right;
   width: 81px;
   height: 40px;
 }
-#conteco {
-  /*margen d*/
-  margin-top: 4px;
-}
+
+/**meteorito (bolita que recorre en boton .info)*/
 .meteoro {
   content: "";
   position: absolute;
@@ -47,6 +114,8 @@
   border-radius: 100%;
   transition: all 10ms ease;
 }
+
+/***meteorito accion after (bolita que recorre en boton .info)*/
 .meteoro:after {
   content: "";
   position: absolute;
@@ -59,27 +128,70 @@
   border: 0.25em solid var(--color-regular);
   box-shadow: 0 0 0.7em var(--color-regular), 0 0 2em var(--color-primario);
 }
+
+/***Animaciones meteorito*/
 .info:hover .meteoro,
 .info:focus .meteoro {
   animation: meteoro 1.5s infinite linear;
   display: block;
 }
 
+/***Recorrido meteorito*/
 @keyframes meteoro {
   0% {
     transform: translateX(0) rotate(0);
   }
+
   100% {
     transform: translateX(0) rotate(360deg);
   }
 }
 
-@media only screen and (orientation: portrait) {
- body{
-   transform: scale(100%);
- }
-
+/**Canva que contiene el footer*/
+.offcanvas {
+  background-color: var(--color-primario);
 }
+
+/*boton para cerrar el canva del footer*/
+.btn-close {
+  background-color: var(--color-regular);
+}
+
+/**************** Acciones al reducirse tamaño de ventana ****************/
+/**Se redimensiona la escala para cuando se reduca la pantalla a movil*/
+@media only screen and (orientation: portrait) {
+  body {
+    transform: scale(100%);
+  }
+}
+
+/**Accion y elementos que se ocultan al reducirse el tamaño de ventana*/
+@media screen and (max-width: 1200px) {
+  /*Rows con las imagenes del logo BT y Educacion*/
+  #ed {
+    display: none;
+  }
+
+  /*Botonera de los menus de opciones*/
+  #btnragnral {
+    margin-top: 55px;
+  }
+
+  /*meteorito (para que no de desborde su trayectoria)*/
+  .meteoro {
+    visibility: hidden;
+  }
+
+  /*.botonera {
+    max-height: 1000vh;
+}
+#oc {
+  max-height: 75px;
+  min-width: auto;
+}*/
+}
+
+/**************** Caracteristica deshabilitada ****************/
 /* En caso de querer usar el card de recomendación para forzara girar el dispositivo o agrandar la pantalla del navegador
 @media only screen and (orientation: portrait) {
   .navibar {
@@ -102,132 +214,45 @@ Este es el card
   background-color: var(--color-regular);
 }
 */
-@media screen and (max-width: 1200px) {
-  #ed {
-    /*logo BT y Educacion*/
-    display: none;
-  }
-  #btnragnral{
-    margin-top: 55px;
-  }
-.meteoro{
-  visibility: hidden;
-}
-  /*.botonera {
-    max-height: 1000vh;
-}
-#oc {
-  max-height: 75px;
-  min-width: auto;
-}*/
-}
-body {
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  /*background-image: url(../images/fbib.jpg);*/
-  background-color: var(--color-fondo);
-  overflow-x: hidden;
-  height:auto;
 
-  
-}
-
-#oc {
-  /*containers de navbar y footer*/
-  max-height: 75px;
-  min-width: auto;
-}
-
-#saveb {
-  /*boton guardar color*/
-  margin-top: 5px;
-  background-color: var(--color-terciario);
-}
-
-
-#clrs {
-  /*Botón del modal de colores*/
-  display: none;
-}
-#gbt {
-  /*row que contiene el boton de progreso*/
-  padding-left: 20px;
-  padding-right: 20px;
-  display: block;
-}
-.btn-group {
-  /*Botónn de progreso*/
-  margin-top: 17px;
-  border-radius: 5px;
-  background-color: var(--color-primario);
-}
-#pg {
-  /*Botones individuales del botón de progreso*/
-  border-radius: 5px;
-  padding: 5px;
-  background-color: var(--color-primario);
+/*------------------------Generales-------------------------------*/
+.btn {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: medium;
+  border-radius: 30px;
+  box-shadow: none;
   text-transform: initial;
 }
-#pgf {
-  /*Botón final individual del progreso */
-  border-radius: 5px;
-  padding: 5px;
-  text-transform: initial;
-  background-color: var(--color-primario-deg);
-}
-#pgo {
-  /*Botnes opciones */
-  border-radius: 5px;
-  padding: 5px;
-  text-transform: initial;
-  color: var(--color-primario);
-  border: 2px solid var(--color-primario);
-  background-color: var(--color-regular);
-  text-align: left;
-}
-#bt2{
-  margin-right: 5px;
-}
-.offcanvas {
-  /*Canva que contiene el footer*/
-  background-color: var(--color-primario);
-}
 
-.btn-close {
-  /*boton para cerrar el canva del footer*/
-  background-color: var(--color-regular);
-}
-#opsb{
-  max-width: fit-content;
-  padding-left: 20px;
-}
-#btops{
-  min-width: 100%;
-}
-#iops{
-  margin-right: 7px;
-}
-#bops{
-  background-color: var(--color-regular);
-}
 a {
   text-decoration: none;
 }
+
 .a {
   text-decoration: none;
-}
-.barra {
-  background-color: var(--color-primario);
-  width: 100%;
-  padding: 0px;
-}
-.complet {
-  margin: 0;
 }
 
 .container-fluid {
   height: 100%;
 }
 
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.center {
+  display: flex;
+  justify-content: center;
+}
+
+.right {
+  display: flex;
+  justify-content: right;
+}
+
+/*------------------------CONTENT-------------------------------*/
+/*Container de los botones de los menus de opciones*/
 .botonera {
   margin-top: 15px;
 
@@ -239,14 +264,13 @@ a {
   position: relative;
   text-align: center;
 }
-
+/**Row, principalmente usado en los menus*/
 .hijo {
   /* centrado vertical */
   background: var(--color-primario);
   vertical-align: middle;
-  
 }
-
+/**Botones de los menus de opciones*/
 .botonera a {
   border-radius: 10px;
   border: none;
@@ -257,6 +281,7 @@ a {
   margin: 25px;
 }
 
+/**Imagenes de los menus de opciones*/
 .botonera a img {
   text-align: center;
   width: auto;
@@ -265,53 +290,20 @@ a {
   max-height: 225px;
   padding: 30px;
 }
+/**Leyendas de los menus de opciones*/
 .botonera a br {
   margin-bottom: 10px;
 }
-
-#colors {
-  text-align: center;
-}
-
-.dic {
-  width: 85%;
-  padding: 10px;
-}
-
-.footer {
-  clear: both;
-  position: relative;
-  width: 100%;
-  min-width: 264px;
-  height: 141px;
-  padding-bottom: 0%;
-}
-
-.navbar-brand {
-  padding: 0px;
-  margin: 0px;
-}
-.center {
-  display: flex;
-  justify-content: center;
-}
-.center {
-  display: flex;
-  justify-content: center;
-}
-.right {
-  display: flex;
-  justify-content: right;
-}
-/*** ESTILOS BOTÓN GROW SPIN ***/
-#btx {
-  margin-top: 1px;
-}
+/**************** ESTILOS BOTÓN GROW SPIN ****************/
 .ov-btn-grow-spin {
-  background: var(--color-regular); /* color de fondo */
-  color: var(--main-bg-color); /* color de fuente */
-  border: 0.5px solid; /* tamaño y color de borde */
-  border-radius: 3px; /* redondear bordes */
+  background: var(--color-regular);
+  /* color de fondo */
+  color: var(--main-bg-color);
+  /* color de fuente */
+  border: 0.5px solid;
+  /* tamaño y color de borde */
+  border-radius: 3px;
+  /* redondear bordes */
   position: relative;
   z-index: 1;
   overflow: hidden;
@@ -319,12 +311,16 @@ a {
   font: 20px Helvetica, sans-serif;
   font-size-adjust: 2.58;
 }
+
 .ov-btn-grow-spin:hover {
-  color: var(--color-regular); /* color de fuente hover */
+  color: var(--color-regular);
+  /* color de fuente hover */
 }
+
 .ov-btn-grow-spin::after {
   content: "";
-  background: var(--color-terciario); /* color de fondo hover */
+  background: var(--color-terciario);
+  /* color de fondo hover */
   position: absolute;
   z-index: -1;
   padding: 16px 20px;
@@ -336,33 +332,33 @@ a {
   transform: scale(0, 0) rotate(-180deg);
   transition: all 0.3s ease;
 }
+
 .ov-btn-grow-spin:hover::after {
   transition: all 0.3s ease-out;
   transform: scale(1, 1) rotate(0deg);
 }
-/*** ESTILOS BOTÓN GROW BOX ***/
-.btn {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: medium;
-  border-radius: 30px;
-  box-shadow: none;
-  text-transform: initial;
-}
+/**************** ESTILOS BOTÓN GROW BOX ****************/
 .ov-btn-grow-box {
-  background: transparent; /* color de fondo */
-  color: var(--color-regular); /* color de fuente */
+  background: transparent;
+  /* color de fondo */
+  color: var(--color-regular);
+  /* color de fuente */
   padding: 5px 5px;
   position: relative;
   z-index: 1;
   overflow: hidden;
   display: inline-block;
 }
+
 .ov-btn-grow-box:hover {
-  color: var(--color-regular); /* color de fuente hover */
+  color: var(--color-regular);
+  /* color de fuente hover */
 }
+
 .ov-btn-grow-box::after {
   content: "";
-  background: var(--color-secundario); /* color de fondo hover */
+  background: var(--color-secundario);
+  /* color de fondo hover */
   position: absolute;
   z-index: -1;
   padding: 16px 20px;
@@ -374,53 +370,71 @@ a {
   transform: scale(0, 0);
   transition: all 0.3s ease;
 }
+
 .ov-btn-grow-box:hover::after {
   transition: all 0.3s ease-out;
   transform: scale(1, 1);
 }
 
-.tabla thead {
-  background-color: var(--color-primario);
-  color: var(--color-regular);
-  text-align: center;
-  vertical-align: middle;
+/**************** Recursos usados en Vistas ****************/
+/*admin_registrar_usuario.pug*/
+/**Boton group de opciones alternas (Admin Registro)*/
+#bt2 {
+  margin-right: 5px;
 }
-td {
-  vertical-align: middle;
+/**Botones individuales opciones (Admin Registro)*/
+#pgo {
+  border-radius: 5px;
+  padding: 5px;
+  text-transform: initial;
+  color: var(--color-primario);
+  border: 2px solid var(--color-primario);
+  background-color: var(--color-regular);
+  text-align: left;
 }
-#ind {
-  text-align: center;
-  vertical-align: middle;
+/**Iconos opciones (Admin Registro)*/
+#iops {
+  margin-right: 7px;
 }
-.rowtabla {
-  background: var(--color-regular);
-  font-size: 15px;
-  overflow: auto;
-  justify-content: left;
-  position: relative;
-}
+
+/*Vistas de proyeccion de datos de libros*/
+/**Primera Columna con la portada*/
 #one {
   text-align: center;
   min-width: 300px;
   max-width: 400px;
 }
+/**Columnas con datos*/
 #dates {
   min-width: 250px;
 }
-#portimg,
-#alrops,
-#uimg{
+
+/**Imagen de los libros*/
+.dic {
+  width: 85%;
+  padding: 10px;
+}
+
+#portimg,/**Container de la portada y btn subida*/
+#alrops,/**Row que contiene los botones*/
+#uimg {
+  /**Row que contiene la imagen de portada*/
   vertical-align: middle;
   justify-content: center;
   align-items: center;
   position: relative;
 }
-#ubt{
+
+#ubt {
+  /**Row que contiene el boton de subida de imagen portada*/
   padding-right: 50px;
 }
-#foto,#inputGroupFileAddon04{
+#foto,/*Input de foto de portada*/
+#inputGroupFileAddon04 /**boton para subir foto de portada*/ {
   font-size: small;
 }
+
+/**Col que contiene los botones de opciones (Aceptar/Guardar Cancelar)*/
 #btnssele {
   /*background-color: aqua;*/
   text-align: right;
@@ -430,25 +444,39 @@ td {
 a + button {
   margin-left: 50px;
 }
-.barrabusqueda {
-  margin: 15px;
-}
-.barrabusqueda1 {
-  margin-top: 15px;
-  font-size: 18px;
-}
 
-.botonbusqueda {
-  margin: 0 auto;
-}
+/*Vistas con tablas*/
 
-.barraresultado {
-  background: var(--color-terciario);
-  padding: 10px;
+#conteco {
+  /*margen superior de las tablas*/
+  margin-top: 4px;
+}
+/*Row que contiene a la tabla*/
+.rowtabla {
+  background: var(--color-regular);
+  font-size: 15px;
+  overflow: auto;
+  justify-content: left;
+  position: relative;
+}
+/*Encabezado de las tablas*/
+
+.tabla thead {
+  background-color: var(--color-primario);
   color: var(--color-regular);
-  margin-top: 15px;
-  font-size: 17px;
+  text-align: center;
+  vertical-align: middle;
 }
+/*Celdas de datos*/
+td {
+  vertical-align: middle;
+}
+/*Celdas de datos (solo algunas)*/
+#ind {
+  text-align: center;
+  vertical-align: middle;
+}
+
 #vlb {
   max-width: 150px;
   vertical-align: middle;
@@ -457,24 +485,32 @@ a + button {
   position: relative;
   text-align: right;
 }
+
 #vlb2 {
   text-align: right;
 }
+
 #form {
   padding-top: 15px;
 }
+
 .form-label {
   text-overflow: clip;
 }
+
 .opciones {
   margin: 20px;
 }
+
 .file {
   margin: 20px;
 }
+
 .guardar {
   border-radius: 2px;
 }
+
+/*LOGIN*/
 
 .login {
   width: 400px;
@@ -491,6 +527,7 @@ a + button {
   justify-content: center;
   box-shadow: 4px 4px 10px 0px var(--color-secundario);
 }
+
 .loginh1 {
   text-align: center;
   color: var(--color-fondo);
@@ -498,12 +535,14 @@ a + button {
   padding: 10px 0 10px 0;
   border-bottom: 1px solid var(--color-regular);
 }
+
 .loginform {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   padding-top: 11px;
 }
+
 .loginformlabel {
   display: flex;
   justify-content: center;
@@ -511,6 +550,7 @@ a + button {
   width: 40px;
   height: 40px;
 }
+
 .loginforminput[type="password"],
 .loginforminput[type="text"] {
   width: 310px;
@@ -537,4 +577,321 @@ a + button {
 .boton1:hover {
   background: var(--color-primario);
   color: var(--color-regular);
+}
+
+/*boton guardar color
+#saveb {
+  margin-top: 5px;
+  background-color: var(--color-terciario);
+}
+*/
+/*Botón del modal de colores
+#clrs {
+  display: none;
+}
+*/
+/*
+#colors {
+  text-align: center;
+}*/
+
+/*----------------------ERROR 404--------------------------*/
+
+@import url("https://fonts.googleapis.com/css?family=Dosis:300,400,500");
+
+@-moz-keyframes rocket-movement {
+  100% {
+    -moz-transform: translate(1200px, -600px);
+  }
+}
+@-webkit-keyframes rocket-movement {
+  100% {
+    -webkit-transform: translate(1200px, -600px);
+  }
+}
+@keyframes rocket-movement {
+  100% {
+    transform: translate(1200px, -600px);
+  }
+}
+@-moz-keyframes spin-earth {
+  100% {
+    -moz-transform: rotate(-360deg);
+    transition: transform 20s;
+  }
+}
+@-webkit-keyframes spin-earth {
+  100% {
+    -webkit-transform: rotate(-360deg);
+    transition: transform 20s;
+  }
+}
+@keyframes spin-earth {
+  100% {
+    -webkit-transform: rotate(-360deg);
+    transform: rotate(-360deg);
+    transition: transform 20s;
+  }
+}
+
+@-moz-keyframes move-astronaut {
+  100% {
+    -moz-transform: translate(-160px, -160px);
+  }
+}
+@-webkit-keyframes move-astronaut {
+  100% {
+    -webkit-transform: translate(-160px, -160px);
+  }
+}
+@keyframes move-astronaut {
+  100% {
+    -webkit-transform: translate(-160px, -160px);
+    transform: translate(-160px, -160px);
+  }
+}
+@-moz-keyframes rotate-astronaut {
+  100% {
+    -moz-transform: rotate(-720deg);
+  }
+}
+@-webkit-keyframes rotate-astronaut {
+  100% {
+    -webkit-transform: rotate(-720deg);
+  }
+}
+@keyframes rotate-astronaut {
+  100% {
+    -webkit-transform: rotate(-720deg);
+    transform: rotate(-720deg);
+  }
+}
+
+@-moz-keyframes glow-star {
+  40% {
+    -moz-opacity: 0.3;
+  }
+  90%,
+  100% {
+    -moz-opacity: 1;
+    -moz-transform: scale(1.2);
+  }
+}
+@-webkit-keyframes glow-star {
+  40% {
+    -webkit-opacity: 0.3;
+  }
+  90%,
+  100% {
+    -webkit-opacity: 1;
+    -webkit-transform: scale(1.2);
+  }
+}
+@keyframes glow-star {
+  40% {
+    -webkit-opacity: 0.3;
+    opacity: 0.3;
+  }
+  90%,
+  100% {
+    -webkit-opacity: 1;
+    opacity: 1;
+    -webkit-transform: scale(1.2);
+    transform: scale(1.2);
+    border-radius: 999999px;
+  }
+}
+
+.spin-earth-on-hover {
+  transition: ease 200s !important;
+  transform: rotate(-3600deg) !important;
+}
+
+.bg-black {
+  background: black;
+  background-repeat: repeat-x;
+  background-size: cover;
+  background-position: left top;
+  height: 100%;
+  overflow: hidden;
+
+  margin: 0;
+  width: 100%;
+  font-family: "Dosis", sans-serif;
+  font-weight: 300;
+  -webkit-user-select: none; /* Safari 3.1+ */
+  -moz-user-select: none; /* Firefox 2+ */
+  -ms-user-select: none; /* IE 10+ */
+  user-select: none; /* Standard syntax */
+}
+
+.btn-go-home {
+  position: relative;
+  z-index: 200;
+  margin: 15px auto;
+  width: 200px;
+  padding: 10px 15px;
+  border: 1px solid var(--color-fondo);
+  border-radius: 100px;
+  font-weight: 400;
+  display: block;
+  color: var(--color-regular);
+  text-align: center;
+  text-decoration: none;
+  letter-spacing: 2px;
+  font-size: 11px;
+
+  -webkit-transition: all 0.3s ease-in;
+  -moz-transition: all 0.3s ease-in;
+  -ms-transition: all 0.3s ease-in;
+  -o-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
+}
+
+.btn-go-home:hover {
+  background-color: var(--color-fondo);
+  color: var(--color-regular);
+  transform: scale(1.05);
+  box-shadow: 0px 20px 20px rgba(0, 0, 0, 0.1);
+}
+
+.central-body {
+  /*    width: 100%;*/
+  padding: 17% 5% 10% 5%;
+  text-align: center;
+}
+
+.objects img {
+  z-index: 90;
+  pointer-events: none;
+}
+
+.object_rocket {
+  z-index: 95;
+  position: absolute;
+  transform: translateX(-50px);
+  top: 75%;
+  pointer-events: none;
+  animation: rocket-movement 200s linear infinite both running;
+}
+
+.object_earth {
+  position: absolute;
+  top: 20%;
+  left: 15%;
+  z-index: 90;
+  /*    animation: spin-earth 100s infinite linear both;*/
+}
+
+.object_moon {
+  position: absolute;
+  top: 12%;
+  left: 25%;
+  /*
+    transform: rotate(0deg);
+    transition: transform ease-in 99999999999s;
+*/
+}
+
+.object_astronaut {
+  animation: rotate-astronaut 200s infinite linear both alternate;
+}
+
+.box_astronaut {
+  z-index: 110 !important;
+  position: absolute;
+  top: 60%;
+  right: 20%;
+  will-change: transform;
+  animation: move-astronaut 50s infinite linear both alternate;
+}
+
+.image-404 {
+  position: relative;
+  z-index: 100;
+  pointer-events: none;
+}
+
+.stars {
+  background: url(http://salehriaz.com/404Page/img/overlay_stars.svg);
+  background-repeat: repeat;
+  background-size: contain;
+  background-position: left top;
+}
+
+.glowing_stars .star {
+  position: absolute;
+  border-radius: 100%;
+  background-color: var(--color-regular);
+  width: 3px;
+  height: 3px;
+  opacity: 0.3;
+  will-change: opacity;
+}
+
+.glowing_stars .star:nth-child(1) {
+  top: 80%;
+  left: 25%;
+  animation: glow-star 2s infinite ease-in-out alternate 1s;
+}
+.glowing_stars .star:nth-child(2) {
+  top: 20%;
+  left: 40%;
+  animation: glow-star 2s infinite ease-in-out alternate 3s;
+}
+.glowing_stars .star:nth-child(3) {
+  top: 25%;
+  left: 25%;
+  animation: glow-star 2s infinite ease-in-out alternate 5s;
+}
+.glowing_stars .star:nth-child(4) {
+  top: 75%;
+  left: 80%;
+  animation: glow-star 2s infinite ease-in-out alternate 7s;
+}
+.glowing_stars .star:nth-child(5) {
+  top: 90%;
+  left: 50%;
+  animation: glow-star 2s infinite ease-in-out alternate 9s;
+}
+
+@media only screen and (max-width: 600px) {
+  .box_astronaut {
+    top: 70%;
+  }
+
+  .central-body {
+    padding-top: 25%;
+  }
+}
+
+/*Asignaciones no encontradas*/
+/*
+.complet {
+  margin: 0;
+}*/
+/*
+#opsb {
+  max-width: fit-content;
+  padding-left: 20px;
+}*/
+.barrabusqueda {
+  margin: 15px;
+}
+
+.barrabusqueda1 {
+  margin-top: 15px;
+  font-size: 18px;
+}
+
+.botonbusqueda {
+  margin: 0 auto;
+}
+
+.barraresultado {
+  background: var(--color-terciario);
+  padding: 10px;
+  color: var(--color-regular);
+  margin-top: 15px;
+  font-size: 17px;
 }
