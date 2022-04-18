@@ -24,7 +24,7 @@ router.get('/register', function(req, res, next){
   res.render('register', data);
 });
 
-router.get('/logout',auth.isLogin, controller.alumno_logout);
+router.get('/logout', controller.alumno_logout);
 
 router.post("/verify", controller.alumno_verify);
 
