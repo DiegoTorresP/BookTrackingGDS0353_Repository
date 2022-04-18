@@ -182,10 +182,10 @@ body {
   color: var(--color-primario);
   border: 2px solid var(--color-primario);
   background-color: var(--color-regular);
-
+  text-align: left;
 }
 #bt2{
-  margin-right: 20px;
+  margin-right: 5px;
 }
 .offcanvas {
   /*Canva que contiene el footer*/
@@ -401,18 +401,14 @@ td {
 }
 #one {
   text-align: center;
-  min-width: 400px;
+  min-width: 300px;
   max-width: 400px;
 }
 #dates {
-  min-width: 400px;
+  min-width: 250px;
 }
-#portimg {
-  vertical-align: middle;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-}
+#portimg,
+#alrops,
 #uimg{
   vertical-align: middle;
   justify-content: center;
@@ -425,14 +421,12 @@ td {
 #foto,#inputGroupFileAddon04{
   font-size: small;
 }
-#dates {
-  width: auto;
-}
 #btnssele {
-  background-color: aqua;
+  /*background-color: aqua;*/
   text-align: right;
   margin-bottom: 15px;
 }
+
 a + button {
   margin-left: 50px;
 }

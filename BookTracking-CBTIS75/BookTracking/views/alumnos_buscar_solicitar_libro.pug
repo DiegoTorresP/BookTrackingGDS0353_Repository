@@ -1,12 +1,12 @@
 extends layout
 
 block content
-  .row
+  .row#gbt
     .col
       .btn-group(role='group' aria-label='Navs')
         a.btn.btn-primary#pg(type='button' href='/alumnos') Inicio   
           i.bi.bi-caret-right
-        button.btn.btn-primary#pg(type='button' disabled) Buscar y solicitar libro   
+        button.btn.btn-primary#pgf(type='button' disabled) Buscar y solicitar libro   
   .container-fluid
     .row
       .col
@@ -22,7 +22,9 @@ block content
                       th(scope='col') Nombre
                       th(scope='col') Autor
                       th(scope='col') Editorial
-                      th(scope='col') Unidades Disponibles
+                      th(scope='col') Unidades 
+                        br
+                        | Disponibles
                       th(scope='col') Ver detalles
                   tbody
                     each libro in Libro 
@@ -30,8 +32,8 @@ block content
                         td #{libro.Nombre}
                         td #{libro.Autor}                      
                         td #{libro.Editorial}
-                        td #{libro.Unidades_Disponibles}
-                        td  
+                        td#ind #{libro.Unidades_Disponibles}
+                        td#ind  
                           -var url = "/alumnos/alumnos_vista_libro/" + libro._id 
                           a.btn.btn-outline-danger.bi.bi-book(href=url) 
     script(src="/js/sweet_carga.js")               
