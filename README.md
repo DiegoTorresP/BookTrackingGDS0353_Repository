@@ -127,7 +127,7 @@ Definir los patrones empleados y de seguridad.
 <!-- Código Fuente -->
 #### Código Fuente.
 Código Fuente de la solución
-
+https://github.com/DiegoTorresP/BookTrackingGDS0353_Repository
 
 <!-- Pruebas proyecto -->
 ## Pruebas.
@@ -135,11 +135,12 @@ En ésta sección se describe  los artefactos generados en base a la solución.
 
 <!-- Casos de prueba -->
 #### Casos de prueba.
-Indicar los casos de prueba
+Consultar en: https://drive.google.com/drive/folders/1_OoqmZsG8DXxvOosDRnaDiX3FKApgj-_?usp=sharing
 
 <!-- Ejecución Casos de prueba -->
 #### Ejecución.
 Evidencia de Ejecución de Casos de prueba.
+Consultar en: https://drive.google.com/drive/folders/1_OoqmZsG8DXxvOosDRnaDiX3FKApgj-_?usp=sharing
 
 
 <!-- Iniciando -->
@@ -149,17 +150,24 @@ Iniciando.
 <!-- Requisitos -->
 ### Requisitos
 Requisitos de Instalación.
+Para instalar la aplicación de forma local, se requiere la instalación de NodeJS, npm, git y se sugiere el uso de VSC para la lectura del código.
+Las especificaciones del equipo de computo se ligan a las solicitadas por las dependencias antes mencionadas.
 
 <!-- Instalación -->
 ### Instalacion
 Instalación del Software
-
+<li>Clonar este repositorio</li>
+<li>Idealmente mediante navegación por comandos en consola ir a la carpeta del proyecto ../BookTrackingGDS0353_Repository/BookTracking-CBTIS75/BookTracking</li>
+<li>Posicionado en esta carpeta, usar npm install para recuperar dependencias del proyecto</li>
+<li>Posicionado en esta carpeta, usar npm star para iniciar el proyecto</li>
+<li>Ir al navegador y entrar en la ruta localhost:4000 para ver el proyecto e interactura</li>
+<li>Se puede; posicionado en esta carpeta, usar el comando "code ." para ingresar por VSC</li>
 
 ## Guias
 Guias de Uso.
 
-## contribucion
-Contribucion.
+## Contribución
+[![Contribuidores][contribuidores-shield]][contributors-url]
 
 ## Licencia
 [![license-shield]][license-url]
@@ -167,6 +175,7 @@ Contribucion.
 
 ## Contacto
 Contacto.
+Correo Electronico: topd001130@gmail.com
 
 ## Participantes
 
