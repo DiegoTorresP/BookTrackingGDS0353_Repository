@@ -4,7 +4,7 @@ const { body,validationResult} = require('express-validator');
 const bcrypt = require('bcryptjs');
 const qr = require('qrcode');
 var alumnoController = {};
-
+/*
 alumnoController.alumno_login = function(req,res){
     res.send("Ruta login controlada");
 }
@@ -14,7 +14,7 @@ alumnoController.alumno_logout = function(req,res){
     res.send("Ruta logout controlada");
    
 }
-
+*/
 
 alumnoController.alumno_verify = function (req,res){
     let usuario = req.body.username;
@@ -23,59 +23,59 @@ alumnoController.alumno_verify = function (req,res){
     console.log('Usuario: '+ usuario + 'Pass: ' + pass);
 
     if (usuario && pass) {
-        Alumno.find({'Username': usuario}, function(error, results){
-            console.log(results);
-
-             let passw;
-            results.forEach(e => {
-                passw= e.Password;
-            });
-            console.log(passw);
-            passw=passw.toString();
-            bcrypt.compare(pass, passw, (err, coinciden) => {
-                if (err) {
-                    console.log("Error comprobando:", err);
-                } else {
-                    console.log("¿La contraseña coincide?: " + coinciden); 
-                    if (error) {
-                        let data = {
-                            title: 'Ingresar al Sistema',
-                            message: 'Hubo un error contacte a soporte',
-                            layout:false
-                        }
-                        res.render('login', data);                
-                    }
-                    //
-                    if (results.length > 0 && coinciden==true) {
-                        let roles
-                        results.forEach(element => {
-                            roles= element.Roles;
-                        }); 
-                        req.session.usuario = usuario;
-                        req.session.role = roles;
-                        req.session.nombre = 
-                         console.log(req.session.usuario+' verifica');
-                         console.log(req.session.role+' verifica');
-                        if(roles=='admin'){
-                            res.render('admin');
-                        }else if(roles=='user'){
-                            res.render('alumnos');//next();
-                        }
-                        
-                        
-        
-                    } else {
-                        let data = {
-                            title: 'Ingresar al Sistema',
-                            message: 'Usuario o Contraseña incorrecto',
-                            layout:false
-                        }
-                        res.render('login', data);   
-                    }
+        //Alumno.find({Nombre_s: {$regex: busqueda, $options : 'i'}},{}).exec((err,Alumno) => {
+        Alumno.find({'Username': usuario}).exec((error, results)=>{
+            if (results==[]) {
+                let data = {
+                    title: 'Ingresar al Sistema',
+                    message: 'Hubo un error contacte a soporte',
+                    layout:false
                 }
+                res.render('login', data);                
+            }else{
+                console.log(results);
+
+                let passw;
+               results.forEach(e => {
+                   passw= e.Password;
+               });
+               console.log(passw);
+               passw=passw.toString();
+               bcrypt.compare(pass, passw, (err, coinciden) => {
+                   if (err) {
+                       console.log("Error comprobando:", err);
+                   } else {
+                       console.log("¿La contraseña coincide?: " + coinciden); 
+                       if (results.length > 0 && coinciden==true) {
+                           let roles
+                           results.forEach(element => {
+                               roles= element.Roles;
+                           }); 
+                           req.session.usuario = usuario;
+                           req.session.role = roles;
+                           req.session.nombre = 
+                            console.log(req.session.usuario+' verifica');
+                            console.log(req.session.role+' verifica');
+                           if(roles=='admin'){
+                               res.render('admin');
+                           }else if(roles=='user'){
+                               res.render('alumnos');//next();
+                           }
+                           
+                           
+           
+                       } else {
+                           let data = {
+                               title: 'Ingresar al Sistema',
+                               message: 'Usuario o Contraseña incorrecto',
+                               layout:false
+                           }
+                           res.render('login', data);   
+                       }
+                   }
+               }
+               );
             }
-            
-            );
         });
 
     } else {
@@ -158,6 +158,7 @@ alumnoController.crear = (req, res) => {
                     console.log(data.qr)
 
                     //
+                    qrcode=qrcode.toString();
                     console.log("Y hasheada es: " + password);
                     const alumno = new Alumno({
                         _id: req.body.numControl,
@@ -323,7 +324,7 @@ alumnoController.editar1=(req, res)=>{
             }
             console.log("The INDEX");
             console.log(Alumno)
-            res.redirect('/administrar/lista-usuario');
+            res.redirect('/administrar/lista_usuario');
         });
 }
 //Eliminar
@@ -374,62 +375,6 @@ alumnoController.consultarLibro = (req, res) =>{
         console.log(Libro)
         return res.render('admin_detalle_atender_libro', {
             Libro: Libro , id_sol, status
-        });
-
-    });
-}
-
-//Consulta por nombre.
-alumnoController.consultar_nombre= (req, res)=>{
-    const busqueda= req.body.nombre;
-    console.log(busqueda);
-
-    Alumno.find({Nombre_s: {$regex: busqueda, $options : 'i'}},{}).exec((err,Alumno) => {
-        if (err) {
-            console.log('Error: ', err);
-            return;
-        }
-        console.log(busqueda+" Encontrado");
-        console.log(Alumno)
-        return res.render('admin_lista_usuarios', {
-            Alumno: Alumno
-        });
-
-    });
-}
-
-//Consulta por carrera
-alumnoController.consultar_carrera= (req, res)=>{
-    const busqueda= req.body.carrera;
-    console.log(busqueda);
-
-    Alumno.find({Carrera_Tecnica: {$regex: busqueda, $options : 'i'}},{}).exec((err,Alumno) => {
-        if (err) {
-            console.log('Error: ', err);
-            return;
-        }
-        console.log(busqueda+" Encontrado");
-        console.log(Alumno)
-        return res.render('admin_lista_usuarios', {
-            Alumno: Alumno
-        });
-
-    });
-}
-//Consulta por estatus
-alumnoController.consultar_estatus= (req, res)=>{
-    const busqueda= req.body.estatus;
-    console.log(busqueda);
-
-    Alumno.find({Estatus_Escolar: {$regex: busqueda, $options : 'i'}},{}).exec((err,Alumno) => {
-        if (err) {
-            console.log('Error: ', err);
-            return;
-        }
-        console.log(busqueda+" Encontrado");
-        console.log(Alumno)
-        return res.render('admin_lista_usuarios', {
-            Alumno: Alumno
         });
 
     });

@@ -110,24 +110,6 @@ router.get("/aceptar_prestamo/:id",auth.isAdmin,solicitudes_controller.actualiza
 //Ruta de actulización
 router.get("/actualizar_denegacion/:id",auth.isAdmin,libro_controller.actualizarUnidades_denegadas);
 
-
-
-//Rutas para busquedas de alumnos
-//Busqueda por nombre
-router.post("/busqueda_nombre", auth.isAdmin,user_controller.consultar_nombre); 
-//Busqueda por carrera
-router.post("/busqueda_carrera", auth.isAdmin,user_controller.consultar_carrera); 
-//Busqueda por estatus escolar
-router.post("/busqueda_estatus", auth.isAdmin,user_controller.consultar_estatus); 
-
-//Rutas para busquedas de Solicitudes
-//Busqueda por solicitante
-router.post("/busqueda_solicitante", auth.isAdmin,solicitudes_controller.consultar_solicitante); 
-//Busqueda por libro
-router.post("/busqueda_libro",auth.isAdmin,solicitudes_controller.consultar_libro); 
-//Busqueda por estatus
-router.post("/busqueda_estatus_prestamo",auth.isAdmin, solicitudes_controller.consultar_estatus_solic); 
-
 //Entrega manual de libro
 router.post("/entrega_manual",auth.isAdmin,solicitudes_controller.entregarLibro);
 //Devolucion manual de libro
