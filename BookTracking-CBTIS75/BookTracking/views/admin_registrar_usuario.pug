@@ -50,7 +50,15 @@ block content
                     input#grupo.form-control.form-control-sm(type='text' name='grupo' required='')
                     label.form-label(for='grupo') Grupo:
                   .form-floating.mb-3
-                    input#especialidad.form-control.form-control-sm(type='text' name='especialidad' required='')
+                    select#especialidad.form-control.form-control-sm(name='especialidad' required='')
+                      option
+                      option Administración de Recursos Humanos
+                      option Contabilidad
+                      option Logística
+                      option Electricidad
+                      option Mecánica Industrial
+                      option Programación
+                      option Soporte y Mantenimiento a Equipo de Cómputo
                     label.form-label(for='especialidad') Especialidad:
                   .form-floating.mb-3
                     select#turno.form-control.form-control-sm(name='turno' required='')
