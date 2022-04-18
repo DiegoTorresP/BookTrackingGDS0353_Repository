@@ -51,10 +51,10 @@ block content
                       input#lugarE.form-control.form-control-sm(type='text' name='lugarE' required='')
                       label.form-label(for='lugarE') Lugar edición:
                     .form-floating.mb-3
-                      input#fechaE.form-control.form-control-sm(type='number' name='fechaE' required='' min="1900" max="3000")
+                      input#fechaE.form-control.form-control-sm(type='number' name='fechaE' required='' min="1900" max="2030")
                       label.form-label(for='fechaE') Fecha edición:
                     .form-floating.mb-3
-                      input#anioE.form-control.form-control-sm(type='number' name='anioE' required='' min="1950" max="2050" pattern="[1-9][0-9]{3}")
+                      input#anioE.form-control.form-control-sm(type='number' name='anioE' required='' min="1950" max="2050")
                       label.form-label(for='anioE') Año entrada:
                     .form-floating.mb-3
                       input#unidadesD.form-control.form-control-sm(type='number' name='unidadesD' required='' min="1" pattern="^[0-9]+")
@@ -76,13 +76,13 @@ block content
                           label.form-label(for='anaquel') Anaquel - Charola:
                       .col(style='min-width:175px')
                         .form-floating.mb-3              
-                          input#clasificacion.form-control.form-control-sm(type='text' name='clasificacion')
+                          input#clasificacion.form-control.form-control-sm(type='text' name='clasificacion' required='')
                           label.form-label(for='clasificacion') Clasificación:
                     .form-floating.mb-3
-                      textarea#observaciones.form-control.form-control-sm(type='text' name='observaciones')
+                      textarea#observaciones.form-control.form-control-sm(type='text' name='observaciones' required='')
                       label.form-label(for='observaciones') Observaciones:
                     .form-floating.mb-3
-                      textarea#descripcion.form-control.form-control-sm(type='text' name='descripcion')
+                      textarea#descripcion.form-control.form-control-sm(type='text' name='descripcion' required='')
                       label.form-label(for='descripcion') Descripción:
                     .row
                       .col#btnssele

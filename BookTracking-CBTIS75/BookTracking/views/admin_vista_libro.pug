@@ -41,54 +41,54 @@ block content
                         .row#ubt
                           form#ufot(action='/administrar/crear_foto' method='post' enctype="multipart/form-data")
                             .input-group.file
-                              input#foto.form-control(type='file' accept='image/png,image/jpeg,image/jpg,image/webp' name="foto")
+                              input#foto.form-control(type='file' accept='image/png,image/jpeg,image/jpg,image/webp' name="foto" requerid='')
                               button#inputGroupFileAddon04.ov-btn-grow-spin.guardar(form='ufot' type='submit') Guardar
                     .col#dates
                       .form-floating.mb-3
-                        input#nombre.form-control.form-control-sm(type='text' name='nombre' requerid  value= libro.Nombre)
+                        input#nombre.form-control.form-control-sm(type='text' name='nombre' requerid=''  value= libro.Nombre)
                         label(for='nombre') Nombre:
                       .form-floating.mb-3
-                        input#autor.form-control.form-control-sm(type='text' name='autor' requerid value= libro.Autor.join())
+                        input#autor.form-control.form-control-sm(type='text' name='autor' requerid='' value= libro.Autor.join())
                         label(for='autor') Autor:
                       .form-floating.mb-3
-                        input#editorial.form-control.form-control-sm(type='text' name='editorial' required value= libro.Editorial)
+                        input#editorial.form-control.form-control-sm(type='text' name='editorial' required='' value= libro.Editorial)
                         label(for='editorial') Editorial:
                       .form-floating.mb-3
-                        input#lugarE.form-control.form-control-sm(type='text' name='lugarE' required value= libro.Lugar_Edicion)
+                        input#lugarE.form-control.form-control-sm(type='text' name='lugarE' required='' value= libro.Lugar_Edicion)
                         label(for='lugarE') Lugar edición:
                       .form-floating.mb-3
-                        input#fechaE.form-control.form-control-sm(type='number' name='fechaE' required value= libro.Fecha_Edicion)
+                        input#fechaE.form-control.form-control-sm(type='number' name='fechaE' required='' min="1900" max="2030" value= libro.Fecha_Edicion)
                         label(for='fechaE') Fecha edición:
                       .form-floating.mb-3
-                        input#anioE.form-control.form-control-sm(type='number' name='anioE' required value= libro.Año_Entrada)
+                        input#anioE.form-control.form-control-sm(type='number' name='anioE' required=''  min="1950" max="2050" value= libro.Año_Entrada)
                         label(for='anioE') Año entrada:
                       .form-floating.mb-3
-                        input#unidadesD.form-control.form-control-sm(type='number' name='unidadesD' required value= libro.Unidades_Disponibles)
+                        input#unidadesD.form-control.form-control-sm(type='number' name='unidadesD' required='' min="1" pattern="^[0-9]+" value= libro.Unidades_Disponibles)
                         label(for='unidadesD') Unidades Disponibles:
                     .col#dates
                       .form-floating.mb-3
-                        input#totalU.form-control.form-control-sm(type='number' name='totalU' required value= libro.Total_Unidades)
+                        input#totalU.form-control.form-control-sm(type='number' name='totalU' required='' min="1" pattern="^[0-9]+" value= libro.Total_Unidades)
                         label(for='totalU') Total Unidades:
                       .form-floating.mb-3
-                        input#numP.form-control.form-control-sm(type='number' name='numP' required value= libro.Num_Pag)
+                        input#numP.form-control.form-control-sm(type='number' name='numP' required='' min="1" pattern="^[0-9]+" value= libro.Num_Pag)
                         label(for='numP') Número págs.:
                       .form-floating.mb-3
-                        input#numI.form-control.form-control-sm(type='number' name='numI' required value= libro.Num_Inventario)
+                        input#numI.form-control.form-control-sm(type='number' name='numI' required='' min="1" pattern="^[0-9]+" value= libro.Num_Inventario)
                         label(for='numI') Número inventario:
                       .row
                         .col(style='min-width:175px')
                           .form-floating.mb-3
-                            input#anaquel.form-control.form-control-sm(type='text' name='anaquel' required value= libro.Anaquel_Charola)
+                            input#anaquel.form-control.form-control-sm(type='text' name='anaquel' required='' value= libro.Anaquel_Charola)
                             label(for='anaquel') Anaquel - Charola:
                         .col(style='min-width:175px')
                           .form-floating.mb-3
-                            input#clasificacion.form-control.form-control-sm(type='text' name='clasificacion' requerid value= libro.Clasificacion)
+                            input#clasificacion.form-control.form-control-sm(type='text' name='clasificacion' requerid='' value= libro.Clasificacion)
                             label(for='clasificacion') Clasificación:
                       .form-floating.mb-3
-                        textarea#observaciones.form-control.form-control-sm(type='text' name='observaciones' requerid )=libro.Observaciones
+                        textarea#observaciones.form-control.form-control-sm(type='text' name='observaciones' requerid='' )=libro.Observaciones
                         label(for='observaciones') Observaciones:
                       .form-floating.mb-3
-                        textarea#descripcion.form-control.form-control-sm(type='text' name='descripcion' requerid )=libro.Descripcion
+                        textarea#descripcion.form-control.form-control-sm(type='text' name='descripcion' requerid='' )=libro.Descripcion
                         label(for='descripcion') Descripción:
                       .row
                         .col#btnssele
