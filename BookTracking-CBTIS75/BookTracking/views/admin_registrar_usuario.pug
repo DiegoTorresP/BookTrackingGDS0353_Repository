@@ -27,7 +27,7 @@ block content
       .col
         .container-fluid
           .row.barraresultado
-            .col Resultados: de busqueda
+            .col Resultados: de búsqueda
           .row.rowtabla
             form(action='/administrar/crear' method='post') 
               .row
@@ -35,25 +35,36 @@ block content
                   br
                   |
                   .form-floating.mb-3
-                    input#numControl.form-control.form-control-sm(type='number' name='numControl' required='')
+                    input#numControl.form-control.form-control-sm(type='text' name='numControl' required='' pattern="[0-9]{14}")
                     label.form-label(for='numControl') No. de Control
                   .form-floating.mb-3
-                    input#nombre.form-control.form-control-sm(type='text' name='nombre' required='')
+                    input#nombre.form-control.form-control-sm(type='text' name='nombre' required='' pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ \s]+")
                     label.form-label(for='nombre') Nombre:
                   .form-floating.mb-3
-                    input#apPaterno.form-control.form-control-sm(type='text' name='apPaterno' required='')
+                    input#apPaterno.form-control.form-control-sm(type='text' name='apPaterno' required='' pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ \s]+")
                     label.form-label(for='apPaterno') Apellido paterno:
                   .form-floating.mb-3
-                    input#apMaterno.form-control.form-control-sm(type='text' name='apMaterno' required='')
+                    input#apMaterno.form-control.form-control-sm(type='text' name='apMaterno' required='' pattern="[a-zA-ZñÑáéíóúÁÉÍÓÚ \s]+")
                     label.form-label(for='apMaterno') Apellido Materno:
                   .form-floating.mb-3
                     input#grupo.form-control.form-control-sm(type='text' name='grupo' required='')
                     label.form-label(for='grupo') Grupo:
                   .form-floating.mb-3
-                    input#especialidad.form-control.form-control-sm(type='text' name='especialidad' required='')
+                    select#especialidad.form-control.form-control-sm(name='especialidad' required='')
+                      option
+                      option Administración de Recursos Humanos
+                      option Contabilidad
+                      option Logística
+                      option Electricidad
+                      option Mecánica Industrial
+                      option Programación
+                      option Soporte y Mantenimiento a Equipo de Cómputo
                     label.form-label(for='especialidad') Especialidad:
                   .form-floating.mb-3
-                    input#turno.form-control.form-control-sm(type='text' name='turno' required='')
+                    select#turno.form-control.form-control-sm(name='turno' required='')
+                      option
+                      option Matutino
+                      option Vespertino
                     label.form-label(for='turno') Turno:
                 .col-md-6
                   br
@@ -68,7 +79,7 @@ block content
                       option Mujer
                     label.form-label(for='sexo') Sexo:
                   .form-floating.mb-3
-                    input#curp.form-control.form-control-sm(type='text' name='curp' required='' oninput='validarInput(this)' maxlength="18" minlength="17")
+                    input#curp.form-control.form-control-sm(type='text' name='curp' required='' oninput='validarInput(this)')
                     label.form-label(for='curp') CURP:
                     pre#resultado.
                   .row
@@ -78,29 +89,29 @@ block content
                         label.form-label(for='correo1') Correo 1:
                     .col
                       .form-floating.mb-3
-                        input#correo2.form-control.form-control-sm(type='email' name='correo2')
+                        input#correo2.form-control.form-control-sm(type='email' name='correo2' required='')
                         label.form-label(for='correo2') Correo 2:
                   .row
                     .col
                       .form-floating.mb-3
-                        input#lada.form-control.form-control-sm(type='number' name='lada' required='')
+                        input#lada.form-control.form-control-sm(type='text' name='lada' required='' pattern="[0-9]{3}")
                         label.form-label(for='lada') Lada:
                     .col
                       .form-floating.mb-3
-                        input#telefonoFijo1.form-control.form-control-sm(type='number' name='telefonoFijo1')
+                        input#telefonoFijo1.form-control.form-control-sm(type='tel' required='' name='telefonoFijo1' pattern="[0-9]{7}" )
                         label.form-label(for='telefonoFijo1') Telefono fijo 1:
                   .form-floating.mb-3
-                    input#telefonoFijo2.form-control.form-control-sm(type='number' name='telefonoFijo2')
+                    input#telefonoFijo2.form-control.form-control-sm(type='tel' name='telefonoFijo2' pattern="[0-9]{7}" required='')
                     label.form-label(for='telefonoFijo2') Telefono fijo 2:
                   .form-floating.mb-3
-                    input#telefonoMovil.form-control.form-control-sm(type='number' name='telefonoMovil')
-                    label.form-label(for='telefonoMovil') Telefono Movil:
+                    input#telefonoMovil.form-control.form-control-sm(type='tel' name='telefonoMovil' pattern="[0-9]{10}" required='')
+                    label.form-label(for='telefonoMovil') Telefono Móvil:
                   
                   .row
                     .col#btnssele
                       a.btn.btn-danger(href='/administrar') 
                         | Cancelar
-                      button.btn.btn-success(type='submit' onclick='registar()')
+                      button.btn.btn-success(type='submit' )
                         | Registrar
       #resgistrar_usuarios.modal.fade(tabindex='-1' role='dialog' aria-labelledby='exampleModalCenterTitle' aria-hidden='true')
         .modal-dialog.modal-dialog(role='document')
@@ -135,6 +146,6 @@ block content
                   .row
                     .col#btnssele
                       br
-                      button.btn.btn-success(type='submit' onclick='registar()')
+                      button.btn.btn-success(type='submit')
                         | Registrar
     script(src="/js/curp.js")
