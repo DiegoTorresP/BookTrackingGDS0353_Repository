@@ -141,9 +141,10 @@ libroController.detalleLibro = (req, res) => {
 libroController.editar = (req, res) => {
   const Nombre = req.body.nombre;
   const Autor = req.body.autor;
+  const id= req.body.id;
   //Convierte una cadena a un arreglo
   var Autor_c= Autor.split(',');
-
+  console.log("Esteghuidbfndkjlfjlgkd",link)
   const Editorial = req.body.editorial;
   const Lugar_Edicion = req.body.lugarE;
   const Fecha_Edicion = req.body.fechaE;
@@ -159,7 +160,7 @@ libroController.editar = (req, res) => {
   const Foto = link;
   console.log("Nombre: "+ Nombre)
   Libro.updateOne(
-    { Nombre: Nombre },
+    { _id: id },
     {
       $set: {
         Nombre: Nombre,
