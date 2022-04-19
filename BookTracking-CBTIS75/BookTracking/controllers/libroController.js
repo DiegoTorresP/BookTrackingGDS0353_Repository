@@ -141,9 +141,10 @@ libroController.detalleLibro = (req, res) => {
 libroController.editar = (req, res) => {
   const Nombre = req.body.nombre;
   const Autor = req.body.autor;
+  const id= req.body.id;
   //Convierte una cadena a un arreglo
   var Autor_c= Autor.split(',');
-
+  console.log("Esteghuidbfndkjlfjlgkd",link)
   const Editorial = req.body.editorial;
   const Lugar_Edicion = req.body.lugarE;
   const Fecha_Edicion = req.body.fechaE;
@@ -157,9 +158,9 @@ libroController.editar = (req, res) => {
   const Observaciones = req.body.observaciones;
   const Descripcion = req.body.descripcion;
   const Foto = link;
-
+  console.log("Nombre: "+ Nombre)
   Libro.updateOne(
-    { Nombre: Nombre },
+    { _id: id },
     {
       $set: {
         Nombre: Nombre,
@@ -225,27 +226,6 @@ libroController.eliminar = (req, res) => {
   });
 };
 
-//actualizacion Unidades_Disponibles
-libroController.actualizarUnidadesAlumno = (req, res) => {
-  const id = req.params.id;
-
-  Libro.updateOne(
-    { "_id": id },
-    {
-      $inc: {
-        Unidades_Disponibles: -1,
-      },
-    }
-  ).exec((err, Libro) => {
-    if (err) {
-      console.log("Error al actualizar el libro:", err);
-      return;
-    }
-    console.log("The INDEX");
-    console.log(Libro);
-    res.redirect("/alumnos/historial_prestamos");
-  });
-};
 
 //actualizacion Unidades_Disponibles por denegacion
 libroController.actualizarUnidades_denegadas = (req, res) => {
