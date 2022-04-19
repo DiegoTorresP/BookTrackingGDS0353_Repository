@@ -161,7 +161,7 @@ Instalación del Software
 <li>Se puede; posicionado en esta carpeta, usar el comando "code ." para ingresar por VSC</li>
 
 ## Guias
-Guias de Uso.
+Guias de Uso: https://drive.google.com/file/d/1ttfxb2SyJm-0SWmnn_XBHBi6uZ-1q7vl/view?usp=sharing 
 
 ## Contribución
 [![Contribuidores][contribuidores-shield]][contributors-url]
