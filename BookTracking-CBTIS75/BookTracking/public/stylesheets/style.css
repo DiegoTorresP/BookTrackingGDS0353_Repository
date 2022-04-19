@@ -477,18 +477,7 @@ td {
   vertical-align: middle;
 }
 
-#vlb {
-  max-width: 150px;
-  vertical-align: middle;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  text-align: right;
-}
 
-#vlb2 {
-  text-align: right;
-}
 
 #form {
   padding-top: 15px;
@@ -510,7 +499,7 @@ td {
   border-radius: 2px;
 }
 
-/*LOGIN*/
+/*--------------------LOGIN--------------------*/
 
 .login {
   width: 400px;
@@ -894,4 +883,17 @@ td {
   color: var(--color-regular);
   margin-top: 15px;
   font-size: 17px;
+}
+
+#vlb {
+  max-width: 150px;
+  vertical-align: middle;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  text-align: right;
+}
+
+#vlb2 {
+  text-align: right;
 }

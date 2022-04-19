@@ -19,32 +19,32 @@ block content
             .row.barraresultado
               .col Editar libro
             .row.rowtabla
+              br
+              |
+              .col#one
+                .row
+                br
+                |
+                h5 Datos del libro
+                br
+                |
+                .container#portimg
+                  .row#uimg
+                  if libro.Foto=="" || libro.Foto == null
+                    img#prev.dic(src="/images/diccionario.png")
+                  else 
+                    img#prev.dic(src=libro.Foto)
+
+                  .row#ubt
+                    form#ufot(action='/administrar/crear_foto' method='post' enctype="multipart/form-data")
+                      .input-group.file
+                        input#foto.form-control(type='file' accept='image/png,image/jpeg,image/jpg,image/webp' name="foto" requerid='')
+                        button#inputGroupFileAddon04.ov-btn-grow-spin.guardar(form='ufot' type='submit') Guardar
               .col
                 br
                 |
-                .row
-                  .col#one
-                    .row
-                    br
-                    |
-                    h5 Datos del libro
-                    br
-                    |
-                    .container#portimg
-                      .row
-                      if libro.Foto=="" || libro.Foto == null
-                        img#prev.dic(src="/images/diccionario.png")
-                      else 
-                        img#prev.dic(src=libro.Foto)
-
-                      .row#ubt
-                        form#ufot(action='/administrar/crear_foto' method='post' enctype="multipart/form-data")
-                          .input-group.file
-                            input#foto.form-control(type='file' accept='image/png,image/jpeg,image/jpg,image/webp' name="foto" requerid='')
-                            button#inputGroupFileAddon04.ov-btn-grow-spin.guardar(form='ufot' type='submit') Guardar
-              .col
-                .row
-                  form#all(action='/administrar/libro/editar' method='post')
+                form#all(action='/administrar/libro/editar' method='post')
+                  .row
                     .col#dates
                       .form-floating.mb-3(style="display:none;")
                         input#id.form-control.form-control-sm(type='text' name='id' required=''  value= libro._id)
@@ -65,7 +65,7 @@ block content
                         input#fechaE.form-control.form-control-sm(type='number' name='fechaE' required='' min="1900" max="2030" value= libro.Fecha_Edicion)
                         label(for='fechaE') Fecha edición:
                       .form-floating.mb-3
-                        input#anioE.form-control.form-control-sm(type='number' name='anioE' required=''  min="1950" max="2050" value= libro.Año_Entrada)
+                        input#anioE.form-control.form-control-sm(type='number' name='anioE' required='' min="1950" max="2050" value= libro.Año_Entrada)
                         label(for='anioE') Año entrada:
                       .form-floating.mb-3
                         input#unidadesD.form-control.form-control-sm(type='number' name='unidadesD' required='' min="1" pattern="^[0-9]+" value= libro.Unidades_Disponibles)
@@ -101,4 +101,4 @@ block content
                             | Cancelar
                           button.btn.btn-success(form='all' type='submit' )
                             | Guardar
-      script(src="/js/imagen.js") 
+        script(src="/js/imagen.js") 
